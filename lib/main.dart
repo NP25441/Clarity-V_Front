@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
       home: const MyHomePage(title: 'Clarity V'),
     );
@@ -31,22 +32,18 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: 
-            AnimatedSplashScreen(
-              splash: Image.asset(
-                'assets/images/Opening_Screen/Logo.png',
-                width: 200,
-                height: 200,
-                fit: BoxFit.contain,
-              ),
-              duration: 2000,
-              splashTransition: SplashTransition.fadeTransition,
-              backgroundColor: Color(0xFF1D1D1D),
-              nextScreen: SearcScreenWidget(),
-            ),
-          
-        
-  
+      body: AnimatedSplashScreen(
+        splash: Image.asset(
+          'assets/images/Opening_Screen/Logo.png',
+          width: 200,
+          height: 200,
+          fit: BoxFit.contain,
+        ),
+        duration: 2000,
+        splashTransition: SplashTransition.fadeTransition,
+        backgroundColor: Color(0xFF1D1D1D),
+        nextScreen: SearcScreenWidget(),
+      ),
     );
   }
 }

@@ -74,8 +74,6 @@ flutter:
   assets:
     - assets/images/
     - assets/images/Search_Screen/
-    - assets/images/Result_Screen/
-    - assets/images/Video_Screen/
     - assets/images/Opening_Screen/
     - assets/images/Example_Demo/
 

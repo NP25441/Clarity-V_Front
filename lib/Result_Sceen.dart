@@ -126,12 +126,13 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                   height: 150,
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(20),
-                                    child:Image.asset(
-                                    'assets/images/Example_Demo/Test 2.jpg',
-                                    width: double.infinity,
-                                    height: double.infinity,
-                                    fit: BoxFit.cover,
-                                  ),),
+                                    child: Image.asset(
+                                      'assets/images/Example_Demo/Test 2.jpg',
+                                      width: double.infinity,
+                                      height: double.infinity,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
                                   ),
@@ -151,12 +152,13 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                   height: 150,
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(20),
-                                    child:Image.asset(
-                                    'assets/images/Example_Demo/Test 3.jpg',
-                                    width: double.infinity,
-                                    height: double.infinity,
-                                    fit: BoxFit.cover,
-                                  ),),
+                                    child: Image.asset(
+                                      'assets/images/Example_Demo/Test 3.jpg',
+                                      width: double.infinity,
+                                      height: double.infinity,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
                                   ),
@@ -170,12 +172,13 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                   height: 150,
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(20),
-                                    child:Image.asset(
-                                    'assets/images/Example_Demo/Test 4.jpg',
-                                    width: double.infinity,
-                                    height: double.infinity,
-                                    fit: BoxFit.cover,
-                                  ),),
+                                    child: Image.asset(
+                                      'assets/images/Example_Demo/Test 4.jpg',
+                                      width: double.infinity,
+                                      height: double.infinity,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
                                   ),
@@ -195,12 +198,14 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                   height: 150,
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(20),
-                                    child:Image.asset(
-                                    'assets/images/Example_Demo/Test 5.jpg',
-                                    width: double.infinity,
-                                    height: double.infinity,
-                                    fit: BoxFit.cover,
-                                  ),),decoration: BoxDecoration(
+                                    child: Image.asset(
+                                      'assets/images/Example_Demo/Test 5.jpg',
+                                      width: double.infinity,
+                                      height: double.infinity,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                  decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
                                   ),
                                 ),
@@ -213,12 +218,14 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                   height: 150,
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(20),
-                                    child:Image.asset(
-                                    'assets/images/Example_Demo/Test 6.jpg',
-                                    width: double.infinity,
-                                    height: double.infinity,
-                                    fit: BoxFit.cover,
-                                  ),),decoration: BoxDecoration(
+                                    child: Image.asset(
+                                      'assets/images/Example_Demo/Test 6.jpg',
+                                      width: double.infinity,
+                                      height: double.infinity,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                  decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
                                   ),
                                 ),
@@ -237,12 +244,13 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                   height: 150,
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(20),
-                                    child:Image.asset(
-                                    'assets/images/Example_Demo/Test 7.jpg',
-                                    width: double.infinity,
-                                    height: double.infinity,
-                                    fit: BoxFit.cover,
-                                  ),),
+                                    child: Image.asset(
+                                      'assets/images/Example_Demo/Test 7.jpg',
+                                      width: double.infinity,
+                                      height: double.infinity,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
                                   ),
@@ -256,12 +264,14 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                   height: 150,
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(20),
-                                    child:Image.asset(
-                                    'assets/images/Example_Demo/Test 8.jpg',
-                                    width: double.infinity,
-                                    height: double.infinity,
-                                    fit: BoxFit.cover,
-                                  ),),decoration: BoxDecoration(
+                                    child: Image.asset(
+                                      'assets/images/Example_Demo/Test 8.jpg',
+                                      width: double.infinity,
+                                      height: double.infinity,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                  decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
                                   ),
                                 ),
@@ -297,23 +307,25 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                   alignment: AlignmentDirectional(0, 0),
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(20),
-                                    child:Image.asset(
-                                    'assets/images/Example_Demo/Car.jpg',
-                                    width: double.infinity,
-                                    height: double.infinity,
-                                    fit: BoxFit.cover,
-                                  ),),
+                                    child: Image.asset(
+                                      'assets/images/Example_Demo/Car.jpg',
+                                      width: double.infinity,
+                                      height: double.infinity,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
                                 ),
                                 Align(
                                   alignment: AlignmentDirectional(0.96, 0.95),
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(20),
-                                    child:Image.asset(
-                                    'assets/images/Example_Demo/Palte.jpg',
-                                    width: 200,
-                                    height: 100,
-                                    fit: BoxFit.cover,
-                                  ),),
+                                    child: Image.asset(
+                                      'assets/images/Example_Demo/Palte.jpg',
+                                      width: 200,
+                                      height: 100,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
                                 ),
                               ],
                             ),
