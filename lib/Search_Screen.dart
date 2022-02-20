@@ -452,7 +452,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                 ),
                                 alignment: AlignmentDirectional(0, 0),
                                 child: Image.asset(
-                                  'assets/images/Search_Screen/Sedan.png',
+                                  'assets/images/Sedan.png',
                                   width: 50,
                                   height: 50,
                                   fit: BoxFit.contain,
@@ -473,7 +473,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                   ),
                                   alignment: AlignmentDirectional(0, 0),
                                   child: Image.asset(
-                                    'assets/images/Search_Screen/Pickup_Truck.png',
+                                    'assets/images/Pickup_Truck.png',
                                     width: 50,
                                     height: 50,
                                     fit: BoxFit.contain,
@@ -495,7 +495,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                   ),
                                   alignment: AlignmentDirectional(0, 0),
                                   child: Image.asset(
-                                    'assets/images/Search_Screen/Truck.png',
+                                    'assets/images/Truck.png',
                                     width: 50,
                                     height: 50,
                                     fit: BoxFit.contain,

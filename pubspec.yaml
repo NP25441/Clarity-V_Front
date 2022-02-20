@@ -41,6 +41,9 @@ dependencies:
   url_launcher: 6.0.20
   flutter_datetime_picker: ^1.5.1
   animated_splash_screen: ^1.2.0
+  video_player: 2.2.18
+  fluent_ui: ^3.9.0
+  file_picker: ^4.4.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -73,9 +76,6 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
-    - assets/images/Search_Screen/
-    - assets/images/Result_Screen/
-    - assets/images/Video_Screen/
     - assets/images/Opening_Screen/
     - assets/images/Example_Demo/
 

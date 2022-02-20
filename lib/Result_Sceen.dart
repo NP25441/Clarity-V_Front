@@ -1,4 +1,5 @@
 import 'package:clarity_v/Search_Screen.dart';
+import 'package:clarity_v/Video_Screen.dart';
 import 'package:clarity_v/flutter%20flow/flutter_flow_theme.dart';
 import 'package:clarity_v/flutter%20flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,9 @@ class ResultScreenWidget extends StatefulWidget {
 class _ResultScreenWidgetState extends State<ResultScreenWidget>
     with TickerProviderStateMixin {
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  String license_plate = "ไม่มีข้อมูล";
+  String city = "ไม่มีข้อมูล";
 
   @override
   Widget build(BuildContext context) {
@@ -451,7 +455,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       10, 0, 0, 0),
                                   child: Image.asset(
-                                    'assets/images/Search_Screen/Pickup_Truck.png',
+                                    'assets/images/Pickup_Truck.png',
                                     width: 50,
                                     height: 50,
                                     fit: BoxFit.contain,
@@ -512,7 +516,14 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                           ),
                         ),
                         FFButtonWidget(
-                          onPressed: () {},
+                          onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => VideoScreenWidget(
+                            
+                              )),
+                    );},
                           text: 'ค้นหาภาพจากกล้อง',
                           options: FFButtonOptions(
                             width: 230,
