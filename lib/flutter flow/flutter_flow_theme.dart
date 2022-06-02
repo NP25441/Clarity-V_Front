@@ -52,8 +52,6 @@ class FlutterFlowTheme {
         fontWeight: FontWeight.normal,
         fontSize: 14,
       );
-
-  static of(BuildContext context) {}
 }
 
 extension TextStyleHelper on TextStyle {

@@ -455,7 +455,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       10, 0, 0, 0),
                                   child: Image.asset(
-                                    'assets/images/Pickup_Truck.png',
+                                    'assets/images/Pickup.png',
                                     width: 50,
                                     height: 50,
                                     fit: BoxFit.contain,

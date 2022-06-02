@@ -3,8 +3,11 @@ import 'package:clarity_v/flutter%20flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 
+
+
 void main() {
   runApp(const MyApp());
+
 }
 
 class MyApp extends StatelessWidget {
