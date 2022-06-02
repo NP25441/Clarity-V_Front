@@ -37,245 +37,259 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
           padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
           child: Row(
             mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Container(
-                width: 570,
-                height: double.infinity,
-                decoration: BoxDecoration(),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      width: double.infinity,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        color: Color(0xFF1D1D1D),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          SearcScreenWidget()),
-                                );
-                              },
-                              child: Image.asset(
-                                'assets/images/Back.png',
-                                width: 50,
-                                height: 50,
-                                fit: BoxFit.cover,
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                child: Container(
+                  width: 570,
+                  height: double.infinity,
+                  decoration: BoxDecoration(),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        height: 100,
+                        decoration: BoxDecoration(
+                          color: Color(0xFF1D1D1D),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            SearcScreenWidget()),
+                                  );
+                                },
+                                child: Image.asset(
+                                  'assets/images/Back.png',
+                                  width: 50,
+                                  height: 50,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
-                          ),
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(50, 0, 0, 0),
-                            child: Text(
-                              'ผลการค้นหา',
-                              style: FlutterFlowTheme.bodyText1.override(
-                                fontFamily: 'Mitr',
-                                color: Colors.white,
-                                fontSize: 40,
-                                fontWeight: FontWeight.w300,
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(50, 0, 0, 0),
+                              child: Text(
+                                'ผลการค้นหา',
+                                style: FlutterFlowTheme.bodyText1.override(
+                                  fontFamily: 'Mitr',
+                                  color: Colors.white,
+                                  fontSize: 40,
+                                  fontWeight: FontWeight.w300,
+                                ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                    Expanded(
-                      child: ListView(
-                        padding: EdgeInsets.zero,
-                        scrollDirection: Axis.vertical,
-                        children: [
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                                child: Container(
-                                  width: 250,
-                                  height: 150,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(20),
-                                    child: Image.asset(
-                                      'assets/images/Example_Demo/Test 1.jpg',
-                                      width: double.infinity,
-                                      height: double.infinity,
-                                      fit: BoxFit.cover,
+                      Expanded(
+                        child: ListView(
+                          padding: EdgeInsets.zero,
+                          scrollDirection: Axis.vertical,
+                          children: [
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 20, 0, 0),
+                                  child: Container(
+                                    width: 250,
+                                    height: 150,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(20),
+                                      child: Image.asset(
+                                        'assets/images/Example_Demo/Test 1.jpg',
+                                        width: double.infinity,
+                                        height: double.infinity,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
                                     ),
                                   ),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 20, 0, 0),
+                                  child: Container(
+                                    width: 250,
+                                    height: 150,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(20),
+                                      child: Image.asset(
+                                        'assets/images/Example_Demo/Test 2.jpg',
+                                        width: double.infinity,
+                                        height: double.infinity,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
                                   ),
                                 ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    20, 20, 0, 0),
-                                child: Container(
-                                  width: 250,
-                                  height: 150,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(20),
-                                    child:Image.asset(
-                                    'assets/images/Example_Demo/Test 2.jpg',
-                                    width: double.infinity,
-                                    height: double.infinity,
-                                    fit: BoxFit.cover,
-                                  ),),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
+                              ],
+                            ),
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 20, 0, 0),
+                                  child: Container(
+                                    width: 250,
+                                    height: 150,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(20),
+                                      child: Image.asset(
+                                        'assets/images/Example_Demo/Test 3.jpg',
+                                        width: double.infinity,
+                                        height: double.infinity,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                                child: Container(
-                                  width: 250,
-                                  height: 150,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(20),
-                                    child:Image.asset(
-                                    'assets/images/Example_Demo/Test 3.jpg',
-                                    width: double.infinity,
-                                    height: double.infinity,
-                                    fit: BoxFit.cover,
-                                  ),),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 20, 0, 0),
+                                  child: Container(
+                                    width: 250,
+                                    height: 150,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(20),
+                                      child: Image.asset(
+                                        'assets/images/Example_Demo/Test 4.jpg',
+                                        width: double.infinity,
+                                        height: double.infinity,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
                                   ),
                                 ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    20, 20, 0, 0),
-                                child: Container(
-                                  width: 250,
-                                  height: 150,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(20),
-                                    child:Image.asset(
-                                    'assets/images/Example_Demo/Test 4.jpg',
-                                    width: double.infinity,
-                                    height: double.infinity,
-                                    fit: BoxFit.cover,
-                                  ),),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
+                              ],
+                            ),
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 20, 0, 0),
+                                  child: Container(
+                                    width: 250,
+                                    height: 150,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(20),
+                                      child: Image.asset(
+                                        'assets/images/Example_Demo/Test 5.jpg',
+                                        width: double.infinity,
+                                        height: double.infinity,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                                child: Container(
-                                  width: 250,
-                                  height: 150,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(20),
-                                    child:Image.asset(
-                                    'assets/images/Example_Demo/Test 5.jpg',
-                                    width: double.infinity,
-                                    height: double.infinity,
-                                    fit: BoxFit.cover,
-                                  ),),decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 20, 0, 0),
+                                  child: Container(
+                                    width: 250,
+                                    height: 150,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(20),
+                                      child: Image.asset(
+                                        'assets/images/Example_Demo/Test 6.jpg',
+                                        width: double.infinity,
+                                        height: double.infinity,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
                                   ),
                                 ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    20, 20, 0, 0),
-                                child: Container(
-                                  width: 250,
-                                  height: 150,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(20),
-                                    child:Image.asset(
-                                    'assets/images/Example_Demo/Test 6.jpg',
-                                    width: double.infinity,
-                                    height: double.infinity,
-                                    fit: BoxFit.cover,
-                                  ),),decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
+                              ],
+                            ),
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 20, 0, 0),
+                                  child: Container(
+                                    width: 250,
+                                    height: 150,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(20),
+                                      child: Image.asset(
+                                        'assets/images/Example_Demo/Test 7.jpg',
+                                        width: double.infinity,
+                                        height: double.infinity,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                                child: Container(
-                                  width: 250,
-                                  height: 150,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(20),
-                                    child:Image.asset(
-                                    'assets/images/Example_Demo/Test 7.jpg',
-                                    width: double.infinity,
-                                    height: double.infinity,
-                                    fit: BoxFit.cover,
-                                  ),),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 20, 0, 0),
+                                  child: Container(
+                                    width: 250,
+                                    height: 150,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(20),
+                                      child: Image.asset(
+                                        'assets/images/Example_Demo/Test 8.jpg',
+                                        width: double.infinity,
+                                        height: double.infinity,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
                                   ),
                                 ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    20, 20, 0, 0),
-                                child: Container(
-                                  width: 250,
-                                  height: 150,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(20),
-                                    child:Image.asset(
-                                    'assets/images/Example_Demo/Test 8.jpg',
-                                    width: double.infinity,
-                                    height: double.infinity,
-                                    fit: BoxFit.cover,
-                                  ),),decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               Padding(
@@ -301,23 +315,25 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                   alignment: AlignmentDirectional(0, 0),
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(20),
-                                    child:Image.asset(
-                                    'assets/images/Example_Demo/Car.jpg',
-                                    width: double.infinity,
-                                    height: double.infinity,
-                                    fit: BoxFit.cover,
-                                  ),),
+                                    child: Image.asset(
+                                      'assets/images/Example_Demo/Car.jpg',
+                                      width: double.infinity,
+                                      height: double.infinity,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
                                 ),
                                 Align(
                                   alignment: AlignmentDirectional(0.96, 0.95),
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(20),
-                                    child:Image.asset(
-                                    'assets/images/Example_Demo/Palte.jpg',
-                                    width: 200,
-                                    height: 100,
-                                    fit: BoxFit.cover,
-                                  ),),
+                                    child: Image.asset(
+                                      'assets/images/Example_Demo/Palte.jpg',
+                                      width: 200,
+                                      height: 100,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
                                 ),
                               ],
                             ),
@@ -517,13 +533,12 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                         ),
                         FFButtonWidget(
                           onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => VideoScreenWidget(
-                            
-                              )),
-                    );},
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => VideoScreenWidget()),
+                            );
+                          },
                           text: 'ค้นหาภาพจากกล้อง',
                           options: FFButtonOptions(
                             width: 230,

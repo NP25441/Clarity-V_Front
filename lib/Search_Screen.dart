@@ -449,8 +449,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                             ),
                                             child: FFButtonWidget(
                                               onPressed: () {
-                                                print(
-                                                    'Button_Color pressed ...');
+                                                child : cleckcolor;
                                               },
                                               text: '',
                                               options: FFButtonOptions(
