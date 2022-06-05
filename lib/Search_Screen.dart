@@ -103,9 +103,9 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                           ),
                         ),
                         Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(250, 20, 250, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                           child: Container(
+                            width: MediaQuery.of(context).size.width * 0.65,
                             height: 130,
                             decoration: BoxDecoration(),
                             child: SingleChildScrollView(
@@ -171,9 +171,9 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                           ),
                         ),
                         Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(250, 10, 250, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                           child: Container(
+                            width: MediaQuery.of(context).size.width * 0.65,
                             height: 130,
                             decoration: BoxDecoration(),
                             child: SingleChildScrollView(
@@ -237,347 +237,383 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                           ),
                         ),
                         Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(250, 10, 250, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                           child: Container(
+                            width: MediaQuery.of(context).size.width * 0.65,
                             height: 130,
                             decoration: BoxDecoration(),
-                            child: SingleChildScrollView(
-                              scrollDirection: Axis.horizontal,
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Align(
-                                    alignment: AlignmentDirectional(0, 0),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          'วัน / เดือน / ปี',
-                                          style: FlutterFlowTheme.bodyText1
-                                              .override(
-                                            fontFamily: 'Mitr',
-                                            color: Colors.white,
-                                            fontSize: 30,
-                                            fontWeight: FontWeight.w300,
-                                          ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Align(
+                                  alignment: AlignmentDirectional(0, 0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'วัน / เดือน / ปี',
+                                        style:
+                                            FlutterFlowTheme.bodyText1.override(
+                                          fontFamily: 'Mitr',
+                                          color: Colors.white,
+                                          fontSize: 30,
+                                          fontWeight: FontWeight.w300,
                                         ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 5, 0, 0),
-                                          child: Container(
-                                              width: 250,
-                                              decoration: BoxDecoration(),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(50, 0, 0, 0),
-                                                child: FFButtonWidget(
-                                                  onPressed: () {
-                                                    pickDate(context);
-                                                  },
-                                                  text: getTextdate(),
-                                                  options: FFButtonOptions(
-                                                    width: double.infinity,
-                                                    height: 60,
-                                                    color: Color(0xFF1D1D1D),
-                                                    textStyle: FlutterFlowTheme
-                                                        .subtitle2
-                                                        .override(
-                                                      fontFamily: 'Mitr',
-                                                      color: Colors.white,
-                                                      fontSize: 20,
-                                                      fontWeight:
-                                                          FontWeight.w300,
-                                                    ),
-                                                    borderSide: BorderSide(
-                                                      color: Colors.black,
-                                                      width: 1,
-                                                    ),
-                                                    borderRadius: 12,
-                                                  ),
-                                                ),
-                                              )),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Align(
-                                    alignment: AlignmentDirectional(0, 0),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          50, 0, 0, 0),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            'เวลาโดยประมาณ',
-                                            textAlign: TextAlign.start,
-                                            style: FlutterFlowTheme.bodyText1
-                                                .override(
-                                              fontFamily: 'Mitr',
-                                              color: Colors.white,
-                                              fontSize: 30,
-                                              fontWeight: FontWeight.w300,
-                                            ),
-                                          ),
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceEvenly,
-                                            children: [
-                                              Container(
-                                                width: 160,
-                                                decoration: BoxDecoration(),
-                                                child: FFButtonWidget(
-                                                  onPressed: () {
-                                                    pickTime(context);
-                                                  },
-                                                  text: getTexttime(),
-                                                  options: FFButtonOptions(
-                                                    width: double.infinity,
-                                                    height: 60,
-                                                    color: Color(0xFF1D1D1D),
-                                                    textStyle: FlutterFlowTheme
-                                                        .subtitle2
-                                                        .override(
-                                                      fontFamily: 'Mitr',
-                                                      color: Colors.white,
-                                                      fontSize: 20,
-                                                      fontWeight:
-                                                          FontWeight.w300,
-                                                    ),
-                                                    borderSide: BorderSide(
-                                                      color: Colors.black,
-                                                      width: 1,
-                                                    ),
-                                                    borderRadius: 12,
-                                                  ),
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(10, 0, 10, 0),
-                                                child: Text(
-                                                  'ถึง',
-                                                  style: FlutterFlowTheme
-                                                      .bodyText1
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0, 5, 0, 0),
+                                        child: Container(
+                                            width: 250,
+                                            decoration: BoxDecoration(),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(50, 0, 0, 0),
+                                              child: FFButtonWidget(
+                                                onPressed: () {
+                                                  pickDate(context);
+                                                },
+                                                text: getTextdate(),
+                                                options: FFButtonOptions(
+                                                  width: double.infinity,
+                                                  height: 60,
+                                                  color: Color(0xFF1D1D1D),
+                                                  textStyle: FlutterFlowTheme
+                                                      .subtitle2
                                                       .override(
                                                     fontFamily: 'Mitr',
                                                     color: Colors.white,
                                                     fontSize: 20,
                                                     fontWeight: FontWeight.w300,
                                                   ),
+                                                  borderSide: BorderSide(
+                                                    color: Colors.black,
+                                                    width: 1,
+                                                  ),
+                                                  borderRadius: 12,
+                                                ),
+                                              ),
+                                            )),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.45,
+                                  height:
+                                      MediaQuery.of(context).size.height * 1,
+                                  decoration: BoxDecoration(),
+                                  child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        Align(
+                                          alignment: AlignmentDirectional(0, 0),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    60, 0, 0, 0),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceEvenly,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'เวลาโดยประมาณ',
+                                                  textAlign: TextAlign.start,
+                                                  style: FlutterFlowTheme
+                                                      .bodyText1
+                                                      .override(
+                                                    fontFamily: 'Mitr',
+                                                    color: Colors.white,
+                                                    fontSize: 30,
+                                                    fontWeight: FontWeight.w300,
+                                                  ),
+                                                ),
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
+                                                  children: [
+                                                    Container(
+                                                      width: 160,
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child: FFButtonWidget(
+                                                        onPressed: () {
+                                                          pickTime(context);
+                                                        },
+                                                        text: getTexttime(),
+                                                        options:
+                                                            FFButtonOptions(
+                                                          width:
+                                                              double.infinity,
+                                                          height: 60,
+                                                          color:
+                                                              Color(0xFF1D1D1D),
+                                                          textStyle:
+                                                              FlutterFlowTheme
+                                                                  .subtitle2
+                                                                  .override(
+                                                            fontFamily: 'Mitr',
+                                                            color: Colors.white,
+                                                            fontSize: 20,
+                                                            fontWeight:
+                                                                FontWeight.w300,
+                                                          ),
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: Colors.black,
+                                                            width: 1,
+                                                          ),
+                                                          borderRadius: 12,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10, 0, 10, 0),
+                                                      child: Text(
+                                                        'ถึง',
+                                                        style: FlutterFlowTheme
+                                                            .bodyText1
+                                                            .override(
+                                                          fontFamily: 'Mitr',
+                                                          color: Colors.white,
+                                                          fontSize: 20,
+                                                          fontWeight:
+                                                              FontWeight.w300,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0, 5, 0, 0),
+                                                      child: Container(
+                                                        width: 160,
+                                                        decoration:
+                                                            BoxDecoration(),
+                                                        child: FFButtonWidget(
+                                                          onPressed: () {
+                                                            pickTime(context);
+                                                          },
+                                                          text: getTexttime(),
+                                                          options:
+                                                              FFButtonOptions(
+                                                            width:
+                                                                double.infinity,
+                                                            height: 60,
+                                                            color: Color(
+                                                                0xFF1D1D1D),
+                                                            textStyle:
+                                                                FlutterFlowTheme
+                                                                    .subtitle2
+                                                                    .override(
+                                                              fontFamily:
+                                                                  'Mitr',
+                                                              color:
+                                                                  Colors.white,
+                                                              fontSize: 20,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w300,
+                                                            ),
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color:
+                                                                  Colors.black,
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius: 12,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  60, 0, 0, 0),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              Text(
+                                                'สี',
+                                                style: FlutterFlowTheme
+                                                    .bodyText1
+                                                    .override(
+                                                  fontFamily: 'Mitr',
+                                                  color: Colors.white,
+                                                  fontSize: 30,
+                                                  fontWeight: FontWeight.w300,
                                                 ),
                                               ),
                                               Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(0, 5, 0, 0),
                                                 child: Container(
-                                                  width: 160,
-                                                  decoration: BoxDecoration(),
+                                                  width: 60,
+                                                  height: 60,
+                                                  decoration: BoxDecoration(
+                                                    shape: BoxShape.circle,
+                                                  ),
                                                   child: FFButtonWidget(
                                                     onPressed: () {
-                                                      pickTime(context);
+                                                      setState(() {
+                                                        cleckcolor = true;
+                                                      });
                                                     },
-                                                    text: getTexttime(),
+                                                    text: '',
                                                     options: FFButtonOptions(
                                                       width: double.infinity,
-                                                      height: 60,
+                                                      height: double.infinity,
                                                       color: Color(0xFF1D1D1D),
                                                       textStyle:
                                                           FlutterFlowTheme
                                                               .subtitle2
                                                               .override(
-                                                        fontFamily: 'Mitr',
-                                                        color: Colors.white,
-                                                        fontSize: 20,
-                                                        fontWeight:
-                                                            FontWeight.w300,
+                                                        fontFamily: 'Poppins',
+                                                        color:
+                                                            Color(0xFF1D1D1D),
                                                       ),
                                                       borderSide: BorderSide(
                                                         color: Colors.black,
                                                         width: 1,
                                                       ),
-                                                      borderRadius: 12,
+                                                      borderRadius: 50,
                                                     ),
                                                   ),
                                                 ),
                                               ),
                                             ],
                                           ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        50, 0, 0, 0),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        Text(
-                                          'สี',
-                                          style: FlutterFlowTheme.bodyText1
-                                              .override(
-                                            fontFamily: 'Mitr',
-                                            color: Colors.white,
-                                            fontSize: 30,
-                                            fontWeight: FontWeight.w300,
-                                          ),
                                         ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 5, 0, 0),
-                                          child: Container(
-                                            width: 60,
-                                            height: 60,
-                                            decoration: BoxDecoration(
-                                              shape: BoxShape.circle,
-                                            ),
-                                            child: FFButtonWidget(
-                                              onPressed: () {
-                                                child : cleckcolor;
-                                              },
-                                              text: '',
-                                              options: FFButtonOptions(
-                                                width: double.infinity,
-                                                height: double.infinity,
-                                                color: Color(0xFF1D1D1D),
-                                                textStyle: FlutterFlowTheme
-                                                    .subtitle2
-                                                    .override(
-                                                  fontFamily: 'Poppins',
-                                                  color: Color(0xFF1D1D1D),
-                                                ),
-                                                borderSide: BorderSide(
-                                                  color: Colors.black,
-                                                  width: 1,
-                                                ),
-                                                borderRadius: 50,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
+                                      ]),
+                                ),
+                              ],
                             ),
                           ),
                         ),
                         Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(250, 10, 250, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                           child: Container(
+                            width: MediaQuery.of(context).size.width * 0.65,
                             height: 130,
                             decoration: BoxDecoration(),
-                            child: SingleChildScrollView(
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'ประเภท',
-                                    textAlign: TextAlign.start,
-                                    style: FlutterFlowTheme.bodyText1.override(
-                                      fontFamily: 'Mitr',
-                                      color: Colors.white,
-                                      fontSize: 30,
-                                      fontWeight: FontWeight.w300,
-                                    ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'ประเภท',
+                                  textAlign: TextAlign.start,
+                                  style: FlutterFlowTheme.bodyText1.override(
+                                    fontFamily: 'Mitr',
+                                    color: Colors.white,
+                                    fontSize: 30,
+                                    fontWeight: FontWeight.w300,
                                   ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 5, 0, 0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            color: Color(0xFF1D1D1D),
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                            border: Border.all(
-                                              color: Colors.black,
-                                            ),
-                                          ),
-                                          alignment: AlignmentDirectional(0, 0),
-                                          child: Image.asset(
-                                            'assets/images/Sedan.png',
-                                            width: 70,
-                                            height: 70,
-                                            fit: BoxFit.contain,
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 5, 0, 0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          color: Color(0xFF1D1D1D),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          border: Border.all(
+                                            color: Colors.black,
                                           ),
                                         ),
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            color: Color(0xFF1D1D1D),
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                            border: Border.all(
-                                              color: Colors.black,
-                                            ),
-                                          ),
-                                          child: Image.asset(
-                                            'assets/images/Pickup.png',
-                                            width: 70,
-                                            height: 70,
-                                            fit: BoxFit.contain,
+                                        alignment: AlignmentDirectional(0, 0),
+                                        child: Image.asset(
+                                          'assets/images/Sedan.png',
+                                          width: 70,
+                                          height: 70,
+                                          fit: BoxFit.contain,
+                                        ),
+                                      ),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          color: Color(0xFF1D1D1D),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          border: Border.all(
+                                            color: Colors.black,
                                           ),
                                         ),
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            color: Color(0xFF1D1D1D),
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                            border: Border.all(
-                                              color: Colors.black,
-                                            ),
-                                          ),
-                                          child: Image.asset(
-                                            'assets/images/Van.png',
-                                            width: 70,
-                                            height: 70,
-                                            fit: BoxFit.contain,
+                                        child: Image.asset(
+                                          'assets/images/Pickup.png',
+                                          width: 70,
+                                          height: 70,
+                                          fit: BoxFit.contain,
+                                        ),
+                                      ),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          color: Color(0xFF1D1D1D),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          border: Border.all(
+                                            color: Colors.black,
                                           ),
                                         ),
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            color: Color(0xFF1D1D1D),
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                            border: Border.all(
-                                              color: Colors.black,
-                                            ),
-                                          ),
-                                          child: Image.asset(
-                                            'assets/images/Truck.png',
-                                            width: 70,
-                                            height: 70,
-                                            fit: BoxFit.contain,
+                                        child: Image.asset(
+                                          'assets/images/Van.png',
+                                          width: 70,
+                                          height: 70,
+                                          fit: BoxFit.contain,
+                                        ),
+                                      ),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          color: Color(0xFF1D1D1D),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          border: Border.all(
+                                            color: Colors.black,
                                           ),
                                         ),
-                                      ],
-                                    ),
+                                        child: Image.asset(
+                                          'assets/images/Truck.png',
+                                          width: 70,
+                                          height: 70,
+                                          fit: BoxFit.contain,
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
                         ),

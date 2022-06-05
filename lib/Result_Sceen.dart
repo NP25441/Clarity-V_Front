@@ -43,7 +43,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                 child: Container(
-                  width: 570,
+                  width: MediaQuery.of(context).size.width * 0.4,
                   height: double.infinity,
                   decoration: BoxDecoration(),
                   child: Column(
@@ -295,7 +295,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(20, 0, 10, 0),
                 child: Container(
-                  width: 650,
+                  width: MediaQuery.of(context).size.width * 0.55,
                   height: double.infinity,
                   decoration: BoxDecoration(),
                   child: SingleChildScrollView(

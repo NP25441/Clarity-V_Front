@@ -32,7 +32,7 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                width: 570,
+                width: MediaQuery.of(context).size.width * 0.40,
                 height: double.infinity,
                 decoration: BoxDecoration(),
                 child: SingleChildScrollView(
@@ -371,7 +371,7 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(20, 0, 10, 0),
                 child: Container(
-                  width: 650,
+                  width: MediaQuery.of(context).size.width * 0.55,
                   height: double.infinity,
                   decoration: BoxDecoration(),
                   child: Column(
