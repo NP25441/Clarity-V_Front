@@ -350,7 +350,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                               style: FlutterFlowTheme.bodyText1.override(
                                 fontFamily: 'Mitr',
                                 color: Colors.white,
-                                fontSize: 35,
+                                fontSize: 40,
                                 fontWeight: FontWeight.w300,
                               ),
                             ),
@@ -380,7 +380,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                   style: FlutterFlowTheme.bodyText1.override(
                                     fontFamily: 'Mitr',
                                     color: Colors.white,
-                                    fontSize: 20,
+                                    fontSize: 22,
                                     fontWeight: FontWeight.normal,
                                   ),
                                 ),
@@ -415,7 +415,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                   style: FlutterFlowTheme.bodyText1.override(
                                     fontFamily: 'Mitr',
                                     color: Colors.white,
-                                    fontSize: 20,
+                                    fontSize: 22,
                                     fontWeight: FontWeight.normal,
                                   ),
                                 ),
@@ -450,7 +450,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                   style: FlutterFlowTheme.bodyText1.override(
                                     fontFamily: 'Mitr',
                                     color: Colors.white,
-                                    fontSize: 20,
+                                    fontSize: 22,
                                     fontWeight: FontWeight.normal,
                                   ),
                                 ),
@@ -491,11 +491,59 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Text(
+                                  'ความเร็วโดยเฉลี่ย :',
+                                  style: FlutterFlowTheme.bodyText1.override(
+                                    fontFamily: 'Mitr',
+                                    color: Colors.white,
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      10, 0, 0, 0),
+                                  child: Text(
+                                    '60',
+                                    style: FlutterFlowTheme.bodyText1.override(
+                                      fontFamily: 'Mitr',
+                                      color: Colors.white,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      10, 0, 0, 0),
+                                  child: Text(
+                                    'กม./ชม.',
+                                    style: FlutterFlowTheme.bodyText1.override(
+                                      fontFamily: 'Mitr',
+                                      color: Colors.white,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(10, 5, 0, 0),
+                          child: Container(
+                            width: double.infinity,
+                            height: 50,
+                            decoration: BoxDecoration(),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Text(
                                   'สี :',
                                   style: FlutterFlowTheme.bodyText1.override(
                                     fontFamily: 'Mitr',
                                     color: Colors.white,
-                                    fontSize: 20,
+                                    fontSize: 22,
                                     fontWeight: FontWeight.normal,
                                   ),
                                 ),
@@ -531,30 +579,33 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                             ),
                           ),
                         ),
-                        FFButtonWidget(
-                          onPressed: () {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => VideoScreenWidget()),
-                            );
-                          },
-                          text: 'ค้นหาภาพจากกล้อง',
-                          options: FFButtonOptions(
-                            width: 230,
-                            height: 50,
-                            color: Color(0xFF1D1D1D),
-                            textStyle: FlutterFlowTheme.subtitle2.override(
-                              fontFamily: 'Mitr',
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w300,
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                          child: FFButtonWidget(
+                            onPressed: () {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => VideoScreenWidget()),
+                              );
+                            },
+                            text: 'ค้นหาภาพจากกล้อง',
+                            options: FFButtonOptions(
+                              width: 230,
+                              height: 50,
+                              color: Color(0xFF1D1D1D),
+                              textStyle: FlutterFlowTheme.subtitle2.override(
+                                fontFamily: 'Mitr',
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.w300,
+                              ),
+                              borderSide: BorderSide(
+                                color: Colors.white,
+                                width: 1,
+                              ),
+                              borderRadius: 50,
                             ),
-                            borderSide: BorderSide(
-                              color: Colors.white,
-                              width: 1,
-                            ),
-                            borderRadius: 50,
                           ),
                         ),
                         Padding(

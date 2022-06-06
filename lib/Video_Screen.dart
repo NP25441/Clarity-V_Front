@@ -43,7 +43,7 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                     children: [
                       Container(
                         width: double.infinity,
-                      height: 100,
+                        height: 100,
                         decoration: BoxDecoration(
                           color: Color(0xFF1D1D1D),
                         ),
@@ -95,8 +95,8 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                               child: Container(
-                                width: 320,
-                                height: 250,
+                                width: 450,
+                                height: 350,
                                 child: Stack(
                                   children: [
                                     Align(
@@ -140,7 +140,7 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                                   style: FlutterFlowTheme.bodyText1.override(
                                     fontFamily: 'Mitr',
                                     color: Colors.white,
-                                    fontSize: 35,
+                                    fontSize: 40,
                                     fontWeight: FontWeight.w300,
                                   ),
                                 ),
@@ -173,7 +173,7 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                                           FlutterFlowTheme.bodyText1.override(
                                         fontFamily: 'Mitr',
                                         color: Colors.white,
-                                        fontSize: 20,
+                                        fontSize: 22,
                                         fontWeight: FontWeight.normal,
                                       ),
                                     ),
@@ -211,7 +211,7 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                                           FlutterFlowTheme.bodyText1.override(
                                         fontFamily: 'Mitr',
                                         color: Colors.white,
-                                        fontSize: 20,
+                                        fontSize: 22,
                                         fontWeight: FontWeight.normal,
                                       ),
                                     ),
@@ -232,7 +232,102 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                                   ],
                                 ),
                               ),
+                            ),Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(10, 5, 0, 0),
+                              child: Container(
+                                width: double.infinity,
+                                height: 50,
+                                decoration: BoxDecoration(),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Text(
+                                      'ประเภทรถ :',
+                                      style:
+                                          FlutterFlowTheme.bodyText1.override(
+                                        fontFamily: 'Mitr',
+                                        color: Colors.white,
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.normal,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10, 0, 0, 0),
+                                      child: Text(
+                                        'รถกระบะ',
+                                        style:
+                                            FlutterFlowTheme.bodyText1.override(
+                                          fontFamily: 'Mitr',
+                                          color: Colors.white,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10, 0, 0, 0),
+                                      child: Image.asset(
+                                        'assets/images/Pickup.png',
+                                        width: 50,
+                                        height: 50,
+                                        fit: BoxFit.contain,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
+                            Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(10, 5, 0, 0),
+                          child: Container(
+                            width: double.infinity,
+                            height: 50,
+                            decoration: BoxDecoration(),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Text(
+                                  'ความเร็วโดยเฉลี่ย :',
+                                  style: FlutterFlowTheme.bodyText1.override(
+                                    fontFamily: 'Mitr',
+                                    color: Colors.white,
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      10, 0, 0, 0),
+                                  child: Text(
+                                    '60',
+                                    style: FlutterFlowTheme.bodyText1.override(
+                                      fontFamily: 'Mitr',
+                                      color: Colors.white,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      10, 0, 0, 0),
+                                  child: Text(
+                                    'กม./ชม.',
+                                    style: FlutterFlowTheme.bodyText1.override(
+                                      fontFamily: 'Mitr',
+                                      color: Colors.white,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
                             Padding(
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(10, 5, 0, 0),
@@ -249,7 +344,7 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                                           FlutterFlowTheme.bodyText1.override(
                                         fontFamily: 'Mitr',
                                         color: Colors.white,
-                                        fontSize: 20,
+                                        fontSize: 22,
                                         fontWeight: FontWeight.normal,
                                       ),
                                     ),
@@ -286,54 +381,7 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                                 ),
                               ),
                             ),
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(10, 5, 0, 0),
-                              child: Container(
-                                width: double.infinity,
-                                height: 50,
-                                decoration: BoxDecoration(),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Text(
-                                      'ประเภทรถ :',
-                                      style:
-                                          FlutterFlowTheme.bodyText1.override(
-                                        fontFamily: 'Mitr',
-                                        color: Colors.white,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.normal,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10, 0, 0, 0),
-                                      child: Text(
-                                        'รถกระบะ',
-                                        style:
-                                            FlutterFlowTheme.bodyText1.override(
-                                          fontFamily: 'Mitr',
-                                          color: Colors.white,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10, 0, 0, 0),
-                                      child: Image.asset(
-                                        'assets/images/Pickup.png',
-                                        width: 50,
-                                        height: 50,
-                                        fit: BoxFit.contain,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
+                            
                             Padding(
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
@@ -393,7 +441,7 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                               style: FlutterFlowTheme.bodyText1.override(
                                 fontFamily: 'Mitr',
                                 color: Colors.white,
-                                fontSize: 40,
+                                fontSize: 45,
                                 fontWeight: FontWeight.w300,
                               ),
                             ),
