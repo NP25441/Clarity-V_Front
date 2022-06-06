@@ -118,8 +118,8 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                                         borderRadius: BorderRadius.circular(10),
                                         child: Image.asset(
                                           'assets/images/Example_Demo/Palte.jpg',
-                                          width: 80,
-                                          height: 50,
+                                          width: 120,
+                                          height: 90,
                                           fit: BoxFit.cover,
                                         ),
                                       ),
