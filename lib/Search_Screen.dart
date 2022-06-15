@@ -15,41 +15,66 @@ class SearcScreenWidget extends StatefulWidget {
 class _SearcScreenWidgetState extends State<SearcScreenWidget>
     with TickerProviderStateMixin {
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final initialDate = DateTime.now();
+  final initialDate_form = DateTime.now();
+  final initialDate_to = DateTime.now();
 
-  String license_plate = "ไม่มีข้อมูล";
-  String city = "ไม่มีข้อมูล";
-  bool cleckcolor = false;
+  String license_plate = "ไม่มีข้อมูล"; // แสดงข้อมูลทะเบียนรถ
+  String city = "ไม่มีข้อมูล"; // แสดงข้อมูลจังหวัด
+  bool click_color =
+      false; // ตั้งค่าเริ่มต้นเป็น False เพื่อซ่อนการแสดงหน้าของสี
 
-  DateTime date = DateTime.now();
-  TimeOfDay time = TimeOfDay.now();
+  DateTime date = DateTime.now(); // ตั้งค่าวันที่เริ่มต้น
+  TimeOfDay time_form = TimeOfDay.now(); // ตั้งค่าเวลาเริ่มต้น
+  TimeOfDay time_to = TimeOfDay.now(); // ตั้งค่าเวลาเริ่มต้น
 
+  // ฟังก์ชันการแสดงวันที่
   String getTextdate() {
     if (date == null) {
       return 'Select Date';
     } else {
+      data_Search[2] =
+          '${date.day}/${date.month}/${date.year}'; //เก็บข้อมูลไว้ใน List
+      print(data_Search[2]); // แสดงค่าวันที่ที่เลือก
       return '${date.day}/${date.month}/${date.year}';
     }
   }
 
-  String getTexttime() {
-    if (time == null) {
+  // ฟังก์ชันการแสดงเวลาที่เริ่มต้น
+  String getTexttime_form() {
+    if (time_form == null) {
       return 'Select Time';
     } else {
-      final hours = time.hour.toString().padLeft(2, '0');
-      final minutes = time.minute.toString().padLeft(2, '0');
+      final hours = time_form.hour.toString().padLeft(2, '0');
+      final minutes = time_form.minute.toString().padLeft(2, '0');
 
+      data_Search[3] = '$hours:$minutes'; //เก็บข้อมูลไว้ใน List
+      print(data_Search[3]); //แสดงค่าเวลาเริ่มต้น
       return '$hours:$minutes';
     }
   }
 
+  // ฟังก์ชันการแสดงเวลาที่สิ้นสุด
+  String getTexttime_to() {
+    if (time_to == null) {
+      return 'Select Time';
+    } else {
+      final hours = time_to.hour.toString().padLeft(2, '0');
+      final minutes = time_to.minute.toString().padLeft(2, '0');
+
+      data_Search[4] = '$hours:$minutes'; //เก็บข้อมูลไว้ใน List
+      print(data_Search[4]); //แสดงค่าเวลาจบ
+      return '$hours:$minutes';
+    }
+  }
+
+  // ฟังก์ชันการเลือกวันที่
   Future pickDate(BuildContext context) async {
     final initialDate = DateTime.now();
     final newDate = await showDatePicker(
       context: context,
       initialDate: initialDate,
-      firstDate: DateTime(DateTime.now().year - 5),
-      lastDate: DateTime(DateTime.now().year + 1),
+      firstDate: DateTime(DateTime.now().year),
+      lastDate: DateTime.now(),
     );
 
     if (newDate == null) return;
@@ -57,17 +82,42 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
     setState(() => date = newDate);
   }
 
-  Future pickTime(BuildContext context) async {
-    final initialTime = TimeOfDay(hour: 0, minute: 0);
-    final newTime = await showTimePicker(
+  // ฟังก์ชันการเลือกเวลาเริ่ม
+  Future pickTime_form(BuildContext context) async {
+    final initialTime_form = TimeOfDay(hour: 0, minute: 0);
+    final newTime_form = await showTimePicker(
       context: context,
-      initialTime: initialTime,
+      initialTime: initialTime_form,
     );
 
-    if (newTime == null) return;
+    if (newTime_form == null) return;
 
-    setState(() => time = newTime);
+    setState(() => time_form = newTime_form);
   }
+
+  // ฟังก์ชันการเลือกเวลาจบ
+  Future pickTime_to(BuildContext context) async {
+    final initialTime_to = TimeOfDay(hour: 0, minute: 0);
+    final newTime_to = await showTimePicker(
+      context: context,
+      initialTime: initialTime_to,
+    );
+
+    if (newTime_to == null) return;
+
+    setState(() => time_to = newTime_to);
+  }
+
+  List data_Search = [
+    // ตัวแปรการค้นหา
+    "-", // ป้ายทะเบียน
+    "-", // จังหวัด
+    "00/00/0000", // วันที่
+    "00:00", // เวลาเริ่ม
+    "00:00", // เวลาจบ
+    "-", // สี
+    "-" // ประเภท
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -90,6 +140,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Padding(
+                          // หัวข้อ (ป้ายทะเบียน)
                           padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                           child: Text(
                             'ค้นหาป้ายทะเบียน',
@@ -103,6 +154,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                           ),
                         ),
                         Padding(
+                          // หัวข้อ (ช่องค้นหาป้ายทะเบียน)
                           padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                           child: Container(
                             width: MediaQuery.of(context).size.width * 0.65,
@@ -125,6 +177,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                     ),
                                   ),
                                   Padding(
+                                    // ช่องค้นหาป้ายทะเบียน
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         50, 5, 50, 0),
                                     child: TextFormField(
@@ -153,7 +206,9 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                         fillColor: Color(0xFF1D1D1D),
                                       ),
                                       onChanged: (value) {
+                                        
                                         license_plate = value;
+                                        data_Search[0] = value;
                                       },
                                       style:
                                           FlutterFlowTheme.bodyText1.override(
@@ -171,6 +226,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                           ),
                         ),
                         Padding(
+                          // หัวข้อ (ช่องค้นหาจังหวัด)
                           padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                           child: Container(
                             width: MediaQuery.of(context).size.width * 0.65,
@@ -191,6 +247,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                     ),
                                   ),
                                   Padding(
+                                    // ช่องค้นหาจังหวัด
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         50, 5, 50, 0),
                                     child: TextFormField(
@@ -220,6 +277,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                       ),
                                       onChanged: (value) {
                                         city = value;
+                                        data_Search[1] = value;
                                       },
                                       style:
                                           FlutterFlowTheme.bodyText1.override(
@@ -237,6 +295,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                           ),
                         ),
                         Padding(
+                          // หัวข้อ (วันที่, เวลา, สี)
                           padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                           child: Container(
                             width: MediaQuery.of(context).size.width * 0.65,
@@ -248,6 +307,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Align(
+                                  // หัวข้อ (วันที่)
                                   alignment: AlignmentDirectional(0, 0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -267,6 +327,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                         ),
                                       ),
                                       Padding(
+                                        // ช่องใส่วันที่
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0, 5, 0, 0),
                                         child: Container(
@@ -316,6 +377,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                           MainAxisAlignment.spaceEvenly,
                                       children: [
                                         Align(
+                                          // หัวข้อ (เวลา)
                                           alignment: AlignmentDirectional(0, 0),
                                           child: Padding(
                                             padding:
@@ -348,14 +410,17 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                                           .spaceEvenly,
                                                   children: [
                                                     Container(
+                                                      // ช่องใส่เวลาเริ่มต้น
                                                       width: 160,
                                                       decoration:
                                                           BoxDecoration(),
                                                       child: FFButtonWidget(
                                                         onPressed: () {
-                                                          pickTime(context);
+                                                          pickTime_form(
+                                                              context);
                                                         },
-                                                        text: getTexttime(),
+                                                        text:
+                                                            getTexttime_form(),
                                                         options:
                                                             FFButtonOptions(
                                                           width:
@@ -401,6 +466,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                                       ),
                                                     ),
                                                     Padding(
+                                                      // ช่องใส่เวลาจบ
                                                       padding:
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(
@@ -411,9 +477,11 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                                             BoxDecoration(),
                                                         child: FFButtonWidget(
                                                           onPressed: () {
-                                                            pickTime(context);
+                                                            pickTime_to(
+                                                                context);
                                                           },
-                                                          text: getTexttime(),
+                                                          text:
+                                                              getTexttime_to(),
                                                           options:
                                                               FFButtonOptions(
                                                             width:
@@ -452,6 +520,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                           ),
                                         ),
                                         Padding(
+                                          // หัวข้อ (สี)
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   60, 0, 0, 0),
@@ -483,7 +552,8 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                                   child: FFButtonWidget(
                                                     onPressed: () {
                                                       setState(() {
-                                                        cleckcolor = true;
+                                                        click_color =
+                                                            true; // เปลี่ยนค่าให้เป็นจริงเพื่อแสดง
                                                       });
                                                     },
                                                     text: '',
@@ -518,6 +588,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                           ),
                         ),
                         Padding(
+                          // หัวข้อประเภทรถ
                           padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                           child: Container(
                             width: MediaQuery.of(context).size.width * 0.65,
@@ -545,69 +616,106 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceEvenly,
                                     children: [
-                                      Container(
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFF1D1D1D),
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          border: Border.all(
-                                            color: Colors.black,
+                                      GestureDetector(
+                                        // ประเภทรถ(บรรทุก)
+                                        onTap: () {
+                                          data_Search[6] = 'รถเก๋ง';
+                                          setState(() {
+                                            click_color = false;
+                                          });
+                                        },
+                                        child: Container(
+                                          // ประเภทรถ(ทั่วไป)
+                                          decoration: BoxDecoration(
+                                            color: Color(0xFF1D1D1D),
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            border: Border.all(
+                                              color: Colors.black,
+                                            ),
                                           ),
-                                        ),
-                                        alignment: AlignmentDirectional(0, 0),
-                                        child: Image.asset(
-                                          'assets/images/Sedan.png',
-                                          width: 70,
-                                          height: 70,
-                                          fit: BoxFit.contain,
+                                          alignment: AlignmentDirectional(0, 0),
+                                          child: Image.asset(
+                                            'assets/images/Sedan.png',
+                                            width: 70,
+                                            height: 70,
+                                            fit: BoxFit.contain,
+                                          ),
                                         ),
                                       ),
-                                      Container(
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFF1D1D1D),
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          border: Border.all(
-                                            color: Colors.black,
+                                      GestureDetector(
+                                        // ประเภทรถ(กระบะ)
+                                        onTap: () {
+                                          data_Search[6] = 'รถกระบะ';
+                                          setState(() {
+                                            click_color = false;
+                                          });
+                                        },
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: Color(0xFF1D1D1D),
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            border: Border.all(
+                                              color: Colors.black,
+                                            ),
                                           ),
-                                        ),
-                                        child: Image.asset(
-                                          'assets/images/Pickup.png',
-                                          width: 70,
-                                          height: 70,
-                                          fit: BoxFit.contain,
+                                          child: Image.asset(
+                                            'assets/images/Pickup.png',
+                                            width: 70,
+                                            height: 70,
+                                            fit: BoxFit.contain,
+                                          ),
                                         ),
                                       ),
-                                      Container(
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFF1D1D1D),
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          border: Border.all(
-                                            color: Colors.black,
+                                      GestureDetector(
+                                        // ประเภทรถ(ตู้)
+                                        onTap: () {
+                                          data_Search[6] = 'รถตู้';
+                                          setState(() {
+                                            click_color = false;
+                                          });
+                                        },
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: Color(0xFF1D1D1D),
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            border: Border.all(
+                                              color: Colors.black,
+                                            ),
                                           ),
-                                        ),
-                                        child: Image.asset(
-                                          'assets/images/Van.png',
-                                          width: 70,
-                                          height: 70,
-                                          fit: BoxFit.contain,
+                                          child: Image.asset(
+                                            'assets/images/Van.png',
+                                            width: 70,
+                                            height: 70,
+                                            fit: BoxFit.contain,
+                                          ),
                                         ),
                                       ),
-                                      Container(
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFF1D1D1D),
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          border: Border.all(
-                                            color: Colors.black,
+                                      GestureDetector(
+                                        // ประเภทรถ(บรรทุก)
+                                        onTap: () {
+                                          data_Search[6] = 'รถบรรทุก';
+                                          setState(() {
+                                            click_color = false;
+                                          });
+                                        },
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: Color(0xFF1D1D1D),
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            border: Border.all(
+                                              color: Colors.black,
+                                            ),
                                           ),
-                                        ),
-                                        child: Image.asset(
-                                          'assets/images/Truck.png',
-                                          width: 70,
-                                          height: 70,
-                                          fit: BoxFit.contain,
+                                          child: Image.asset(
+                                            'assets/images/Truck.png',
+                                            width: 70,
+                                            height: 70,
+                                            fit: BoxFit.contain,
+                                          ),
                                         ),
                                       ),
                                     ],
@@ -618,10 +726,12 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                           ),
                         ),
                         Padding(
+                          // ส่งค่าไปหน้าต่อไป
                           padding:
                               EdgeInsetsDirectional.fromSTEB(450, 20, 450, 20),
                           child: FFButtonWidget(
                             onPressed: () {
+                              print(data_Search);
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
@@ -656,7 +766,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                 ),
               ),
             ),
-            cleckcolor
+            click_color // สีทั้งหมด
                 ? Align(
                     alignment: AlignmentDirectional(-0.04, 0.08),
                     child: Container(
@@ -680,8 +790,9 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                             children: [
                               GestureDetector(
                                 onTap: () {
+                                  data_Search[5] = 'สีแดง';
                                   setState(() {
-                                    cleckcolor = false;
+                                    click_color = false;
                                   });
                                 },
                                 child: Container(
@@ -702,8 +813,9 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                     EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                                 child: GestureDetector(
                                   onTap: () {
+                                    data_Search[5] = 'สีน้ำเงิน';
                                     setState(() {
-                                      cleckcolor = false;
+                                      click_color = false;
                                     });
                                   },
                                   child: Container(
@@ -725,8 +837,9 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                     EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                                 child: GestureDetector(
                                   onTap: () {
+                                    data_Search[5] = 'สีขาว';
                                     setState(() {
-                                      cleckcolor = false;
+                                      click_color = false;
                                     });
                                   },
                                   child: Container(
@@ -749,7 +862,8 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                 child: GestureDetector(
                                   onTap: () {
                                     setState(() {
-                                      cleckcolor = false;
+                                      data_Search[5] = 'สีดำ';
+                                      click_color = false;
                                     });
                                   },
                                   child: Container(
@@ -777,8 +891,9 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                               children: [
                                 GestureDetector(
                                   onTap: () {
+                                    data_Search[5] = 'สีม่วง';
                                     setState(() {
-                                      cleckcolor = false;
+                                      click_color = false;
                                     });
                                   },
                                   child: Container(
@@ -799,8 +914,9 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                       20, 0, 0, 0),
                                   child: GestureDetector(
                                     onTap: () {
+                                      data_Search[5] = 'สีเหลือง';
                                       setState(() {
-                                        cleckcolor = false;
+                                        click_color = false;
                                       });
                                     },
                                     child: Container(
@@ -822,8 +938,9 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                       20, 0, 0, 0),
                                   child: GestureDetector(
                                     onTap: () {
+                                      data_Search[5] = 'สีเขียว';
                                       setState(() {
-                                        cleckcolor = false;
+                                        click_color = false;
                                       });
                                     },
                                     child: Container(
@@ -845,8 +962,9 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                       20, 0, 0, 0),
                                   child: GestureDetector(
                                     onTap: () {
+                                      data_Search[5] = 'สีส้ม';
                                       setState(() {
-                                        cleckcolor = false;
+                                        click_color = false;
                                       });
                                     },
                                     child: Container(
@@ -875,8 +993,9 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                               children: [
                                 GestureDetector(
                                   onTap: () {
+                                    data_Search[5] = 'สีน้ำตาล';
                                     setState(() {
-                                      cleckcolor = false;
+                                      click_color = false;
                                     });
                                   },
                                   child: Container(
@@ -897,8 +1016,9 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                       20, 0, 0, 0),
                                   child: GestureDetector(
                                     onTap: () {
+                                      data_Search[5] = 'สีชมพู';
                                       setState(() {
-                                        cleckcolor = false;
+                                        click_color = false;
                                       });
                                     },
                                     child: Container(
@@ -920,8 +1040,9 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                       20, 0, 0, 0),
                                   child: GestureDetector(
                                     onTap: () {
+                                      data_Search[5] = 'สีเทา';
                                       setState(() {
-                                        cleckcolor = false;
+                                        click_color = false;
                                       });
                                     },
                                     child: Container(
@@ -943,8 +1064,9 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                       20, 0, 0, 0),
                                   child: GestureDetector(
                                     onTap: () {
+                                      data_Search[5] = 'สีฟ้า';
                                       setState(() {
-                                        cleckcolor = false;
+                                        click_color = false;
                                       });
                                     },
                                     child: Container(
@@ -973,8 +1095,9 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                               children: [
                                 FFButtonWidget(
                                   onPressed: () {
+                                    data_Search[5] = 'ไม่กำหนดสี';
                                     setState(() {
-                                      cleckcolor = false;
+                                      click_color = false;
                                     });
                                   },
                                   text: 'ไม่กำหนดสี',

@@ -44,7 +44,7 @@ class FFButtonWidget extends StatelessWidget {
     required this.text,
     required this.onPressed,
     this.iconData,
-    required this.options,
+    required this.options, 
   }) : super(key: key);
 
   final String text;
