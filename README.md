@@ -2,19 +2,6 @@
 
 A new Flutter project.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
 # V_1
  - อัพเดตหน้าโปรเจคออกแบบโครงสร้าง
 
@@ -42,3 +29,15 @@ samples, guidance on mobile development, and a full API reference.
  - มีการปรับ Layout เพิ่มเติมให้มีการปรับให้สมดุลมากขึ้น
 # V_6.1
  - ปรับแก้ขนาดภาพหน้าผลการตัดต่อ
+
+# V_7
+ - แก้บัคเวลาให้มีการเลือกที่ต่างกันได้
+ - แก้บัควันที่ให้ล็อกอยู่ที่ปัจจุบัน
+ - ส่งค่าของเวลาเริ่มต้นไปเก็บไว้ใน List
+ - ส่งค่าของเวลาสิ้นสุดไปเก็บไว้ใน List
+ - ส่งค่าของของวันที่ไปเก็บไว้ใน List
+ - ส่งค่าของสีที่เลือกไปเก็บไว้ใน List
+ - ส่งค่าของป้ายทะเบียนไปเก็บไว้ใน List
+ - ส่งค่าของจังหวัดไปเก็บไว้ใน List
+ - ส่งค่าของประเภทรถไปเก็บไว้ใน List
+ - รวม List ทั้งหมดเป็นข้อมูลเพื่อส่งต่อให้ API
