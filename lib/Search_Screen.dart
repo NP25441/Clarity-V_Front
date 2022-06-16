@@ -206,7 +206,6 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                         fillColor: Color(0xFF1D1D1D),
                                       ),
                                       onChanged: (value) {
-                                        
                                         license_plate = value;
                                         data_Search[0] = value;
                                       },
@@ -616,105 +615,157 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceEvenly,
                                     children: [
-                                      GestureDetector(
-                                        // ประเภทรถ(บรรทุก)
-                                        onTap: () {
-                                          data_Search[6] = 'รถเก๋ง';
-                                          setState(() {
-                                            click_color = false;
-                                          });
-                                        },
-                                        child: Container(
-                                          // ประเภทรถ(ทั่วไป)
-                                          decoration: BoxDecoration(
-                                            color: Color(0xFF1D1D1D),
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                            border: Border.all(
-                                              color: Colors.black,
+                                      Tooltip(
+                                        triggerMode: TooltipTriggerMode.manual,
+                                        message: ' รถเก๋ง ',
+                                        padding: const EdgeInsets.all(5.0),
+                                        preferBelow: false,
+                                        textStyle:
+                                            FlutterFlowTheme.subtitle2.override(
+                                          fontFamily: 'Mitr',
+                                          color: Color.fromARGB(255, 0, 0, 0),
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                        child: GestureDetector(
+                                          // ประเภทรถ(บรรทุก)
+                                          onTap: () {
+                                            data_Search[6] = 'รถเก๋ง';
+                                            color:
+                                            Colors.grey;
+                                          },
+                                          child: Container(
+                                            // ประเภทรถ(ทั่วไป)
+                                            decoration: BoxDecoration(
+                                              color: Color(0xFF1D1D1D),
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                              border: Border.all(
+                                                color: Colors.black,
+                                              ),
                                             ),
-                                          ),
-                                          alignment: AlignmentDirectional(0, 0),
-                                          child: Image.asset(
-                                            'assets/images/Sedan.png',
-                                            width: 70,
-                                            height: 70,
-                                            fit: BoxFit.contain,
+                                            alignment:
+                                                AlignmentDirectional(0, 0),
+                                            child: Image.asset(
+                                              'assets/images/Sedan.png',
+                                              width: 70,
+                                              height: 70,
+                                              fit: BoxFit.contain,
+                                            ),
                                           ),
                                         ),
                                       ),
-                                      GestureDetector(
-                                        // ประเภทรถ(กระบะ)
-                                        onTap: () {
-                                          data_Search[6] = 'รถกระบะ';
-                                          setState(() {
-                                            click_color = false;
-                                          });
-                                        },
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            color: Color(0xFF1D1D1D),
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                            border: Border.all(
-                                              color: Colors.black,
+                                      Tooltip(
+                                        triggerMode: TooltipTriggerMode.manual,
+                                        message: ' รถกระบะ ',
+                                        padding: const EdgeInsets.all(5.0),
+                                        preferBelow: false,
+                                        textStyle:
+                                            FlutterFlowTheme.subtitle2.override(
+                                          fontFamily: 'Mitr',
+                                          color: Color.fromARGB(255, 0, 0, 0),
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                        child: GestureDetector(
+                                          // ประเภทรถ(กระบะ)
+                                          onTap: () {
+                                            data_Search[6] = 'รถกระบะ';
+                                            setState(() {
+                                              click_color = false;
+                                            });
+                                          },
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              color: Color(0xFF1D1D1D),
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                              border: Border.all(
+                                                color: Colors.black,
+                                              ),
                                             ),
-                                          ),
-                                          child: Image.asset(
-                                            'assets/images/Pickup.png',
-                                            width: 70,
-                                            height: 70,
-                                            fit: BoxFit.contain,
+                                            child: Image.asset(
+                                              'assets/images/Pickup.png',
+                                              width: 70,
+                                              height: 70,
+                                              fit: BoxFit.contain,
+                                            ),
                                           ),
                                         ),
                                       ),
-                                      GestureDetector(
-                                        // ประเภทรถ(ตู้)
-                                        onTap: () {
-                                          data_Search[6] = 'รถตู้';
-                                          setState(() {
-                                            click_color = false;
-                                          });
-                                        },
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            color: Color(0xFF1D1D1D),
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                            border: Border.all(
-                                              color: Colors.black,
+                                      Tooltip(
+                                        triggerMode: TooltipTriggerMode.manual,
+                                        message: ' รถตู้ ',
+                                        padding: const EdgeInsets.all(5.0),
+                                        preferBelow: false,
+                                        textStyle:
+                                            FlutterFlowTheme.subtitle2.override(
+                                          fontFamily: 'Mitr',
+                                          color: Color.fromARGB(255, 0, 0, 0),
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                        child: GestureDetector(
+                                          // ประเภทรถ(ตู้)
+                                          onTap: () {
+                                            data_Search[6] = 'รถตู้';
+                                            setState(() {
+                                              click_color = false;
+                                            });
+                                          },
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              color: Color(0xFF1D1D1D),
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                              border: Border.all(
+                                                color: Colors.black,
+                                              ),
                                             ),
-                                          ),
-                                          child: Image.asset(
-                                            'assets/images/Van.png',
-                                            width: 70,
-                                            height: 70,
-                                            fit: BoxFit.contain,
+                                            child: Image.asset(
+                                              'assets/images/Van.png',
+                                              width: 70,
+                                              height: 70,
+                                              fit: BoxFit.contain,
+                                            ),
                                           ),
                                         ),
                                       ),
-                                      GestureDetector(
-                                        // ประเภทรถ(บรรทุก)
-                                        onTap: () {
-                                          data_Search[6] = 'รถบรรทุก';
-                                          setState(() {
-                                            click_color = false;
-                                          });
-                                        },
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            color: Color(0xFF1D1D1D),
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                            border: Border.all(
-                                              color: Colors.black,
+                                      Tooltip(
+                                        triggerMode: TooltipTriggerMode.manual,
+                                        message: ' รถบรรทุก ',
+                                        padding: const EdgeInsets.all(5.0),
+                                        preferBelow: false,
+                                        textStyle:
+                                            FlutterFlowTheme.subtitle2.override(
+                                          fontFamily: 'Mitr',
+                                          color: Color.fromARGB(255, 0, 0, 0),
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                        child: GestureDetector(
+                                          // ประเภทรถ(บรรทุก)
+                                          onTap: () {
+                                            data_Search[6] = 'รถบรรทุก';
+                                            setState(() {
+                                              click_color = false;
+                                            });
+                                          },
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              color: Color(0xFF1D1D1D),
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                              border: Border.all(
+                                                color: Colors.black,
+                                              ),
                                             ),
-                                          ),
-                                          child: Image.asset(
-                                            'assets/images/Truck.png',
-                                            width: 70,
-                                            height: 70,
-                                            fit: BoxFit.contain,
+                                            child: Image.asset(
+                                              'assets/images/Truck.png',
+                                              width: 70,
+                                              height: 70,
+                                              fit: BoxFit.contain,
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -788,45 +839,103 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              GestureDetector(
-                                onTap: () {
-                                  data_Search[5] = 'สีแดง';
-                                  setState(() {
-                                    click_color = false;
-                                  });
-                                },
+                              Container(
+                                width: 50,
+                                height: 50,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  border: Border.all(
+                                    color: Colors.white,
+                                    width: 0,
+                                  ),
+                                ),
+                                child: Tooltip(
+                                  triggerMode: TooltipTriggerMode.manual,
+                                  message: ' สีแดง ',
+                                  padding: const EdgeInsets.all(5.0),
+                                  preferBelow: false,
+                                  textStyle:
+                                      FlutterFlowTheme.subtitle2.override(
+                                    fontFamily: 'Mitr',
+                                    color: Color.fromARGB(255, 0, 0, 0),
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                                  child: FFButtonWidget(
+                                    onPressed: () {
+                                      data_Search[5] = 'สีแดง';
+                                      setState(() {
+                                        click_color = false;
+                                      });
+                                      print('สีแดง');
+                                    },
+                                    text: '',
+                                    options: FFButtonOptions(
+                                      width: 60,
+                                      height: 60,
+                                      color: Color(0xFFFD0110),
+                                      textStyle:
+                                          FlutterFlowTheme.subtitle2.override(
+                                        fontFamily: 'Mitr',
+                                        color: Colors.white,
+                                      ),
+                                      borderSide: BorderSide(
+                                        color: Colors.white,
+                                        width: 3,
+                                      ),
+                                      borderRadius: 50,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                                 child: Container(
                                   width: 50,
                                   height: 50,
                                   decoration: BoxDecoration(
-                                    color: Color(0xFFFD0110),
                                     borderRadius: BorderRadius.circular(50),
                                     border: Border.all(
                                       color: Colors.white,
-                                      width: 5,
+                                      width: 0,
                                     ),
                                   ),
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
-                                child: GestureDetector(
-                                  onTap: () {
-                                    data_Search[5] = 'สีน้ำเงิน';
-                                    setState(() {
-                                      click_color = false;
-                                    });
-                                  },
-                                  child: Container(
-                                    width: 50,
-                                    height: 50,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xFF2635FF),
-                                      borderRadius: BorderRadius.circular(50),
-                                      border: Border.all(
-                                        color: Colors.white,
-                                        width: 5,
+                                  child: Tooltip(
+                                    triggerMode: TooltipTriggerMode.manual,
+                                    message: ' สีน้ำเงิน ',
+                                    padding: const EdgeInsets.all(5.0),
+                                    preferBelow: false,
+                                    textStyle:
+                                        FlutterFlowTheme.subtitle2.override(
+                                      fontFamily: 'Mitr',
+                                      color: Color.fromARGB(255, 0, 0, 0),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                    child: FFButtonWidget(
+                                      onPressed: () {
+                                        data_Search[5] = 'สีน้ำเงิน';
+                                        setState(() {
+                                          click_color = false;
+                                        });
+                                        print('สีน้ำเงิน');
+                                      },
+                                      text: '',
+                                      options: FFButtonOptions(
+                                        width: 60,
+                                        height: 60,
+                                        color: Color(0xFF0012FF),
+                                        textStyle:
+                                            FlutterFlowTheme.subtitle2.override(
+                                          fontFamily: 'Mitr',
+                                          color: Colors.white,
+                                        ),
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                          width: 3,
+                                        ),
+                                        borderRadius: 50,
                                       ),
                                     ),
                                   ),
@@ -835,22 +944,51 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                               Padding(
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
-                                child: GestureDetector(
-                                  onTap: () {
-                                    data_Search[5] = 'สีขาว';
-                                    setState(() {
-                                      click_color = false;
-                                    });
-                                  },
-                                  child: Container(
-                                    width: 50,
-                                    height: 50,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xFFECE7D1),
-                                      borderRadius: BorderRadius.circular(50),
-                                      border: Border.all(
-                                        color: Colors.white,
-                                        width: 5,
+                                child: Container(
+                                  width: 50,
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(50),
+                                    border: Border.all(
+                                      color: Colors.white,
+                                      width: 0,
+                                    ),
+                                  ),
+                                  child: Tooltip(
+                                    triggerMode: TooltipTriggerMode.manual,
+                                    message: ' สีเหลือง ',
+                                    padding: const EdgeInsets.all(5.0),
+                                    preferBelow: false,
+                                    textStyle:
+                                        FlutterFlowTheme.subtitle2.override(
+                                      fontFamily: 'Mitr',
+                                      color: Color.fromARGB(255, 0, 0, 0),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                    child: FFButtonWidget(
+                                      onPressed: () {
+                                        data_Search[5] = 'สีเหลือง';
+                                        setState(() {
+                                          click_color = false;
+                                        });
+                                        print('สีเหลือง');
+                                      },
+                                      text: '',
+                                      options: FFButtonOptions(
+                                        width: 60,
+                                        height: 60,
+                                        color: Color(0xFFFEFB00),
+                                        textStyle:
+                                            FlutterFlowTheme.subtitle2.override(
+                                          fontFamily: 'Mitr',
+                                          color: Colors.white,
+                                        ),
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                          width: 3,
+                                        ),
+                                        borderRadius: 50,
                                       ),
                                     ),
                                   ),
@@ -859,22 +997,51 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                               Padding(
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
-                                child: GestureDetector(
-                                  onTap: () {
-                                    setState(() {
-                                      data_Search[5] = 'สีดำ';
-                                      click_color = false;
-                                    });
-                                  },
-                                  child: Container(
-                                    width: 50,
-                                    height: 50,
-                                    decoration: BoxDecoration(
-                                      color: Colors.black,
-                                      borderRadius: BorderRadius.circular(50),
-                                      border: Border.all(
-                                        color: Colors.white,
-                                        width: 5,
+                                child: Container(
+                                  width: 50,
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(50),
+                                    border: Border.all(
+                                      color: Colors.white,
+                                      width: 0,
+                                    ),
+                                  ),
+                                  child: Tooltip(
+                                    triggerMode: TooltipTriggerMode.manual,
+                                    message: ' สีขาว ',
+                                    padding: const EdgeInsets.all(5.0),
+                                    preferBelow: false,
+                                    textStyle:
+                                        FlutterFlowTheme.subtitle2.override(
+                                      fontFamily: 'Mitr',
+                                      color: Color.fromARGB(255, 0, 0, 0),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                    child: FFButtonWidget(
+                                      onPressed: () {
+                                        data_Search[5] = 'สีขาว';
+                                        setState(() {
+                                          click_color = false;
+                                        });
+                                        print('สีขาว');
+                                      },
+                                      text: '',
+                                      options: FFButtonOptions(
+                                        width: 60,
+                                        height: 60,
+                                        color: Color(0xFFECE7D1),
+                                        textStyle:
+                                            FlutterFlowTheme.subtitle2.override(
+                                          fontFamily: 'Mitr',
+                                          color: Colors.white,
+                                        ),
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                          width: 3,
+                                        ),
+                                        borderRadius: 50,
                                       ),
                                     ),
                                   ),
@@ -889,45 +1056,103 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                GestureDetector(
-                                  onTap: () {
-                                    data_Search[5] = 'สีม่วง';
-                                    setState(() {
-                                      click_color = false;
-                                    });
-                                  },
+                                Container(
+                                  width: 50,
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(50),
+                                    border: Border.all(
+                                      color: Colors.white,
+                                      width: 0,
+                                    ),
+                                  ),
+                                  child: Tooltip(
+                                    triggerMode: TooltipTriggerMode.manual,
+                                    message: ' สีดำ ',
+                                    padding: const EdgeInsets.all(5.0),
+                                    preferBelow: false,
+                                    textStyle:
+                                        FlutterFlowTheme.subtitle2.override(
+                                      fontFamily: 'Mitr',
+                                      color: Color.fromARGB(255, 0, 0, 0),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                    child: FFButtonWidget(
+                                      onPressed: () {
+                                        data_Search[5] = 'สีดำ';
+                                        setState(() {
+                                          click_color = false;
+                                        });
+                                        print('สีดำ');
+                                      },
+                                      text: '',
+                                      options: FFButtonOptions(
+                                        width: 60,
+                                        height: 60,
+                                        color: Colors.black,
+                                        textStyle:
+                                            FlutterFlowTheme.subtitle2.override(
+                                          fontFamily: 'Mitr',
+                                          color: Colors.white,
+                                        ),
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                          width: 3,
+                                        ),
+                                        borderRadius: 50,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      20, 0, 0, 0),
                                   child: Container(
                                     width: 50,
                                     height: 50,
                                     decoration: BoxDecoration(
-                                      color: Color(0xFF6F36A9),
                                       borderRadius: BorderRadius.circular(50),
                                       border: Border.all(
                                         color: Colors.white,
-                                        width: 5,
+                                        width: 0,
                                       ),
                                     ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      20, 0, 0, 0),
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      data_Search[5] = 'สีเหลือง';
-                                      setState(() {
-                                        click_color = false;
-                                      });
-                                    },
-                                    child: Container(
-                                      width: 50,
-                                      height: 50,
-                                      decoration: BoxDecoration(
-                                        color: Color(0xFFFEFB00),
-                                        borderRadius: BorderRadius.circular(50),
-                                        border: Border.all(
-                                          color: Colors.white,
-                                          width: 5,
+                                    child: Tooltip(
+                                      triggerMode: TooltipTriggerMode.manual,
+                                      message: ' สีม่วง ',
+                                      padding: const EdgeInsets.all(5.0),
+                                      preferBelow: false,
+                                      textStyle:
+                                          FlutterFlowTheme.subtitle2.override(
+                                        fontFamily: 'Mitr',
+                                        color: Color.fromARGB(255, 0, 0, 0),
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w300,
+                                      ),
+                                      child: FFButtonWidget(
+                                        onPressed: () {
+                                          data_Search[5] = 'สีม่วง';
+                                          setState(() {
+                                            click_color = false;
+                                          });
+                                          print('สีม่วง');
+                                        },
+                                        text: '',
+                                        options: FFButtonOptions(
+                                          width: 60,
+                                          height: 60,
+                                          color: Color(0xFF6F36A9),
+                                          textStyle: FlutterFlowTheme.subtitle2
+                                              .override(
+                                            fontFamily: 'Mitr',
+                                            color: Colors.white,
+                                          ),
+                                          borderSide: BorderSide(
+                                            color: Colors.white,
+                                            width: 3,
+                                          ),
+                                          borderRadius: 50,
                                         ),
                                       ),
                                     ),
@@ -936,22 +1161,51 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       20, 0, 0, 0),
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      data_Search[5] = 'สีเขียว';
-                                      setState(() {
-                                        click_color = false;
-                                      });
-                                    },
-                                    child: Container(
-                                      width: 50,
-                                      height: 50,
-                                      decoration: BoxDecoration(
-                                        color: Color(0xFF08810E),
-                                        borderRadius: BorderRadius.circular(50),
-                                        border: Border.all(
-                                          color: Colors.white,
-                                          width: 5,
+                                  child: Container(
+                                    width: 50,
+                                    height: 50,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(50),
+                                      border: Border.all(
+                                        color: Colors.white,
+                                        width: 0,
+                                      ),
+                                    ),
+                                    child: Tooltip(
+                                      triggerMode: TooltipTriggerMode.manual,
+                                      message: ' สีเขียว ',
+                                      padding: const EdgeInsets.all(5.0),
+                                      preferBelow: false,
+                                      textStyle:
+                                          FlutterFlowTheme.subtitle2.override(
+                                        fontFamily: 'Mitr',
+                                        color: Color.fromARGB(255, 0, 0, 0),
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w300,
+                                      ),
+                                      child: FFButtonWidget(
+                                        onPressed: () {
+                                          data_Search[5] = 'สีเขียว';
+                                          setState(() {
+                                            click_color = false;
+                                          });
+                                          print('สีเขียว');
+                                        },
+                                        text: '',
+                                        options: FFButtonOptions(
+                                          width: 60,
+                                          height: 60,
+                                          color: Color(0xFF08810E),
+                                          textStyle: FlutterFlowTheme.subtitle2
+                                              .override(
+                                            fontFamily: 'Mitr',
+                                            color: Colors.white,
+                                          ),
+                                          borderSide: BorderSide(
+                                            color: Colors.white,
+                                            width: 3,
+                                          ),
+                                          borderRadius: 50,
                                         ),
                                       ),
                                     ),
@@ -960,22 +1214,51 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       20, 0, 0, 0),
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      data_Search[5] = 'สีส้ม';
-                                      setState(() {
-                                        click_color = false;
-                                      });
-                                    },
-                                    child: Container(
-                                      width: 50,
-                                      height: 50,
-                                      decoration: BoxDecoration(
-                                        color: Color(0xFFFE8A00),
-                                        borderRadius: BorderRadius.circular(50),
-                                        border: Border.all(
-                                          color: Colors.white,
-                                          width: 5,
+                                  child: Container(
+                                    width: 50,
+                                    height: 50,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(50),
+                                      border: Border.all(
+                                        color: Colors.white,
+                                        width: 0,
+                                      ),
+                                    ),
+                                    child: Tooltip(
+                                      triggerMode: TooltipTriggerMode.manual,
+                                      message: ' สีส้ม ',
+                                      padding: const EdgeInsets.all(5.0),
+                                      preferBelow: false,
+                                      textStyle:
+                                          FlutterFlowTheme.subtitle2.override(
+                                        fontFamily: 'Mitr',
+                                        color: Color.fromARGB(255, 0, 0, 0),
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w300,
+                                      ),
+                                      child: FFButtonWidget(
+                                        onPressed: () {
+                                          data_Search[5] = 'สีส้ม';
+                                          setState(() {
+                                            click_color = false;
+                                          });
+                                          print('สีส้ม');
+                                        },
+                                        text: '',
+                                        options: FFButtonOptions(
+                                          width: 60,
+                                          height: 60,
+                                          color: Color(0xFFFE8A00),
+                                          textStyle: FlutterFlowTheme.subtitle2
+                                              .override(
+                                            fontFamily: 'Mitr',
+                                            color: Colors.white,
+                                          ),
+                                          borderSide: BorderSide(
+                                            color: Colors.white,
+                                            width: 3,
+                                          ),
+                                          borderRadius: 50,
                                         ),
                                       ),
                                     ),
@@ -991,45 +1274,103 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                GestureDetector(
-                                  onTap: () {
-                                    data_Search[5] = 'สีน้ำตาล';
-                                    setState(() {
-                                      click_color = false;
-                                    });
-                                  },
+                                Container(
+                                  width: 50,
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(50),
+                                    border: Border.all(
+                                      color: Colors.white,
+                                      width: 0,
+                                    ),
+                                  ),
+                                  child: Tooltip(
+                                    triggerMode: TooltipTriggerMode.manual,
+                                    message: ' สีแดงเลือดหมู ',
+                                    padding: const EdgeInsets.all(5.0),
+                                    preferBelow: false,
+                                    textStyle:
+                                        FlutterFlowTheme.subtitle2.override(
+                                      fontFamily: 'Mitr',
+                                      color: Color.fromARGB(255, 0, 0, 0),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                    child: FFButtonWidget(
+                                      onPressed: () {
+                                        data_Search[5] = 'สีแดงเลือดหมู';
+                                        setState(() {
+                                          click_color = false;
+                                        });
+                                        print('สีแดงเลือดหมู');
+                                      },
+                                      text: '',
+                                      options: FFButtonOptions(
+                                        width: 60,
+                                        height: 60,
+                                        color: Color(0xFF901901),
+                                        textStyle:
+                                            FlutterFlowTheme.subtitle2.override(
+                                          fontFamily: 'Mitr',
+                                          color: Colors.white,
+                                        ),
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                          width: 3,
+                                        ),
+                                        borderRadius: 50,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      20, 0, 0, 0),
                                   child: Container(
                                     width: 50,
                                     height: 50,
                                     decoration: BoxDecoration(
-                                      color: Color(0xFF901901),
                                       borderRadius: BorderRadius.circular(50),
                                       border: Border.all(
                                         color: Colors.white,
-                                        width: 5,
+                                        width: 0,
                                       ),
                                     ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      20, 0, 0, 0),
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      data_Search[5] = 'สีชมพู';
-                                      setState(() {
-                                        click_color = false;
-                                      });
-                                    },
-                                    child: Container(
-                                      width: 50,
-                                      height: 50,
-                                      decoration: BoxDecoration(
-                                        color: Color(0xFFFF6790),
-                                        borderRadius: BorderRadius.circular(50),
-                                        border: Border.all(
-                                          color: Colors.white,
-                                          width: 5,
+                                    child: Tooltip(
+                                      triggerMode: TooltipTriggerMode.manual,
+                                      message: ' สีชมพู ',
+                                      padding: const EdgeInsets.all(5.0),
+                                      preferBelow: false,
+                                      textStyle:
+                                          FlutterFlowTheme.subtitle2.override(
+                                        fontFamily: 'Mitr',
+                                        color: Color.fromARGB(255, 0, 0, 0),
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w300,
+                                      ),
+                                      child: FFButtonWidget(
+                                        onPressed: () {
+                                          data_Search[5] = 'สีชมพู';
+                                          setState(() {
+                                            click_color = false;
+                                          });
+                                          print('สีชมพู');
+                                        },
+                                        text: '',
+                                        options: FFButtonOptions(
+                                          width: 60,
+                                          height: 60,
+                                          color: Color(0xFFFF6790),
+                                          textStyle: FlutterFlowTheme.subtitle2
+                                              .override(
+                                            fontFamily: 'Mitr',
+                                            color: Colors.white,
+                                          ),
+                                          borderSide: BorderSide(
+                                            color: Colors.white,
+                                            width: 3,
+                                          ),
+                                          borderRadius: 50,
                                         ),
                                       ),
                                     ),
@@ -1038,22 +1379,51 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       20, 0, 0, 0),
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      data_Search[5] = 'สีเทา';
-                                      setState(() {
-                                        click_color = false;
-                                      });
-                                    },
-                                    child: Container(
-                                      width: 50,
-                                      height: 50,
-                                      decoration: BoxDecoration(
-                                        color: Color(0xFF8E8E8E),
-                                        borderRadius: BorderRadius.circular(50),
-                                        border: Border.all(
-                                          color: Colors.white,
-                                          width: 5,
+                                  child: Container(
+                                    width: 50,
+                                    height: 50,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(50),
+                                      border: Border.all(
+                                        color: Colors.white,
+                                        width: 0,
+                                      ),
+                                    ),
+                                    child: Tooltip(
+                                      triggerMode: TooltipTriggerMode.manual,
+                                      message: ' สีเทา ',
+                                      padding: const EdgeInsets.all(5.0),
+                                      preferBelow: false,
+                                      textStyle:
+                                          FlutterFlowTheme.subtitle2.override(
+                                        fontFamily: 'Mitr',
+                                        color: Color.fromARGB(255, 0, 0, 0),
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w300,
+                                      ),
+                                      child: FFButtonWidget(
+                                        onPressed: () {
+                                          data_Search[5] = 'สีเทา';
+                                          setState(() {
+                                            click_color = false;
+                                          });
+                                          print('สีเทา');
+                                        },
+                                        text: '',
+                                        options: FFButtonOptions(
+                                          width: 60,
+                                          height: 60,
+                                          color: Color(0xFF8E8E8E),
+                                          textStyle: FlutterFlowTheme.subtitle2
+                                              .override(
+                                            fontFamily: 'Mitr',
+                                            color: Colors.white,
+                                          ),
+                                          borderSide: BorderSide(
+                                            color: Colors.white,
+                                            width: 3,
+                                          ),
+                                          borderRadius: 50,
                                         ),
                                       ),
                                     ),
@@ -1062,22 +1432,51 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       20, 0, 0, 0),
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      data_Search[5] = 'สีฟ้า';
-                                      setState(() {
-                                        click_color = false;
-                                      });
-                                    },
-                                    child: Container(
-                                      width: 50,
-                                      height: 50,
-                                      decoration: BoxDecoration(
-                                        color: Color(0xFF00D0FD),
-                                        borderRadius: BorderRadius.circular(50),
-                                        border: Border.all(
-                                          color: Colors.white,
-                                          width: 5,
+                                  child: Container(
+                                    width: 50,
+                                    height: 50,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(50),
+                                      border: Border.all(
+                                        color: Colors.white,
+                                        width: 0,
+                                      ),
+                                    ),
+                                    child: Tooltip(
+                                      triggerMode: TooltipTriggerMode.manual,
+                                      message: ' สีฟ้า ',
+                                      padding: const EdgeInsets.all(5.0),
+                                      preferBelow: false,
+                                      textStyle:
+                                          FlutterFlowTheme.subtitle2.override(
+                                        fontFamily: 'Mitr',
+                                        color: Color.fromARGB(255, 0, 0, 0),
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w300,
+                                      ),
+                                      child: FFButtonWidget(
+                                        onPressed: () {
+                                          data_Search[5] = 'สีฟ้า';
+                                          setState(() {
+                                            click_color = false;
+                                          });
+                                          print('สีฟ้า');
+                                        },
+                                        text: '',
+                                        options: FFButtonOptions(
+                                          width: 60,
+                                          height: 60,
+                                          color: Color(0xFF00D0FD),
+                                          textStyle: FlutterFlowTheme.subtitle2
+                                              .override(
+                                            fontFamily: 'Mitr',
+                                            color: Colors.white,
+                                          ),
+                                          borderSide: BorderSide(
+                                            color: Colors.white,
+                                            width: 3,
+                                          ),
+                                          borderRadius: 50,
                                         ),
                                       ),
                                     ),
@@ -1102,7 +1501,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                   },
                                   text: 'ไม่กำหนดสี',
                                   options: FFButtonOptions(
-                                    width: 150,
+                                    width: 200,
                                     height: 50,
                                     color: Color(0xFF1D1D1D),
                                     textStyle:
@@ -1112,7 +1511,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                     ),
                                     borderSide: BorderSide(
                                       color: Colors.white,
-                                      width: 5,
+                                      width: 3,
                                     ),
                                     borderRadius: 12,
                                   ),
