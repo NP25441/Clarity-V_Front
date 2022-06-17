@@ -113,30 +113,13 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
     setState(() => time_to = newTime_to);
   }
 
-  // ฟังก์ชันเปลี่ยนสีปุ่ม
-  Future select_type(BuildContext context) async {
-    List _selectedIndexs = [];
-    print('1');
-    itemCount:
-    1;
-    itemBuilder:
-    (ctx, i) {
-      print('2');
-      final _isSelected = _selectedIndexs.contains(i);
-      return GestureDetector(
-        onTap: () {
-          print('3');
-          setState(() {
-            if (_isSelected) {
-              _selectedIndexs.remove(i);
-            } else {
-              _selectedIndexs.add(i);
-            }
-          });
-        },
-      );
-    };
-  }
+  // เก็บค่าเปลี่ยนสีปุ่ม
+  List stateOnclick = [
+    0, // รถเก๋ง
+    0, // รถกระบะ
+    0, // รถตู้
+    0 // รถบรรทุก
+  ];
 
   // ส่ง data เข้า API
   List data_Search = [
@@ -147,7 +130,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
     "00:00", // เวลาเริ่ม
     "00:00", // เวลาจบ
     "-", // สี
-    "-" // ประเภท
+    "-", // ประเภทรถ
   ];
 
   @override
@@ -646,6 +629,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceEvenly,
                                     children: [
+                                      // ประเภทรถ(รถเก๋ง)
                                       Tooltip(
                                         triggerMode: TooltipTriggerMode.manual,
                                         message: ' รถเก๋ง ',
@@ -658,33 +642,47 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                           fontSize: 15,
                                           fontWeight: FontWeight.w300,
                                         ),
-                                        // ประเภทรถ(รถเก๋ง)
                                         child: GestureDetector(
                                           onTap: () {
-                                            data_Search[6] = 'รถเก๋ง';
-                                            print('รถเก๋ง');
                                             setState(() {
-                                              select_type(context);
+                                              if (stateOnclick[0] == 1) {
+                                                stateOnclick[0] = 0;
+                                                data_Search[6] = '-';
+                                                print(data_Search[6]);
+                                              } else {
+                                                stateOnclick[0] = 1;
+                                                stateOnclick[1] = 0;
+                                                stateOnclick[2] = 0;
+                                                stateOnclick[3] = 0;
+                                                data_Search[6] = 'รถเก๋ง';
+                                                print(data_Search[6]);
+                                              }
                                             });
                                           },
-                                          // ประเภทรถ(ทั่วไป)
                                           child: Container(
+                                            width: 70,
+                                            height: 70,
                                             decoration: BoxDecoration(
-                                              color: Color(0xFF1D1D1D),
+                                              color: stateOnclick[0] == 0
+                                                  ? Color(0xFF1D1D1D)
+                                                  : Color(0x73ADADAD),
                                               borderRadius:
                                                   BorderRadius.circular(20),
                                               border: Border.all(
-                                                color: Color(
-                                                    0xFF1D1D1D), //select_type(context(_isSelected?Color(0xFF1D1D1D):null)),
+                                                color: Colors.black,
                                               ),
                                             ),
                                             alignment:
                                                 AlignmentDirectional(0, 0),
-                                            child: Image.asset(
-                                              'assets/images/Sedan.png',
-                                              width: 70,
-                                              height: 70,
-                                              fit: BoxFit.contain,
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(5, 5, 5, 5),
+                                              child: Image.asset(
+                                                'assets/images/Sedan.png',
+                                                width: 60,
+                                                height: 60,
+                                                fit: BoxFit.contain,
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -704,26 +702,44 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                         child: GestureDetector(
                                           // ประเภทรถ(กระบะ)
                                           onTap: () {
-                                            data_Search[6] = 'รถกระบะ';
                                             print('รถกระบะ');
                                             setState(() {
-                                              select_type(context);
+                                              if (stateOnclick[1] == 1) {
+                                                stateOnclick[1] = 0;
+                                                data_Search[6] = '-';
+                                                print(data_Search[6]);
+                                              } else {
+                                                stateOnclick[0] = 0;
+                                                stateOnclick[1] = 1;
+                                                stateOnclick[2] = 0;
+                                                stateOnclick[3] = 0;
+                                                data_Search[6] = 'รถกระบะ';
+                                                print(data_Search[6]);
+                                              }
                                             });
                                           },
                                           child: Container(
+                                            width: 70,
+                                            height: 70,
                                             decoration: BoxDecoration(
-                                              color: Color(0xFF1D1D1D),
+                                              color: stateOnclick[1] == 0
+                                                  ? Color(0xFF1D1D1D)
+                                                  : Color(0x73ADADAD),
                                               borderRadius:
                                                   BorderRadius.circular(20),
                                               border: Border.all(
                                                 color: Colors.black,
                                               ),
                                             ),
-                                            child: Image.asset(
-                                              'assets/images/Pickup.png',
-                                              width: 70,
-                                              height: 70,
-                                              fit: BoxFit.contain,
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(5, 5, 5, 5),
+                                              child: Image.asset(
+                                                'assets/images/Pickup.png',
+                                                width: 60,
+                                                height: 60,
+                                                fit: BoxFit.contain,
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -746,23 +762,42 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                             data_Search[6] = 'รถตู้';
                                             print('รถตู้');
                                             setState(() {
-                                              select_type(context);
+                                              if (stateOnclick[2] == 1) {
+                                                stateOnclick[2] = 0;
+                                                data_Search[6] = '-';
+                                                print(data_Search[6]);
+                                              } else {
+                                                stateOnclick[0] = 0;
+                                                stateOnclick[1] = 0;
+                                                stateOnclick[2] = 1;
+                                                stateOnclick[3] = 0;
+                                                data_Search[6] = 'รถตู้';
+                                                print(data_Search[6]);
+                                              }
                                             });
                                           },
                                           child: Container(
+                                            width: 70,
+                                            height: 70,
                                             decoration: BoxDecoration(
-                                              color: Color(0xFF1D1D1D),
+                                              color: stateOnclick[2] == 0
+                                                  ? Color(0xFF1D1D1D)
+                                                  : Color(0x73ADADAD),
                                               borderRadius:
                                                   BorderRadius.circular(20),
                                               border: Border.all(
                                                 color: Colors.black,
                                               ),
                                             ),
-                                            child: Image.asset(
-                                              'assets/images/Van.png',
-                                              width: 70,
-                                              height: 70,
-                                              fit: BoxFit.contain,
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(5, 5, 5, 5),
+                                              child: Image.asset(
+                                                'assets/images/Van.png',
+                                                width: 60,
+                                                height: 60,
+                                                fit: BoxFit.contain,
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -785,23 +820,42 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                             data_Search[6] = 'รถบรรทุก';
                                             print('รถบรรทุก');
                                             setState(() {
-                                              select_type(context);
+                                              if (stateOnclick[3] == 1) {
+                                                stateOnclick[3] = 0;
+                                                data_Search[6] = '-';
+                                                print(data_Search[6]);
+                                              } else {
+                                                stateOnclick[0] = 0;
+                                                stateOnclick[1] = 0;
+                                                stateOnclick[2] = 0;
+                                                stateOnclick[3] = 1;
+                                                data_Search[6] = 'รถบรรทุก';
+                                                print(data_Search[6]);
+                                              }
                                             });
                                           },
                                           child: Container(
+                                            width: 70,
+                                            height: 70,
                                             decoration: BoxDecoration(
-                                              color: Color(0xFF1D1D1D),
+                                              color: stateOnclick[3] == 0
+                                                  ? Color(0xFF1D1D1D)
+                                                  : Color(0x73ADADAD),
                                               borderRadius:
                                                   BorderRadius.circular(20),
                                               border: Border.all(
                                                 color: Colors.black,
                                               ),
                                             ),
-                                            child: Image.asset(
-                                              'assets/images/Truck.png',
-                                              width: 70,
-                                              height: 70,
-                                              fit: BoxFit.contain,
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(5, 5, 5, 5),
+                                              child: Image.asset(
+                                                'assets/images/Truck.png',
+                                                width: 60,
+                                                height: 60,
+                                                fit: BoxFit.contain,
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -918,9 +972,9 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                 ),
               ),
             ),
-            
+
             // สีทั้งหมด
-            click_color 
+            click_color
                 ? Align(
                     alignment: AlignmentDirectional(-0.04, 0.08),
                     child: Container(
