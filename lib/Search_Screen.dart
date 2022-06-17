@@ -114,12 +114,15 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
   }
 
   // เก็บค่าเปลี่ยนสีปุ่ม
-  List stateOnclick = [
+  List onClick_typeCar = [
     0, // รถเก๋ง
     0, // รถกระบะ
     0, // รถตู้
     0 // รถบรรทุก
   ];
+
+  // ค่าของสี
+  List color_Onclick = ['-'];
 
   // ส่ง data เข้า API
   List data_Search = [
@@ -573,7 +576,10 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                                     options: FFButtonOptions(
                                                       width: double.infinity,
                                                       height: double.infinity,
-                                                      color: Color(0xFF1D1D1D),
+                                                      color: color_Onclick[0] ==
+                                                              '-'
+                                                          ? Color(0xFF1D1D1D)
+                                                          : color_Onclick[0],
                                                       textStyle:
                                                           FlutterFlowTheme
                                                               .subtitle2
@@ -645,15 +651,15 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                         child: GestureDetector(
                                           onTap: () {
                                             setState(() {
-                                              if (stateOnclick[0] == 1) {
-                                                stateOnclick[0] = 0;
+                                              if (onClick_typeCar[0] == 1) {
+                                                onClick_typeCar[0] = 0;
                                                 data_Search[6] = '-';
                                                 print(data_Search[6]);
                                               } else {
-                                                stateOnclick[0] = 1;
-                                                stateOnclick[1] = 0;
-                                                stateOnclick[2] = 0;
-                                                stateOnclick[3] = 0;
+                                                onClick_typeCar[0] = 1;
+                                                onClick_typeCar[1] = 0;
+                                                onClick_typeCar[2] = 0;
+                                                onClick_typeCar[3] = 0;
                                                 data_Search[6] = 'รถเก๋ง';
                                                 print(data_Search[6]);
                                               }
@@ -663,7 +669,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                             width: 70,
                                             height: 70,
                                             decoration: BoxDecoration(
-                                              color: stateOnclick[0] == 0
+                                              color: onClick_typeCar[0] == 0
                                                   ? Color(0xFF1D1D1D)
                                                   : Color(0x73ADADAD),
                                               borderRadius:
@@ -704,15 +710,15 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                           onTap: () {
                                             print('รถกระบะ');
                                             setState(() {
-                                              if (stateOnclick[1] == 1) {
-                                                stateOnclick[1] = 0;
+                                              if (onClick_typeCar[1] == 1) {
+                                                onClick_typeCar[1] = 0;
                                                 data_Search[6] = '-';
                                                 print(data_Search[6]);
                                               } else {
-                                                stateOnclick[0] = 0;
-                                                stateOnclick[1] = 1;
-                                                stateOnclick[2] = 0;
-                                                stateOnclick[3] = 0;
+                                                onClick_typeCar[0] = 0;
+                                                onClick_typeCar[1] = 1;
+                                                onClick_typeCar[2] = 0;
+                                                onClick_typeCar[3] = 0;
                                                 data_Search[6] = 'รถกระบะ';
                                                 print(data_Search[6]);
                                               }
@@ -722,7 +728,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                             width: 70,
                                             height: 70,
                                             decoration: BoxDecoration(
-                                              color: stateOnclick[1] == 0
+                                              color: onClick_typeCar[1] == 0
                                                   ? Color(0xFF1D1D1D)
                                                   : Color(0x73ADADAD),
                                               borderRadius:
@@ -762,15 +768,15 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                             data_Search[6] = 'รถตู้';
                                             print('รถตู้');
                                             setState(() {
-                                              if (stateOnclick[2] == 1) {
-                                                stateOnclick[2] = 0;
+                                              if (onClick_typeCar[2] == 1) {
+                                                onClick_typeCar[2] = 0;
                                                 data_Search[6] = '-';
                                                 print(data_Search[6]);
                                               } else {
-                                                stateOnclick[0] = 0;
-                                                stateOnclick[1] = 0;
-                                                stateOnclick[2] = 1;
-                                                stateOnclick[3] = 0;
+                                                onClick_typeCar[0] = 0;
+                                                onClick_typeCar[1] = 0;
+                                                onClick_typeCar[2] = 1;
+                                                onClick_typeCar[3] = 0;
                                                 data_Search[6] = 'รถตู้';
                                                 print(data_Search[6]);
                                               }
@@ -780,7 +786,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                             width: 70,
                                             height: 70,
                                             decoration: BoxDecoration(
-                                              color: stateOnclick[2] == 0
+                                              color: onClick_typeCar[2] == 0
                                                   ? Color(0xFF1D1D1D)
                                                   : Color(0x73ADADAD),
                                               borderRadius:
@@ -820,15 +826,15 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                             data_Search[6] = 'รถบรรทุก';
                                             print('รถบรรทุก');
                                             setState(() {
-                                              if (stateOnclick[3] == 1) {
-                                                stateOnclick[3] = 0;
+                                              if (onClick_typeCar[3] == 1) {
+                                                onClick_typeCar[3] = 0;
                                                 data_Search[6] = '-';
                                                 print(data_Search[6]);
                                               } else {
-                                                stateOnclick[0] = 0;
-                                                stateOnclick[1] = 0;
-                                                stateOnclick[2] = 0;
-                                                stateOnclick[3] = 1;
+                                                onClick_typeCar[0] = 0;
+                                                onClick_typeCar[1] = 0;
+                                                onClick_typeCar[2] = 0;
+                                                onClick_typeCar[3] = 1;
                                                 data_Search[6] = 'รถบรรทุก';
                                                 print(data_Search[6]);
                                               }
@@ -838,7 +844,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                             width: 70,
                                             height: 70,
                                             decoration: BoxDecoration(
-                                              color: stateOnclick[3] == 0
+                                              color: onClick_typeCar[3] == 0
                                                   ? Color(0xFF1D1D1D)
                                                   : Color(0x73ADADAD),
                                               borderRadius:
@@ -1021,6 +1027,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                   child: FFButtonWidget(
                                     onPressed: () {
                                       data_Search[5] = 'สีแดง';
+                                      color_Onclick[0] = Color(0xFFFD0110);
                                       setState(() {
                                         click_color = false;
                                       });
@@ -1073,6 +1080,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                     child: FFButtonWidget(
                                       onPressed: () {
                                         data_Search[5] = 'สีน้ำเงิน';
+                                        color_Onclick[0] = Color(0xFF0012FF);
                                         setState(() {
                                           click_color = false;
                                         });
@@ -1126,6 +1134,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                     child: FFButtonWidget(
                                       onPressed: () {
                                         data_Search[5] = 'สีเหลือง';
+                                        color_Onclick[0] = Color(0xFFFEFB00);
                                         setState(() {
                                           click_color = false;
                                         });
@@ -1179,6 +1188,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                     child: FFButtonWidget(
                                       onPressed: () {
                                         data_Search[5] = 'สีขาว';
+                                        color_Onclick[0] = Color(0xFFECE7D1);
                                         setState(() {
                                           click_color = false;
                                         });
@@ -1238,6 +1248,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                     child: FFButtonWidget(
                                       onPressed: () {
                                         data_Search[5] = 'สีดำ';
+                                        color_Onclick[0] = Colors.black;
                                         setState(() {
                                           click_color = false;
                                         });
@@ -1290,6 +1301,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                       child: FFButtonWidget(
                                         onPressed: () {
                                           data_Search[5] = 'สีม่วง';
+                                          color_Onclick[0] = Color(0xFF6F36A9);
                                           setState(() {
                                             click_color = false;
                                           });
@@ -1343,6 +1355,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                       child: FFButtonWidget(
                                         onPressed: () {
                                           data_Search[5] = 'สีเขียว';
+                                          color_Onclick[0] = Color(0xFF08810E);
                                           setState(() {
                                             click_color = false;
                                           });
@@ -1396,6 +1409,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                       child: FFButtonWidget(
                                         onPressed: () {
                                           data_Search[5] = 'สีส้ม';
+                                          color_Onclick[0] = Color(0xFFFE8A00);
                                           setState(() {
                                             click_color = false;
                                           });
@@ -1456,6 +1470,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                     child: FFButtonWidget(
                                       onPressed: () {
                                         data_Search[5] = 'สีแดงเลือดหมู';
+                                        color_Onclick[0] = Color(0xFF901901);
                                         setState(() {
                                           click_color = false;
                                         });
@@ -1508,6 +1523,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                       child: FFButtonWidget(
                                         onPressed: () {
                                           data_Search[5] = 'สีชมพู';
+                                          color_Onclick[0] = Color(0xFFFF6790);
                                           setState(() {
                                             click_color = false;
                                           });
@@ -1561,6 +1577,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                       child: FFButtonWidget(
                                         onPressed: () {
                                           data_Search[5] = 'สีเทา';
+                                          color_Onclick[0] = Color(0xFF8E8E8E);
                                           setState(() {
                                             click_color = false;
                                           });
@@ -1614,6 +1631,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                       child: FFButtonWidget(
                                         onPressed: () {
                                           data_Search[5] = 'สีฟ้า';
+                                          color_Onclick[0] = Color(0xFF00D0FD);
                                           setState(() {
                                             click_color = false;
                                           });
@@ -1651,7 +1669,8 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                               children: [
                                 FFButtonWidget(
                                   onPressed: () {
-                                    data_Search[5] = 'ไม่กำหนดสี';
+                                    data_Search[5] = '-';
+                                    color_Onclick[0] = Color(0xFF1D1D1D);
                                     setState(() {
                                       click_color = false;
                                     });
