@@ -380,6 +380,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.1"
+  omxplayer_video_player:
+    dependency: "direct main"
+    description:
+      name: omxplayer_video_player
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0+1"
   page_transition:
     dependency: "direct main"
     description:

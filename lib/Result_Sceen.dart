@@ -24,6 +24,22 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
   String license_plate = "ไม่มีข้อมูล";
   String city = "ไม่มีข้อมูล";
 
+  // เก็บค่าเปลี่ยนสีปุ่ม
+  List onClick_typeCar = [
+    1, // รถเก๋ง
+    1, // รถกระบะ
+    1, // รถตู้
+    1, // รถบรรทุก
+  ];
+
+  List data_Car = [
+    // ตัวแปรการค้นหา
+    "รถเก๋ง", // ประเภทรถเก๋ง
+    "รถกระบะ", // ประเภทรถกระบะ
+    "รถตู้", // ประเภทรถตู้
+    "รถบรทุก", // ประเภทรถบรรทุก
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,14 +50,14 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
         height: double.infinity,
         decoration: BoxDecoration(),
         child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                 child: Container(
                   width: MediaQuery.of(context).size.width * 0.4,
                   height: double.infinity,
@@ -96,196 +112,452 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                           ],
                         ),
                       ),
+                      Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                          child:
+                              Column(mainAxisSize: MainAxisSize.max, children: [
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Text(
+                                  'Filter : ประเภทรถ',
+                                  style: FlutterFlowTheme.bodyText1.override(
+                                    fontFamily: 'Mitr',
+                                    color: Colors.white,
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  // ประเภทรถ(รถเก๋ง)
+                                  Tooltip(
+                                    triggerMode: TooltipTriggerMode.manual,
+                                    message: ' รถเก๋ง ',
+                                    padding: const EdgeInsets.all(5.0),
+                                    preferBelow: false,
+                                    textStyle:
+                                        FlutterFlowTheme.subtitle2.override(
+                                      fontFamily: 'Mitr',
+                                      color: Color.fromARGB(255, 0, 0, 0),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          if (onClick_typeCar[0] == 1) {
+                                            onClick_typeCar[0] = 0;
+                                            data_Car[0] = '-';
+                                            print(data_Car[0]);
+                                          } else {
+                                            onClick_typeCar[0] = 1;
+                                            data_Car[0] = 'รถเก๋ง';
+                                            print(data_Car[0]);
+                                          }
+                                        });
+                                      },
+                                      child: Container(
+                                        width: 70,
+                                        height: 70,
+                                        decoration: BoxDecoration(
+                                          color: onClick_typeCar[0] == 1
+                                              ? Color(0x73ADADAD)
+                                              : Color(0xFF1D1D1D),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          border: Border.all(
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                        alignment: AlignmentDirectional(0, 0),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  5, 5, 5, 5),
+                                          child: Image.asset(
+                                            'assets/images/Sedan.png',
+                                            width: 60,
+                                            height: 60,
+                                            fit: BoxFit.contain,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Tooltip(
+                                    triggerMode: TooltipTriggerMode.manual,
+                                    message: ' รถกระบะ ',
+                                    padding: const EdgeInsets.all(5.0),
+                                    preferBelow: false,
+                                    textStyle:
+                                        FlutterFlowTheme.subtitle2.override(
+                                      fontFamily: 'Mitr',
+                                      color: Color.fromARGB(255, 0, 0, 0),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                    child: GestureDetector(
+                                      // ประเภทรถ(กระบะ)
+                                      onTap: () {
+                                        setState(() {
+                                          if (onClick_typeCar[1] == 1) {
+                                            onClick_typeCar[1] = 0;
+                                            data_Car[1] = '-';
+                                            print(data_Car[1]);
+                                          } else {
+                                            onClick_typeCar[1] = 1;
+                                            data_Car[1] = 'รถกระบะ';
+                                            print(data_Car[1]);
+                                          }
+                                        });
+                                      },
+                                      child: Container(
+                                        width: 70,
+                                        height: 70,
+                                        decoration: BoxDecoration(
+                                          color: onClick_typeCar[1] == 1
+                                              ? Color(0x73ADADAD)
+                                              : Color(0xFF1D1D1D),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          border: Border.all(
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  5, 5, 5, 5),
+                                          child: Image.asset(
+                                            'assets/images/Pickup.png',
+                                            width: 60,
+                                            height: 60,
+                                            fit: BoxFit.contain,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Tooltip(
+                                    triggerMode: TooltipTriggerMode.manual,
+                                    message: ' รถตู้ ',
+                                    padding: const EdgeInsets.all(5.0),
+                                    preferBelow: false,
+                                    textStyle:
+                                        FlutterFlowTheme.subtitle2.override(
+                                      fontFamily: 'Mitr',
+                                      color: Color.fromARGB(255, 0, 0, 0),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                    child: GestureDetector(
+                                      // ประเภทรถ(ตู้)
+                                      onTap: () {
+                                        print('รถตู้');
+                                        setState(() {
+                                          if (onClick_typeCar[2] == 1) {
+                                            onClick_typeCar[2] = 0;
+                                            data_Car[2] = '-';
+                                            print(data_Car[2]);
+                                          } else {
+                                            onClick_typeCar[2] = 1;
+                                            data_Car[2] = 'รถตู้';
+                                            print(data_Car[2]);
+                                          }
+                                        });
+                                      },
+                                      child: Container(
+                                        width: 70,
+                                        height: 70,
+                                        decoration: BoxDecoration(
+                                          color: onClick_typeCar[2] == 1
+                                              ? Color(0x73ADADAD)
+                                              : Color(0xFF1D1D1D),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          border: Border.all(
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  5, 5, 5, 5),
+                                          child: Image.asset(
+                                            'assets/images/Van.png',
+                                            width: 60,
+                                            height: 60,
+                                            fit: BoxFit.contain,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Tooltip(
+                                    triggerMode: TooltipTriggerMode.manual,
+                                    message: ' รถบรรทุก ',
+                                    padding: const EdgeInsets.all(5.0),
+                                    preferBelow: false,
+                                    textStyle:
+                                        FlutterFlowTheme.subtitle2.override(
+                                      fontFamily: 'Mitr',
+                                      color: Color.fromARGB(255, 0, 0, 0),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                    child: GestureDetector(
+                                      // ประเภทรถ(บรรทุก)
+                                      onTap: () {
+                                        print('รถบรรทุก');
+                                        setState(() {
+                                          if (onClick_typeCar[3] == 1) {
+                                            onClick_typeCar[3] = 0;
+                                            data_Car[3] = '-';
+                                            print(data_Car[3]);
+                                          } else {
+                                            onClick_typeCar[3] = 1;
+                                            data_Car[3] = 'รถบรรทุก';
+                                            print(data_Car[3]);
+                                          }
+                                        });
+                                      },
+                                      child: Container(
+                                        width: 70,
+                                        height: 70,
+                                        decoration: BoxDecoration(
+                                          color: onClick_typeCar[3] == 1
+                                              ? Color(0x73ADADAD)
+                                              : Color(0xFF1D1D1D),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          border: Border.all(
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  5, 5, 5, 5),
+                                          child: Image.asset(
+                                            'assets/images/Truck.png',
+                                            width: 60,
+                                            height: 60,
+                                            fit: BoxFit.contain,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                          ])),
                       Expanded(
-                        child: ListView(
-                          padding: EdgeInsets.zero,
-                          scrollDirection: Axis.vertical,
-                          children: [
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 20, 0, 0),
-                                  child: Container(
-                                    width: 250,
-                                    height: 150,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(20),
-                                      child: Image.asset(
-                                        'assets/images/Example_Demo/Test 1.jpg',
-                                        width: double.infinity,
-                                        height: double.infinity,
-                                        fit: BoxFit.cover,
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                          child: ListView(
+                            padding: EdgeInsets.zero,
+                            scrollDirection: Axis.vertical,
+                            children: [
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 0, 0, 0),
+                                    child: Container(
+                                      width: 250,
+                                      height: 150,
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(20),
+                                        child: Image.asset(
+                                          'assets/images/Example_Demo/Test 1.jpg',
+                                          width: double.infinity,
+                                          height: double.infinity,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20),
                                       ),
                                     ),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
                                   ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 20, 0, 0),
-                                  child: Container(
-                                    width: 250,
-                                    height: 150,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(20),
-                                      child: Image.asset(
-                                        'assets/images/Example_Demo/Test 2.jpg',
-                                        width: double.infinity,
-                                        height: double.infinity,
-                                        fit: BoxFit.cover,
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 0, 0, 0),
+                                    child: Container(
+                                      width: 250,
+                                      height: 150,
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(20),
+                                        child: Image.asset(
+                                          'assets/images/Example_Demo/Test 2.jpg',
+                                          width: double.infinity,
+                                          height: double.infinity,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20),
                                       ),
                                     ),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
                                   ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 20, 0, 0),
-                                  child: Container(
-                                    width: 250,
-                                    height: 150,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(20),
-                                      child: Image.asset(
-                                        'assets/images/Example_Demo/Test 3.jpg',
-                                        width: double.infinity,
-                                        height: double.infinity,
-                                        fit: BoxFit.cover,
+                                ],
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 20, 0, 0),
+                                    child: Container(
+                                      width: 250,
+                                      height: 150,
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(20),
+                                        child: Image.asset(
+                                          'assets/images/Example_Demo/Test 3.jpg',
+                                          width: double.infinity,
+                                          height: double.infinity,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20),
                                       ),
                                     ),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
                                   ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 20, 0, 0),
-                                  child: Container(
-                                    width: 250,
-                                    height: 150,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(20),
-                                      child: Image.asset(
-                                        'assets/images/Example_Demo/Test 4.jpg',
-                                        width: double.infinity,
-                                        height: double.infinity,
-                                        fit: BoxFit.cover,
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 20, 0, 0),
+                                    child: Container(
+                                      width: 250,
+                                      height: 150,
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(20),
+                                        child: Image.asset(
+                                          'assets/images/Example_Demo/Test 4.jpg',
+                                          width: double.infinity,
+                                          height: double.infinity,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20),
                                       ),
                                     ),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
                                   ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 20, 0, 0),
-                                  child: Container(
-                                    width: 250,
-                                    height: 150,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(20),
-                                      child: Image.asset(
-                                        'assets/images/Example_Demo/Test 5.jpg',
-                                        width: double.infinity,
-                                        height: double.infinity,
-                                        fit: BoxFit.cover,
+                                ],
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 20, 0, 0),
+                                    child: Container(
+                                      width: 250,
+                                      height: 150,
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(20),
+                                        child: Image.asset(
+                                          'assets/images/Example_Demo/Test 5.jpg',
+                                          width: double.infinity,
+                                          height: double.infinity,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20),
                                       ),
                                     ),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
                                   ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 20, 0, 0),
-                                  child: Container(
-                                    width: 250,
-                                    height: 150,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(20),
-                                      child: Image.asset(
-                                        'assets/images/Example_Demo/Test 6.jpg',
-                                        width: double.infinity,
-                                        height: double.infinity,
-                                        fit: BoxFit.cover,
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 20, 0, 0),
+                                    child: Container(
+                                      width: 250,
+                                      height: 150,
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(20),
+                                        child: Image.asset(
+                                          'assets/images/Example_Demo/Test 6.jpg',
+                                          width: double.infinity,
+                                          height: double.infinity,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20),
                                       ),
                                     ),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
                                   ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 20, 0, 0),
-                                  child: Container(
-                                    width: 250,
-                                    height: 150,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(20),
-                                      child: Image.asset(
-                                        'assets/images/Example_Demo/Test 7.jpg',
-                                        width: double.infinity,
-                                        height: double.infinity,
-                                        fit: BoxFit.cover,
+                                ],
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 20, 0, 0),
+                                    child: Container(
+                                      width: 250,
+                                      height: 150,
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(20),
+                                        child: Image.asset(
+                                          'assets/images/Example_Demo/Test 7.jpg',
+                                          width: double.infinity,
+                                          height: double.infinity,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20),
                                       ),
                                     ),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
                                   ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 20, 0, 0),
-                                  child: Container(
-                                    width: 250,
-                                    height: 150,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(20),
-                                      child: Image.asset(
-                                        'assets/images/Example_Demo/Test 8.jpg',
-                                        width: double.infinity,
-                                        height: double.infinity,
-                                        fit: BoxFit.cover,
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 20, 0, 0),
+                                    child: Container(
+                                      width: 250,
+                                      height: 150,
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(20),
+                                        child: Image.asset(
+                                          'assets/images/Example_Demo/Test 8.jpg',
+                                          width: double.infinity,
+                                          height: double.infinity,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20),
                                       ),
                                     ),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          ],
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],
@@ -586,7 +858,9 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => VideoScreenWidget()),
+                                    builder: (context) => VideoScreenWidget(
+                                                  license_plate: license_plate,
+                                                  city: city,)),
                               );
                             },
                             text: 'ค้นหาภาพจากกล้อง',

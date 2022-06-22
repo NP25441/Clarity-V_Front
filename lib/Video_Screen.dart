@@ -5,7 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class VideoScreenWidget extends StatefulWidget {
-  const VideoScreenWidget({Key? key}) : super(key: key);
+  final String license_plate;
+  final String city;
+  const VideoScreenWidget({Key? key, required this.license_plate, required this.city})
+      : super(key: key);
 
   @override
   _VideoScreenWidgetState createState() => _VideoScreenWidgetState();
@@ -136,7 +139,7 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                                 height: 55,
                                 decoration: BoxDecoration(),
                                 child: Text(
-                                  'ฎค / 2134',
+                                  '${widget.license_plate}',
                                   style: FlutterFlowTheme.bodyText1.override(
                                     fontFamily: 'Mitr',
                                     color: Colors.white,
@@ -219,7 +222,7 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           10, 0, 0, 0),
                                       child: Text(
-                                        'กรุงเทพมหานคร',
+                                        '${widget.city}',
                                         style:
                                             FlutterFlowTheme.bodyText1.override(
                                           fontFamily: 'Mitr',
@@ -448,32 +451,7 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                           ],
                         ),
                       ),
-                      Container(
-                        width: double.infinity,
-                        height: 430,
-                        decoration: BoxDecoration(
-                          color: Color(0xFFEEEEEE),
-                        ),
-                        child: Stack(
-                          children: [
-                            Image.asset(
-                              'assets/images/Example_Demo/Road.jpg',
-                              width: double.infinity,
-                              height: double.infinity,
-                              fit: BoxFit.contain,
-                            ),
-                            Align(
-                              alignment: AlignmentDirectional(0, 0),
-                              child: Image.asset(
-                                'assets/images/Play.png',
-                                width: 100,
-                                height: 100,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                       
                     ],
                   ),
                 ),

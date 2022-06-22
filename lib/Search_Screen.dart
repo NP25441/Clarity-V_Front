@@ -118,7 +118,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
     0, // รถเก๋ง
     0, // รถกระบะ
     0, // รถตู้
-    0 // รถบรรทุก
+    0, // รถบรรทุก
   ];
 
   // ค่าของสี
@@ -133,7 +133,11 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
     "00:00", // เวลาเริ่ม
     "00:00", // เวลาจบ
     "-", // สี
-    "-", // ประเภทรถ
+    "-", // ประเภทรถเก๋ง
+    "-", // ประเภทรถกระบะ
+    "-", // ประเภทรถตู้
+    "-", // ประเภทรถบรรทุก
+    "-", // รวมทุกประเภท
   ];
 
   @override
@@ -199,9 +203,9 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                         50, 5, 50, 0),
                                     child: TextFormField(
                                       decoration: InputDecoration(
-                                        hintText: 'xxx / xxx',
+                                        hintText: 'กรุณาใส่หมายเลขป้ายทะเบียน เช่น กขค-1234',
                                         hintStyle: TextStyle(
-                                          color: Colors.white,
+                                          color: Color.fromARGB(255, 155, 155, 155),
                                         ),
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
@@ -268,9 +272,9 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                         50, 5, 50, 0),
                                     child: TextFormField(
                                       decoration: InputDecoration(
-                                        hintText: '----',
+                                        hintText: 'กรุณาใส่จังหวัด เช่น พะเยา',
                                         hintStyle: TextStyle(
-                                          color: Colors.white,
+                                          color: Color.fromARGB(255, 155, 155, 155),
                                         ),
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
@@ -546,7 +550,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                                 MainAxisAlignment.spaceEvenly,
                                             children: [
                                               Text(
-                                                'สี',
+                                                'สีรถ',
                                                 style: FlutterFlowTheme
                                                     .bodyText1
                                                     .override(
@@ -618,7 +622,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'ประเภท',
+                                  'ประเภทรถ',
                                   textAlign: TextAlign.start,
                                   style: FlutterFlowTheme.bodyText1.override(
                                     fontFamily: 'Mitr',
@@ -653,13 +657,12 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                             setState(() {
                                               if (onClick_typeCar[0] == 1) {
                                                 onClick_typeCar[0] = 0;
+
                                                 data_Search[6] = '-';
                                                 print(data_Search[6]);
                                               } else {
                                                 onClick_typeCar[0] = 1;
-                                                onClick_typeCar[1] = 0;
-                                                onClick_typeCar[2] = 0;
-                                                onClick_typeCar[3] = 0;
+
                                                 data_Search[6] = 'รถเก๋ง';
                                                 print(data_Search[6]);
                                               }
@@ -712,15 +715,14 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                             setState(() {
                                               if (onClick_typeCar[1] == 1) {
                                                 onClick_typeCar[1] = 0;
-                                                data_Search[6] = '-';
-                                                print(data_Search[6]);
+
+                                                data_Search[7] = '-';
+                                                print(data_Search[7]);
                                               } else {
-                                                onClick_typeCar[0] = 0;
                                                 onClick_typeCar[1] = 1;
-                                                onClick_typeCar[2] = 0;
-                                                onClick_typeCar[3] = 0;
-                                                data_Search[6] = 'รถกระบะ';
-                                                print(data_Search[6]);
+
+                                                data_Search[7] = 'รถกระบะ';
+                                                print(data_Search[7]);
                                               }
                                             });
                                           },
@@ -770,15 +772,14 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                             setState(() {
                                               if (onClick_typeCar[2] == 1) {
                                                 onClick_typeCar[2] = 0;
-                                                data_Search[6] = '-';
-                                                print(data_Search[6]);
+
+                                                data_Search[8] = '-';
+                                                print(data_Search[8]);
                                               } else {
-                                                onClick_typeCar[0] = 0;
-                                                onClick_typeCar[1] = 0;
                                                 onClick_typeCar[2] = 1;
-                                                onClick_typeCar[3] = 0;
-                                                data_Search[6] = 'รถตู้';
-                                                print(data_Search[6]);
+
+                                                data_Search[8] = 'รถตู้';
+                                                print(data_Search[8]);
                                               }
                                             });
                                           },
@@ -828,15 +829,14 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                             setState(() {
                                               if (onClick_typeCar[3] == 1) {
                                                 onClick_typeCar[3] = 0;
-                                                data_Search[6] = '-';
-                                                print(data_Search[6]);
+
+                                                data_Search[9] = '-';
+                                                print(data_Search[9]);
                                               } else {
-                                                onClick_typeCar[0] = 0;
-                                                onClick_typeCar[1] = 0;
-                                                onClick_typeCar[2] = 0;
                                                 onClick_typeCar[3] = 1;
-                                                data_Search[6] = 'รถบรรทุก';
-                                                print(data_Search[6]);
+
+                                                data_Search[9] = 'รถบรรทุก';
+                                                print(data_Search[9]);
                                               }
                                             });
                                           },
@@ -883,7 +883,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                               builder: (BuildContext context) => AlertDialog(
                                 title: Center(
                                     child: Text(
-                                  '!! แจ้งเตือน !!',
+                                  'ตรวจสอบข้อมูลที่จะค้นหา',
                                   textAlign: TextAlign.start,
                                   style: FlutterFlowTheme.bodyText1.override(
                                     fontFamily: 'Mitr',
@@ -898,7 +898,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                   children: <Widget>[
                                     Expanded(
                                       child: Text(
-                                        'หากไม่มีการเปลี่ยนแปลงวันที่และเวลาจะใช้ข้อมูล ณ ปัจจุบัน',
+                                        ' หมายเลขป้ายทะเบียน :  ${data_Search[0] == '-' ? "ไม่ได้ใส่ข้อมูล" : data_Search[0]} \n จังหวัด :   ${data_Search[1] == '-' ? "ไม่ได้ใส่ข้อมูล" : data_Search[1]} \n วันที่ :  ${data_Search[2]} \n ตั้งแต่เวลา :  ${data_Search[3]}   ถึง    ${data_Search[4]} \n สีรถ :  ${data_Search[5] == '-' ? "ไม่ได้เลือกสี" : data_Search[5]} \n ประเภทรถที่เลือก :  ${onClick_typeCar[0] == 0 ? "" : data_Search[6]} ${onClick_typeCar[1] == 0 ? "" : data_Search[7]} ${onClick_typeCar[2] == 0 ? "" : data_Search[8]} ${onClick_typeCar[3] == 0 ? "" : data_Search[9]}${onClick_typeCar.contains(1) ? "" : data_Search[10] = 'รถเก๋ง รถกระบะ รถตู้ รถบรรทุก'}\n\n ** หากไม่มีการเลือกประเภทรถ จะเป็นการค้นหาทุกประเภท ** ',
                                         textAlign: TextAlign.start,
                                         style:
                                             FlutterFlowTheme.bodyText1.override(
