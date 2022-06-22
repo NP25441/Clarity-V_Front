@@ -203,9 +203,11 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                         50, 5, 50, 0),
                                     child: TextFormField(
                                       decoration: InputDecoration(
-                                        hintText: 'กรุณาใส่หมายเลขป้ายทะเบียน เช่น กขค-1234',
+                                        hintText:
+                                            'กรุณาใส่หมายเลขป้ายทะเบียน เช่น กขค-1234',
                                         hintStyle: TextStyle(
-                                          color: Color.fromARGB(255, 155, 155, 155),
+                                          color: Color.fromARGB(
+                                              255, 155, 155, 155),
                                         ),
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
@@ -274,7 +276,8 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                       decoration: InputDecoration(
                                         hintText: 'กรุณาใส่จังหวัด เช่น พะเยา',
                                         hintStyle: TextStyle(
-                                          color: Color.fromARGB(255, 155, 155, 155),
+                                          color: Color.fromARGB(
+                                              255, 155, 155, 155),
                                         ),
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
@@ -657,12 +660,10 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                             setState(() {
                                               if (onClick_typeCar[0] == 1) {
                                                 onClick_typeCar[0] = 0;
-
                                                 data_Search[6] = '-';
                                                 print(data_Search[6]);
                                               } else {
                                                 onClick_typeCar[0] = 1;
-
                                                 data_Search[6] = 'รถเก๋ง';
                                                 print(data_Search[6]);
                                               }
@@ -711,16 +712,13 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                         child: GestureDetector(
                                           // ประเภทรถ(กระบะ)
                                           onTap: () {
-                                            print('รถกระบะ');
                                             setState(() {
                                               if (onClick_typeCar[1] == 1) {
                                                 onClick_typeCar[1] = 0;
-
                                                 data_Search[7] = '-';
                                                 print(data_Search[7]);
                                               } else {
                                                 onClick_typeCar[1] = 1;
-
                                                 data_Search[7] = 'รถกระบะ';
                                                 print(data_Search[7]);
                                               }
@@ -767,17 +765,14 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                         child: GestureDetector(
                                           // ประเภทรถ(ตู้)
                                           onTap: () {
-                                            data_Search[6] = 'รถตู้';
                                             print('รถตู้');
                                             setState(() {
                                               if (onClick_typeCar[2] == 1) {
                                                 onClick_typeCar[2] = 0;
-
                                                 data_Search[8] = '-';
                                                 print(data_Search[8]);
                                               } else {
                                                 onClick_typeCar[2] = 1;
-
                                                 data_Search[8] = 'รถตู้';
                                                 print(data_Search[8]);
                                               }
@@ -824,17 +819,14 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                         child: GestureDetector(
                                           // ประเภทรถ(บรรทุก)
                                           onTap: () {
-                                            data_Search[6] = 'รถบรรทุก';
                                             print('รถบรรทุก');
                                             setState(() {
                                               if (onClick_typeCar[3] == 1) {
                                                 onClick_typeCar[3] = 0;
-
                                                 data_Search[9] = '-';
                                                 print(data_Search[9]);
                                               } else {
                                                 onClick_typeCar[3] = 1;
-
                                                 data_Search[9] = 'รถบรรทุก';
                                                 print(data_Search[9]);
                                               }
