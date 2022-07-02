@@ -1,9 +1,12 @@
 import 'package:clarity_v/Result_Sceen.dart';
+import 'package:clarity_v/api_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'flutter flow/flutter_flow_util.dart';
 import 'flutter flow/flutter_flow_widgets.dart';
 import 'flutter flow/flutter_flow_theme.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert' as convert;
 
 class SearcScreenWidget extends StatefulWidget {
   const SearcScreenWidget({Key? key}) : super(key: key);
@@ -139,6 +142,29 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
     "-", // ประเภทรถบรรทุก
     "-", // รวมทุกประเภท
   ];
+  // ส่งค่าให้กับ Api
+  var data_api = Data_Api();
+  
+  //late Data_Api license_plate = Data_Api();
+
+  getProfile() async {
+    final res = await http.get(
+      Uri.parse("$url/user"),
+      headers: {
+        "Accept": "application/json",
+        "Access-Control_Allow_Origin": "*",
+      },
+    );
+    print('res.statusCode: ${res.statusCode}');
+    print('res.headers: ${res.headers}');
+    print('body = ${res.body}');
+    final data = convert.jsonDecode(res.body) as Map<String, dynamic>;
+    print("getProfile: ${data}");
+    print(data["message"]);
+    setState(() {
+      data_api = Data_Api.fromJSON(data);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
