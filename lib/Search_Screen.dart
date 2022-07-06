@@ -21,10 +21,6 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
   final initialDate_form = DateTime.now();
   final initialDate_to = DateTime.now();
 
-  // แสดงข้อมูลทะเบียนรถ
-  String license_plate = "ไม่มีข้อมูล";
-  // แสดงข้อมูลจังหวัด
-  String city = "ไม่มีข้อมูล";
   // ตั้งค่าเริ่มต้นเป็น False เพื่อซ่อนการแสดงหน้าของสี
   bool click_color = false;
 
@@ -130,8 +126,8 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
   // ส่ง data เข้า API
   List data_Search = [
     // ตัวแปรการค้นหา
-    "-", // ป้ายทะเบียน
-    "-", // จังหวัด
+    "", // ป้ายทะเบียน
+    "", // จังหวัด
     "00/00/0000", // วันที่
     "00:00", // เวลาเริ่ม
     "00:00", // เวลาจบ
@@ -144,8 +140,18 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
   ];
   // ส่งค่าให้กับ Api
   var data_api = Data_Api();
-  
-  //late Data_Api license_plate = Data_Api();
+
+  //   // แสดงข้อมูลทะเบียนรถ
+  // String license_plate = "ไม่มีข้อมูล";
+
+  //   // แสดงข้อมูลจังหวัด
+  // String city = "ไม่มีข้อมูล";
+
+  late Data_Api license_plate = Data_Api();
+  late Data_Api city = Data_Api();
+  late Data_Api color = Data_Api();
+  late Data_Api type_car = Data_Api();
+  late Data_Api speed = Data_Api();
 
   getProfile() async {
     final res = await http.get(
@@ -255,7 +261,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                         fillColor: Color(0xFF1D1D1D),
                                       ),
                                       onChanged: (value) {
-                                        license_plate = value;
+                                        // license_plate = value;
                                         data_Search[0] = value;
                                       },
                                       style:
@@ -325,7 +331,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                         fillColor: Color(0xFF1D1D1D),
                                       ),
                                       onChanged: (value) {
-                                        city = value;
+                                        // city = value;
                                         data_Search[1] = value;
                                       },
                                       style:
@@ -916,7 +922,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                   children: <Widget>[
                                     Expanded(
                                       child: Text(
-                                        ' หมายเลขป้ายทะเบียน :  ${data_Search[0] == '-' ? "ไม่ได้ใส่ข้อมูล" : data_Search[0]} \n จังหวัด :   ${data_Search[1] == '-' ? "ไม่ได้ใส่ข้อมูล" : data_Search[1]} \n วันที่ :  ${data_Search[2]} \n ตั้งแต่เวลา :  ${data_Search[3]}   ถึง    ${data_Search[4]} \n สีรถ :  ${data_Search[5] == '-' ? "ไม่ได้เลือกสี" : data_Search[5]} \n ประเภทรถที่เลือก :  ${onClick_typeCar[0] == 0 ? "" : data_Search[6]} ${onClick_typeCar[1] == 0 ? "" : data_Search[7]} ${onClick_typeCar[2] == 0 ? "" : data_Search[8]} ${onClick_typeCar[3] == 0 ? "" : data_Search[9]}${onClick_typeCar.contains(1) ? "" : data_Search[10] = 'รถเก๋ง รถกระบะ รถตู้ รถบรรทุก'}\n\n ** หากไม่มีการเลือกประเภทรถ จะเป็นการค้นหาทุกประเภท ** ',
+                                        ' หมายเลขป้ายทะเบียน :  ${data_Search[0] == '' ? data_Search[0] = "ไม่ได้ใส่ข้อมูล" : data_Search[0]} \n จังหวัด :   ${data_Search[1] == '' ? data_Search[1] = "ไม่ได้ใส่ข้อมูล" : data_Search[1]} \n วันที่ :  ${data_Search[2]} \n ตั้งแต่เวลา :  ${data_Search[3]}   ถึง    ${data_Search[4]} \n สีรถ :  ${data_Search[5] == '' ? "ไม่ได้เลือกสี" : data_Search[5]} \n ประเภทรถที่เลือก :  ${onClick_typeCar[0] == 0 ? "" : data_Search[6]} ${onClick_typeCar[1] == 0 ? "" : data_Search[7]} ${onClick_typeCar[2] == 0 ? "" : data_Search[8]} ${onClick_typeCar[3] == 0 ? "" : data_Search[9]}${onClick_typeCar.contains(1) ? "" : data_Search[10] = 'รถเก๋ง รถกระบะ รถตู้ รถบรรทุก'}\n\n ** หากไม่มีการเลือกประเภทรถ จะเป็นการค้นหาทุกประเภท ** ',
                                         textAlign: TextAlign.start,
                                         style:
                                             FlutterFlowTheme.bodyText1.override(
@@ -962,8 +968,8 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                         MaterialPageRoute(
                                             builder: (context) =>
                                                 ResultScreenWidget(
-                                                  license_plate: license_plate,
-                                                  city: city,
+                                                  license_plate: data_Search[0],
+                                                  city: data_Search[1],
                                                 )),
                                       );
                                     },
@@ -1687,7 +1693,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                               children: [
                                 FFButtonWidget(
                                   onPressed: () {
-                                    data_Search[5] = '-';
+                                    data_Search[5] = '';
                                     color_Onclick[0] = Color(0xFF1D1D1D);
                                     setState(() {
                                       click_color = false;
