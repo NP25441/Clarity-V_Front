@@ -26,8 +26,10 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
 
   // ตั้งค่าวันที่เริ่มต้น
   DateTime date = DateTime.now();
+
   // ตั้งค่าเวลาเริ่มต้น
   TimeOfDay time_form = TimeOfDay.now();
+
   // ตั้งค่าเวลาเริ่มต้น
   TimeOfDay time_to = TimeOfDay.now();
 
@@ -147,12 +149,17 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
   //   // แสดงข้อมูลจังหวัด
   // String city = "ไม่มีข้อมูล";
 
+  //  แสดงข้อมูลป้ายที่ค้นหา
+  String search_plate = "ไม่ได้ใส่หมายเลขป้ายทะเบียน";
+
+  //  ชุดข้อมูลที่เชื่อมกับ API
   late Data_Api license_plate = Data_Api();
   late Data_Api city = Data_Api();
   late Data_Api color = Data_Api();
   late Data_Api type_car = Data_Api();
   late Data_Api speed = Data_Api();
 
+  //  เชื่อมต่อกับ API
   getProfile() async {
     final res = await http.get(
       Uri.parse("$url/user"),
@@ -172,6 +179,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
     });
   }
 
+  //  หน้า UI
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -261,7 +269,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                         fillColor: Color(0xFF1D1D1D),
                                       ),
                                       onChanged: (value) {
-                                        // license_plate = value;
+                                        search_plate = value;
                                         data_Search[0] = value;
                                       },
                                       style:
@@ -963,6 +971,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                     ),
                                     onPressed: () {
                                       print(data_Search);
+                                      print(search_plate);
                                       Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(
@@ -970,6 +979,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                                 ResultScreenWidget(
                                                   license_plate: data_Search[0],
                                                   city: data_Search[1],
+                                                  search_plate: search_plate,
                                                 )),
                                       );
                                     },

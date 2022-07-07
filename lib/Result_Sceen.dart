@@ -9,8 +9,9 @@ import 'package:percent_indicator/percent_indicator.dart';
 class ResultScreenWidget extends StatefulWidget {
   final String license_plate;
   final String city;
+  final String search_plate;
   const ResultScreenWidget(
-      {Key? key, required this.license_plate, required this.city})
+      {Key? key, required this.license_plate, required this.city, required this.search_plate})
       : super(key: key);
 
   @override
@@ -23,6 +24,8 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
 
   String license_plate = "ไม่มีข้อมูล";
   String city = "ไม่มีข้อมูล";
+  String search_plate = "ไม่ได้ใส่หมายเลขป้ายทะเบียน";
+
 
   // เก็บค่าเปลี่ยนสีปุ่ม
   List onClick_typeCar = [
@@ -88,7 +91,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'หมายเลขป้ายทะเบียน : ${widget.license_plate}',
+                          'หมายเลขป้ายทะเบียน : ${widget.search_plate}',
                           style: FlutterFlowTheme.bodyText1.override(
                             fontFamily: 'Mitr',
                             color: Colors.white,
