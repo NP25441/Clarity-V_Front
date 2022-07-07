@@ -28,438 +28,447 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
         width: double.infinity,
         height: double.infinity,
         decoration: BoxDecoration(),
-        child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                width: MediaQuery.of(context).size.width * 0.40,
-                height: double.infinity,
-                decoration: BoxDecoration(),
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        width: double.infinity,
-                        height: 100,
-                        decoration: BoxDecoration(
-                          color: Color(0xFF1D1D1D),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            SearcScreenWidget()),
-                                  );
-                                },
-                                child: Image.asset(
-                                  'assets/images/Back.png',
-                                  width: 50,
-                                  height: 50,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(50, 0, 0, 0),
-                              child: Text(
-                                'ข้อมูลการค้นหา',
-                                style: FlutterFlowTheme.bodyText1.override(
-                                  fontFamily: 'Mitr',
-                                  color: Colors.white,
-                                  fontSize: 40,
-                                  fontWeight: FontWeight.w300,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Container(
+              width: MediaQuery.of(context).size.width * 1,
+              height: 100,
+              decoration: BoxDecoration(
+                color: Color(0xFF1D1D1D),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SearcScreenWidget()),
+                        );
+                      },
+                      child: Image.asset(
+                        'assets/images/Back.png',
+                        width: 50,
+                        height: 50,
+                        fit: BoxFit.cover,
                       ),
-                      SingleChildScrollView(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-                              child: Container(
-                                width: 450,
-                                height: 350,
-                                child: Stack(
-                                  children: [
-                                    Align(
-                                      alignment: AlignmentDirectional(0, 0),
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(20),
-                                        child: Image.asset(
-                                          'assets/images/Example_Demo/Car.jpg',
-                                          width: double.infinity,
-                                          height: double.infinity,
-                                          fit: BoxFit.fitWidth,
-                                        ),
-                                      ),
-                                    ),
-                                    Align(
-                                      alignment:
-                                          AlignmentDirectional(0.96, 0.95),
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(10),
-                                        child: Image.asset(
-                                          'assets/images/Example_Demo/Palte.jpg',
-                                          width: 120,
-                                          height: 90,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(10, 20, 0, 0),
-                              child: Container(
-                                width: double.infinity,
-                                height: 55,
-                                decoration: BoxDecoration(),
-                                child: Text(
-                                  '${widget.license_plate}',
-                                  style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Mitr',
-                                    color: Colors.white,
-                                    fontSize: 40,
-                                    fontWeight: FontWeight.w300,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                              child: Container(
-                                width: double.infinity,
-                                height: 2,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(10, 5, 0, 0),
-                              child: Container(
-                                width: double.infinity,
-                                height: 50,
-                                decoration: BoxDecoration(),
-                                child: Row(
+                    ),
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    height: double.infinity,
+                    decoration: BoxDecoration(),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'หมายเลขป้ายทะเบียน : ${widget.license_plate}',
+                          style: FlutterFlowTheme.bodyText1.override(
+                            fontFamily: 'Mitr',
+                            color: Colors.white,
+                            fontSize: 40,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * 0.453,
+                            height: MediaQuery.of(context).size.height * 0.85,
+                            decoration: BoxDecoration(),
+                            child: ListView(
+                              padding: EdgeInsets.zero,
+                              scrollDirection: Axis.vertical,
+                              children: [
+                                Column(
                                   mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text(
-                                      'ชื่อเจ้าของรถ :',
-                                      style:
-                                          FlutterFlowTheme.bodyText1.override(
-                                        fontFamily: 'Mitr',
-                                        color: Colors.white,
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.normal,
-                                      ),
-                                    ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          10, 0, 0, 0),
-                                      child: Text(
-                                        'นายตัวอย่าง สมมุติ',
-                                        style:
-                                            FlutterFlowTheme.bodyText1.override(
-                                          fontFamily: 'Mitr',
-                                          color: Colors.white,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(10, 5, 0, 0),
-                              child: Container(
-                                width: double.infinity,
-                                height: 50,
-                                decoration: BoxDecoration(),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Text(
-                                      'จังหวัด :',
-                                      style:
-                                          FlutterFlowTheme.bodyText1.override(
-                                        fontFamily: 'Mitr',
-                                        color: Colors.white,
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.normal,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10, 0, 0, 0),
-                                      child: Text(
-                                        '${widget.city}',
-                                        style:
-                                            FlutterFlowTheme.bodyText1.override(
-                                          fontFamily: 'Mitr',
-                                          color: Colors.white,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(10, 5, 0, 0),
-                              child: Container(
-                                width: double.infinity,
-                                height: 50,
-                                decoration: BoxDecoration(),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Text(
-                                      'ประเภทรถ :',
-                                      style:
-                                          FlutterFlowTheme.bodyText1.override(
-                                        fontFamily: 'Mitr',
-                                        color: Colors.white,
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.normal,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10, 0, 0, 0),
-                                      child: Text(
-                                        'รถกระบะ',
-                                        style:
-                                            FlutterFlowTheme.bodyText1.override(
-                                          fontFamily: 'Mitr',
-                                          color: Colors.white,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10, 0, 0, 0),
-                                      child: Image.asset(
-                                        'assets/images/Pickup.png',
-                                        width: 50,
-                                        height: 50,
-                                        fit: BoxFit.contain,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(10, 5, 0, 0),
-                              child: Container(
-                                width: double.infinity,
-                                height: 50,
-                                decoration: BoxDecoration(),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Text(
-                                      'ความเร็วโดยเฉลี่ย :',
-                                      style:
-                                          FlutterFlowTheme.bodyText1.override(
-                                        fontFamily: 'Mitr',
-                                        color: Colors.white,
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.normal,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10, 0, 0, 0),
-                                      child: Text(
-                                        '60',
-                                        style:
-                                            FlutterFlowTheme.bodyText1.override(
-                                          fontFamily: 'Mitr',
-                                          color: Colors.white,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10, 0, 0, 0),
-                                      child: Text(
-                                        'กม./ชม.',
-                                        style:
-                                            FlutterFlowTheme.bodyText1.override(
-                                          fontFamily: 'Mitr',
-                                          color: Colors.white,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(10, 5, 0, 0),
-                              child: Container(
-                                width: double.infinity,
-                                height: 50,
-                                decoration: BoxDecoration(),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Text(
-                                      'สี :',
-                                      style:
-                                          FlutterFlowTheme.bodyText1.override(
-                                        fontFamily: 'Mitr',
-                                        color: Colors.white,
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.normal,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10, 0, 0, 0),
-                                      child: Text(
-                                        'สีดำ',
-                                        style:
-                                            FlutterFlowTheme.bodyText1.override(
-                                          fontFamily: 'Mitr',
-                                          color: Colors.white,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10, 0, 0, 0),
+                                          0, 10, 0, 0),
                                       child: Container(
-                                        width: 50,
-                                        height: 50,
-                                        decoration: BoxDecoration(
-                                          color: Colors.black,
-                                          shape: BoxShape.circle,
-                                          border: Border.all(
+                                        width: 450,
+                                        height: 350,
+                                        child: Stack(
+                                          children: [
+                                            Align(
+                                              alignment:
+                                                  AlignmentDirectional(0, 0),
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(20),
+                                                child: Image.asset(
+                                                  'assets/images/Example_Demo/Car.jpg',
+                                                  width: double.infinity,
+                                                  height: double.infinity,
+                                                  fit: BoxFit.fitWidth,
+                                                ),
+                                              ),
+                                            ),
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  0.96, 0.95),
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                                child: Image.asset(
+                                                  'assets/images/Example_Demo/Palte.jpg',
+                                                  width: 120,
+                                                  height: 90,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10, 20, 0, 0),
+                                      child: Container(
+                                        width: double.infinity,
+                                        height: 55,
+                                        decoration: BoxDecoration(),
+                                        child: Text(
+                                          '${widget.license_plate}',
+                                          style: FlutterFlowTheme.bodyText1
+                                              .override(
+                                            fontFamily: 'Mitr',
                                             color: Colors.white,
+                                            fontSize: 40,
+                                            fontWeight: FontWeight.w300,
                                           ),
                                         ),
                                       ),
                                     ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0, 5, 0, 0),
+                                      child: Container(
+                                        width: double.infinity,
+                                        height: 2,
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10, 5, 0, 0),
+                                      child: Container(
+                                        width: double.infinity,
+                                        height: 50,
+                                        decoration: BoxDecoration(),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Text(
+                                              'ชื่อเจ้าของรถ :',
+                                              style: FlutterFlowTheme.bodyText1
+                                                  .override(
+                                                fontFamily: 'Mitr',
+                                                color: Colors.white,
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.normal,
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(10, 0, 0, 0),
+                                              child: Text(
+                                                'นายตัวอย่าง สมมุติ',
+                                                style: FlutterFlowTheme
+                                                    .bodyText1
+                                                    .override(
+                                                  fontFamily: 'Mitr',
+                                                  color: Colors.white,
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.w300,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10, 5, 0, 0),
+                                      child: Container(
+                                        width: double.infinity,
+                                        height: 50,
+                                        decoration: BoxDecoration(),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Text(
+                                              'จังหวัด :',
+                                              style: FlutterFlowTheme.bodyText1
+                                                  .override(
+                                                fontFamily: 'Mitr',
+                                                color: Colors.white,
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.normal,
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(10, 0, 0, 0),
+                                              child: Text(
+                                                '${widget.city}',
+                                                style: FlutterFlowTheme
+                                                    .bodyText1
+                                                    .override(
+                                                  fontFamily: 'Mitr',
+                                                  color: Colors.white,
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.w300,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10, 5, 0, 0),
+                                      child: Container(
+                                        width: double.infinity,
+                                        height: 50,
+                                        decoration: BoxDecoration(),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Text(
+                                              'ประเภทรถ :',
+                                              style: FlutterFlowTheme.bodyText1
+                                                  .override(
+                                                fontFamily: 'Mitr',
+                                                color: Colors.white,
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.normal,
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(10, 0, 0, 0),
+                                              child: Text(
+                                                'รถกระบะ',
+                                                style: FlutterFlowTheme
+                                                    .bodyText1
+                                                    .override(
+                                                  fontFamily: 'Mitr',
+                                                  color: Colors.white,
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.w300,
+                                                ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(10, 0, 0, 0),
+                                              child: Image.asset(
+                                                'assets/images/Pickup.png',
+                                                width: 50,
+                                                height: 50,
+                                                fit: BoxFit.contain,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10, 5, 0, 0),
+                                      child: Container(
+                                        width: double.infinity,
+                                        height: 50,
+                                        decoration: BoxDecoration(),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Text(
+                                              'ความเร็วโดยเฉลี่ย :',
+                                              style: FlutterFlowTheme.bodyText1
+                                                  .override(
+                                                fontFamily: 'Mitr',
+                                                color: Colors.white,
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.normal,
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(10, 0, 0, 0),
+                                              child: Text(
+                                                '60',
+                                                style: FlutterFlowTheme
+                                                    .bodyText1
+                                                    .override(
+                                                  fontFamily: 'Mitr',
+                                                  color: Colors.white,
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.w300,
+                                                ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(10, 0, 0, 0),
+                                              child: Text(
+                                                'กม./ชม.',
+                                                style: FlutterFlowTheme
+                                                    .bodyText1
+                                                    .override(
+                                                  fontFamily: 'Mitr',
+                                                  color: Colors.white,
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.w300,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10, 5, 0, 0),
+                                      child: Container(
+                                        width: double.infinity,
+                                        height: 50,
+                                        decoration: BoxDecoration(),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Text(
+                                              'สี :',
+                                              style: FlutterFlowTheme.bodyText1
+                                                  .override(
+                                                fontFamily: 'Mitr',
+                                                color: Colors.white,
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.normal,
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(10, 0, 0, 0),
+                                              child: Text(
+                                                'สีดำ',
+                                                style: FlutterFlowTheme
+                                                    .bodyText1
+                                                    .override(
+                                                  fontFamily: 'Mitr',
+                                                  color: Colors.white,
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.w300,
+                                                ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(10, 0, 0, 0),
+                                              child: Container(
+                                                width: 50,
+                                                height: 50,
+                                                decoration: BoxDecoration(
+                                                  color: Colors.black,
+                                                  shape: BoxShape.circle,
+                                                  border: Border.all(
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
                                   ],
                                 ),
-                              ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20, 0, 10, 0),
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 0.55,
-                  height: double.infinity,
-                  decoration: BoxDecoration(),
-                  child: Column(
+                  Column(
                     mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Container(
-                        width: double.infinity,
-                        height: 100,
-                        decoration: BoxDecoration(
-                          color: Color(0xFF1D1D1D),
-                        ),
-                        child: Row(
+                        width: MediaQuery.of(context).size.width * 0.5,
+                        height: MediaQuery.of(context).size.height * 0.71,
+                        decoration: BoxDecoration(),
+                        child: Column(
                           mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
-                              '${widget.license_plate}',
-                              style: FlutterFlowTheme.bodyText1.override(
-                                fontFamily: 'Mitr',
-                                color: Colors.white,
-                                fontSize: 45,
-                                fontWeight: FontWeight.w300,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 400,
-                        decoration: BoxDecoration(
-                          color: Color(0xFFEEEEEE),
-                        ),
-                        child: Stack(
-                          children: [
-                            Image.asset(
-                              'assets/images/Example_Demo/Road.jpg',
-                              width: double.infinity,
-                              height: double.infinity,
-                              fit: BoxFit.cover,
-                            ),
-                            Align(
-                              alignment: AlignmentDirectional(-0.01, 0.03),
-                              child: Image.asset(
-                                'assets/images/Play.png',
-                                width: 100,
-                                height: 100,
-                                fit: BoxFit.cover,
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                              child: Container(
+                                width: MediaQuery.of(context).size.width * 0.5,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.6,
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFEEEEEE),
+                                ),
+                                child: Stack(
+                                  children: [
+                                    Image.asset(
+                                      'assets/images/Example_Demo/Road.jpg',
+                                      width: double.infinity,
+                                      height: double.infinity,
+                                      fit: BoxFit.cover,
+                                    ),
+                                    Align(
+                                      alignment:
+                                          AlignmentDirectional(0.01, 0.03),
+                                      child: Image.asset(
+                                        'assets/images/Play.png',
+                                        width: 100,
+                                        height: 100,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ],
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                         child: FFButtonWidget(
                           onPressed: () {
-                            print('Button pressed ...');
+                            print('เข้าถึง DIR');
                           },
                           text: 'ตำแหน่งไฟล์',
                           options: FFButtonOptions(
@@ -482,10 +491,10 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                       ),
                     ],
                   ),
-                ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
