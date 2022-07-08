@@ -134,20 +134,15 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
     "00:00", // เวลาเริ่ม
     "00:00", // เวลาจบ
     "-", // สี
-    "-", // ประเภทรถเก๋ง
-    "-", // ประเภทรถกระบะ
-    "-", // ประเภทรถตู้
-    "-", // ประเภทรถบรรทุก
-    "-", // รวมทุกประเภท
+    "", // ประเภทรถเก๋ง
+    "", // ประเภทรถกระบะ
+    "", // ประเภทรถตู้
+    "", // ประเภทรถบรรทุก
+    "", // รวมทุกประเภท
   ];
+
   // ส่งค่าให้กับ Api
   var data_api = Data_Api();
-
-  //   // แสดงข้อมูลทะเบียนรถ
-  // String license_plate = "ไม่มีข้อมูล";
-
-  //   // แสดงข้อมูลจังหวัด
-  // String city = "ไม่มีข้อมูล";
 
   //  แสดงข้อมูลป้ายที่ค้นหา
   String search_plate = "ไม่ได้ใส่หมายเลขป้ายทะเบียน";
@@ -972,6 +967,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                     onPressed: () {
                                       print(data_Search);
                                       print(search_plate);
+                                      print(onClick_typeCar);
                                       Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(
@@ -980,6 +976,8 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                                   license_plate: data_Search[0],
                                                   city: data_Search[1],
                                                   search_plate: search_plate,
+                                                  type_car:
+                                                      onClick_typeCar,
                                                 )),
                                       );
                                     },

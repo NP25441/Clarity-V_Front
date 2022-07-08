@@ -10,9 +10,14 @@ class ResultScreenWidget extends StatefulWidget {
   final String license_plate;
   final String city;
   final String search_plate;
-  const ResultScreenWidget(
-      {Key? key, required this.license_plate, required this.city, required this.search_plate})
-      : super(key: key);
+  final List type_car;
+  const ResultScreenWidget({
+    Key? key,
+    required this.license_plate,
+    required this.city,
+    required this.search_plate,
+    required this.type_car,
+  }) : super(key: key);
 
   @override
   _ResultScreenWidgetState createState() => _ResultScreenWidgetState();
@@ -25,7 +30,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
   String license_plate = "ไม่มีข้อมูล";
   String city = "ไม่มีข้อมูล";
   String search_plate = "ไม่ได้ใส่หมายเลขป้ายทะเบียน";
-
+  List type_car = [];
 
   // เก็บค่าเปลี่ยนสีปุ่ม
   List onClick_typeCar = [
@@ -68,6 +73,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                     padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                     child: GestureDetector(
                       onTap: () {
+                        print(type_car);
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
@@ -139,7 +145,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                           setState(() {
                             if (onClick_typeCar[0] == 1) {
                               onClick_typeCar[0] = 0;
-                              data_Car[0] = '-';
+                              data_Car[0] = '';
                               print(data_Car[0]);
                             } else {
                               onClick_typeCar[0] = 1;
@@ -190,7 +196,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                           setState(() {
                             if (onClick_typeCar[1] == 1) {
                               onClick_typeCar[1] = 0;
-                              data_Car[1] = '-';
+                              data_Car[1] = '';
                               print(data_Car[1]);
                             } else {
                               onClick_typeCar[1] = 1;
@@ -241,7 +247,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                           setState(() {
                             if (onClick_typeCar[2] == 1) {
                               onClick_typeCar[2] = 0;
-                              data_Car[2] = '-';
+                              data_Car[2] = '';
                               print(data_Car[2]);
                             } else {
                               onClick_typeCar[2] = 1;
@@ -292,7 +298,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                           setState(() {
                             if (onClick_typeCar[3] == 1) {
                               onClick_typeCar[3] = 0;
-                              data_Car[3] = '-';
+                              data_Car[3] = '';
                               print(data_Car[3]);
                             } else {
                               onClick_typeCar[3] = 1;
@@ -896,6 +902,8 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                                       license_plate:
                                                           license_plate,
                                                       city: city,
+                                                      search_plate:
+                                                          search_plate,
                                                     )),
                                           );
                                         },

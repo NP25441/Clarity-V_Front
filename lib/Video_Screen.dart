@@ -7,8 +7,9 @@ import 'package:google_fonts/google_fonts.dart';
 class VideoScreenWidget extends StatefulWidget {
   final String license_plate;
   final String city;
+  final String search_plate;
   const VideoScreenWidget(
-      {Key? key, required this.license_plate, required this.city})
+      {Key? key, required this.license_plate, required this.city, required this.search_plate})
       : super(key: key);
 
   @override
@@ -67,7 +68,7 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'หมายเลขป้ายทะเบียน : ${widget.license_plate}',
+                          'หมายเลขป้ายทะเบียน : ${widget.search_plate}',
                           style: FlutterFlowTheme.bodyText1.override(
                             fontFamily: 'Mitr',
                             color: Colors.white,
