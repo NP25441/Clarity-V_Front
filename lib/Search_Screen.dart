@@ -964,7 +964,6 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                         fontWeight: FontWeight.w300,
                                       ),
                                     ),
-                                    
                                     onPressed: () {
                                       print(data_Search);
                                       print(search_plate);
@@ -977,8 +976,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                                   license_plate: data_Search[0],
                                                   city: data_Search[1],
                                                   search_plate: search_plate,
-                                                  type_car:
-                                                      onClick_typeCar,
+                                                  type_car: onClick_typeCar,
                                                 )),
                                       );
                                     },

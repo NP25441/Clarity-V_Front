@@ -9,7 +9,10 @@ class VideoScreenWidget extends StatefulWidget {
   final String city;
   final String search_plate;
   const VideoScreenWidget(
-      {Key? key, required this.license_plate, required this.city, required this.search_plate})
+      {Key? key,
+      required this.license_plate,
+      required this.city,
+      required this.search_plate})
       : super(key: key);
 
   @override
@@ -176,7 +179,6 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                                         ),
                                       ),
                                     ),
-                                    
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           10, 5, 0, 0),
