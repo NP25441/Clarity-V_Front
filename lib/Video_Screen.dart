@@ -176,6 +176,7 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                                         ),
                                       ),
                                     ),
+                                    
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           10, 5, 0, 0),

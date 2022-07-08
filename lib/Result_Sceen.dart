@@ -31,6 +31,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
   String city = "ไม่มีข้อมูล";
   String search_plate = "ไม่ได้ใส่หมายเลขป้ายทะเบียน";
   List type_car = [];
+  
 
   // เก็บค่าเปลี่ยนสีปุ่ม
   List onClick_typeCar = [

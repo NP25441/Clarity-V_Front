@@ -964,6 +964,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                         fontWeight: FontWeight.w300,
                                       ),
                                     ),
+                                    
                                     onPressed: () {
                                       print(data_Search);
                                       print(search_plate);
