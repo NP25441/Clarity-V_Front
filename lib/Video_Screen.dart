@@ -435,7 +435,20 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                           children: [
                             Padding(
                               padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                              child: Text(
+                                'กดที่รูปภาพเพื่อเล่นวิดีโอผ่าน Web Browser',
+                                style: FlutterFlowTheme.bodyText1.override(
+                                  fontFamily: 'Mitr',
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                               child: Container(
                                 width: MediaQuery.of(context).size.width * 0.5,
                                 height:
@@ -443,25 +456,16 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                                 decoration: BoxDecoration(
                                   color: Color(0xFFEEEEEE),
                                 ),
-                                child: Stack(
-                                  children: [
-                                    Image.asset(
-                                      'assets/images/Example_Demo/Road.jpg',
-                                      width: double.infinity,
-                                      height: double.infinity,
-                                      fit: BoxFit.cover,
-                                    ),
-                                    Align(
-                                      alignment:
-                                          AlignmentDirectional(0.01, 0.03),
-                                      child: Image.asset(
-                                        'assets/images/Play.png',
-                                        width: 100,
-                                        height: 100,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ],
+                                child: GestureDetector(
+                                  onTap: () {
+                                    print("test");
+                                  },
+                                  child: Image.asset(
+                                    'assets/images/Example_Demo/Road.jpg',
+                                    width: double.infinity,
+                                    height: double.infinity,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
                             ),
@@ -469,12 +473,12 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                         child: FFButtonWidget(
                           onPressed: () {
                             print('เข้าถึง DIR');
                           },
-                          text: 'ตำแหน่งไฟล์',
+                          text: 'ดาวน์โหลดไฟล์',
                           options: FFButtonOptions(
                             width: 230,
                             height: 50,
