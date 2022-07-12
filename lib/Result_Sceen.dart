@@ -27,19 +27,25 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
     with TickerProviderStateMixin {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  String license_plate = "ไม่มีข้อมูล";
-  String city = "ไม่มีข้อมูล";
-  String search_plate = "ไม่ได้ใส่หมายเลขป้ายทะเบียน";
-  List type_car = [];
 
-  // เก็บค่าเปลี่ยนสีปุ่ม
+  // ให้เชื่อมโยงค่ารถกับการเลือก
+  @override
+  void initState() {
+    super.initState();
+    widget.type_car.contains(1)
+        ? onClick_typeCar = widget.type_car
+        : onClick_typeCar = onClick_typeCar;
+  }
+
+  // เก็บค่าเปลี่ยนสีปุ่มของรถและมาการแทนค่าจากชุดแรก
   List onClick_typeCar = [
     1, // รถเก๋ง
     1, // รถกระบะ
     1, // รถตู้
     1, // รถบรรทุก
   ];
-
+  
+  // ประเภทของรถ
   List data_Car = [
     // ตัวแปรการค้นหา
     "รถเก๋ง", // ประเภทรถเก๋ง
@@ -73,7 +79,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                     padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                     child: GestureDetector(
                       onTap: () {
-                        print(type_car);
+                        print(widget.type_car);
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
@@ -900,10 +906,10 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                                 builder: (context) =>
                                                     VideoScreenWidget(
                                                       license_plate:
-                                                          license_plate,
-                                                      city: city,
+                                                          widget.license_plate,
+                                                      city: widget.city,
                                                       search_plate:
-                                                          search_plate,
+                                                          widget.search_plate,
                                                     )),
                                           );
                                         },
