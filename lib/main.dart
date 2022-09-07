@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData.dark(),
       home: const MyHomePage(title: 'Clarity V'),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

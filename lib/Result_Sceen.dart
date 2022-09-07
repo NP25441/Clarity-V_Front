@@ -5,6 +5,10 @@ import 'package:clarity_v/flutter%20flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert' as convert;
+
+import 'api_model.dart';
 
 class ResultScreenWidget extends StatefulWidget {
   final String license_plate;
@@ -27,15 +31,8 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
     with TickerProviderStateMixin {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-
   // ให้เชื่อมโยงค่ารถกับการเลือก
-  @override
-  void initState() {
-    super.initState();
-    widget.type_car.contains(1)
-        ? onClick_typeCar = widget.type_car
-        : onClick_typeCar = onClick_typeCar;
-  }
+  
 
   // เก็บค่าเปลี่ยนสีปุ่มของรถและมาการแทนค่าจากชุดแรก
   List onClick_typeCar = [
@@ -44,7 +41,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
     1, // รถตู้
     1, // รถบรรทุก
   ];
-  
+
   // ประเภทของรถ
   List data_Car = [
     // ตัวแปรการค้นหา
@@ -53,6 +50,36 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
     "รถตู้", // ประเภทรถตู้
     "รถบรทุก", // ประเภทรถบรรทุก
   ];
+
+  var data_api = Data_Api();
+
+  // //  เชื่อมต่อกับ API
+  // showdata_Search() async {
+  //   final res = await http.get(
+  //     Uri.parse("$url"),
+  //     headers: {
+  //       "Accept": "application/json",
+  //       "Access-Control_Allow_Origin": "*",
+  //     },
+  //   );
+  //   print('res.statusCode: ${res.statusCode}');
+  //   print('res.headers: ${res.headers}');
+  //   print('body = ${res.body}');
+  //   final data = convert.jsonDecode(res.body) as Map<String, dynamic>;
+  //   print("getProfile1: ${data}");
+  //   print(data["message"]);
+  //   setState(() {
+  //     data_api = Data_Api.fromJson(data);
+  //   });
+  // }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   showdata_Search();
+  //   widget.type_car.contains(1)
+  //       ? onClick_typeCar = widget.type_car
+  //       : onClick_typeCar = onClick_typeCar;
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -684,7 +711,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(10, 0, 0, 0),
                                               child: Text(
-                                                'นายตัวอย่าง สมมุติ',
+                                                'บลาๆ',
                                                 style: FlutterFlowTheme
                                                     .bodyText1
                                                     .override(
@@ -787,60 +814,60 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                         ),
                                       ),
                                     ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10, 5, 0, 0),
-                                      child: Container(
-                                        width: double.infinity,
-                                        height: 50,
-                                        decoration: BoxDecoration(),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Text(
-                                              'ความเร็วโดยเฉลี่ย :',
-                                              style: FlutterFlowTheme.bodyText1
-                                                  .override(
-                                                fontFamily: 'Mitr',
-                                                color: Colors.white,
-                                                fontSize: 22,
-                                                fontWeight: FontWeight.normal,
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(10, 0, 0, 0),
-                                              child: Text(
-                                                '60',
-                                                style: FlutterFlowTheme
-                                                    .bodyText1
-                                                    .override(
-                                                  fontFamily: 'Mitr',
-                                                  color: Colors.white,
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.w300,
-                                                ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(10, 0, 0, 0),
-                                              child: Text(
-                                                'กม./ชม.',
-                                                style: FlutterFlowTheme
-                                                    .bodyText1
-                                                    .override(
-                                                  fontFamily: 'Mitr',
-                                                  color: Colors.white,
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.w300,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
+                                    // Padding(
+                                    //   padding: EdgeInsetsDirectional.fromSTEB(
+                                    //       10, 5, 0, 0),
+                                    //   child: Container(
+                                    //     width: double.infinity,
+                                    //     height: 50,
+                                    //     decoration: BoxDecoration(),
+                                    //     child: Row(
+                                    //       mainAxisSize: MainAxisSize.max,
+                                    //       children: [
+                                    //         Text(
+                                    //           'ความเร็วโดยเฉลี่ย :',
+                                    //           style: FlutterFlowTheme.bodyText1
+                                    //               .override(
+                                    //             fontFamily: 'Mitr',
+                                    //             color: Colors.white,
+                                    //             fontSize: 22,
+                                    //             fontWeight: FontWeight.normal,
+                                    //           ),
+                                    //         ),
+                                    //         Padding(
+                                    //           padding: EdgeInsetsDirectional
+                                    //               .fromSTEB(10, 0, 0, 0),
+                                    //           child: Text(
+                                    //             '60',
+                                    //             style: FlutterFlowTheme
+                                    //                 .bodyText1
+                                    //                 .override(
+                                    //               fontFamily: 'Mitr',
+                                    //               color: Colors.white,
+                                    //               fontSize: 20,
+                                    //               fontWeight: FontWeight.w300,
+                                    //             ),
+                                    //           ),
+                                    //         ),
+                                    //         Padding(
+                                    //           padding: EdgeInsetsDirectional
+                                    //               .fromSTEB(10, 0, 0, 0),
+                                    //           child: Text(
+                                    //             'กม./ชม.',
+                                    //             style: FlutterFlowTheme
+                                    //                 .bodyText1
+                                    //                 .override(
+                                    //               fontFamily: 'Mitr',
+                                    //               color: Colors.white,
+                                    //               fontSize: 20,
+                                    //               fontWeight: FontWeight.w300,
+                                    //             ),
+                                    //           ),
+                                    //         ),
+                                    //       ],
+                                    //     ),
+                                    //   ),
+                                    // ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           10, 5, 0, 0),
