@@ -141,13 +141,11 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
     "-", // รวมทุกประเภท
   ];
 
-    //  แสดงข้อมูลป้ายที่ค้นหา
+  //  แสดงข้อมูลป้ายที่ค้นหา
   String search_plate = "ไม่ได้ใส่หมายเลขป้ายทะเบียน";
 
   // // ส่งค่าให้กับ Api
   // var data_api = Data_Api();
-
-
 
   // //  ชุดข้อมูลที่เชื่อมกับ API
   // late Data_Api license_plate = Data_Api();
@@ -207,7 +205,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFF1E2429),
+      backgroundColor: Color.fromARGB(255, 239, 238, 233),
       body: Container(
         width: double.infinity,
         height: double.infinity,
@@ -231,7 +229,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                             textAlign: TextAlign.center,
                             style: FlutterFlowTheme.bodyText1.override(
                               fontFamily: 'Mitr',
-                              color: Colors.white,
+                              color: Color.fromARGB(255, 46, 46, 46),
                               fontSize: 50,
                               fontWeight: FontWeight.normal,
                             ),
@@ -255,7 +253,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                     textAlign: TextAlign.justify,
                                     style: FlutterFlowTheme.bodyText1.override(
                                       fontFamily: 'Mitr',
-                                      color: Colors.white,
+                                      color: Color.fromARGB(255, 46, 46, 46),
                                       fontSize: 30,
                                       fontWeight: FontWeight.w300,
                                     ),
@@ -274,22 +272,25 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                         ),
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: Colors.black,
-                                            width: 1,
+                                            color: Color.fromARGB(
+                                                255, 160, 182, 255),
+                                            width: 2,
                                           ),
                                           borderRadius:
                                               BorderRadius.circular(20),
                                         ),
                                         focusedBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: Colors.black,
-                                            width: 1,
+                                            color: Color.fromARGB(
+                                                255, 160, 182, 255),
+                                            width: 5,
                                           ),
                                           borderRadius:
                                               BorderRadius.circular(20),
                                         ),
                                         filled: true,
-                                        fillColor: Color(0xFF1D1D1D),
+                                        fillColor:
+                                            Color.fromARGB(255, 255, 255, 255),
                                       ),
                                       onChanged: (value) {
                                         search_plate = value;
@@ -298,7 +299,8 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                       style:
                                           FlutterFlowTheme.bodyText1.override(
                                         fontFamily: 'Mitr',
-                                        color: Colors.white,
+                                        color:
+                                            Color.fromARGB(255, 141, 168, 255),
                                         fontSize: 20,
                                         fontWeight: FontWeight.w300,
                                       ),
@@ -326,7 +328,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                     'จังหวัด',
                                     style: FlutterFlowTheme.bodyText1.override(
                                       fontFamily: 'Mitr',
-                                      color: Colors.white,
+                                      color: Color.fromARGB(255, 46, 46, 46),
                                       fontSize: 30,
                                       fontWeight: FontWeight.w300,
                                     ),
@@ -344,22 +346,25 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                         ),
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: Colors.black,
-                                            width: 1,
+                                            color: Color.fromARGB(
+                                                255, 160, 182, 255),
+                                            width: 2,
                                           ),
                                           borderRadius:
                                               BorderRadius.circular(20),
                                         ),
                                         focusedBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: Colors.black,
-                                            width: 1,
+                                            color: Color.fromARGB(
+                                                255, 160, 182, 255),
+                                            width: 5,
                                           ),
                                           borderRadius:
                                               BorderRadius.circular(20),
                                         ),
                                         filled: true,
-                                        fillColor: Color(0xFF1D1D1D),
+                                        fillColor:
+                                            Color.fromARGB(255, 255, 255, 255),
                                       ),
                                       onChanged: (value) {
                                         // city = value;
@@ -368,7 +373,8 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                       style:
                                           FlutterFlowTheme.bodyText1.override(
                                         fontFamily: 'Mitr',
-                                        color: Colors.white,
+                                        color:
+                                            Color.fromARGB(255, 141, 168, 255),
                                         fontSize: 20,
                                         fontWeight: FontWeight.w300,
                                       ),
@@ -407,7 +413,8 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                         style:
                                             FlutterFlowTheme.bodyText1.override(
                                           fontFamily: 'Mitr',
-                                          color: Colors.white,
+                                          color:
+                                              Color.fromARGB(255, 46, 46, 46),
                                           fontSize: 30,
                                           fontWeight: FontWeight.w300,
                                         ),
@@ -430,18 +437,21 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                                 options: FFButtonOptions(
                                                   width: double.infinity,
                                                   height: 60,
-                                                  color: Color(0xFF1D1D1D),
+                                                  color: Color.fromARGB(
+                                                      255, 255, 255, 255),
                                                   textStyle: FlutterFlowTheme
                                                       .subtitle2
                                                       .override(
                                                     fontFamily: 'Mitr',
-                                                    color: Colors.white,
+                                                    color: Color.fromARGB(
+                                                        255, 141, 168, 255),
                                                     fontSize: 20,
                                                     fontWeight: FontWeight.w300,
                                                   ),
                                                   borderSide: BorderSide(
-                                                    color: Colors.black,
-                                                    width: 1,
+                                                    color: Color.fromARGB(
+                                                        255, 160, 182, 255),
+                                                    width: 2,
                                                   ),
                                                   borderRadius: 12,
                                                 ),
@@ -483,7 +493,8 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                                       .bodyText1
                                                       .override(
                                                     fontFamily: 'Mitr',
-                                                    color: Colors.white,
+                                                    color: Color.fromARGB(
+                                                        255, 46, 46, 46),
                                                     fontSize: 30,
                                                     fontWeight: FontWeight.w300,
                                                   ),
@@ -512,22 +523,35 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                                           width:
                                                               double.infinity,
                                                           height: 60,
-                                                          color:
-                                                              Color(0xFF1D1D1D),
+                                                          color: Color.fromARGB(
+                                                              255,
+                                                              255,
+                                                              255,
+                                                              255),
                                                           textStyle:
                                                               FlutterFlowTheme
                                                                   .subtitle2
                                                                   .override(
                                                             fontFamily: 'Mitr',
-                                                            color: Colors.white,
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    141,
+                                                                    168,
+                                                                    255),
                                                             fontSize: 20,
                                                             fontWeight:
                                                                 FontWeight.w300,
                                                           ),
                                                           borderSide:
                                                               BorderSide(
-                                                            color: Colors.black,
-                                                            width: 1,
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    160,
+                                                                    182,
+                                                                    255),
+                                                            width: 2,
                                                           ),
                                                           borderRadius: 12,
                                                         ),
@@ -544,7 +568,8 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                                             .bodyText1
                                                             .override(
                                                           fontFamily: 'Mitr',
-                                                          color: Colors.white,
+                                                          color: Color.fromARGB(
+                                                              255, 46, 46, 46),
                                                           fontSize: 20,
                                                           fontWeight:
                                                               FontWeight.w300,
@@ -573,16 +598,24 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                                             width:
                                                                 double.infinity,
                                                             height: 60,
-                                                            color: Color(
-                                                                0xFF1D1D1D),
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    255,
+                                                                    255,
+                                                                    255),
                                                             textStyle:
                                                                 FlutterFlowTheme
                                                                     .subtitle2
                                                                     .override(
                                                               fontFamily:
                                                                   'Mitr',
-                                                              color:
-                                                                  Colors.white,
+                                                              color: Color
+                                                                  .fromARGB(
+                                                                      255,
+                                                                      141,
+                                                                      168,
+                                                                      255),
                                                               fontSize: 20,
                                                               fontWeight:
                                                                   FontWeight
@@ -590,9 +623,13 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                                             ),
                                                             borderSide:
                                                                 BorderSide(
-                                                              color:
-                                                                  Colors.black,
-                                                              width: 1,
+                                                              color: Color
+                                                                  .fromARGB(
+                                                                      255,
+                                                                      160,
+                                                                      182,
+                                                                      255),
+                                                              width: 2,
                                                             ),
                                                             borderRadius: 12,
                                                           ),
@@ -621,7 +658,8 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                                     .bodyText1
                                                     .override(
                                                   fontFamily: 'Mitr',
-                                                  color: Colors.white,
+                                                  color: Color.fromARGB(
+                                                      255, 46, 46, 46),
                                                   fontSize: 30,
                                                   fontWeight: FontWeight.w300,
                                                 ),
@@ -648,19 +686,21 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                                       height: double.infinity,
                                                       color: color_Onclick[0] ==
                                                               '-'
-                                                          ? Color(0xFF1D1D1D)
+                                                          ? Color.fromARGB(255,
+                                                              239, 238, 233)
                                                           : color_Onclick[0],
                                                       textStyle:
                                                           FlutterFlowTheme
                                                               .subtitle2
                                                               .override(
                                                         fontFamily: 'Poppins',
-                                                        color:
-                                                            Color(0xFF1D1D1D),
+                                                        color: Color.fromARGB(
+                                                            255, 239, 238, 233),
                                                       ),
                                                       borderSide: BorderSide(
-                                                        color: Colors.black,
-                                                        width: 1,
+                                                        color: Color.fromARGB(
+                                                            255, 160, 182, 255),
+                                                        width: 2,
                                                       ),
                                                       borderRadius: 50,
                                                     ),
@@ -692,7 +732,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                   textAlign: TextAlign.start,
                                   style: FlutterFlowTheme.bodyText1.override(
                                     fontFamily: 'Mitr',
-                                    color: Colors.white,
+                                    color: Color.fromARGB(255, 46, 46, 46),
                                     fontSize: 30,
                                     fontWeight: FontWeight.w300,
                                   ),
@@ -714,7 +754,8 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                         textStyle:
                                             FlutterFlowTheme.subtitle2.override(
                                           fontFamily: 'Mitr',
-                                          color: Color.fromARGB(255, 0, 0, 0),
+                                          color: Color.fromARGB(
+                                              255, 255, 255, 255),
                                           fontSize: 15,
                                           fontWeight: FontWeight.w300,
                                         ),
@@ -733,16 +774,20 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                             });
                                           },
                                           child: Container(
-                                            width: 70,
+                                            width: 100,
                                             height: 70,
                                             decoration: BoxDecoration(
                                               color: onClick_typeCar[0] == 0
-                                                  ? Color(0xFF1D1D1D)
-                                                  : Color(0x73ADADAD),
+                                                  ? Color.fromARGB(
+                                                      255, 255, 255, 255)
+                                                  : Color.fromARGB(
+                                                      100, 160, 182, 255),
                                               borderRadius:
                                                   BorderRadius.circular(20),
                                               border: Border.all(
-                                                color: Colors.black,
+                                                color: Color.fromARGB(
+                                                    255, 160, 182, 255),
+                                                width: 2,
                                               ),
                                             ),
                                             alignment:
@@ -752,8 +797,8 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                                   .fromSTEB(5, 5, 5, 5),
                                               child: Image.asset(
                                                 'assets/images/Sedan.png',
-                                                width: 60,
-                                                height: 60,
+                                                width: 100,
+                                                height: 100,
                                                 fit: BoxFit.contain,
                                               ),
                                             ),
@@ -768,7 +813,8 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                         textStyle:
                                             FlutterFlowTheme.subtitle2.override(
                                           fontFamily: 'Mitr',
-                                          color: Color.fromARGB(255, 0, 0, 0),
+                                          color: Color.fromARGB(
+                                              255, 255, 255, 255),
                                           fontSize: 15,
                                           fontWeight: FontWeight.w300,
                                         ),
@@ -788,16 +834,20 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                             });
                                           },
                                           child: Container(
-                                            width: 70,
+                                            width: 100,
                                             height: 70,
                                             decoration: BoxDecoration(
                                               color: onClick_typeCar[1] == 0
-                                                  ? Color(0xFF1D1D1D)
-                                                  : Color(0x73ADADAD),
+                                                  ? Color.fromARGB(
+                                                      255, 255, 255, 255)
+                                                  : Color.fromARGB(
+                                                      100, 160, 182, 255),
                                               borderRadius:
                                                   BorderRadius.circular(20),
                                               border: Border.all(
-                                                color: Colors.black,
+                                                color: Color.fromARGB(
+                                                    255, 160, 182, 255),
+                                                width: 2,
                                               ),
                                             ),
                                             child: Padding(
@@ -805,8 +855,8 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                                   .fromSTEB(5, 5, 5, 5),
                                               child: Image.asset(
                                                 'assets/images/Pickup.png',
-                                                width: 60,
-                                                height: 60,
+                                                width: 100,
+                                                height: 100,
                                                 fit: BoxFit.contain,
                                               ),
                                             ),
@@ -821,7 +871,8 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                         textStyle:
                                             FlutterFlowTheme.subtitle2.override(
                                           fontFamily: 'Mitr',
-                                          color: Color.fromARGB(255, 0, 0, 0),
+                                          color: Color.fromARGB(
+                                              255, 255, 255, 255),
                                           fontSize: 15,
                                           fontWeight: FontWeight.w300,
                                         ),
@@ -842,16 +893,20 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                             });
                                           },
                                           child: Container(
-                                            width: 70,
+                                            width: 100,
                                             height: 70,
                                             decoration: BoxDecoration(
                                               color: onClick_typeCar[2] == 0
-                                                  ? Color(0xFF1D1D1D)
-                                                  : Color(0x73ADADAD),
+                                                  ? Color.fromARGB(
+                                                      255, 255, 255, 255)
+                                                  : Color.fromARGB(
+                                                      100, 160, 182, 255),
                                               borderRadius:
                                                   BorderRadius.circular(20),
                                               border: Border.all(
-                                                color: Colors.black,
+                                                color: Color.fromARGB(
+                                                    255, 160, 182, 255),
+                                                width: 2,
                                               ),
                                             ),
                                             child: Padding(
@@ -859,8 +914,8 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                                   .fromSTEB(5, 5, 5, 5),
                                               child: Image.asset(
                                                 'assets/images/Van.png',
-                                                width: 60,
-                                                height: 60,
+                                                width: 100,
+                                                height: 100,
                                                 fit: BoxFit.contain,
                                               ),
                                             ),
@@ -875,7 +930,8 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                         textStyle:
                                             FlutterFlowTheme.subtitle2.override(
                                           fontFamily: 'Mitr',
-                                          color: Color.fromARGB(255, 0, 0, 0),
+                                          color: Color.fromARGB(
+                                              255, 255, 255, 255),
                                           fontSize: 15,
                                           fontWeight: FontWeight.w300,
                                         ),
@@ -896,16 +952,20 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                             });
                                           },
                                           child: Container(
-                                            width: 70,
+                                            width: 100,
                                             height: 70,
                                             decoration: BoxDecoration(
                                               color: onClick_typeCar[3] == 0
-                                                  ? Color(0xFF1D1D1D)
-                                                  : Color(0x73ADADAD),
+                                                  ? Color.fromARGB(
+                                                      255, 255, 255, 255)
+                                                  : Color.fromARGB(
+                                                      100, 160, 182, 255),
                                               borderRadius:
                                                   BorderRadius.circular(20),
                                               border: Border.all(
-                                                color: Colors.black,
+                                                color: Color.fromARGB(
+                                                    255, 160, 182, 255),
+                                                width: 2,
                                               ),
                                             ),
                                             child: Padding(
@@ -913,8 +973,8 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                                   .fromSTEB(5, 5, 5, 5),
                                               child: Image.asset(
                                                 'assets/images/Truck.png',
-                                                width: 60,
-                                                height: 60,
+                                                width: 100,
+                                                height: 100,
                                                 fit: BoxFit.contain,
                                               ),
                                             ),
@@ -942,7 +1002,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                   textAlign: TextAlign.start,
                                   style: FlutterFlowTheme.bodyText1.override(
                                     fontFamily: 'Mitr',
-                                    color: Colors.white,
+                                    color: Color.fromARGB(255, 46, 46, 46),
                                     fontSize: 35,
                                     fontWeight: FontWeight.normal,
                                   ),
@@ -958,7 +1018,8 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                         style:
                                             FlutterFlowTheme.bodyText1.override(
                                           fontFamily: 'Mitr',
-                                          color: Colors.white,
+                                          color:
+                                              Color.fromARGB(255, 46, 46, 46),
                                           fontSize: 25,
                                           fontWeight: FontWeight.w300,
                                         ),
@@ -1016,16 +1077,16 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                             options: FFButtonOptions(
                               width: 300,
                               height: 50,
-                              color: Color(0xFF1D1D1D),
+                              color: Color.fromARGB(255, 255, 255, 255),
                               textStyle: FlutterFlowTheme.subtitle2.override(
                                 fontFamily: 'Mitr',
-                                color: Colors.white,
+                                color: Color.fromARGB(255, 46, 46, 46),
                                 fontSize: 30,
                                 fontWeight: FontWeight.w300,
                               ),
                               borderSide: BorderSide(
-                                color: Colors.white,
-                                width: 1,
+                                color: Color.fromARGB(255, 160, 182, 255),
+                                width: 2,
                               ),
                               borderRadius: 89,
                             ),
@@ -1050,7 +1111,8 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                         borderRadius: BorderRadius.circular(50),
                         shape: BoxShape.rectangle,
                         border: Border.all(
-                          color: Colors.black,
+                          color: Color.fromARGB(255, 160, 182, 255),
+                          width: 2,
                         ),
                       ),
                       child: Column(
@@ -1067,7 +1129,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(50),
                                   border: Border.all(
-                                    color: Colors.white,
+                                    color: Color.fromARGB(255, 46, 46, 46),
                                     width: 0,
                                   ),
                                 ),
@@ -1079,7 +1141,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                   textStyle:
                                       FlutterFlowTheme.subtitle2.override(
                                     fontFamily: 'Mitr',
-                                    color: Color.fromARGB(255, 0, 0, 0),
+                                    color: Color.fromARGB(255, 255, 255, 255),
                                     fontSize: 15,
                                     fontWeight: FontWeight.w300,
                                   ),
@@ -1100,10 +1162,11 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                       textStyle:
                                           FlutterFlowTheme.subtitle2.override(
                                         fontFamily: 'Mitr',
-                                        color: Colors.white,
+                                        color: Color.fromARGB(255, 46, 46, 46),
                                       ),
                                       borderSide: BorderSide(
-                                        color: Colors.white,
+                                        color:
+                                            Color.fromARGB(255, 160, 182, 255),
                                         width: 3,
                                       ),
                                       borderRadius: 50,
@@ -1120,7 +1183,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(50),
                                     border: Border.all(
-                                      color: Colors.white,
+                                      color: Color.fromARGB(255, 46, 46, 46),
                                       width: 0,
                                     ),
                                   ),
@@ -1132,7 +1195,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                     textStyle:
                                         FlutterFlowTheme.subtitle2.override(
                                       fontFamily: 'Mitr',
-                                      color: Color.fromARGB(255, 0, 0, 0),
+                                      color: Color.fromARGB(255, 255, 255, 255),
                                       fontSize: 15,
                                       fontWeight: FontWeight.w300,
                                     ),
@@ -1153,10 +1216,12 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                         textStyle:
                                             FlutterFlowTheme.subtitle2.override(
                                           fontFamily: 'Mitr',
-                                          color: Colors.white,
+                                          color:
+                                              Color.fromARGB(255, 46, 46, 46),
                                         ),
                                         borderSide: BorderSide(
-                                          color: Colors.white,
+                                          color: Color.fromARGB(
+                                              255, 160, 182, 255),
                                           width: 3,
                                         ),
                                         borderRadius: 50,
@@ -1174,7 +1239,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(50),
                                     border: Border.all(
-                                      color: Colors.white,
+                                      color: Color.fromARGB(255, 46, 46, 46),
                                       width: 0,
                                     ),
                                   ),
@@ -1186,7 +1251,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                     textStyle:
                                         FlutterFlowTheme.subtitle2.override(
                                       fontFamily: 'Mitr',
-                                      color: Color.fromARGB(255, 0, 0, 0),
+                                      color: Color.fromARGB(255, 255, 255, 255),
                                       fontSize: 15,
                                       fontWeight: FontWeight.w300,
                                     ),
@@ -1207,10 +1272,12 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                         textStyle:
                                             FlutterFlowTheme.subtitle2.override(
                                           fontFamily: 'Mitr',
-                                          color: Colors.white,
+                                          color:
+                                              Color.fromARGB(255, 46, 46, 46),
                                         ),
                                         borderSide: BorderSide(
-                                          color: Colors.white,
+                                          color: Color.fromARGB(
+                                              255, 160, 182, 255),
                                           width: 3,
                                         ),
                                         borderRadius: 50,
@@ -1228,7 +1295,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(50),
                                     border: Border.all(
-                                      color: Colors.white,
+                                      color: Color.fromARGB(255, 46, 46, 46),
                                       width: 0,
                                     ),
                                   ),
@@ -1240,14 +1307,15 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                     textStyle:
                                         FlutterFlowTheme.subtitle2.override(
                                       fontFamily: 'Mitr',
-                                      color: Color.fromARGB(255, 0, 0, 0),
+                                      color: Color.fromARGB(255, 255, 255, 255),
                                       fontSize: 15,
                                       fontWeight: FontWeight.w300,
                                     ),
                                     child: FFButtonWidget(
                                       onPressed: () {
                                         data_Search[5] = 'สีขาว';
-                                        color_Onclick[0] = Color(0xFFECE7D1);
+                                        color_Onclick[0] =
+                                            Color.fromARGB(255, 255, 255, 255);
                                         setState(() {
                                           click_color = false;
                                         });
@@ -1257,14 +1325,17 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                       options: FFButtonOptions(
                                         width: 60,
                                         height: 60,
-                                        color: Color(0xFFECE7D1),
+                                        color:
+                                            Color.fromARGB(255, 255, 255, 255),
                                         textStyle:
                                             FlutterFlowTheme.subtitle2.override(
                                           fontFamily: 'Mitr',
-                                          color: Colors.white,
+                                          color:
+                                              Color.fromARGB(255, 46, 46, 46),
                                         ),
                                         borderSide: BorderSide(
-                                          color: Colors.white,
+                                          color: Color.fromARGB(
+                                              255, 160, 182, 255),
                                           width: 3,
                                         ),
                                         borderRadius: 50,
@@ -1288,7 +1359,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(50),
                                     border: Border.all(
-                                      color: Colors.white,
+                                      color: Color.fromARGB(255, 46, 46, 46),
                                       width: 0,
                                     ),
                                   ),
@@ -1300,7 +1371,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                     textStyle:
                                         FlutterFlowTheme.subtitle2.override(
                                       fontFamily: 'Mitr',
-                                      color: Color.fromARGB(255, 0, 0, 0),
+                                      color: Color.fromARGB(255, 255, 255, 255),
                                       fontSize: 15,
                                       fontWeight: FontWeight.w300,
                                     ),
@@ -1321,10 +1392,12 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                         textStyle:
                                             FlutterFlowTheme.subtitle2.override(
                                           fontFamily: 'Mitr',
-                                          color: Colors.white,
+                                          color:
+                                              Color.fromARGB(255, 46, 46, 46),
                                         ),
                                         borderSide: BorderSide(
-                                          color: Colors.white,
+                                          color: Color.fromARGB(
+                                              255, 160, 182, 255),
                                           width: 3,
                                         ),
                                         borderRadius: 50,
@@ -1341,7 +1414,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(50),
                                       border: Border.all(
-                                        color: Colors.white,
+                                        color: Color.fromARGB(255, 46, 46, 46),
                                         width: 0,
                                       ),
                                     ),
@@ -1353,7 +1426,8 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                       textStyle:
                                           FlutterFlowTheme.subtitle2.override(
                                         fontFamily: 'Mitr',
-                                        color: Color.fromARGB(255, 0, 0, 0),
+                                        color:
+                                            Color.fromARGB(255, 255, 255, 255),
                                         fontSize: 15,
                                         fontWeight: FontWeight.w300,
                                       ),
@@ -1374,10 +1448,12 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                           textStyle: FlutterFlowTheme.subtitle2
                                               .override(
                                             fontFamily: 'Mitr',
-                                            color: Colors.white,
+                                            color:
+                                                Color.fromARGB(255, 46, 46, 46),
                                           ),
                                           borderSide: BorderSide(
-                                            color: Colors.white,
+                                            color: Color.fromARGB(
+                                                255, 160, 182, 255),
                                             width: 3,
                                           ),
                                           borderRadius: 50,
@@ -1395,7 +1471,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(50),
                                       border: Border.all(
-                                        color: Colors.white,
+                                        color: Color.fromARGB(255, 46, 46, 46),
                                         width: 0,
                                       ),
                                     ),
@@ -1407,7 +1483,8 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                       textStyle:
                                           FlutterFlowTheme.subtitle2.override(
                                         fontFamily: 'Mitr',
-                                        color: Color.fromARGB(255, 0, 0, 0),
+                                        color:
+                                            Color.fromARGB(255, 255, 255, 255),
                                         fontSize: 15,
                                         fontWeight: FontWeight.w300,
                                       ),
@@ -1428,10 +1505,12 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                           textStyle: FlutterFlowTheme.subtitle2
                                               .override(
                                             fontFamily: 'Mitr',
-                                            color: Colors.white,
+                                            color:
+                                                Color.fromARGB(255, 46, 46, 46),
                                           ),
                                           borderSide: BorderSide(
-                                            color: Colors.white,
+                                            color: Color.fromARGB(
+                                                255, 160, 182, 255),
                                             width: 3,
                                           ),
                                           borderRadius: 50,
@@ -1449,7 +1528,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(50),
                                       border: Border.all(
-                                        color: Colors.white,
+                                        color: Color.fromARGB(255, 46, 46, 46),
                                         width: 0,
                                       ),
                                     ),
@@ -1461,7 +1540,8 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                       textStyle:
                                           FlutterFlowTheme.subtitle2.override(
                                         fontFamily: 'Mitr',
-                                        color: Color.fromARGB(255, 0, 0, 0),
+                                        color:
+                                            Color.fromARGB(255, 255, 255, 255),
                                         fontSize: 15,
                                         fontWeight: FontWeight.w300,
                                       ),
@@ -1482,10 +1562,12 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                           textStyle: FlutterFlowTheme.subtitle2
                                               .override(
                                             fontFamily: 'Mitr',
-                                            color: Colors.white,
+                                            color:
+                                                Color.fromARGB(255, 46, 46, 46),
                                           ),
                                           borderSide: BorderSide(
-                                            color: Colors.white,
+                                            color: Color.fromARGB(
+                                                255, 160, 182, 255),
                                             width: 3,
                                           ),
                                           borderRadius: 50,
@@ -1510,7 +1592,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(50),
                                     border: Border.all(
-                                      color: Colors.white,
+                                      color: Color.fromARGB(255, 46, 46, 46),
                                       width: 0,
                                     ),
                                   ),
@@ -1522,7 +1604,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                     textStyle:
                                         FlutterFlowTheme.subtitle2.override(
                                       fontFamily: 'Mitr',
-                                      color: Color.fromARGB(255, 0, 0, 0),
+                                      color: Color.fromARGB(255, 255, 255, 255),
                                       fontSize: 15,
                                       fontWeight: FontWeight.w300,
                                     ),
@@ -1543,10 +1625,12 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                         textStyle:
                                             FlutterFlowTheme.subtitle2.override(
                                           fontFamily: 'Mitr',
-                                          color: Colors.white,
+                                          color:
+                                              Color.fromARGB(255, 46, 46, 46),
                                         ),
                                         borderSide: BorderSide(
-                                          color: Colors.white,
+                                          color: Color.fromARGB(
+                                              255, 160, 182, 255),
                                           width: 3,
                                         ),
                                         borderRadius: 50,
@@ -1563,7 +1647,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(50),
                                       border: Border.all(
-                                        color: Colors.white,
+                                        color: Color.fromARGB(255, 46, 46, 46),
                                         width: 0,
                                       ),
                                     ),
@@ -1575,7 +1659,8 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                       textStyle:
                                           FlutterFlowTheme.subtitle2.override(
                                         fontFamily: 'Mitr',
-                                        color: Color.fromARGB(255, 0, 0, 0),
+                                        color:
+                                            Color.fromARGB(255, 255, 255, 255),
                                         fontSize: 15,
                                         fontWeight: FontWeight.w300,
                                       ),
@@ -1596,10 +1681,12 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                           textStyle: FlutterFlowTheme.subtitle2
                                               .override(
                                             fontFamily: 'Mitr',
-                                            color: Colors.white,
+                                            color:
+                                                Color.fromARGB(255, 46, 46, 46),
                                           ),
                                           borderSide: BorderSide(
-                                            color: Colors.white,
+                                            color: Color.fromARGB(
+                                                255, 160, 182, 255),
                                             width: 3,
                                           ),
                                           borderRadius: 50,
@@ -1617,7 +1704,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(50),
                                       border: Border.all(
-                                        color: Colors.white,
+                                        color: Color.fromARGB(255, 46, 46, 46),
                                         width: 0,
                                       ),
                                     ),
@@ -1629,7 +1716,8 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                       textStyle:
                                           FlutterFlowTheme.subtitle2.override(
                                         fontFamily: 'Mitr',
-                                        color: Color.fromARGB(255, 0, 0, 0),
+                                        color:
+                                            Color.fromARGB(255, 255, 255, 255),
                                         fontSize: 15,
                                         fontWeight: FontWeight.w300,
                                       ),
@@ -1650,10 +1738,12 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                           textStyle: FlutterFlowTheme.subtitle2
                                               .override(
                                             fontFamily: 'Mitr',
-                                            color: Colors.white,
+                                            color:
+                                                Color.fromARGB(255, 46, 46, 46),
                                           ),
                                           borderSide: BorderSide(
-                                            color: Colors.white,
+                                            color: Color.fromARGB(
+                                                255, 160, 182, 255),
                                             width: 3,
                                           ),
                                           borderRadius: 50,
@@ -1671,7 +1761,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(50),
                                       border: Border.all(
-                                        color: Colors.white,
+                                        color: Color.fromARGB(255, 46, 46, 46),
                                         width: 0,
                                       ),
                                     ),
@@ -1683,7 +1773,8 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                       textStyle:
                                           FlutterFlowTheme.subtitle2.override(
                                         fontFamily: 'Mitr',
-                                        color: Color.fromARGB(255, 0, 0, 0),
+                                        color:
+                                            Color.fromARGB(255, 255, 255, 255),
                                         fontSize: 15,
                                         fontWeight: FontWeight.w300,
                                       ),
@@ -1704,10 +1795,12 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                           textStyle: FlutterFlowTheme.subtitle2
                                               .override(
                                             fontFamily: 'Mitr',
-                                            color: Colors.white,
+                                            color:
+                                                Color.fromARGB(255, 46, 46, 46),
                                           ),
                                           borderSide: BorderSide(
-                                            color: Colors.white,
+                                            color: Color.fromARGB(
+                                                255, 160, 182, 255),
                                             width: 3,
                                           ),
                                           borderRadius: 50,
@@ -1729,7 +1822,8 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                 FFButtonWidget(
                                   onPressed: () {
                                     data_Search[5] = '';
-                                    color_Onclick[0] = Color(0xFF1D1D1D);
+                                    color_Onclick[0] =
+                                        Color.fromARGB(255, 239, 238, 233);
                                     setState(() {
                                       click_color = false;
                                     });
@@ -1738,14 +1832,14 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                   options: FFButtonOptions(
                                     width: 200,
                                     height: 50,
-                                    color: Color(0xFF1D1D1D),
+                                    color: Color.fromARGB(255, 239, 238, 233),
                                     textStyle:
                                         FlutterFlowTheme.subtitle2.override(
                                       fontFamily: 'Poppins',
-                                      color: Colors.white,
+                                      color: Color.fromARGB(255, 46, 46, 46),
                                     ),
                                     borderSide: BorderSide(
-                                      color: Colors.white,
+                                      color: Color.fromARGB(255, 160, 182, 255),
                                       width: 3,
                                     ),
                                     borderRadius: 12,

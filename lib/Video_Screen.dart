@@ -65,7 +65,7 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFF1E2429),
+      backgroundColor: Color.fromARGB(255, 239, 238, 233),
       body: Container(
         width: double.infinity,
         height: double.infinity,
@@ -77,7 +77,7 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
               width: MediaQuery.of(context).size.width * 1,
               height: 100,
               decoration: BoxDecoration(
-                color: Color(0xFF1D1D1D),
+                color: Color.fromARGB(255, 160, 182, 255),
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
@@ -112,7 +112,7 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                           'หมายเลขป้ายทะเบียน : ${widget.search_plate}',
                           style: FlutterFlowTheme.bodyText1.override(
                             fontFamily: 'Mitr',
-                            color: Colors.white,
+                            color: Color.fromARGB(255, 255, 255, 255),
                             fontSize: 40,
                             fontWeight: FontWeight.w300,
                           ),
@@ -202,7 +202,7 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                                   '${widget.license_plate}',
                                   style: FlutterFlowTheme.bodyText1.override(
                                     fontFamily: 'Mitr',
-                                    color: Colors.white,
+                                    color: Color.fromARGB(255, 46, 46, 46),
                                     fontSize: 40,
                                     fontWeight: FontWeight.w300,
                                   ),
@@ -211,12 +211,12 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                             ),
                             Padding(
                               padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                                  EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                               child: Container(
                                 width: double.infinity,
-                                height: 2,
+                                height: 3,
                                 decoration: BoxDecoration(
-                                  color: Colors.white,
+                                  color: Color.fromARGB(255, 160, 182, 255),
                                 ),
                               ),
                             ),
@@ -235,7 +235,7 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                                       style:
                                           FlutterFlowTheme.bodyText1.override(
                                         fontFamily: 'Mitr',
-                                        color: Colors.white,
+                                        color: Color.fromARGB(255, 46, 46, 46),
                                         fontSize: 22,
                                         fontWeight: FontWeight.normal,
                                       ),
@@ -248,7 +248,8 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                                         style:
                                             FlutterFlowTheme.bodyText1.override(
                                           fontFamily: 'Mitr',
-                                          color: Colors.white,
+                                          color:
+                                              Color.fromARGB(255, 46, 46, 46),
                                           fontSize: 20,
                                           fontWeight: FontWeight.w300,
                                         ),
@@ -273,7 +274,7 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                                       style:
                                           FlutterFlowTheme.bodyText1.override(
                                         fontFamily: 'Mitr',
-                                        color: Colors.white,
+                                        color: Color.fromARGB(255, 46, 46, 46),
                                         fontSize: 22,
                                         fontWeight: FontWeight.normal,
                                       ),
@@ -286,7 +287,8 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                                         style:
                                             FlutterFlowTheme.bodyText1.override(
                                           fontFamily: 'Mitr',
-                                          color: Colors.white,
+                                          color:
+                                              Color.fromARGB(255, 46, 46, 46),
                                           fontSize: 20,
                                           fontWeight: FontWeight.w300,
                                         ),
@@ -311,7 +313,7 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                                       style:
                                           FlutterFlowTheme.bodyText1.override(
                                         fontFamily: 'Mitr',
-                                        color: Colors.white,
+                                        color: Color.fromARGB(255, 46, 46, 46),
                                         fontSize: 22,
                                         fontWeight: FontWeight.normal,
                                       ),
@@ -324,7 +326,8 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                                         style:
                                             FlutterFlowTheme.bodyText1.override(
                                           fontFamily: 'Mitr',
-                                          color: Colors.white,
+                                          color:
+                                              Color.fromARGB(255, 46, 46, 46),
                                           fontSize: 20,
                                           fontWeight: FontWeight.w300,
                                         ),
@@ -359,7 +362,7 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                                       style:
                                           FlutterFlowTheme.bodyText1.override(
                                         fontFamily: 'Mitr',
-                                        color: Colors.white,
+                                        color: Color.fromARGB(255, 46, 46, 46),
                                         fontSize: 22,
                                         fontWeight: FontWeight.normal,
                                       ),
@@ -372,7 +375,8 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                                         style:
                                             FlutterFlowTheme.bodyText1.override(
                                           fontFamily: 'Mitr',
-                                          color: Colors.white,
+                                          color:
+                                              Color.fromARGB(255, 46, 46, 46),
                                           fontSize: 20,
                                           fontWeight: FontWeight.w300,
                                         ),
@@ -388,7 +392,9 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                                           color: Colors.black,
                                           shape: BoxShape.circle,
                                           border: Border.all(
-                                            color: Colors.white,
+                                            color: Color.fromARGB(
+                                                255, 160, 182, 255),
+                                            width: 2,
                                           ),
                                         ),
                                       ),
@@ -411,17 +417,17 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                                 options: FFButtonOptions(
                                   width: 230,
                                   height: 50,
-                                  color: Color(0xFF1D1D1D),
+                                  color: Color.fromARGB(255, 255, 255, 255),
                                   textStyle:
                                       FlutterFlowTheme.subtitle2.override(
                                     fontFamily: 'Mitr',
-                                    color: Colors.white,
+                                    color: Color.fromARGB(255, 46, 46, 46),
                                     fontSize: 20,
                                     fontWeight: FontWeight.w300,
                                   ),
                                   borderSide: BorderSide(
-                                    color: Colors.white,
-                                    width: 1,
+                                    color: Color.fromARGB(255, 160, 182, 255),
+                                    width: 2,
                                   ),
                                   borderRadius: 12,
                                 ),

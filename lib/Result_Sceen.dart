@@ -32,14 +32,13 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   // ให้เชื่อมโยงค่ารถกับการเลือก
-  
 
   // เก็บค่าเปลี่ยนสีปุ่มของรถและมาการแทนค่าจากชุดแรก
   List onClick_typeCar = [
-    1, // รถเก๋ง
-    1, // รถกระบะ
-    1, // รถตู้
-    1, // รถบรรทุก
+    0, // รถเก๋ง
+    0, // รถกระบะ
+    0, // รถตู้
+    0, // รถบรรทุก
   ];
 
   // ประเภทของรถ
@@ -72,20 +71,20 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
   //     data_api = Data_Api.fromJson(data);
   //   });
   // }
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   showdata_Search();
-  //   widget.type_car.contains(1)
-  //       ? onClick_typeCar = widget.type_car
-  //       : onClick_typeCar = onClick_typeCar;
-  // }
+  @override
+  void initState() {
+    super.initState();
+    // showdata_Search();
+    widget.type_car.contains(1)
+        ? onClick_typeCar = widget.type_car
+        : onClick_typeCar = onClick_typeCar;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFF1E2429),
+      backgroundColor: Color.fromARGB(255, 239, 238, 233),
       body: Container(
         width: double.infinity,
         height: double.infinity,
@@ -97,7 +96,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
               width: MediaQuery.of(context).size.width * 1,
               height: 100,
               decoration: BoxDecoration(
-                color: Color(0xFF1D1D1D),
+                color: Color.fromARGB(255, 160, 182, 255),
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
@@ -133,7 +132,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                           'หมายเลขป้ายทะเบียน : ${widget.search_plate}',
                           style: FlutterFlowTheme.bodyText1.override(
                             fontFamily: 'Mitr',
-                            color: Colors.white,
+                            color: Color.fromARGB(255, 255, 255, 255),
                             fontSize: 40,
                             fontWeight: FontWeight.w300,
                           ),
@@ -150,10 +149,10 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                 width: MediaQuery.of(context).size.width * 0.95,
                 height: 100,
                 decoration: BoxDecoration(
-                  color: Color(0xFF1D1D1D),
+                  color: Color.fromARGB(255, 255, 255, 255),
                   borderRadius: BorderRadius.circular(30),
                   border: Border.all(
-                    color: Color.fromARGB(255, 255, 255, 255),
+                    color: Color.fromARGB(255, 160, 182, 255),
                     width: 2,
                   ),
                 ),
@@ -169,7 +168,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                       preferBelow: false,
                       textStyle: FlutterFlowTheme.subtitle2.override(
                         fontFamily: 'Mitr',
-                        color: Color.fromARGB(255, 0, 0, 0),
+                        color: Color.fromARGB(255, 255, 255, 255),
                         fontSize: 15,
                         fontWeight: FontWeight.w300,
                       ),
@@ -180,6 +179,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                               onClick_typeCar[0] = 0;
                               data_Car[0] = '';
                               print(data_Car[0]);
+                              print(widget.type_car);
                             } else {
                               onClick_typeCar[0] = 1;
                               data_Car[0] = 'รถเก๋ง';
@@ -188,15 +188,16 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                           });
                         },
                         child: Container(
-                          width: 70,
+                          width: 100,
                           height: 70,
                           decoration: BoxDecoration(
                             color: onClick_typeCar[0] == 1
-                                ? Color(0x73ADADAD)
-                                : Color(0xFF1D1D1D),
+                                ? Color.fromARGB(100, 160, 182, 255)
+                                : Color.fromARGB(255, 255, 255, 255),
                             borderRadius: BorderRadius.circular(20),
                             border: Border.all(
-                              color: Colors.black,
+                              color: Color.fromARGB(255, 160, 182, 255),
+                              width: 2,
                             ),
                           ),
                           alignment: AlignmentDirectional(0, 0),
@@ -204,8 +205,8 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                             padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
                             child: Image.asset(
                               'assets/images/Sedan.png',
-                              width: 60,
-                              height: 60,
+                              width: 100,
+                              height: 100,
                               fit: BoxFit.contain,
                             ),
                           ),
@@ -219,7 +220,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                       preferBelow: false,
                       textStyle: FlutterFlowTheme.subtitle2.override(
                         fontFamily: 'Mitr',
-                        color: Color.fromARGB(255, 0, 0, 0),
+                        color: Color.fromARGB(255, 255, 255, 255),
                         fontSize: 15,
                         fontWeight: FontWeight.w300,
                       ),
@@ -239,23 +240,24 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                           });
                         },
                         child: Container(
-                          width: 70,
+                          width: 100,
                           height: 70,
                           decoration: BoxDecoration(
                             color: onClick_typeCar[1] == 1
-                                ? Color(0x73ADADAD)
-                                : Color(0xFF1D1D1D),
+                                ? Color.fromARGB(100, 160, 182, 255)
+                                : Color.fromARGB(255, 255, 255, 255),
                             borderRadius: BorderRadius.circular(20),
                             border: Border.all(
-                              color: Colors.black,
+                              color: Color.fromARGB(255, 160, 182, 255),
+                              width: 2,
                             ),
                           ),
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
                             child: Image.asset(
                               'assets/images/Pickup.png',
-                              width: 60,
-                              height: 60,
+                              width: 100,
+                              height: 100,
                               fit: BoxFit.contain,
                             ),
                           ),
@@ -269,7 +271,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                       preferBelow: false,
                       textStyle: FlutterFlowTheme.subtitle2.override(
                         fontFamily: 'Mitr',
-                        color: Color.fromARGB(255, 0, 0, 0),
+                        color: Color.fromARGB(255, 255, 255, 255),
                         fontSize: 15,
                         fontWeight: FontWeight.w300,
                       ),
@@ -290,23 +292,24 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                           });
                         },
                         child: Container(
-                          width: 70,
+                          width: 100,
                           height: 70,
                           decoration: BoxDecoration(
                             color: onClick_typeCar[2] == 1
-                                ? Color(0x73ADADAD)
-                                : Color(0xFF1D1D1D),
+                                ? Color.fromARGB(100, 160, 182, 255)
+                                : Color.fromARGB(255, 255, 255, 255),
                             borderRadius: BorderRadius.circular(20),
                             border: Border.all(
-                              color: Colors.black,
+                              color: Color.fromARGB(255, 160, 182, 255),
+                              width: 2,
                             ),
                           ),
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
                             child: Image.asset(
                               'assets/images/Van.png',
-                              width: 60,
-                              height: 60,
+                              width: 100,
+                              height: 100,
                               fit: BoxFit.contain,
                             ),
                           ),
@@ -320,7 +323,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                       preferBelow: false,
                       textStyle: FlutterFlowTheme.subtitle2.override(
                         fontFamily: 'Mitr',
-                        color: Color.fromARGB(255, 0, 0, 0),
+                        color: Color.fromARGB(255, 255, 255, 255),
                         fontSize: 15,
                         fontWeight: FontWeight.w300,
                       ),
@@ -341,23 +344,24 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                           });
                         },
                         child: Container(
-                          width: 70,
+                          width: 100,
                           height: 70,
                           decoration: BoxDecoration(
                             color: onClick_typeCar[3] == 1
-                                ? Color(0x73ADADAD)
-                                : Color(0xFF1D1D1D),
+                                ? Color.fromARGB(100, 160, 182, 255)
+                                : Color.fromARGB(255, 255, 255, 255),
                             borderRadius: BorderRadius.circular(20),
                             border: Border.all(
-                              color: Colors.black,
+                              color: Color.fromARGB(255, 160, 182, 255),
+                              width: 2,
                             ),
                           ),
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
                             child: Image.asset(
                               'assets/images/Truck.png',
-                              width: 60,
-                              height: 60,
+                              width: 100,
+                              height: 100,
                               fit: BoxFit.contain,
                             ),
                           ),
@@ -669,7 +673,8 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                           style: FlutterFlowTheme.bodyText1
                                               .override(
                                             fontFamily: 'Mitr',
-                                            color: Colors.white,
+                                            color:
+                                                Color.fromARGB(255, 46, 46, 46),
                                             fontSize: 40,
                                             fontWeight: FontWeight.w300,
                                           ),
@@ -678,12 +683,13 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 5, 0, 0),
+                                          0, 10, 0, 0),
                                       child: Container(
                                         width: double.infinity,
-                                        height: 2,
+                                        height: 3,
                                         decoration: BoxDecoration(
-                                          color: Colors.white,
+                                          color: Color.fromARGB(255, 160, 182, 255),
+                                          
                                         ),
                                       ),
                                     ),
@@ -702,7 +708,8 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                               style: FlutterFlowTheme.bodyText1
                                                   .override(
                                                 fontFamily: 'Mitr',
-                                                color: Colors.white,
+                                                color: Color.fromARGB(
+                                                    255, 46, 46, 46),
                                                 fontSize: 22,
                                                 fontWeight: FontWeight.normal,
                                               ),
@@ -716,7 +723,8 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                                     .bodyText1
                                                     .override(
                                                   fontFamily: 'Mitr',
-                                                  color: Colors.white,
+                                                  color: Color.fromARGB(
+                                                      255, 46, 46, 46),
                                                   fontSize: 20,
                                                   fontWeight: FontWeight.w300,
                                                 ),
@@ -741,7 +749,8 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                               style: FlutterFlowTheme.bodyText1
                                                   .override(
                                                 fontFamily: 'Mitr',
-                                                color: Colors.white,
+                                                color: Color.fromARGB(
+                                                    255, 46, 46, 46),
                                                 fontSize: 22,
                                                 fontWeight: FontWeight.normal,
                                               ),
@@ -755,7 +764,8 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                                     .bodyText1
                                                     .override(
                                                   fontFamily: 'Mitr',
-                                                  color: Colors.white,
+                                                  color: Color.fromARGB(
+                                                      255, 46, 46, 46),
                                                   fontSize: 20,
                                                   fontWeight: FontWeight.w300,
                                                 ),
@@ -780,7 +790,8 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                               style: FlutterFlowTheme.bodyText1
                                                   .override(
                                                 fontFamily: 'Mitr',
-                                                color: Colors.white,
+                                                color: Color.fromARGB(
+                                                    255, 46, 46, 46),
                                                 fontSize: 22,
                                                 fontWeight: FontWeight.normal,
                                               ),
@@ -794,7 +805,8 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                                     .bodyText1
                                                     .override(
                                                   fontFamily: 'Mitr',
-                                                  color: Colors.white,
+                                                  color: Color.fromARGB(
+                                                      255, 46, 46, 46),
                                                   fontSize: 20,
                                                   fontWeight: FontWeight.w300,
                                                 ),
@@ -829,7 +841,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                     //           style: FlutterFlowTheme.bodyText1
                                     //               .override(
                                     //             fontFamily: 'Mitr',
-                                    //             color: Colors.white,
+                                    //             color: Color.fromARGB(255, 46, 46, 46),
                                     //             fontSize: 22,
                                     //             fontWeight: FontWeight.normal,
                                     //           ),
@@ -843,7 +855,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                     //                 .bodyText1
                                     //                 .override(
                                     //               fontFamily: 'Mitr',
-                                    //               color: Colors.white,
+                                    //               color: Color.fromARGB(255, 46, 46, 46),
                                     //               fontSize: 20,
                                     //               fontWeight: FontWeight.w300,
                                     //             ),
@@ -858,7 +870,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                     //                 .bodyText1
                                     //                 .override(
                                     //               fontFamily: 'Mitr',
-                                    //               color: Colors.white,
+                                    //               color: Color.fromARGB(255, 46, 46, 46),
                                     //               fontSize: 20,
                                     //               fontWeight: FontWeight.w300,
                                     //             ),
@@ -883,7 +895,8 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                               style: FlutterFlowTheme.bodyText1
                                                   .override(
                                                 fontFamily: 'Mitr',
-                                                color: Colors.white,
+                                                color: Color.fromARGB(
+                                                    255, 46, 46, 46),
                                                 fontSize: 22,
                                                 fontWeight: FontWeight.normal,
                                               ),
@@ -897,7 +910,8 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                                     .bodyText1
                                                     .override(
                                                   fontFamily: 'Mitr',
-                                                  color: Colors.white,
+                                                  color: Color.fromARGB(
+                                                      255, 46, 46, 46),
                                                   fontSize: 20,
                                                   fontWeight: FontWeight.w300,
                                                 ),
@@ -913,7 +927,9 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                                   color: Colors.black,
                                                   shape: BoxShape.circle,
                                                   border: Border.all(
-                                                    color: Colors.white,
+                                                    color: Color.fromARGB(
+                                                        255, 160, 182, 255),
+                                                    width: 2,
                                                   ),
                                                 ),
                                               ),
@@ -944,17 +960,20 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                         options: FFButtonOptions(
                                           width: 230,
                                           height: 50,
-                                          color: Color(0xFF1D1D1D),
+                                          color: Color.fromARGB(
+                                              255, 255, 255, 255),
                                           textStyle: FlutterFlowTheme.subtitle2
                                               .override(
                                             fontFamily: 'Mitr',
-                                            color: Colors.white,
+                                            color:
+                                                Color.fromARGB(255, 46, 46, 46),
                                             fontSize: 20,
                                             fontWeight: FontWeight.w300,
                                           ),
                                           borderSide: BorderSide(
-                                            color: Colors.white,
-                                            width: 1,
+                                            color: Color.fromARGB(
+                                                255, 160, 182, 255),
+                                            width: 2,
                                           ),
                                           borderRadius: 50,
                                         ),
@@ -962,14 +981,16 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 10, 0, 10),
+                                          0, 20, 0, 10),
                                       child: LinearPercentIndicator(
-                                        percent: 1,
+                                        percent: 0.5,
                                         width: 600,
                                         lineHeight: 5,
                                         animation: true,
-                                        progressColor: Colors.white,
-                                        backgroundColor: Color(0x00000000),
+                                        progressColor:
+                                            Color.fromARGB(255, 160, 182, 255),
+                                        backgroundColor:
+                                            Color.fromARGB(0, 255, 255, 255),
                                       ),
                                     ),
                                   ],
