@@ -144,8 +144,8 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
   //  แสดงข้อมูลป้ายที่ค้นหา
   String search_plate = "ไม่ได้ใส่หมายเลขป้ายทะเบียน";
 
-  // // ส่งค่าให้กับ Api
-  // var data_api = Data_Api();
+  // ส่งค่าให้กับ Api
+  var data_api = Data_Api();
 
   // //  ชุดข้อมูลที่เชื่อมกับ API
   // late Data_Api license_plate = Data_Api();
@@ -158,48 +158,33 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
   // late Data_Api speed = Data_Api();
   // late Data_Api color = Data_Api();
 
-  // //  เชื่อมต่อกับ API
-  // inputdata_Search() async {
-  //   final res = await http.get(
-  //     Uri.parse("$url"),
-  //     headers: {
-  //       "Accept": "application/json",
-  //       "Access-Control_Allow_Origin": "*",
-  //     },
-  //   );
-  //   print('res.statusCode: ${res.statusCode}');
-  //   print('res.headers: ${res.headers}');
-  //   print('body = ${res.body}');
-  //   final data = convert.jsonDecode(res.body) as Map<String, dynamic>;
-  //   print("getProfile: ${data[1]}");
-  //   print(data["message"]);
-  //   setState(() {
-  //     data_api = Data_Api.fromJson(data);
-  //   });
-  // }
+  //  เชื่อมต่อกับ API
+  inputdata_Search() async {
+    final res = await http.get(
+      Uri.parse("$url"),
+      headers: {
+        "Accept": "application/json",
+        "Access-Control_Allow_Origin": "*",
+      },
+    );
+    print('res.statusCode: ${res.statusCode}');
+    print('res.headers: ${res.headers}');
+    print('body = ${res.body}');
+    // final data = convert.jsonDecode(res.body) as Map<String, dynamic>;
+    // print("getProfile: ${data[1]}");
+    // print(data["message"]);
+    // setState(() {
+    //   data_api = Data_Api.fromJson(data);
+    // });
+  }
 
-  // // อัพเดตข้อมูลทีมีอยุ่
-  // updateData_Search() async {
-  //   final update_frist_name = await http.patch(
-  //     Uri.parse("$url/user"),
-  //     headers: {
-  //       "Accept": "application/json",
-  //       "Access-Control_Allow_Origin": "*",
-  //     },
-  //     body: convert.jsonEncode({
-  //       // "name": name!.text,
-  //     }),
-  //   );
-  //   print('update_frist_name.body: ${update_frist_name.body}');
-  // }
-
-  // //  หน้า UI
-  // @override
-  // void initState() {
-  //   // TODO: implement initState
-  //   super.initState();
-  //   // inputdata_Search();
-  // }
+  //  หน้า UI
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    // inputdata_Search();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -1107,12 +1092,12 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                       width: 300,
                       height: 270,
                       decoration: BoxDecoration(
-                        color: Color(0xFF1D1D1D),
+                        color: Color.fromARGB(255, 199, 199, 199),
                         borderRadius: BorderRadius.circular(50),
                         shape: BoxShape.rectangle,
                         border: Border.all(
                           color: Color.fromARGB(255, 160, 182, 255),
-                          width: 2,
+                          width: 5,
                         ),
                       ),
                       child: Column(

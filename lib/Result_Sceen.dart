@@ -52,25 +52,25 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
 
   var data_api = Data_Api();
 
-  // //  เชื่อมต่อกับ API
-  // showdata_Search() async {
-  //   final res = await http.get(
-  //     Uri.parse("$url"),
-  //     headers: {
-  //       "Accept": "application/json",
-  //       "Access-Control_Allow_Origin": "*",
-  //     },
-  //   );
-  //   print('res.statusCode: ${res.statusCode}');
-  //   print('res.headers: ${res.headers}');
-  //   print('body = ${res.body}');
-  //   final data = convert.jsonDecode(res.body) as Map<String, dynamic>;
-  //   print("getProfile1: ${data}");
-  //   print(data["message"]);
-  //   setState(() {
-  //     data_api = Data_Api.fromJson(data);
-  //   });
-  // }
+  //  เชื่อมต่อกับ API
+  showdata_Search() async {
+    final res = await http.get(
+      Uri.parse("$url"),
+      headers: {
+        "Accept": "application/json",
+        "Access-Control_Allow_Origin": "*",
+      },
+    );
+    print('res.statusCode: ${res.statusCode}');
+    print('res.headers: ${res.headers}');
+    print('body = ${res.body}');
+    // final data = convert.jsonDecode(res.body) as Map<String, dynamic>;
+    // print("getProfile1: ${data}");
+    // print(data["message"]);
+    // setState(() {
+    //   data_api = Data_Api.fromJson(data);
+    // });
+  }
   @override
   void initState() {
     super.initState();
