@@ -1,13 +1,14 @@
+// import 'dart:convert';
+// import 'package:google_fonts/google_fonts.dart';
+import 'dart:core';
 import 'package:clarity_v/Search_Screen.dart';
 import 'package:clarity_v/Video_Screen.dart';
 import 'package:clarity_v/flutter%20flow/flutter_flow_theme.dart';
 import 'package:clarity_v/flutter%20flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
-
 import 'api_model.dart';
 
 class ResultScreenWidget extends StatefulWidget {
@@ -30,15 +31,14 @@ class ResultScreenWidget extends StatefulWidget {
 class _ResultScreenWidgetState extends State<ResultScreenWidget>
     with TickerProviderStateMixin {
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
-  // ให้เชื่อมโยงค่ารถกับการเลือก
+  late Future<Data_Api> futureData;
 
   // เก็บค่าเปลี่ยนสีปุ่มของรถและมาการแทนค่าจากชุดแรก
   List onClick_typeCar = [
-    0, // รถเก๋ง
-    0, // รถกระบะ
-    0, // รถตู้
-    0, // รถบรรทุก
+    1, // รถเก๋ง
+    1, // รถกระบะ
+    1, // รถตู้
+    1, // รถบรรทุก
   ];
 
   // ประเภทของรถ
@@ -50,31 +50,30 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
     "รถบรทุก", // ประเภทรถบรรทุก
   ];
 
-  var data_api = Data_Api();
-
   //  เชื่อมต่อกับ API
-  showdata_Search() async {
+  Future<Data_Api> showdata_Search() async {
     final res = await http.get(
-      Uri.parse("$url"),
+      Uri.parse("$url/plates/5"),
       headers: {
         "Accept": "application/json",
         "Access-Control_Allow_Origin": "*",
       },
     );
-    print('res.statusCode: ${res.statusCode}');
-    print('res.headers: ${res.headers}');
+    print('status: ${res.statusCode}');
+    print('headers: ${res.headers}');
     print('body = ${res.body}');
-    // final data = convert.jsonDecode(res.body) as Map<String, dynamic>;
-    // print("getProfile1: ${data}");
-    // print(data["message"]);
-    // setState(() {
-    //   data_api = Data_Api.fromJson(data);
-    // });
+    final data = convert.jsonDecode(res.body) as Map<String, dynamic>;
+    final futureData = Data_Api.fromJson(data);
+    if (res.statusCode == 200) {
+      return futureData;
+    }
+    return futureData;
   }
+
   @override
   void initState() {
     super.initState();
-    // showdata_Search();
+    futureData = showdata_Search();
     widget.type_car.contains(1)
         ? onClick_typeCar = widget.type_car
         : onClick_typeCar = onClick_typeCar;
@@ -180,6 +179,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                               data_Car[0] = '';
                               print(data_Car[0]);
                               print(widget.type_car);
+                              // print(showdata_Search());
                             } else {
                               onClick_typeCar[0] = 1;
                               data_Car[0] = 'รถเก๋ง';
@@ -382,6 +382,15 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
+                        // FutureBuilder<Data_Api>(
+                        //     future: futureData,
+                        //     builder: (context, snapshot) {
+                        //       if (!snapshot.hasData) {
+                        //         return Text("กำลังโหลด");
+                        //       }
+                        //       print("shanpshot ${snapshot.data!.plate!.city}");
+                        //       return Text("data ${snapshot.data!.plate!.city}");
+                        //     }),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
                           child: Container(
@@ -406,12 +415,21 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                         child: ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(20),
-                                          child: Image.asset(
-                                            'assets/images/Example_Demo/Test 1.jpg',
-                                            width: double.infinity,
-                                            height: double.infinity,
-                                            fit: BoxFit.cover,
-                                          ),
+                                          child: FutureBuilder<Data_Api>(
+                                              future: futureData,
+                                              builder: (context, snapshot) {
+                                                if (!snapshot.hasData) {
+                                                  return Text("กำลังโหลด");
+                                                }
+                                                print(
+                                                    "shanpshot ${snapshot.data!.plate!.plateId}");
+                                                return Image.network(
+                                                  'https://picsum.photos/seed/270/600',
+                                                  width: double.infinity,
+                                                  height: double.infinity,
+                                                  fit: BoxFit.cover,
+                                                );
+                                              }),
                                         ),
                                         decoration: BoxDecoration(
                                           borderRadius:
@@ -668,17 +686,27 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                         width: double.infinity,
                                         height: 55,
                                         decoration: BoxDecoration(),
-                                        child: Text(
-                                          '${widget.license_plate}',
-                                          style: FlutterFlowTheme.bodyText1
-                                              .override(
-                                            fontFamily: 'Mitr',
-                                            color:
-                                                Color.fromARGB(255, 46, 46, 46),
-                                            fontSize: 40,
-                                            fontWeight: FontWeight.w300,
-                                          ),
-                                        ),
+                                        child: FutureBuilder<Data_Api>(
+                                            future: futureData,
+                                            builder: (context, snapshot) {
+                                              if (!snapshot.hasData) {
+                                                return Text("กำลังโหลด");
+                                              }
+                                              print(
+                                                  "shanpshot ${snapshot.data!.plate!.licensePlate}");
+                                              return Text(
+                                                "data ${snapshot.data!.plate!.licensePlate}",
+                                                style: FlutterFlowTheme
+                                                    .bodyText1
+                                                    .override(
+                                                  fontFamily: 'Mitr',
+                                                  color: Color.fromARGB(
+                                                      255, 46, 46, 46),
+                                                  fontSize: 40,
+                                                  fontWeight: FontWeight.w300,
+                                                ),
+                                              );
+                                            }),
                                       ),
                                     ),
                                     Padding(
@@ -688,8 +716,8 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                         width: double.infinity,
                                         height: 3,
                                         decoration: BoxDecoration(
-                                          color: Color.fromARGB(255, 160, 182, 255),
-                                          
+                                          color: Color.fromARGB(
+                                              255, 160, 182, 255),
                                         ),
                                       ),
                                     ),
@@ -717,18 +745,28 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                             Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(10, 0, 0, 0),
-                                              child: Text(
-                                                'บลาๆ',
-                                                style: FlutterFlowTheme
-                                                    .bodyText1
-                                                    .override(
-                                                  fontFamily: 'Mitr',
-                                                  color: Color.fromARGB(
-                                                      255, 46, 46, 46),
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.w300,
-                                                ),
-                                              ),
+                                              child: FutureBuilder<Data_Api>(
+                                                  future: futureData,
+                                                  builder: (context, snapshot) {
+                                                    if (!snapshot.hasData) {
+                                                      return Text("กำลังโหลด");
+                                                    }
+                                                    print(
+                                                        "shanpshot ${snapshot.data!.plate!.plateId}");
+                                                    return Text(
+                                                      "${snapshot.data!.plate!.plateId}",
+                                                      style: FlutterFlowTheme
+                                                          .bodyText1
+                                                          .override(
+                                                        fontFamily: 'Mitr',
+                                                        color: Color.fromARGB(
+                                                            255, 46, 46, 46),
+                                                        fontSize: 20,
+                                                        fontWeight:
+                                                            FontWeight.w300,
+                                                      ),
+                                                    );
+                                                  }),
                                             ),
                                           ],
                                         ),
@@ -758,18 +796,28 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                             Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(10, 0, 0, 0),
-                                              child: Text(
-                                                '${widget.city}',
-                                                style: FlutterFlowTheme
-                                                    .bodyText1
-                                                    .override(
-                                                  fontFamily: 'Mitr',
-                                                  color: Color.fromARGB(
-                                                      255, 46, 46, 46),
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.w300,
-                                                ),
-                                              ),
+                                              child: FutureBuilder<Data_Api>(
+                                                  future: futureData,
+                                                  builder: (context, snapshot) {
+                                                    if (!snapshot.hasData) {
+                                                      return Text("กำลังโหลด");
+                                                    }
+                                                    print(
+                                                        "shanpshot ${snapshot.data!.plate!.city}");
+                                                    return Text(
+                                                      "${snapshot.data!.plate!.city}",
+                                                      style: FlutterFlowTheme
+                                                          .bodyText1
+                                                          .override(
+                                                        fontFamily: 'Mitr',
+                                                        color: Color.fromARGB(
+                                                            255, 46, 46, 46),
+                                                        fontSize: 20,
+                                                        fontWeight:
+                                                            FontWeight.w300,
+                                                      ),
+                                                    );
+                                                  }),
                                             ),
                                           ],
                                         ),
@@ -799,18 +847,28 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                             Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(10, 0, 0, 0),
-                                              child: Text(
-                                                'รถกระบะ',
-                                                style: FlutterFlowTheme
-                                                    .bodyText1
-                                                    .override(
-                                                  fontFamily: 'Mitr',
-                                                  color: Color.fromARGB(
-                                                      255, 46, 46, 46),
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.w300,
-                                                ),
-                                              ),
+                                              child: FutureBuilder<Data_Api>(
+                                                  future: futureData,
+                                                  builder: (context, snapshot) {
+                                                    if (!snapshot.hasData) {
+                                                      return Text("กำลังโหลด");
+                                                    }
+                                                    print(
+                                                        "shanpshot ${snapshot.data!.plate!.vehicle}");
+                                                    return Text(
+                                                      "${snapshot.data!.plate!.vehicle}",
+                                                      style: FlutterFlowTheme
+                                                          .bodyText1
+                                                          .override(
+                                                        fontFamily: 'Mitr',
+                                                        color: Color.fromARGB(
+                                                            255, 46, 46, 46),
+                                                        fontSize: 20,
+                                                        fontWeight:
+                                                            FontWeight.w300,
+                                                      ),
+                                                    );
+                                                  }),
                                             ),
                                             Padding(
                                               padding: EdgeInsetsDirectional
@@ -826,60 +884,6 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                         ),
                                       ),
                                     ),
-                                    // Padding(
-                                    //   padding: EdgeInsetsDirectional.fromSTEB(
-                                    //       10, 5, 0, 0),
-                                    //   child: Container(
-                                    //     width: double.infinity,
-                                    //     height: 50,
-                                    //     decoration: BoxDecoration(),
-                                    //     child: Row(
-                                    //       mainAxisSize: MainAxisSize.max,
-                                    //       children: [
-                                    //         Text(
-                                    //           'ความเร็วโดยเฉลี่ย :',
-                                    //           style: FlutterFlowTheme.bodyText1
-                                    //               .override(
-                                    //             fontFamily: 'Mitr',
-                                    //             color: Color.fromARGB(255, 46, 46, 46),
-                                    //             fontSize: 22,
-                                    //             fontWeight: FontWeight.normal,
-                                    //           ),
-                                    //         ),
-                                    //         Padding(
-                                    //           padding: EdgeInsetsDirectional
-                                    //               .fromSTEB(10, 0, 0, 0),
-                                    //           child: Text(
-                                    //             '60',
-                                    //             style: FlutterFlowTheme
-                                    //                 .bodyText1
-                                    //                 .override(
-                                    //               fontFamily: 'Mitr',
-                                    //               color: Color.fromARGB(255, 46, 46, 46),
-                                    //               fontSize: 20,
-                                    //               fontWeight: FontWeight.w300,
-                                    //             ),
-                                    //           ),
-                                    //         ),
-                                    //         Padding(
-                                    //           padding: EdgeInsetsDirectional
-                                    //               .fromSTEB(10, 0, 0, 0),
-                                    //           child: Text(
-                                    //             'กม./ชม.',
-                                    //             style: FlutterFlowTheme
-                                    //                 .bodyText1
-                                    //                 .override(
-                                    //               fontFamily: 'Mitr',
-                                    //               color: Color.fromARGB(255, 46, 46, 46),
-                                    //               fontSize: 20,
-                                    //               fontWeight: FontWeight.w300,
-                                    //             ),
-                                    //           ),
-                                    //         ),
-                                    //       ],
-                                    //     ),
-                                    //   ),
-                                    // ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           10, 5, 0, 0),
@@ -904,18 +908,28 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                             Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(10, 0, 0, 0),
-                                              child: Text(
-                                                'สีดำ',
-                                                style: FlutterFlowTheme
-                                                    .bodyText1
-                                                    .override(
-                                                  fontFamily: 'Mitr',
-                                                  color: Color.fromARGB(
-                                                      255, 46, 46, 46),
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.w300,
-                                                ),
-                                              ),
+                                              child: FutureBuilder<Data_Api>(
+                                                  future: futureData,
+                                                  builder: (context, snapshot) {
+                                                    if (!snapshot.hasData) {
+                                                      return Text("กำลังโหลด");
+                                                    }
+                                                    print(
+                                                        "shanpshot ${snapshot.data!.plate!.color}");
+                                                    return Text(
+                                                      "${snapshot.data!.plate!.color}",
+                                                      style: FlutterFlowTheme
+                                                          .bodyText1
+                                                          .override(
+                                                        fontFamily: 'Mitr',
+                                                        color: Color.fromARGB(
+                                                            255, 46, 46, 46),
+                                                        fontSize: 20,
+                                                        fontWeight:
+                                                            FontWeight.w300,
+                                                      ),
+                                                    );
+                                                  }),
                                             ),
                                             Padding(
                                               padding: EdgeInsetsDirectional

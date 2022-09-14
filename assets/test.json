@@ -1,0 +1,16 @@
+[
+    {
+        "license_plate": "licensePlate",
+        "date": "date",
+        "timein": "timein",
+        "timeout": "timeout",
+        "city": "city",
+        "vehicle1": "vehicle1",
+        "vehicle2": "vehicle2",
+        "vehicle3": "vehicle3",
+        "vehicle4": "vehicle4",
+        "vehicle5": "vehicle5",
+        "color": "color",
+        "img": "https://picsum.photos/seed/270/600"
+    }
+]

@@ -1,65 +1,75 @@
+// To parse this JSON data, do
+//
+//     final dataApi = dataApiFromJson(jsonString);
+
 import 'dart:convert';
 
-final url = "https://7eb5-202-80-249-133.ap.ngrok.io";
+final url = "https://6dd0-202-80-249-150.ap.ngrok.io";
 
-Data_Api data_ApiFromJson(String str) => Data_Api.fromJson(json.decode(str));
+Data_Api dataApiFromJson(String str) => Data_Api.fromJson(json.decode(str));
 
-String data_ApiToJson(Data_Api data) => json.encode(data.toJson());
+String dataApiToJson(Data_Api data) => json.encode(data.toJson());
 
 class Data_Api {
-  String? licensePlate;
-  String? date;
-  String? timein;
-  String? timeout;
-  String? city;
-  String? vehicle1;
-  String? vehicle2;
-  String? vehicle3;
-  String? vehicle4;
-  String? vehicle5;
-  String? color;
+    Data_Api({
+        this.status,
+        this.plate,
+    });
 
-  Data_Api({
-    this.licensePlate,
-    this.date,
-    this.timein,
-    this.timeout,
-    this.city,
-    this.vehicle1,
-    this.vehicle2,
-    this.vehicle3,
-    this.vehicle4,
-    this.vehicle5,
-    this.color,
-  });
+    String? status;
+    Plate? plate;
 
-  factory Data_Api.fromJson(Map<String, dynamic> json) {
-    return Data_Api(
-      licensePlate: json["license_plate"],
-      date: json["date"],
-      timein: json["timein"],
-      timeout: json["timeout"],
-      city: json["city"],
-      vehicle1: json["vehicle1"],
-      vehicle2: json["vehicle2"],
-      vehicle3: json["vehicle3"],
-      vehicle4: json["vehicle4"],
-      vehicle5: json["vehicle5"],
-      color: json["color"],
+    factory Data_Api.fromJson(Map<String, dynamic> json) => Data_Api(
+        status: json["status"],
+        plate: Plate.fromJson(json["plate"]),
     );
-  }
 
-  Map<String, dynamic> toJson() => {
+    Map<String, dynamic> toJson() => {
+        "status": status,
+        "plate": plate!.toJson(),
+    };
+}
+
+class Plate {
+    Plate({
+        this.id,
+        this.plateId,
+        this.licensePlate,
+        this.city,
+        this.vehicle,
+        this.color,
+        this.time,
+        this.date,
+    });
+
+    String? id;
+    int? plateId;
+    String? licensePlate;
+    String? city;
+    String? vehicle;
+    String? color;
+    String? time;
+    String? date;
+
+    factory Plate.fromJson(Map<String, dynamic> json) => Plate(
+        id: json["_id"],
+        plateId: json["id"],
+        licensePlate: json["license_plate"],
+        city: json["city"],
+        vehicle: json["vehicle"],
+        color: json["color"],
+        time: json["time"],
+        date: json["date"],
+    );
+
+    Map<String, dynamic> toJson() => {
+        "_id": id,
+        "id": plateId,
         "license_plate": licensePlate,
-        "date": date,
-        "timein": timein,
-        "timeout": timeout,
         "city": city,
-        "vehicle1": vehicle1,
-        "vehicle2": vehicle2,
-        "vehicle3": vehicle3,
-        "vehicle4": vehicle4,
-        "vehicle5": vehicle5,
+        "vehicle": vehicle,
         "color": color,
-      };
+        "time": time,
+        "date": date,
+    };
 }

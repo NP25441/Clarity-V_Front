@@ -158,25 +158,25 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
   // late Data_Api speed = Data_Api();
   // late Data_Api color = Data_Api();
 
-  //  เชื่อมต่อกับ API
-  inputdata_Search() async {
-    final res = await http.get(
-      Uri.parse("$url"),
-      headers: {
-        "Accept": "application/json",
-        "Access-Control_Allow_Origin": "*",
-      },
-    );
-    print('res.statusCode: ${res.statusCode}');
-    print('res.headers: ${res.headers}');
-    print('body = ${res.body}');
-    // final data = convert.jsonDecode(res.body) as Map<String, dynamic>;
-    // print("getProfile: ${data[1]}");
-    // print(data["message"]);
-    // setState(() {
-    //   data_api = Data_Api.fromJson(data);
-    // });
-  }
+  // //  เชื่อมต่อกับ API
+  // inputdata_Search() async {
+  //   final res = await http.get(
+  //     Uri.parse("$url"),
+  //     headers: {
+  //       "Accept": "application/json",
+  //       "Access-Control_Allow_Origin": "*",
+  //     },
+  //   );
+  //   print('status: ${res.statusCode}');
+  //   print('headers: ${res.headers}');
+  //   print('body = ${res.body}');
+  //   final data = convert.jsonDecode(res.body) as Map<String, dynamic>;
+  //   // print("getProfile: ${data}");
+  //   // print(data["message"]);
+  //   // setState(() {
+  //   //   data_api = Data_Api.fromJson(data);
+  //   // });
+  // }
 
   //  หน้า UI
   @override
@@ -1042,6 +1042,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                       print(data_Search);
                                       print(search_plate);
                                       print(onClick_typeCar);
+                                      // print(inputdata_Search());
                                       Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(
