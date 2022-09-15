@@ -1,5 +1,3 @@
-// import 'dart:convert';
-// import 'package:google_fonts/google_fonts.dart';
 import 'dart:core';
 import 'package:clarity_v/Search_Screen.dart';
 import 'package:clarity_v/Video_Screen.dart';
@@ -31,7 +29,7 @@ class ResultScreenWidget extends StatefulWidget {
 class _ResultScreenWidgetState extends State<ResultScreenWidget>
     with TickerProviderStateMixin {
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  late Future<Data_Api> futureData;
+  late Future<List<Data_Api>> futureData;
 
   // เก็บค่าเปลี่ยนสีปุ่มของรถและมาการแทนค่าจากชุดแรก
   List onClick_typeCar = [
@@ -50,26 +48,40 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
     "รถบรทุก", // ประเภทรถบรรทุก
   ];
 
+  List data_click = [0]; // การกดใน list
+
+  List data_left = [
+    0, //ป้าย
+    0, // ชื่อ
+    0, // สี
+    0, // ประเภท
+    0, // ภาพ
+    0, // รูปประเภทรถ
+    0, // ช้อมูลสี
+    0, // โหลดข้อมูล
+  ];
+
   //  เชื่อมต่อกับ API
-  Future<Data_Api> showdata_Search() async {
+  Future<List<Data_Api>> showdata_Search() async {
     final res = await http.get(
-      Uri.parse("$url/plates/5"),
+      Uri.parse("$url/plates"),
       headers: {
         "Accept": "application/json",
         "Access-Control_Allow_Origin": "*",
       },
     );
     print('status: ${res.statusCode}');
-    print('headers: ${res.headers}');
-    print('body = ${res.body}');
-    final data = convert.jsonDecode(res.body) as Map<String, dynamic>;
-    final futureData = Data_Api.fromJson(data);
+    // print('headers: ${res.headers}');
+    // print('body ${res.body}');
+
+    final futureData = data_ApiFromJson(res.body);
     if (res.statusCode == 200) {
       return futureData;
     }
     return futureData;
   }
 
+  // สร้างค่าตั้งต้น
   @override
   void initState() {
     super.initState();
@@ -179,7 +191,6 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                               data_Car[0] = '';
                               print(data_Car[0]);
                               print(widget.type_car);
-                              // print(showdata_Search());
                             } else {
                               onClick_typeCar[0] = 1;
                               data_Car[0] = 'รถเก๋ง';
@@ -382,320 +393,247 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        // FutureBuilder<Data_Api>(
-                        //     future: futureData,
-                        //     builder: (context, snapshot) {
-                        //       if (!snapshot.hasData) {
-                        //         return Text("กำลังโหลด");
-                        //       }
-                        //       print("shanpshot ${snapshot.data!.plate!.city}");
-                        //       return Text("data ${snapshot.data!.plate!.city}");
-                        //     }),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
                           child: Container(
                             width: MediaQuery.of(context).size.width * 0.453,
                             height: MediaQuery.of(context).size.height * 0.71,
                             decoration: BoxDecoration(),
-                            child: ListView(
-                              padding: EdgeInsets.zero,
-                              scrollDirection: Axis.vertical,
-                              children: [
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 0, 0),
-                                      child: Container(
-                                        width: 250,
-                                        height: 150,
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          child: FutureBuilder<Data_Api>(
-                                              future: futureData,
-                                              builder: (context, snapshot) {
-                                                if (!snapshot.hasData) {
-                                                  return Text("กำลังโหลด");
-                                                }
-                                                print(
-                                                    "shanpshot ${snapshot.data!.plate!.plateId}");
-                                                return Image.network(
-                                                  'https://picsum.photos/seed/270/600',
-                                                  width: double.infinity,
-                                                  height: double.infinity,
-                                                  fit: BoxFit.cover,
-                                                );
-                                              }),
-                                        ),
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 0, 0),
-                                      child: Container(
-                                        width: 250,
-                                        height: 150,
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          child: Image.asset(
-                                            'assets/images/Example_Demo/Test 2.jpg',
-                                            width: double.infinity,
-                                            height: double.infinity,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 20, 0, 0),
-                                      child: Container(
-                                        width: 250,
-                                        height: 150,
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          child: Image.asset(
-                                            'assets/images/Example_Demo/Test 3.jpg',
-                                            width: double.infinity,
-                                            height: double.infinity,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 20, 0, 0),
-                                      child: Container(
-                                        width: 250,
-                                        height: 150,
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          child: Image.asset(
-                                            'assets/images/Example_Demo/Test 4.jpg',
-                                            width: double.infinity,
-                                            height: double.infinity,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 20, 0, 0),
-                                      child: Container(
-                                        width: 250,
-                                        height: 150,
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          child: Image.asset(
-                                            'assets/images/Example_Demo/Test 5.jpg',
-                                            width: double.infinity,
-                                            height: double.infinity,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 20, 0, 0),
-                                      child: Container(
-                                        width: 250,
-                                        height: 150,
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          child: Image.asset(
-                                            'assets/images/Example_Demo/Test 6.jpg',
-                                            width: double.infinity,
-                                            height: double.infinity,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 20, 0, 0),
-                                      child: Container(
-                                        width: 250,
-                                        height: 150,
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          child: Image.asset(
-                                            'assets/images/Example_Demo/Test 7.jpg',
-                                            width: double.infinity,
-                                            height: double.infinity,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 20, 0, 0),
-                                      child: Container(
-                                        width: 250,
-                                        height: 150,
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          child: Image.asset(
-                                            'assets/images/Example_Demo/Test 8.jpg',
-                                            width: double.infinity,
-                                            height: double.infinity,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
+                            child: FutureBuilder<List<Data_Api>>(
+                                future: futureData,
+                                builder: (context, snapshot) {
+                                  if (!snapshot.hasData) {
+                                    return Text("กำลังโหลด");
+                                    style:
+                                    FlutterFlowTheme.bodyText1.override(
+                                      fontFamily: 'Mitr',
+                                      color: Color.fromARGB(255, 46, 46, 46),
+                                      fontSize: 60,
+                                      fontWeight: FontWeight.w300,
+                                    );
+                                  }
+                                  final listviewData = snapshot.data!;
+                                  return ListView.builder(
+                                    padding: EdgeInsets.zero,
+                                    scrollDirection: Axis.vertical,
+                                    itemCount: listviewData.length,
+                                    itemBuilder: (context, index) {
+                                      if (index == 0) {
+                                        index + 1;
+                                      }
+                                      return GestureDetector(
+                                          onTap: () {
+                                            data_click[0] = 1;
+                                            data_left[0] = listviewData[index]
+                                                .licensePlate;
+                                            data_left[1] =
+                                                listviewData[index].id;
+                                            data_left[2] =
+                                                listviewData[index].city;
+                                            data_left[3] =
+                                                listviewData[index].vehicle;
+                                            data_left[4] =
+                                                listviewData[index].color;
+                                            data_left[5] =
+                                                listviewData[index].img;
+                                          },
+                                          child: Card(
+                                              child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 0, 0, 0),
+                                                child: Container(
+                                                  width: 550,
+                                                  height: 150,
+                                                  decoration: BoxDecoration(),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.start,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(30, 0,
+                                                                    30, 0),
+                                                        child: Image.network(
+                                                          '${listviewData[index].img}',
+                                                          width: 200,
+                                                          height: 100,
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                      ),
+                                                      Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceEvenly,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
+                                                            '${listviewData[index].licensePlate}',
+                                                            style:
+                                                                FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                              fontFamily:
+                                                                  'Mitr',
+                                                              color: Color
+                                                                  .fromARGB(
+                                                                      255,
+                                                                      46,
+                                                                      46,
+                                                                      46),
+                                                              fontSize: 20,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w300,
+                                                            ),
+                                                          ),
+                                                          Text(
+                                                            '${listviewData[index].vehicle}',
+                                                            style:
+                                                                FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                              fontFamily:
+                                                                  'Mitr',
+                                                              color: Color
+                                                                  .fromARGB(
+                                                                      255,
+                                                                      46,
+                                                                      46,
+                                                                      46),
+                                                              fontSize: 20,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w300,
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          )));
+                                    },
+                                  );
+                                }),
                           ),
                         ),
                       ],
                     ),
                   ),
                   SingleChildScrollView(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
-                          child: Container(
-                            width: MediaQuery.of(context).size.width * 0.5,
-                            height: MediaQuery.of(context).size.height * 0.71,
-                            decoration: BoxDecoration(),
-                            child: ListView(
-                              padding: EdgeInsets.zero,
-                              scrollDirection: Axis.vertical,
-                              children: [
-                                Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 10, 0, 0),
-                                      child: Container(
-                                        width: 650,
-                                        height: 550,
-                                        child: Stack(
-                                          children: [
-                                            Align(
-                                              alignment:
-                                                  AlignmentDirectional(0, 0),
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                                child: Image.asset(
-                                                  'assets/images/Example_Demo/Car.jpg',
-                                                  width: double.infinity,
-                                                  height: double.infinity,
-                                                  fit: BoxFit.cover,
-                                                ),
+                    child: FutureBuilder<List<Data_Api>>(
+                        future: futureData,
+                        builder: (context, snapshot) {
+                          if (!snapshot.hasData) {
+                            return Text("กำลังโหลด");
+                            style:
+                            FlutterFlowTheme.bodyText1.override(
+                              fontFamily: 'Mitr',
+                              color: Color.fromARGB(255, 46, 46, 46),
+                              fontSize: 20,
+                              fontWeight: FontWeight.w300,
+                            );
+                          }
+                          final listviewData2 = snapshot.data!;
+                          setState(() {
+                            print("test");
+                            data_left[0] = listviewData2[0].licensePlate;
+                            data_left[1] = listviewData2[0].id;
+                            data_left[2] = listviewData2[0].city;
+                            data_left[3] = listviewData2[0].vehicle;
+                            data_left[4] = listviewData2[0].color;
+                            data_left[5] = listviewData2[0].img;
+                          });
+                          return Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
+                                child: Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.5,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.71,
+                                  decoration: BoxDecoration(),
+                                  child: ListView(
+                                    padding: EdgeInsets.zero,
+                                    scrollDirection: Axis.vertical,
+                                    children: [
+                                      Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0, 10, 0, 0),
+                                            child: Container(
+                                              width: 550,
+                                              height: 450,
+                                              child: Stack(
+                                                children: [
+                                                  Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            0, 0),
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20),
+                                                      child: Image.network(
+                                                        "${data_click[0] == 0 ? listviewData2[0].img : data_left[5]}",
+                                                        width: double.infinity,
+                                                        height: double.infinity,
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            0.96, 0.95),
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20),
+                                                      child: Image.asset(
+                                                        'assets/images/Example_Demo/Palte.jpg',
+                                                        width: 200,
+                                                        height: 100,
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
                                             ),
-                                            Align(
-                                              alignment: AlignmentDirectional(
-                                                  0.96, 0.95),
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                                child: Image.asset(
-                                                  'assets/images/Example_Demo/Palte.jpg',
-                                                  width: 200,
-                                                  height: 100,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10, 20, 0, 0),
-                                      child: Container(
-                                        width: double.infinity,
-                                        height: 55,
-                                        decoration: BoxDecoration(),
-                                        child: FutureBuilder<Data_Api>(
-                                            future: futureData,
-                                            builder: (context, snapshot) {
-                                              if (!snapshot.hasData) {
-                                                return Text("กำลังโหลด");
-                                              }
-                                              print(
-                                                  "shanpshot ${snapshot.data!.plate!.licensePlate}");
-                                              return Text(
-                                                "data ${snapshot.data!.plate!.licensePlate}",
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    10, 20, 0, 0),
+                                            child: Container(
+                                              width: double.infinity,
+                                              height: 55,
+                                              decoration: BoxDecoration(),
+                                              child: Text(
+                                                "${data_click[0] == 0 ? listviewData2[0].licensePlate : data_left[0]}",
                                                 style: FlutterFlowTheme
                                                     .bodyText1
                                                     .override(
@@ -705,316 +643,390 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                                   fontSize: 40,
                                                   fontWeight: FontWeight.w300,
                                                 ),
-                                              );
-                                            }),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 10, 0, 0),
-                                      child: Container(
-                                        width: double.infinity,
-                                        height: 3,
-                                        decoration: BoxDecoration(
-                                          color: Color.fromARGB(
-                                              255, 160, 182, 255),
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10, 5, 0, 0),
-                                      child: Container(
-                                        width: double.infinity,
-                                        height: 50,
-                                        decoration: BoxDecoration(),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Text(
-                                              'ชื่อเจ้าของรถ :',
-                                              style: FlutterFlowTheme.bodyText1
-                                                  .override(
-                                                fontFamily: 'Mitr',
+                                              ),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0, 10, 0, 0),
+                                            child: Container(
+                                              width: double.infinity,
+                                              height: 3,
+                                              decoration: BoxDecoration(
                                                 color: Color.fromARGB(
-                                                    255, 46, 46, 46),
-                                                fontSize: 22,
-                                                fontWeight: FontWeight.normal,
+                                                    255, 160, 182, 255),
                                               ),
                                             ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(10, 0, 0, 0),
-                                              child: FutureBuilder<Data_Api>(
-                                                  future: futureData,
-                                                  builder: (context, snapshot) {
-                                                    if (!snapshot.hasData) {
-                                                      return Text("กำลังโหลด");
-                                                    }
-                                                    print(
-                                                        "shanpshot ${snapshot.data!.plate!.plateId}");
-                                                    return Text(
-                                                      "${snapshot.data!.plate!.plateId}",
-                                                      style: FlutterFlowTheme
-                                                          .bodyText1
-                                                          .override(
-                                                        fontFamily: 'Mitr',
-                                                        color: Color.fromARGB(
-                                                            255, 46, 46, 46),
-                                                        fontSize: 20,
-                                                        fontWeight:
-                                                            FontWeight.w300,
-                                                      ),
-                                                    );
-                                                  }),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10, 5, 0, 0),
-                                      child: Container(
-                                        width: double.infinity,
-                                        height: 50,
-                                        decoration: BoxDecoration(),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Text(
-                                              'จังหวัด :',
-                                              style: FlutterFlowTheme.bodyText1
-                                                  .override(
-                                                fontFamily: 'Mitr',
-                                                color: Color.fromARGB(
-                                                    255, 46, 46, 46),
-                                                fontSize: 22,
-                                                fontWeight: FontWeight.normal,
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(10, 0, 0, 0),
-                                              child: FutureBuilder<Data_Api>(
-                                                  future: futureData,
-                                                  builder: (context, snapshot) {
-                                                    if (!snapshot.hasData) {
-                                                      return Text("กำลังโหลด");
-                                                    }
-                                                    print(
-                                                        "shanpshot ${snapshot.data!.plate!.city}");
-                                                    return Text(
-                                                      "${snapshot.data!.plate!.city}",
-                                                      style: FlutterFlowTheme
-                                                          .bodyText1
-                                                          .override(
-                                                        fontFamily: 'Mitr',
-                                                        color: Color.fromARGB(
-                                                            255, 46, 46, 46),
-                                                        fontSize: 20,
-                                                        fontWeight:
-                                                            FontWeight.w300,
-                                                      ),
-                                                    );
-                                                  }),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10, 5, 0, 0),
-                                      child: Container(
-                                        width: double.infinity,
-                                        height: 50,
-                                        decoration: BoxDecoration(),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Text(
-                                              'ประเภทรถ :',
-                                              style: FlutterFlowTheme.bodyText1
-                                                  .override(
-                                                fontFamily: 'Mitr',
-                                                color: Color.fromARGB(
-                                                    255, 46, 46, 46),
-                                                fontSize: 22,
-                                                fontWeight: FontWeight.normal,
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(10, 0, 0, 0),
-                                              child: FutureBuilder<Data_Api>(
-                                                  future: futureData,
-                                                  builder: (context, snapshot) {
-                                                    if (!snapshot.hasData) {
-                                                      return Text("กำลังโหลด");
-                                                    }
-                                                    print(
-                                                        "shanpshot ${snapshot.data!.plate!.vehicle}");
-                                                    return Text(
-                                                      "${snapshot.data!.plate!.vehicle}",
-                                                      style: FlutterFlowTheme
-                                                          .bodyText1
-                                                          .override(
-                                                        fontFamily: 'Mitr',
-                                                        color: Color.fromARGB(
-                                                            255, 46, 46, 46),
-                                                        fontSize: 20,
-                                                        fontWeight:
-                                                            FontWeight.w300,
-                                                      ),
-                                                    );
-                                                  }),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(10, 0, 0, 0),
-                                              child: Image.asset(
-                                                'assets/images/Pickup.png',
-                                                width: 50,
-                                                height: 50,
-                                                fit: BoxFit.contain,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10, 5, 0, 0),
-                                      child: Container(
-                                        width: double.infinity,
-                                        height: 50,
-                                        decoration: BoxDecoration(),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Text(
-                                              'สี :',
-                                              style: FlutterFlowTheme.bodyText1
-                                                  .override(
-                                                fontFamily: 'Mitr',
-                                                color: Color.fromARGB(
-                                                    255, 46, 46, 46),
-                                                fontSize: 22,
-                                                fontWeight: FontWeight.normal,
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(10, 0, 0, 0),
-                                              child: FutureBuilder<Data_Api>(
-                                                  future: futureData,
-                                                  builder: (context, snapshot) {
-                                                    if (!snapshot.hasData) {
-                                                      return Text("กำลังโหลด");
-                                                    }
-                                                    print(
-                                                        "shanpshot ${snapshot.data!.plate!.color}");
-                                                    return Text(
-                                                      "${snapshot.data!.plate!.color}",
-                                                      style: FlutterFlowTheme
-                                                          .bodyText1
-                                                          .override(
-                                                        fontFamily: 'Mitr',
-                                                        color: Color.fromARGB(
-                                                            255, 46, 46, 46),
-                                                        fontSize: 20,
-                                                        fontWeight:
-                                                            FontWeight.w300,
-                                                      ),
-                                                    );
-                                                  }),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(10, 0, 0, 0),
-                                              child: Container(
-                                                width: 50,
-                                                height: 50,
-                                                decoration: BoxDecoration(
-                                                  color: Colors.black,
-                                                  shape: BoxShape.circle,
-                                                  border: Border.all(
-                                                    color: Color.fromARGB(
-                                                        255, 160, 182, 255),
-                                                    width: 2,
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    10, 5, 0, 0),
+                                            child: Container(
+                                              width: double.infinity,
+                                              height: 50,
+                                              decoration: BoxDecoration(),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Text(
+                                                    'ชื่อเจ้าของรถ :',
+                                                    style: FlutterFlowTheme
+                                                        .bodyText1
+                                                        .override(
+                                                      fontFamily: 'Mitr',
+                                                      color: Color.fromARGB(
+                                                          255, 46, 46, 46),
+                                                      fontSize: 22,
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                    ),
                                                   ),
-                                                ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                10, 0, 0, 0),
+                                                    child: Text(
+                                                      "${data_click[0] == 0 ? listviewData2[0].id : data_left[1]}",
+                                                      style: FlutterFlowTheme
+                                                          .bodyText1
+                                                          .override(
+                                                        fontFamily: 'Mitr',
+                                                        color: Color.fromARGB(
+                                                            255, 46, 46, 46),
+                                                        fontSize: 20,
+                                                        fontWeight:
+                                                            FontWeight.w300,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
                                             ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 10, 0, 0),
-                                      child: FFButtonWidget(
-                                        onPressed: () {
-                                          Navigator.pushReplacement(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    VideoScreenWidget(
-                                                      license_plate:
-                                                          widget.license_plate,
-                                                      city: widget.city,
-                                                      search_plate:
-                                                          widget.search_plate,
-                                                    )),
-                                          );
-                                        },
-                                        text: 'ค้นหาภาพจากกล้อง',
-                                        options: FFButtonOptions(
-                                          width: 230,
-                                          height: 50,
-                                          color: Color.fromARGB(
-                                              255, 255, 255, 255),
-                                          textStyle: FlutterFlowTheme.subtitle2
-                                              .override(
-                                            fontFamily: 'Mitr',
-                                            color:
-                                                Color.fromARGB(255, 46, 46, 46),
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.w300,
                                           ),
-                                          borderSide: BorderSide(
-                                            color: Color.fromARGB(
-                                                255, 160, 182, 255),
-                                            width: 2,
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    10, 5, 0, 0),
+                                            child: Container(
+                                              width: double.infinity,
+                                              height: 50,
+                                              decoration: BoxDecoration(),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Text(
+                                                    'จังหวัด :',
+                                                    style: FlutterFlowTheme
+                                                        .bodyText1
+                                                        .override(
+                                                      fontFamily: 'Mitr',
+                                                      color: Color.fromARGB(
+                                                          255, 46, 46, 46),
+                                                      fontSize: 22,
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                10, 0, 0, 0),
+                                                    child: Text(
+                                                      "${data_click[0] == 0 ? listviewData2[0].city : data_left[2]}",
+                                                      style: FlutterFlowTheme
+                                                          .bodyText1
+                                                          .override(
+                                                        fontFamily: 'Mitr',
+                                                        color: Color.fromARGB(
+                                                            255, 46, 46, 46),
+                                                        fontSize: 20,
+                                                        fontWeight:
+                                                            FontWeight.w300,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
                                           ),
-                                          borderRadius: 50,
-                                        ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    10, 5, 0, 0),
+                                            child: Container(
+                                              width: double.infinity,
+                                              height: 50,
+                                              decoration: BoxDecoration(),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Text(
+                                                    'ประเภทรถ :',
+                                                    style: FlutterFlowTheme
+                                                        .bodyText1
+                                                        .override(
+                                                      fontFamily: 'Mitr',
+                                                      color: Color.fromARGB(
+                                                          255, 46, 46, 46),
+                                                      fontSize: 22,
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                10, 0, 0, 0),
+                                                    child: FutureBuilder<
+                                                            List<Data_Api>>(
+                                                        future: futureData,
+                                                        builder: (context,
+                                                            snapshot) {
+                                                          if (!snapshot
+                                                              .hasData) {
+                                                            return Text(
+                                                                "กำลังโหลด");
+                                                            style:
+                                                            FlutterFlowTheme
+                                                                .bodyText1
+                                                                .override(
+                                                              fontFamily:
+                                                                  'Mitr',
+                                                              color: Color
+                                                                  .fromARGB(
+                                                                      255,
+                                                                      46,
+                                                                      46,
+                                                                      46),
+                                                              fontSize: 20,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w300,
+                                                            );
+                                                          }
+                                                          final listviewData2 =
+                                                              snapshot.data!;
+                                                          return Text(
+                                                            "${data_click[0] == 0 ? listviewData2[0].vehicle : data_left[3]}",
+                                                            style:
+                                                                FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                              fontFamily:
+                                                                  'Mitr',
+                                                              color: Color
+                                                                  .fromARGB(
+                                                                      255,
+                                                                      46,
+                                                                      46,
+                                                                      46),
+                                                              fontSize: 20,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w300,
+                                                            ),
+                                                          );
+                                                        }),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                10, 0, 0, 0),
+                                                    child: Image.asset(
+                                                      'assets/images/Pickup.png',
+                                                      width: 50,
+                                                      height: 50,
+                                                      fit: BoxFit.contain,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    10, 5, 0, 0),
+                                            child: Container(
+                                              width: double.infinity,
+                                              height: 50,
+                                              decoration: BoxDecoration(),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Text(
+                                                    'สี :',
+                                                    style: FlutterFlowTheme
+                                                        .bodyText1
+                                                        .override(
+                                                      fontFamily: 'Mitr',
+                                                      color: Color.fromARGB(
+                                                          255, 46, 46, 46),
+                                                      fontSize: 22,
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                10, 0, 0, 0),
+                                                    child: FutureBuilder<
+                                                            List<Data_Api>>(
+                                                        future: futureData,
+                                                        builder: (context,
+                                                            snapshot) {
+                                                          if (!snapshot
+                                                              .hasData) {
+                                                            return Text(
+                                                                "กำลังโหลด");
+                                                            style:
+                                                            FlutterFlowTheme
+                                                                .bodyText1
+                                                                .override(
+                                                              fontFamily:
+                                                                  'Mitr',
+                                                              color: Color
+                                                                  .fromARGB(
+                                                                      255,
+                                                                      46,
+                                                                      46,
+                                                                      46),
+                                                              fontSize: 20,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w300,
+                                                            );
+                                                          }
+                                                          final listviewData2 =
+                                                              snapshot.data!;
+                                                          return Text(
+                                                            "${data_click[0] == 0 ? listviewData2[0].color : data_left[4]}",
+                                                            style:
+                                                                FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                              fontFamily:
+                                                                  'Mitr',
+                                                              color: Color
+                                                                  .fromARGB(
+                                                                      255,
+                                                                      46,
+                                                                      46,
+                                                                      46),
+                                                              fontSize: 20,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w300,
+                                                            ),
+                                                          );
+                                                        }),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                10, 0, 0, 0),
+                                                    child: Container(
+                                                      width: 50,
+                                                      height: 50,
+                                                      decoration: BoxDecoration(
+                                                        color: Colors.black,
+                                                        shape: BoxShape.circle,
+                                                        border: Border.all(
+                                                          color: Color.fromARGB(
+                                                              255,
+                                                              160,
+                                                              182,
+                                                              255),
+                                                          width: 2,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0, 10, 0, 0),
+                                            child: FFButtonWidget(
+                                              onPressed: () {
+                                                Navigator.pushReplacement(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          VideoScreenWidget(
+                                                            license_plate:
+                                                                data_left[0],
+                                                            name: data_left[1],
+                                                            city: data_left[2],
+                                                            vehicle:
+                                                                data_left[3],
+                                                            color: data_left[4],
+                                                            img: data_left[5],
+                                                            search_plate: widget
+                                                                .search_plate,
+                                                          )),
+                                                );
+                                              },
+                                              text: 'ค้นหาภาพจากกล้อง',
+                                              options: FFButtonOptions(
+                                                width: 230,
+                                                height: 50,
+                                                color: Color.fromARGB(
+                                                    255, 255, 255, 255),
+                                                textStyle: FlutterFlowTheme
+                                                    .subtitle2
+                                                    .override(
+                                                  fontFamily: 'Mitr',
+                                                  color: Color.fromARGB(
+                                                      255, 46, 46, 46),
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.w300,
+                                                ),
+                                                borderSide: BorderSide(
+                                                  color: Color.fromARGB(
+                                                      255, 160, 182, 255),
+                                                  width: 2,
+                                                ),
+                                                borderRadius: 50,
+                                              ),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0, 20, 0, 10),
+                                            child: LinearPercentIndicator(
+                                              percent: 0.5,
+                                              width: 600,
+                                              lineHeight: 5,
+                                              animation: true,
+                                              progressColor: Color.fromARGB(
+                                                  255, 160, 182, 255),
+                                              backgroundColor: Color.fromARGB(
+                                                  0, 255, 255, 255),
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 20, 0, 10),
-                                      child: LinearPercentIndicator(
-                                        percent: 0.5,
-                                        width: 600,
-                                        lineHeight: 5,
-                                        animation: true,
-                                        progressColor:
-                                            Color.fromARGB(255, 160, 182, 255),
-                                        backgroundColor:
-                                            Color.fromARGB(0, 255, 255, 255),
-                                      ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                              ),
+                            ],
+                          );
+                        }),
                   ),
                 ],
               ),

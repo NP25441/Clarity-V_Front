@@ -6,18 +6,26 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:convert' as convert;
-
 import 'api_model.dart';
 
 class VideoScreenWidget extends StatefulWidget {
-  final String license_plate;
-  final String city;
   final String search_plate;
+  final String license_plate;
+  final String name;
+  final String city;
+  final String vehicle;
+  final String color;
+  final String img;
   const VideoScreenWidget(
       {Key? key,
+      required this.search_plate,
       required this.license_plate,
+      required this.name,
       required this.city,
-      required this.search_plate})
+      required this.vehicle,
+      required this.color,
+      required this.img,
+      })
       : super(key: key);
 
   @override
@@ -28,38 +36,38 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
     with TickerProviderStateMixin {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final url =
-      'file://D:/Develop/Flutter Project/clarity_v/video_download_front';
+      'file://D:/Develop/Flutter Project/clarity_v/video_download_front'; // ตำแหน่งในเครื่อง
+  late Future<List<Data_Api>> futureData;
 
   // ส่งค่าให้กับ Api
   var data_api = Data_Api();
 
-// //  เชื่อมต่อกับ API
-//   showdata_Result() async {
-//     final res = await http.get(
-//       Uri.parse("$url"),
-//       headers: {
-//         "Accept": "application/json",
-//         "Access-Control_Allow_Origin": "*",
-//       },
-//     );
-//     print('res.statusCode: ${res.statusCode}');
-//     print('res.headers: ${res.headers}');
-//     print('body = ${res.body}');
-//     final data = convert.jsonDecode(res.body) as Map<String, dynamic>;
-//     print("getProfile: ${data[1]}");
-//     print(data["message"]);
-//     setState(() {
-//       data_api = Data_Api.fromJson(data);
-//     });
-//   }
+//  เชื่อมต่อกับ API
+  Future<List<Data_Api>> download_video() async {
+    final res = await http.get(
+      Uri.parse("$url/plates"),
+      headers: {
+        "Accept": "application/json",
+        "Access-Control_Allow_Origin": "*",
+      },
+    );
+    print('status: ${res.statusCode}');
+    // print('headers: ${res.headers}');
+    // print('body ${res.body}');
 
-  //   //  หน้า UI
-  // @override
-  // void initState() {
-  //   // TODO: implement initState
-  //   super.initState();
-  //   // showdata_Result();
-  // }
+    final futureData = data_ApiFromJson(res.body);
+    if (res.statusCode == 200) {
+      return futureData;
+    }
+    return futureData;
+  }
+
+  // สร้างค่าตั้งต้น
+  @override
+  void initState() {
+    super.initState();
+    futureData = download_video();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -151,26 +159,26 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                                     alignment: AlignmentDirectional(0, 0),
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(20),
-                                      child: Image.asset(
-                                        'assets/images/Example_Demo/Car.jpg',
+                                      child: Image.network(
+                                        '${widget.img}',
                                         width: double.infinity,
                                         height: double.infinity,
                                         fit: BoxFit.fitWidth,
                                       ),
                                     ),
                                   ),
-                                  Align(
-                                    alignment: AlignmentDirectional(0.96, 0.95),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(10),
-                                      child: Image.asset(
-                                        'assets/images/Example_Demo/Palte.jpg',
-                                        width: 220,
-                                        height: 140,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
+                                  // Align(
+                                  //   alignment: AlignmentDirectional(0.96, 0.95),
+                                  //   child: ClipRRect(
+                                  //     borderRadius: BorderRadius.circular(10),
+                                  //     child: Image.asset(
+                                  //       'assets/images/Example_Demo/Palte.jpg',
+                                  //       width: 220,
+                                  //       height: 140,
+                                  //       fit: BoxFit.cover,
+                                  //     ),
+                                  //   ),
+                                  // ),
                                 ],
                               ),
                             ),
@@ -244,7 +252,7 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           10, 0, 0, 0),
                                       child: Text(
-                                        'นายตัวอย่าง สมมุติ',
+                                        '${widget.name}',
                                         style:
                                             FlutterFlowTheme.bodyText1.override(
                                           fontFamily: 'Mitr',
@@ -322,7 +330,7 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           10, 0, 0, 0),
                                       child: Text(
-                                        'รถกระบะ',
+                                        '${widget.vehicle}',
                                         style:
                                             FlutterFlowTheme.bodyText1.override(
                                           fontFamily: 'Mitr',
@@ -371,7 +379,7 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           10, 0, 0, 0),
                                       child: Text(
-                                        'สีดำ',
+                                        '${widget.color}',
                                         style:
                                             FlutterFlowTheme.bodyText1.override(
                                           fontFamily: 'Mitr',
@@ -413,7 +421,7 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                                   }
                                   print('เข้าถึง DIR');
                                 },
-                                text: 'เปิดตำแหน่งของไฟล์',
+                                text: 'ดาวน์โหลด และ เปิด',
                                 options: FFButtonOptions(
                                   width: 230,
                                   height: 50,
