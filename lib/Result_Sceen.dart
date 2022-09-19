@@ -4,6 +4,7 @@ import 'package:clarity_v/Video_Screen.dart';
 import 'package:clarity_v/flutter%20flow/flutter_flow_theme.dart';
 import 'package:clarity_v/flutter%20flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
@@ -53,11 +54,12 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
   List data_left = [
     0, //ป้าย
     0, // ชื่อ
-    0, // สี
+    0, // จังหวัด
     0, // ประเภท
+    0, // สี
     0, // ภาพ
     0, // รูปประเภทรถ
-    0, // ช้อมูลสี
+    'Color(0xFF8E8E8E)', // ช้อมูลสี
     0, // โหลดข้อมูล
   ];
 
@@ -403,14 +405,10 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                 future: futureData,
                                 builder: (context, snapshot) {
                                   if (!snapshot.hasData) {
-                                    return Text("กำลังโหลด");
-                                    style:
-                                    FlutterFlowTheme.bodyText1.override(
-                                      fontFamily: 'Mitr',
-                                      color: Color.fromARGB(255, 46, 46, 46),
-                                      fontSize: 60,
-                                      fontWeight: FontWeight.w300,
-                                    );
+                                    return SpinKitSpinningLines(
+                                        size: 140,
+                                        color:
+                                            Color.fromARGB(255, 160, 182, 255));
                                   }
                                   final listviewData = snapshot.data!;
                                   return ListView.builder(
@@ -423,19 +421,25 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                       }
                                       return GestureDetector(
                                           onTap: () {
-                                            data_click[0] = 1;
-                                            data_left[0] = listviewData[index]
-                                                .licensePlate;
-                                            data_left[1] =
-                                                listviewData[index].id;
-                                            data_left[2] =
-                                                listviewData[index].city;
-                                            data_left[3] =
-                                                listviewData[index].vehicle;
-                                            data_left[4] =
-                                                listviewData[index].color;
-                                            data_left[5] =
-                                                listviewData[index].img;
+                                            setState(() {
+                                              data_click[0] = 1;
+                                              data_left[0] = listviewData[index]
+                                                  .licensePlate;
+                                              data_left[1] =
+                                                  listviewData[index].name;
+                                              data_left[2] =
+                                                  listviewData[index].city;
+                                              data_left[3] =
+                                                  listviewData[index].vehicle;
+                                              data_left[4] =
+                                                  listviewData[index].color;
+                                              data_left[5] =
+                                                  listviewData[index].img;
+                                              data_left[6] = listviewData[index]
+                                                  .carImgType;
+                                              data_left[7] =
+                                                  listviewData[index].colorCode;
+                                            });
                                           },
                                           child: Card(
                                               child: Row(
@@ -539,25 +543,11 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                         future: futureData,
                         builder: (context, snapshot) {
                           if (!snapshot.hasData) {
-                            return Text("กำลังโหลด");
-                            style:
-                            FlutterFlowTheme.bodyText1.override(
-                              fontFamily: 'Mitr',
-                              color: Color.fromARGB(255, 46, 46, 46),
-                              fontSize: 20,
-                              fontWeight: FontWeight.w300,
-                            );
+                            return SpinKitSpinningLines(
+                                size: 140,
+                                color: Color.fromARGB(255, 160, 182, 255));
                           }
                           final listviewData2 = snapshot.data!;
-                          setState(() {
-                            print("test");
-                            data_left[0] = listviewData2[0].licensePlate;
-                            data_left[1] = listviewData2[0].id;
-                            data_left[2] = listviewData2[0].city;
-                            data_left[3] = listviewData2[0].vehicle;
-                            data_left[4] = listviewData2[0].color;
-                            data_left[5] = listviewData2[0].img;
-                          });
                           return Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
@@ -604,22 +594,22 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                                       ),
                                                     ),
                                                   ),
-                                                  Align(
-                                                    alignment:
-                                                        AlignmentDirectional(
-                                                            0.96, 0.95),
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              20),
-                                                      child: Image.asset(
-                                                        'assets/images/Example_Demo/Palte.jpg',
-                                                        width: 200,
-                                                        height: 100,
-                                                        fit: BoxFit.cover,
-                                                      ),
-                                                    ),
-                                                  ),
+                                                  // Align(
+                                                  //   alignment:
+                                                  //       AlignmentDirectional(
+                                                  //           0.96, 0.95),
+                                                  //   child: ClipRRect(
+                                                  //     borderRadius:
+                                                  //         BorderRadius.circular(
+                                                  //             20),
+                                                  //     child: Image.asset(
+                                                  //       'assets/images/Example_Demo/Palte.jpg',
+                                                  //       width: 200,
+                                                  //       height: 100,
+                                                  //       fit: BoxFit.cover,
+                                                  //     ),
+                                                  //   ),
+                                                  // ),
                                                 ],
                                               ),
                                             ),
@@ -689,7 +679,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                                             .fromSTEB(
                                                                 10, 0, 0, 0),
                                                     child: Text(
-                                                      "${data_click[0] == 0 ? listviewData2[0].id : data_left[1]}",
+                                                      "${data_click[0] == 0 ? listviewData2[0].name : data_left[1]}",
                                                       style: FlutterFlowTheme
                                                           .bodyText1
                                                           .override(
@@ -782,64 +772,27 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 10, 0, 0, 0),
-                                                    child: FutureBuilder<
-                                                            List<Data_Api>>(
-                                                        future: futureData,
-                                                        builder: (context,
-                                                            snapshot) {
-                                                          if (!snapshot
-                                                              .hasData) {
-                                                            return Text(
-                                                                "กำลังโหลด");
-                                                            style:
-                                                            FlutterFlowTheme
-                                                                .bodyText1
-                                                                .override(
-                                                              fontFamily:
-                                                                  'Mitr',
-                                                              color: Color
-                                                                  .fromARGB(
-                                                                      255,
-                                                                      46,
-                                                                      46,
-                                                                      46),
-                                                              fontSize: 20,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w300,
-                                                            );
-                                                          }
-                                                          final listviewData2 =
-                                                              snapshot.data!;
-                                                          return Text(
-                                                            "${data_click[0] == 0 ? listviewData2[0].vehicle : data_left[3]}",
-                                                            style:
-                                                                FlutterFlowTheme
-                                                                    .bodyText1
-                                                                    .override(
-                                                              fontFamily:
-                                                                  'Mitr',
-                                                              color: Color
-                                                                  .fromARGB(
-                                                                      255,
-                                                                      46,
-                                                                      46,
-                                                                      46),
-                                                              fontSize: 20,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w300,
-                                                            ),
-                                                          );
-                                                        }),
+                                                    child: Text(
+                                                      "${data_click[0] == 0 ? listviewData2[0].vehicle : data_left[3]}",
+                                                      style: FlutterFlowTheme
+                                                          .bodyText1
+                                                          .override(
+                                                        fontFamily: 'Mitr',
+                                                        color: Color.fromARGB(
+                                                            255, 46, 46, 46),
+                                                        fontSize: 20,
+                                                        fontWeight:
+                                                            FontWeight.w300,
+                                                      ),
+                                                    ),
                                                   ),
                                                   Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 10, 0, 0, 0),
-                                                    child: Image.asset(
-                                                      'assets/images/Pickup.png',
+                                                    child: Image.network(
+                                                      '${data_click[0] == 0 ? listviewData2[0].carImgType : data_left[6]}',
                                                       width: 50,
                                                       height: 50,
                                                       fit: BoxFit.contain,
@@ -878,79 +831,43 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 10, 0, 0, 0),
-                                                    child: FutureBuilder<
-                                                            List<Data_Api>>(
-                                                        future: futureData,
-                                                        builder: (context,
-                                                            snapshot) {
-                                                          if (!snapshot
-                                                              .hasData) {
-                                                            return Text(
-                                                                "กำลังโหลด");
-                                                            style:
-                                                            FlutterFlowTheme
-                                                                .bodyText1
-                                                                .override(
-                                                              fontFamily:
-                                                                  'Mitr',
-                                                              color: Color
-                                                                  .fromARGB(
-                                                                      255,
-                                                                      46,
-                                                                      46,
-                                                                      46),
-                                                              fontSize: 20,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w300,
-                                                            );
-                                                          }
-                                                          final listviewData2 =
-                                                              snapshot.data!;
-                                                          return Text(
-                                                            "${data_click[0] == 0 ? listviewData2[0].color : data_left[4]}",
-                                                            style:
-                                                                FlutterFlowTheme
-                                                                    .bodyText1
-                                                                    .override(
-                                                              fontFamily:
-                                                                  'Mitr',
-                                                              color: Color
-                                                                  .fromARGB(
-                                                                      255,
-                                                                      46,
-                                                                      46,
-                                                                      46),
-                                                              fontSize: 20,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w300,
-                                                            ),
-                                                          );
-                                                        }),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                10, 0, 0, 0),
-                                                    child: Container(
-                                                      width: 50,
-                                                      height: 50,
-                                                      decoration: BoxDecoration(
-                                                        color: Colors.black,
-                                                        shape: BoxShape.circle,
-                                                        border: Border.all(
-                                                          color: Color.fromARGB(
-                                                              255,
-                                                              160,
-                                                              182,
-                                                              255),
-                                                          width: 2,
-                                                        ),
+                                                    child: Text(
+                                                      "${data_click[0] == 0 ? listviewData2[0].color : data_left[4]}",
+                                                      style: FlutterFlowTheme
+                                                          .bodyText1
+                                                          .override(
+                                                        fontFamily: 'Mitr',
+                                                        color: Color.fromARGB(
+                                                            255, 46, 46, 46),
+                                                        fontSize: 20,
+                                                        fontWeight:
+                                                            FontWeight.w300,
                                                       ),
                                                     ),
                                                   ),
+                                                  // Padding(
+                                                  //   padding:
+                                                  //       EdgeInsetsDirectional
+                                                  //           .fromSTEB(
+                                                  //               10, 0, 0, 0),
+                                                  //   child: Container(
+                                                  //     width: 50,
+                                                  //     height: 50,
+                                                  //     decoration: BoxDecoration(
+                                                  //       color: Color.fromARGB(255,
+                                                  //             239, 238, 233),
+                                                  //         shape: BoxShape.circle,
+                                                  //       border: Border.all(
+                                                  //         color: Color.fromARGB(
+                                                  //             255,
+                                                  //             160,
+                                                  //             182,
+                                                  //             255),
+                                                  //         width: 2,
+                                                  //       ),
+                                                  //     ),
+                                                  //   ),
+                                                  // ),
                                                 ],
                                               ),
                                             ),
@@ -961,6 +878,49 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                                     0, 10, 0, 0),
                                             child: FFButtonWidget(
                                               onPressed: () {
+                                                data_click[0] == 0
+                                                    ? data_left[0] =
+                                                        listviewData2[0]
+                                                            .licensePlate
+                                                    : data_left[0];
+
+                                                data_click[0] == 0
+                                                    ? data_left[1] =
+                                                        listviewData2[0].name
+                                                    : data_left[1];
+
+                                                data_click[0] == 0
+                                                    ? data_left[2] =
+                                                        listviewData2[0].city
+                                                    : data_left[2];
+
+                                                data_click[0] == 0
+                                                    ? data_left[3] =
+                                                        listviewData2[0].vehicle
+                                                    : data_left[3];
+
+                                                data_click[0] == 0
+                                                    ? data_left[4] =
+                                                        listviewData2[0].color
+                                                    : data_left[4];
+
+                                                data_click[0] == 0
+                                                    ? data_left[5] =
+                                                        listviewData2[0].img
+                                                    : data_left[5];
+
+                                                data_click[0] == 0
+                                                    ? data_left[6] =
+                                                        listviewData2[0]
+                                                            .carImgType
+                                                    : data_left[6];
+
+                                                data_click[0] == 0
+                                                    ? data_left[7] =
+                                                        listviewData2[0]
+                                                            .colorCode
+                                                    : data_left[7];
+
                                                 Navigator.pushReplacement(
                                                   context,
                                                   MaterialPageRoute(
@@ -972,7 +932,11 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                                             city: data_left[2],
                                                             vehicle:
                                                                 data_left[3],
+                                                            vehicle_type_img:
+                                                                data_left[6],
                                                             color: data_left[4],
+                                                            color_code:
+                                                                data_left[7],
                                                             img: data_left[5],
                                                             search_plate: widget
                                                                 .search_plate,

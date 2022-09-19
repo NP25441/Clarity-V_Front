@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-final url = "https://d721-2001-fb1-108-c52a-a809-ef4c-5d24-f359.ap.ngrok.io";
+final url = "https://4e86-27-145-28-135.ap.ngrok.io";
 
 List<Data_Api> data_ApiFromJson(String str) => List<Data_Api>.from(json.decode(str).map((x) => Data_Api.fromJson(x)));
 
@@ -17,6 +17,9 @@ class Data_Api {
         this.time,
         this.date,
         this.img,
+        this.name,
+        this.carImgType,
+        this.colorCode,
     });
 
     String? id;
@@ -28,6 +31,9 @@ class Data_Api {
     String? time;
     String? date;
     String? img;
+    String? name;
+    String? carImgType;
+    String? colorCode;
 
     factory Data_Api.fromJson(Map<String, dynamic> json) => Data_Api(
         id: json["_id"],
@@ -39,6 +45,9 @@ class Data_Api {
         time: json["time"],
         date: json["date"],
         img: json["img"],
+        name: json["name"],
+        carImgType: json["car_img_type"],
+        colorCode: json["color_code"],
     );
 
     Map<String, dynamic> toJson() => {
@@ -51,5 +60,8 @@ class Data_Api {
         "time": time,
         "date": date,
         "img": img,
+        "name": name,
+        "car_img_type": carImgType,
+        "color_code": colorCode,
     };
 }
