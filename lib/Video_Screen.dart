@@ -19,6 +19,10 @@ class VideoScreenWidget extends StatefulWidget {
   final String color;
   final String color_code;
   final String img;
+  final String img_plate;
+  final String video;
+  final String date;
+  final String time;
   const VideoScreenWidget({
     Key? key,
     required this.search_plate,
@@ -30,6 +34,10 @@ class VideoScreenWidget extends StatefulWidget {
     required this.color,
     required this.color_code,
     required this.img,
+    required this.img_plate,
+    required this.video,
+    required this.date,
+    required this.time,
   }) : super(key: key);
 
   @override
@@ -39,8 +47,6 @@ class VideoScreenWidget extends StatefulWidget {
 class _VideoScreenWidgetState extends State<VideoScreenWidget>
     with TickerProviderStateMixin {
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  // final url = Uri.parse(
-  //     'https://doc-10-90-docs.googleusercontent.com/docs/securesc/7d042195064b80uds4erm3vt53218bkf/n12osgvg20e0vvus6taklsntltl1ke51/1663568400000/10292077342173025138/10292077342173025138/1YJgmwj0TYaMWK0QaCkWPpAwoC9MKK3Zv?e=view&ax=ALW9-sB8naSYC8u9oVxbS-s-Ja2NE1puZJzfYXuvU7HJTOr1-FUc6gGAg5-ezDQ2zKC6u_cRBzfsouVX_NvHUDxCuPlntaEi_Q11haTd9HZAsgbAOx5kn5rAliENuCJZ0pXNdipBSzJw-4wtl4rm71iwWyKVUUj9_4RFJ1fu6MJm9lpwE3ewhY7ceWADgQJyCK8N3nl7qMwrUW8j8gdIICX-bt-tDupS9aL8CSjlF0QFH9AKWH2yxjY_Ret7Zl3gerx0eSI161RhAsI_ocwACl4nRZH9jfJHKsQbhjCs-5Dzzlz7eQSWKH0rX0IpSEr03yUfWOGPRTRWWO0RK9fWuDXiC09pD9qGQ4BFNNFZqdPCkg13o0ARWE_daywZoWRmUL2Znrhm6L9Ejdxuoab-wwkQDuMChJ6IgxmnIy-V1Z9h4EW0mku78qGA_5xr_Hw6p_CF4EB69lpAibPXM4dF-74U3PBK9zv1hDw3EPwTlXkMcp9W9W5RZm3a7MQ2bRRKUJ8VAcGGfAxrEo1SSA_kfM269Um_0PWoz4LeOQmc5TgGhUmal_Kdg34XTJl5vcrrk8T4XJeWYdHnCfSySKaAEcb4yBvwdlkX6IxAHrDGVVV6HdpsBwWAev2tXGbpMllvAA1TBSLnAidj68X0NXM3IiHWauXyyDQVEktqzqqNIw7HEIwSQoQPRLWqdnxxLWVqMuw8n8ch5axBet1fJQ&uuid=8c8dce5d-61cb-47ef-a576-916a520b3a35&authuser=0&nonce=7d4qavm4ttee2&user=10292077342173025138&hash=5d3tuoo83tkh8g38k0jq98pn9c2gek9k'); // ตำแหน่งในเครื่อง
   late Future<List<Data_Api>> futureData;
 
   // ส่งค่าให้กับ Api
@@ -156,33 +162,33 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                                 EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                             child: Container(
                               width: 650,
-                              height: 550,
+                              height: 600,
                               child: Stack(
                                 children: [
                                   Align(
                                     alignment: AlignmentDirectional(0, 0),
                                     child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(20),
+                                      borderRadius: BorderRadius.circular(50),
                                       child: Image.network(
                                         '${widget.img}',
-                                        width: double.infinity,
-                                        height: double.infinity,
+                                        width: 650,
+                                        height: 600,
                                         fit: BoxFit.fitWidth,
                                       ),
                                     ),
                                   ),
-                                  // Align(
-                                  //   alignment: AlignmentDirectional(0.96, 0.95),
-                                  //   child: ClipRRect(
-                                  //     borderRadius: BorderRadius.circular(10),
-                                  //     child: Image.asset(
-                                  //       'assets/images/Example_Demo/Palte.jpg',
-                                  //       width: 220,
-                                  //       height: 140,
-                                  //       fit: BoxFit.cover,
-                                  //     ),
-                                  //   ),
-                                  // ),
+                                  Align(
+                                    alignment: AlignmentDirectional(0.96, 0.75),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(10),
+                                      child: Image.network(
+                                        '${widget.img_plate}',
+                                        width: 180,
+                                        height: 90,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
@@ -415,19 +421,101 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                                 ),
                               ),
                             ),
+
                             Padding(
                               padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 40, 20, 0),
+                                  EdgeInsetsDirectional.fromSTEB(10, 5, 0, 0),
+                              child: Container(
+                                width: double.infinity,
+                                height: 50,
+                                decoration: BoxDecoration(),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Text(
+                                      'เวลา :',
+                                      style:
+                                          FlutterFlowTheme.bodyText1.override(
+                                        fontFamily: 'Mitr',
+                                        color: Color.fromARGB(255, 46, 46, 46),
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.normal,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10, 0, 0, 0),
+                                      child: Text(
+                                        '${widget.time}',
+                                        style:
+                                            FlutterFlowTheme.bodyText1.override(
+                                          fontFamily: 'Mitr',
+                                          color:
+                                              Color.fromARGB(255, 46, 46, 46),
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(10, 5, 0, 0),
+                              child: Container(
+                                width: double.infinity,
+                                height: 50,
+                                decoration: BoxDecoration(),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Text(
+                                      'วันที่ :',
+                                      style:
+                                          FlutterFlowTheme.bodyText1.override(
+                                        fontFamily: 'Mitr',
+                                        color: Color.fromARGB(255, 46, 46, 46),
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.normal,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10, 0, 0, 0),
+                                      child: Text(
+                                        '${widget.date}',
+                                        style:
+                                            FlutterFlowTheme.bodyText1.override(
+                                          fontFamily: 'Mitr',
+                                          color:
+                                              Color.fromARGB(255, 46, 46, 46),
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+
+                            // 
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 20, 20, 0),
                               child: FFButtonWidget(
                                 onPressed: () async {
-                                  // if (await canLaunchUrl(url)) {
-                                  //   await launchUrl(url);
-                                  // }
-                                  print('เข้าถึง DIR');
+                                  if (await canLaunchUrl(Uri.parse(widget.video))) {
+                                    await launchUrl(Uri.parse(widget.video));
+                                  }
+                                  print(widget.video);
                                 },
-                                text: 'ดาวน์โหลด และ เปิด',
+                                text: 'เปิดวิดีโอ',
                                 options: FFButtonOptions(
-                                  width: 230,
+                                  width: 250,
                                   height: 50,
                                   color: Color.fromARGB(255, 255, 255, 255),
                                   textStyle:

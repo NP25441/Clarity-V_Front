@@ -1005,10 +1005,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                       ),
                                     ),
                                     onPressed: () {
-                                      print(data_Search);
-                                      print(search_plate);
-                                      print(onClick_typeCar);
-                                      // print(inputdata_Search());
+                                      // ส่งตัวไหนไปงง searchplate มันเป็  stng
                                       Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(
@@ -1016,8 +1013,20 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                                 ResultScreenWidget(
                                                   license_plate: data_Search[0],
                                                   city: data_Search[1],
+                                                  date: data_Search[2],
+                                                  time_in: data_Search[3],
+                                                  time_out: data_Search[4],
                                                   search_plate: search_plate,
                                                   type_car: onClick_typeCar,
+                                                  type_car_data_1:
+                                                      data_Search[6],
+                                                  type_car_data_2:
+                                                      data_Search[7],
+                                                  type_car_data_3:
+                                                      data_Search[8],
+                                                  type_car_data_4:
+                                                      data_Search[9],
+                                                  color: data_Search[5],
                                                 )),
                                       );
                                     },
