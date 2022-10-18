@@ -1,12 +1,15 @@
 import 'package:clarity_v/Result_Sceen.dart';
-import 'package:clarity_v/api_model.dart';
+// import 'package:clarity_v/api_model.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'flutter flow/flutter_flow_util.dart';
 import 'flutter flow/flutter_flow_widgets.dart';
 import 'flutter flow/flutter_flow_theme.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert' as convert;
+// import 'package:http/http.dart' as http;
+// import 'dart:convert' as convert;
+import 'package:time_range_picker/time_range_picker.dart';
 
 class SearcScreenWidget extends StatefulWidget {
   const SearcScreenWidget({Key? key}) : super(key: key);
@@ -17,41 +20,69 @@ class SearcScreenWidget extends StatefulWidget {
 
 class _SearcScreenWidgetState extends State<SearcScreenWidget>
     with TickerProviderStateMixin {
-  final scaffoldKey = GlobalKey<ScaffoldState>();
-  final initialDate_form = DateTime.now();
-  final initialDate_to = DateTime.now();
-
   // ตั้งค่าเริ่มต้นเป็น False เพื่อซ่อนการแสดงหน้าของสี
   bool click_color = false;
+
+  // ค่าของสี
+  List color_Onclick = ['-'];
+
+  // ส่ง data เข้า API
+  List data_Search = [
+    // ตัวแปรการค้นหา
+    "", // ป้ายทะเบียน
+    "", // จังหวัด
+    "ไม่ระบุวันที่", // วันที่
+    "00:00", // เวลาเริ่ม
+    "00:00", // เวลาจบ
+    "ไม่เลือกสี", // สี
+    "-", // ประเภทรถเก๋ง
+    "-", // ประเภทรถกระบะ
+    "-", // ประเภทรถตู้
+    "-", // ประเภทรถบรรทุก
+    "-", // รวมทุกประเภท
+  ];
 
   // ตั้งค่าวันที่เริ่มต้น
   DateTime date = DateTime.now();
 
-  // ตั้งค่าเวลาเริ่มต้น
-  TimeOfDay time_form = TimeOfDay.now();
+  // เก็บค่าเปลี่ยนสีปุ่ม
+  List onClick_typeCar = [
+    0, // รถเก๋ง
+    0, // รถกระบะ
+    0, // รถตู้
+    0, // รถบรรทุก
+  ];
+
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+  //  แสดงข้อมูลป้ายที่ค้นหา
+  String search_plate = "ไม่ได้ใส่หมายเลขป้ายทะเบียน";
 
   // ตั้งค่าเวลาเริ่มต้น
-  TimeOfDay time_to = TimeOfDay.now();
+  TimeOfDay time_start = TimeOfDay(hour: 12, minute: 00);
+
+  // ตั้งค่าเวลาเริ่มต้น
+  TimeOfDay time_end = TimeOfDay(hour: 00, minute: 00);
+
+  //  หน้า UI
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
 
   // ฟังก์ชันการแสดงวันที่
   String getTextdate() {
-    if (date == null) {
-      return 'Select Date';
-    } else {
-      data_Search[2] =
-          '${date.day}/${date.month}/${date.year}'; //เก็บข้อมูลไว้ใน List
-      print(data_Search[2]); // แสดงค่าวันที่ที่เลือก
-      return '${date.day}/${date.month}/${date.year}';
-    }
+    return data_Search[2];
   }
 
   // ฟังก์ชันการแสดงเวลาที่เริ่มต้น
   String getTexttime_form() {
-    if (time_form == null) {
-      return 'Select Time';
+    if (data_Search[2] == 'ไม่ระบุวันที่') {
+      data_Search[3] = 'ไม่ระบุเวลา';
+      return data_Search[3];
     } else {
-      final hours = time_form.hour.toString().padLeft(2, '0');
-      final minutes = time_form.minute.toString().padLeft(2, '0');
+      final hours = time_start.hour.toString().padLeft(2, '0');
+      final minutes = time_start.minute.toString().padLeft(2, '0');
 
       data_Search[3] = '$hours:$minutes'; //เก็บข้อมูลไว้ใน List
       print(data_Search[3]); //แสดงค่าเวลาเริ่มต้น
@@ -61,11 +92,12 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
 
   // ฟังก์ชันการแสดงเวลาที่สิ้นสุด
   String getTexttime_to() {
-    if (time_to == null) {
-      return 'Select Time';
+    if (data_Search[3] == 'ไม่ระบุเวลา') {
+      data_Search[4] = 'ไม่ระบุเวลา';
+      return data_Search[4];
     } else {
-      final hours = time_to.hour.toString().padLeft(2, '0');
-      final minutes = time_to.minute.toString().padLeft(2, '0');
+      final hours = time_end.hour.toString().padLeft(2, '0');
+      final minutes = time_end.minute.toString().padLeft(2, '0');
 
       data_Search[4] = '$hours:$minutes'; //เก็บข้อมูลไว้ใน List
       print(data_Search[4]); //แสดงค่าเวลาจบ
@@ -83,73 +115,119 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
       lastDate: DateTime.now(),
     );
 
-    if (newDate == null) return;
-
-    setState(() => date = newDate);
+    setState(() {
+      if (newDate == null) {
+        data_Search[2] = 'ไม่ระบุวันที่';
+        return data_Search[2];
+      } else {
+        data_Search[2] = '${newDate.day}/${newDate.month}/${newDate.year}';
+      }
+      date = newDate;
+    });
   }
 
   // ฟังก์ชันการเลือกเวลาเริ่ม
-  Future pickTime_form(BuildContext context) async {
-    final initialTime_form = TimeOfDay(hour: 0, minute: 0);
-    final newTime_form = await showTimePicker(
+  Future rangeTime(BuildContext context) async {
+    final TimeRange? result = await showCupertinoDialog(
+      barrierDismissible: true,
       context: context,
-      initialTime: initialTime_form,
+      builder: (BuildContext context) {
+        TimeOfDay startTime = TimeOfDay(hour: 12, minute: 00);
+        TimeOfDay endTime = TimeOfDay(hour: 00, minute: 00);
+        return CupertinoAlertDialog(
+          content: SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: 350,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                    child: TimeRangePicker(
+                      padding: 36,
+                      hideButtons: true,
+                      handlerRadius: 8,
+                      strokeWidth: 6,
+                      interval: const Duration(hours: 1),
+                      minDuration: const Duration(hours: 1),
+                      ticks: 24,
+                      rotateLabels: false,
+                      snap: true,
+                      labels: [
+                        "24 h",
+                        "3 h",
+                        "6 h",
+                        "9 h",
+                        "12 h",
+                        "15 h",
+                        "18 h",
+                        "21 h"
+                      ].asMap().entries.map((e) {
+                        return ClockLabel.fromIndex(
+                            idx: e.key, length: 8, text: e.value);
+                      }).toList(),
+                      activeTimeTextStyle: const TextStyle(
+                          fontWeight: FontWeight.normal,
+                          fontSize: 25,
+                          color: Colors.white),
+                      timeTextStyle: const TextStyle(
+                          fontWeight: FontWeight.normal,
+                          fontSize: 25,
+                          color: Color.fromARGB(129, 255, 255, 255)),
+                      onStartChange: (start) {
+                        setState(() {
+                          startTime = start;
+                        });
+                      },
+                      onEndChange: (end) {
+                        setState(() {
+                          endTime = end;
+                        });
+                      },
+                    ),
+                  )
+                ],
+              )),
+          actions: <Widget>[
+            CupertinoDialogAction(
+                isDestructiveAction: true,
+                child: Text(
+                  'ยกเลิก',
+                  textAlign: TextAlign.start,
+                  style: FlutterFlowTheme.bodyText1.override(
+                    fontFamily: 'Mitr',
+                    color: Color.fromARGB(255, 46, 46, 46),
+                    fontSize: 20,
+                    fontWeight: FontWeight.w300,
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                }),
+            CupertinoDialogAction(
+              child: Text(
+                'ยืนยัน',
+                textAlign: TextAlign.start,
+                style: FlutterFlowTheme.bodyText1.override(
+                  fontFamily: 'Mitr',
+                  color: Color.fromARGB(255, 81, 121, 255),
+                  fontSize: 20,
+                  fontWeight: FontWeight.w300,
+                ),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop(
+                  TimeRange(startTime: startTime, endTime: endTime),
+                );
+                setState(() => {time_start = startTime, time_end = endTime});
+              },
+            ),
+          ],
+        );
+      },
     );
-
-    if (newTime_form == null) return;
-
-    setState(() => time_form = newTime_form);
-  }
-
-  // ฟังก์ชันการเลือกเวลาจบ
-  Future pickTime_to(BuildContext context) async {
-    final initialTime_to = TimeOfDay(hour: 0, minute: 0);
-    final newTime_to = await showTimePicker(
-      context: context,
-      initialTime: initialTime_to,
-    );
-
-    if (newTime_to == null) return;
-
-    setState(() => time_to = newTime_to);
-  }
-
-  // เก็บค่าเปลี่ยนสีปุ่ม
-  List onClick_typeCar = [
-    0, // รถเก๋ง
-    0, // รถกระบะ
-    0, // รถตู้
-    0, // รถบรรทุก
-  ];
-
-  // ค่าของสี
-  List color_Onclick = ['-'];
-
-  // ส่ง data เข้า API
-  List data_Search = [
-    // ตัวแปรการค้นหา
-    "", // ป้ายทะเบียน
-    "", // จังหวัด
-    "00/00/0000", // วันที่
-    "00:00", // เวลาเริ่ม
-    "00:00", // เวลาจบ
-    "ไม่เลือกสี", // สี
-    "-", // ประเภทรถเก๋ง
-    "-", // ประเภทรถกระบะ
-    "-", // ประเภทรถตู้
-    "-", // ประเภทรถบรรทุก
-    "-", // รวมทุกประเภท
-  ];
-
-  //  แสดงข้อมูลป้ายที่ค้นหา
-  String search_plate = "ไม่ได้ใส่หมายเลขป้ายทะเบียน";
-
-  //  หน้า UI
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    // inputdata_Search();
+    if (kDebugMode) {
+      print(result.toString());
+    }
   }
 
   @override
@@ -429,7 +507,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                           child: Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    60, 0, 0, 0),
+                                                    20, 0, 0, 0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
@@ -459,16 +537,71 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                                   children: [
                                                     // ช่องใส่เวลาเริ่มต้น
                                                     Container(
-                                                      width: 160,
+                                                      width: 250,
                                                       decoration:
                                                           BoxDecoration(),
                                                       child: FFButtonWidget(
                                                         onPressed: () {
-                                                          pickTime_form(
-                                                              context);
+                                                          if (data_Search[2] ==
+                                                              'ไม่ระบุวันที่') {
+                                                            showDialog<String>(
+                              context: context,
+                              builder: (BuildContext context) => AlertDialog(
+                                title: Center(
+                                    child: Text(
+                                  'แจ้งเตือน',
+                                  textAlign: TextAlign.start,
+                                  style: FlutterFlowTheme.bodyText1.override(
+                                    fontFamily: 'Mitr',
+                                    color: Color.fromARGB(255, 46, 46, 46),
+                                    fontSize: 35,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                                )),
+                                content: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: <Widget>[
+                                    Expanded(
+                                      child: Text(
+                                        'ไม่สามารถระบุเวลาได้หากไม่ทำการระบุ วันที่',
+                                        textAlign: TextAlign.start,
+                                        style:
+                                            FlutterFlowTheme.bodyText1.override(
+                                          fontFamily: 'Mitr',
+                                          color:
+                                              Color.fromARGB(255, 46, 46, 46),
+                                          fontSize: 25,
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                actions: <Widget>[
+                                  TextButton(
+                                    child: Text(
+                                      'ตกลง',
+                                      style:
+                                          FlutterFlowTheme.subtitle2.override(
+                                        fontFamily: 'Mitr',
+                                        color: Color(0xFF42A5F5),
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w300,
+                                      ),
+                                    ),
+                                    onPressed: () =>
+                                        Navigator.pop(context, 'ย้อนกลับ'),
+                                  )
+                                ],
+                              ),
+                            );
+                                                          }else{rangeTime(context);}
                                                         },
                                                         text:
-                                                            getTexttime_form(),
+                                                            getTexttime_form() +
+                                                                '  -  ' +
+                                                                getTexttime_to(),
                                                         options:
                                                             FFButtonOptions(
                                                           width:
@@ -508,85 +641,83 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                                         ),
                                                       ),
                                                     ),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  10, 0, 10, 0),
-                                                      child: Text(
-                                                        'ถึง',
-                                                        style: FlutterFlowTheme
-                                                            .bodyText1
-                                                            .override(
-                                                          fontFamily: 'Mitr',
-                                                          color: Color.fromARGB(
-                                                              255, 46, 46, 46),
-                                                          fontSize: 20,
-                                                          fontWeight:
-                                                              FontWeight.w300,
-                                                        ),
-                                                      ),
-                                                    ),
+                                                    // Padding(
+                                                    //   padding:
+                                                    //       EdgeInsetsDirectional
+                                                    //           .fromSTEB(
+                                                    //               10, 0, 10, 0),
+                                                    //   child: Text(
+                                                    //     'ถึง',
+                                                    //     style: FlutterFlowTheme
+                                                    //         .bodyText1
+                                                    //         .override(
+                                                    //       fontFamily: 'Mitr',
+                                                    //       color: Color.fromARGB(
+                                                    //           255, 46, 46, 46),
+                                                    //       fontSize: 20,
+                                                    //       fontWeight:
+                                                    //           FontWeight.w300,
+                                                    //     ),
+                                                    //   ),
+                                                    // ),
                                                     // ช่องใส่เวลาจบ
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0, 5, 0, 0),
-                                                      child: Container(
-                                                        width: 160,
-                                                        decoration:
-                                                            BoxDecoration(),
-                                                        child: FFButtonWidget(
-                                                          onPressed: () {
-                                                            pickTime_to(
-                                                                context);
-                                                          },
-                                                          text:
-                                                              getTexttime_to(),
-                                                          options:
-                                                              FFButtonOptions(
-                                                            width:
-                                                                double.infinity,
-                                                            height: 60,
-                                                            color:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    255,
-                                                                    255,
-                                                                    255),
-                                                            textStyle:
-                                                                FlutterFlowTheme
-                                                                    .subtitle2
-                                                                    .override(
-                                                              fontFamily:
-                                                                  'Mitr',
-                                                              color: Color
-                                                                  .fromARGB(
-                                                                      255,
-                                                                      141,
-                                                                      168,
-                                                                      255),
-                                                              fontSize: 20,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w300,
-                                                            ),
-                                                            borderSide:
-                                                                BorderSide(
-                                                              color: Color
-                                                                  .fromARGB(
-                                                                      255,
-                                                                      160,
-                                                                      182,
-                                                                      255),
-                                                              width: 2,
-                                                            ),
-                                                            borderRadius: 12,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
+                                                    // Padding(
+                                                    //   padding:
+                                                    //       EdgeInsetsDirectional
+                                                    //           .fromSTEB(
+                                                    //               0, 5, 0, 0),
+                                                    //   child: Container(
+                                                    //     width: 160,
+                                                    //     decoration:
+                                                    //         BoxDecoration(),
+                                                    //     child: FFButtonWidget(
+                                                    //       onPressed:
+                                                    //           () async {},
+                                                    //       text:
+                                                    //           getTexttime_to(),
+                                                    //       options:
+                                                    //           FFButtonOptions(
+                                                    //         width:
+                                                    //             double.infinity,
+                                                    //         height: 60,
+                                                    //         color:
+                                                    //             Color.fromARGB(
+                                                    //                 255,
+                                                    //                 255,
+                                                    //                 255,
+                                                    //                 255),
+                                                    //         textStyle:
+                                                    //             FlutterFlowTheme
+                                                    //                 .subtitle2
+                                                    //                 .override(
+                                                    //           fontFamily:
+                                                    //               'Mitr',
+                                                    //           color: Color
+                                                    //               .fromARGB(
+                                                    //                   255,
+                                                    //                   141,
+                                                    //                   168,
+                                                    //                   255),
+                                                    //           fontSize: 20,
+                                                    //           fontWeight:
+                                                    //               FontWeight
+                                                    //                   .w300,
+                                                    //         ),
+                                                    //         borderSide:
+                                                    //             BorderSide(
+                                                    //           color: Color
+                                                    //               .fromARGB(
+                                                    //                   255,
+                                                    //                   160,
+                                                    //                   182,
+                                                    //                   255),
+                                                    //           width: 2,
+                                                    //         ),
+                                                    //         borderRadius: 12,
+                                                    //       ),
+                                                    //     ),
+                                                    //   ),
+                                                    // ),
                                                   ],
                                                 ),
                                               ],
@@ -597,7 +728,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  60, 0, 0, 0),
+                                                  20, 0, 0, 0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             mainAxisAlignment:
@@ -629,6 +760,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                                       setState(() {
                                                         click_color =
                                                             true; // เปลี่ยนค่าให้เป็นจริงเพื่อแสดง
+                                                        print(data_Search);
                                                       });
                                                     },
                                                     text: '',
@@ -840,6 +972,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                                 onClick_typeCar[2] = 1;
                                                 data_Search[8] = 'รถตู้';
                                                 print(data_Search[8]);
+                                                print(data_Search[2]);
                                               }
                                             });
                                           },

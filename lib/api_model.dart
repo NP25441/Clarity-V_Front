@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-final url = "https://1a23-2001-fb1-108-52a2-3105-350d-ae5c-fbd2.ap.ngrok.io";
+final url = "https://cfe8-2001-fb1-10b-d49b-c5ae-a417-f596-8a10.ap.ngrok.io";
 
 List<Data_Api> data_ApiFromJson(String str) => List<Data_Api>.from(json.decode(str).map((x) => Data_Api.fromJson(x)));
 
@@ -12,15 +12,15 @@ class Data_Api {
         this.id,
         this.data_ApiId,
         this.licensePlate,
+        this.name,
         this.city,
         this.vehicle,
+        this.carImgType,
         this.color,
+        this.colorCode,
         this.time,
         this.date,
-        this.img,
-        this.name,
-        this.carImgType,
-        this.colorCode,
+        this.imgCar,
         this.imgPlate,
         this.video,
     });
@@ -28,15 +28,15 @@ class Data_Api {
     String? id;
     int? data_ApiId;
     String? licensePlate;
+    String? name;
     String? city;
     String? vehicle;
+    String? carImgType;
     String? color;
+    String? colorCode;
     String? time;
     String? date;
-    String? img;
-    String? name;
-    String? carImgType;
-    String? colorCode;
+    String? imgCar;
     String? imgPlate;
     String? video;
 
@@ -44,15 +44,15 @@ class Data_Api {
         id: json["_id"],
         data_ApiId: json["id"],
         licensePlate: json["license_plate"],
+        name: json["name"],
         city: json["city"],
         vehicle: json["vehicle"],
+        carImgType: json["car_img_type"],
         color: json["color"],
+        colorCode: json["color_code"],
         time: json["time"],
         date: json["date"],
-        img: json["img"],
-        name: json["name"],
-        carImgType: json["car_img_type"],
-        colorCode: json["color_code"],
+        imgCar: json["img_car"],
         imgPlate: json["img_plate"],
         video: json["video"],
     );
@@ -61,15 +61,15 @@ class Data_Api {
         "_id": id,
         "id": data_ApiId,
         "license_plate": licensePlate,
+        "name": name,
         "city": city,
         "vehicle": vehicle,
+        "car_img_type": carImgType,
         "color": color,
+        "color_code": colorCode,
         "time": time,
         "date": date,
-        "img": img,
-        "name": name,
-        "car_img_type": carImgType,
-        "color_code": colorCode,
+        "img_car": imgCar,
         "img_plate": imgPlate,
         "video": video,
     };

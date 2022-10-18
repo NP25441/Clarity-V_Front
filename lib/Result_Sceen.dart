@@ -85,7 +85,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
   //  เชื่อมต่อกับ API
   Future<List<Data_Api>> showdata_Search() async {
     final res = await http.get(
-      Uri.parse("$url/plates"),
+      Uri.parse("$url/platess"),
       headers: {
         "Accept": "application/json",
         "Access-Control_Allow_Origin": "*",
@@ -178,237 +178,236 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
             ),
 
             // กล่อง Filter ประเภทรถ
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-              child: Container(
-                width: MediaQuery.of(context).size.width * 0.95,
-                height: 100,
-                decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 255, 255, 255),
-                  borderRadius: BorderRadius.circular(30),
-                  border: Border.all(
-                    color: Color.fromARGB(255, 160, 182, 255),
-                    width: 2,
-                  ),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    // ประเภทรถ(รถเก๋ง)
-                    Tooltip(
-                      triggerMode: TooltipTriggerMode.manual,
-                      message: ' รถเก๋ง ',
-                      padding: const EdgeInsets.all(5.0),
-                      preferBelow: false,
-                      textStyle: FlutterFlowTheme.subtitle2.override(
-                        fontFamily: 'Mitr',
-                        color: Color.fromARGB(255, 255, 255, 255),
-                        fontSize: 15,
-                        fontWeight: FontWeight.w300,
-                      ),
-                      child: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            if (onClick_typeCar[0] == 1) {
-                              onClick_typeCar[0] = 0;
-                              data_Car[0] = '';
-                              print(data_Car[0]);
-                              print(widget.type_car);
-                            } else {
-                              onClick_typeCar[0] = 1;
-                              data_Car[0] = 'รถเก๋ง';
-                              print(data_Car[0]);
-                            }
-                          });
-                        },
-                        child: Container(
-                          width: 100,
-                          height: 70,
-                          decoration: BoxDecoration(
-                            color: onClick_typeCar[0] == 1
-                                ? Color.fromARGB(100, 160, 182, 255)
-                                : Color.fromARGB(255, 255, 255, 255),
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(
-                              color: Color.fromARGB(255, 160, 182, 255),
-                              width: 2,
-                            ),
-                          ),
-                          alignment: AlignmentDirectional(0, 0),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
-                            child: Image.asset(
-                              'assets/images/Sedan.png',
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.contain,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Tooltip(
-                      triggerMode: TooltipTriggerMode.manual,
-                      message: ' รถกระบะ ',
-                      padding: const EdgeInsets.all(5.0),
-                      preferBelow: false,
-                      textStyle: FlutterFlowTheme.subtitle2.override(
-                        fontFamily: 'Mitr',
-                        color: Color.fromARGB(255, 255, 255, 255),
-                        fontSize: 15,
-                        fontWeight: FontWeight.w300,
-                      ),
-                      child: GestureDetector(
-                        // ประเภทรถ(กระบะ)
-                        onTap: () {
-                          setState(() {
-                            if (onClick_typeCar[1] == 1) {
-                              onClick_typeCar[1] = 0;
-                              data_Car[1] = '';
-                              print(data_Car[1]);
-                            } else {
-                              onClick_typeCar[1] = 1;
-                              data_Car[1] = 'รถกระบะ';
-                              print(data_Car[1]);
-                            }
-                          });
-                        },
-                        child: Container(
-                          width: 100,
-                          height: 70,
-                          decoration: BoxDecoration(
-                            color: onClick_typeCar[1] == 1
-                                ? Color.fromARGB(100, 160, 182, 255)
-                                : Color.fromARGB(255, 255, 255, 255),
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(
-                              color: Color.fromARGB(255, 160, 182, 255),
-                              width: 2,
-                            ),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
-                            child: Image.asset(
-                              'assets/images/Pickup.png',
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.contain,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Tooltip(
-                      triggerMode: TooltipTriggerMode.manual,
-                      message: ' รถตู้ ',
-                      padding: const EdgeInsets.all(5.0),
-                      preferBelow: false,
-                      textStyle: FlutterFlowTheme.subtitle2.override(
-                        fontFamily: 'Mitr',
-                        color: Color.fromARGB(255, 255, 255, 255),
-                        fontSize: 15,
-                        fontWeight: FontWeight.w300,
-                      ),
-                      child: GestureDetector(
-                        // ประเภทรถ(ตู้)
-                        onTap: () {
-                          print('รถตู้');
-                          setState(() {
-                            if (onClick_typeCar[2] == 1) {
-                              onClick_typeCar[2] = 0;
-                              data_Car[2] = '';
-                              print(data_Car[2]);
-                            } else {
-                              onClick_typeCar[2] = 1;
-                              data_Car[2] = 'รถตู้';
-                              print(data_Car[2]);
-                            }
-                          });
-                        },
-                        child: Container(
-                          width: 100,
-                          height: 70,
-                          decoration: BoxDecoration(
-                            color: onClick_typeCar[2] == 1
-                                ? Color.fromARGB(100, 160, 182, 255)
-                                : Color.fromARGB(255, 255, 255, 255),
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(
-                              color: Color.fromARGB(255, 160, 182, 255),
-                              width: 2,
-                            ),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
-                            child: Image.asset(
-                              'assets/images/Van.png',
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.contain,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Tooltip(
-                      triggerMode: TooltipTriggerMode.manual,
-                      message: ' รถบรรทุก ',
-                      padding: const EdgeInsets.all(5.0),
-                      preferBelow: false,
-                      textStyle: FlutterFlowTheme.subtitle2.override(
-                        fontFamily: 'Mitr',
-                        color: Color.fromARGB(255, 255, 255, 255),
-                        fontSize: 15,
-                        fontWeight: FontWeight.w300,
-                      ),
-                      child: GestureDetector(
-                        // ประเภทรถ(บรรทุก)
-                        onTap: () {
-                          print('รถบรรทุก');
-
-                          setState(() {
-                            if (onClick_typeCar[3] == 1) {
-                              onClick_typeCar[3] = 0;
-                              data_Car[3] = '';
-                              print(data_Car[3]);
-                            } else {
-                              onClick_typeCar[3] = 1;
-                              data_Car[3] = 'รถบรรทุก';
-                              print(data_Car[3]);
-                              print(data_left[8]);
-                            }
-                          });
-                        },
-                        child: Container(
-                          width: 100,
-                          height: 70,
-                          decoration: BoxDecoration(
-                            color: onClick_typeCar[3] == 1
-                                ? Color.fromARGB(100, 160, 182, 255)
-                                : Color.fromARGB(255, 255, 255, 255),
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(
-                              color: Color.fromARGB(255, 160, 182, 255),
-                              width: 2,
-                            ),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
-                            child: Image.asset(
-                              'assets/images/Truck.png',
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.contain,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            // Padding(
+            //   padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+            //   child: Container(
+            //     width: MediaQuery.of(context).size.width * 0.95,
+            //     height: 100,
+            //     decoration: BoxDecoration(
+            //       color: Color.fromARGB(255, 255, 255, 255),
+            //       borderRadius: BorderRadius.circular(30),
+            //       border: Border.all(
+            //         color: Color.fromARGB(255, 160, 182, 255),
+            //         width: 2,
+            //       ),
+            //     ),
+            //     child: Row(
+            //       mainAxisSize: MainAxisSize.max,
+            //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            //       children: [
+            //         // ประเภทรถ(รถเก๋ง)
+            //         Tooltip(
+            //           triggerMode: TooltipTriggerMode.manual,
+            //           message: ' รถเก๋ง ',
+            //           padding: const EdgeInsets.all(5.0),
+            //           preferBelow: false,
+            //           textStyle: FlutterFlowTheme.subtitle2.override(
+            //             fontFamily: 'Mitr',
+            //             color: Color.fromARGB(255, 255, 255, 255),
+            //             fontSize: 15,
+            //             fontWeight: FontWeight.w300,
+            //           ),
+            //           child: GestureDetector(
+            //             onTap: () {
+            //               setState(() {
+            //                 if (onClick_typeCar[0] == 1) {
+            //                   onClick_typeCar[0] = 0;
+            //                   data_Car[0] = '';
+            //                   print(data_Car[0]);
+            //                   print(widget.type_car);
+            //                 } else {
+            //                   onClick_typeCar[0] = 1;
+            //                   data_Car[0] = 'รถเก๋ง';
+            //                   print(data_Car[0]);
+            //                 }
+            //               });
+            //             },
+            //             child: Container(
+            //               width: 100,
+            //               height: 70,
+            //               decoration: BoxDecoration(
+            //                 color: onClick_typeCar[0] == 1
+            //                     ? Color.fromARGB(100, 160, 182, 255)
+            //                     : Color.fromARGB(255, 255, 255, 255),
+            //                 borderRadius: BorderRadius.circular(20),
+            //                 border: Border.all(
+            //                   color: Color.fromARGB(255, 160, 182, 255),
+            //                   width: 2,
+            //                 ),
+            //               ),
+            //               alignment: AlignmentDirectional(0, 0),
+            //               child: Padding(
+            //                 padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
+            //                 child: Image.asset(
+            //                   'assets/images/Sedan.png',
+            //                   width: 100,
+            //                   height: 100,
+            //                   fit: BoxFit.contain,
+            //                 ),
+            //               ),
+            //             ),
+            //           ),
+            //         ),
+            //         Tooltip(
+            //           triggerMode: TooltipTriggerMode.manual,
+            //           message: ' รถกระบะ ',
+            //           padding: const EdgeInsets.all(5.0),
+            //           preferBelow: false,
+            //           textStyle: FlutterFlowTheme.subtitle2.override(
+            //             fontFamily: 'Mitr',
+            //             color: Color.fromARGB(255, 255, 255, 255),
+            //             fontSize: 15,
+            //             fontWeight: FontWeight.w300,
+            //           ),
+            //           child: GestureDetector(
+            //             // ประเภทรถ(กระบะ)
+            //             onTap: () {
+            //               setState(() {
+            //                 if (onClick_typeCar[1] == 1) {
+            //                   onClick_typeCar[1] = 0;
+            //                   data_Car[1] = '';
+            //                   print(data_Car[1]);
+            //                 } else {
+            //                   onClick_typeCar[1] = 1;
+            //                   data_Car[1] = 'รถกระบะ';
+            //                   print(data_Car[1]);
+            //                 }
+            //               });
+            //             },
+            //             child: Container(
+            //               width: 100,
+            //               height: 70,
+            //               decoration: BoxDecoration(
+            //                 color: onClick_typeCar[1] == 1
+            //                     ? Color.fromARGB(100, 160, 182, 255)
+            //                     : Color.fromARGB(255, 255, 255, 255),
+            //                 borderRadius: BorderRadius.circular(20),
+            //                 border: Border.all(
+            //                   color: Color.fromARGB(255, 160, 182, 255),
+            //                   width: 2,
+            //                 ),
+            //               ),
+            //               child: Padding(
+            //                 padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
+            //                 child: Image.asset(
+            //                   'assets/images/Pickup.png',
+            //                   width: 100,
+            //                   height: 100,
+            //                   fit: BoxFit.contain,
+            //                 ),
+            //               ),
+            //             ),
+            //           ),
+            //         ),
+            //         Tooltip(
+            //           triggerMode: TooltipTriggerMode.manual,
+            //           message: ' รถตู้ ',
+            //           padding: const EdgeInsets.all(5.0),
+            //           preferBelow: false,
+            //           textStyle: FlutterFlowTheme.subtitle2.override(
+            //             fontFamily: 'Mitr',
+            //             color: Color.fromARGB(255, 255, 255, 255),
+            //             fontSize: 15,
+            //             fontWeight: FontWeight.w300,
+            //           ),
+            //           child: GestureDetector(
+            //             // ประเภทรถ(ตู้)
+            //             onTap: () {
+            //               print('รถตู้');
+            //               setState(() {
+            //                 if (onClick_typeCar[2] == 1) {
+            //                   onClick_typeCar[2] = 0;
+            //                   data_Car[2] = '';
+            //                   print(data_Car[2]);
+            //                 } else {
+            //                   onClick_typeCar[2] = 1;
+            //                   data_Car[2] = 'รถตู้';
+            //                   print(data_Car[2]);
+            //                 }
+            //               });
+            //             },
+            //             child: Container(
+            //               width: 100,
+            //               height: 70,
+            //               decoration: BoxDecoration(
+            //                 color: onClick_typeCar[2] == 1
+            //                     ? Color.fromARGB(100, 160, 182, 255)
+            //                     : Color.fromARGB(255, 255, 255, 255),
+            //                 borderRadius: BorderRadius.circular(20),
+            //                 border: Border.all(
+            //                   color: Color.fromARGB(255, 160, 182, 255),
+            //                   width: 2,
+            //                 ),
+            //               ),
+            //               child: Padding(
+            //                 padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
+            //                 child: Image.asset(
+            //                   'assets/images/Van.png',
+            //                   width: 100,
+            //                   height: 100,
+            //                   fit: BoxFit.contain,
+            //                 ),
+            //               ),
+            //             ),
+            //           ),
+            //         ),
+            //         Tooltip(
+            //           triggerMode: TooltipTriggerMode.manual,
+            //           message: ' รถบรรทุก ',
+            //           padding: const EdgeInsets.all(5.0),
+            //           preferBelow: false,
+            //           textStyle: FlutterFlowTheme.subtitle2.override(
+            //             fontFamily: 'Mitr',
+            //             color: Color.fromARGB(255, 255, 255, 255),
+            //             fontSize: 15,
+            //             fontWeight: FontWeight.w300,
+            //           ),
+            //           child: GestureDetector(
+            //             // ประเภทรถ(บรรทุก)
+            //             onTap: () {
+            //               print('รถบรรทุก');
+            //               setState(() {
+            //                 if (onClick_typeCar[3] == 1) {
+            //                   onClick_typeCar[3] = 0;
+            //                   data_Car[3] = '';
+            //                   print(data_Car[3]);
+            //                 } else {
+            //                   onClick_typeCar[3] = 1;
+            //                   data_Car[3] = 'รถบรรทุก';
+            //                   print(data_Car[3]);
+            //                   print(data_left[8]);
+            //                 }
+            //               });
+            //             },
+            //             child: Container(
+            //               width: 100,
+            //               height: 70,
+            //               decoration: BoxDecoration(
+            //                 color: onClick_typeCar[3] == 1
+            //                     ? Color.fromARGB(100, 160, 182, 255)
+            //                     : Color.fromARGB(255, 255, 255, 255),
+            //                 borderRadius: BorderRadius.circular(20),
+            //                 border: Border.all(
+            //                   color: Color.fromARGB(255, 160, 182, 255),
+            //                   width: 2,
+            //                 ),
+            //               ),
+            //               child: Padding(
+            //                 padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
+            //                 child: Image.asset(
+            //                   'assets/images/Truck.png',
+            //                   width: 100,
+            //                   height: 100,
+            //                   fit: BoxFit.contain,
+            //                 ),
+            //               ),
+            //             ),
+            //           ),
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
 
             // สร้าง List Visw เพื่อดูข้อมูล
             Padding(
@@ -446,7 +445,6 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                         .where((e) => e.licensePlate!
                                             .contains(widget.license_plate))
                                         .toList();
-
                                     return ListView.builder(
                                       padding: EdgeInsets.zero,
                                       scrollDirection: Axis.vertical,
@@ -480,7 +478,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                                     .color;
                                                 data_left[5] = listviewData2[
                                                         indexlistviewData2]
-                                                    .img;
+                                                    .imgCar;
                                                 data_left[6] = listviewData2[
                                                         indexlistviewData2]
                                                     .carImgType;
@@ -527,7 +525,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                                                   .fromSTEB(30,
                                                                       0, 30, 0),
                                                           child: Image.network(
-                                                            '${listviewData2[indexlistviewData2].img}',
+                                                            '${listviewData2[indexlistviewData2].imgCar}',
                                                             width: 200,
                                                             height: 100,
                                                             fit: BoxFit.cover,
@@ -655,7 +653,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                                     .color;
                                                 data_left[5] = listviewData2[
                                                         indexlistviewData2]
-                                                    .img;
+                                                    .imgCar;
                                                 data_left[6] = listviewData2[
                                                         indexlistviewData2]
                                                     .carImgType;
@@ -702,7 +700,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                                                   .fromSTEB(30,
                                                                       0, 30, 0),
                                                           child: Image.network(
-                                                            '${listviewData2[indexlistviewData2].img}',
+                                                            '${listviewData2[indexlistviewData2].imgCar}',
                                                             width: 200,
                                                             height: 100,
                                                             fit: BoxFit.cover,
@@ -791,514 +789,190 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                   }
 
                                   // การค้นหาตาม วันที่
-                                  // if (widget.date != "19/8/2022") {
-                                  //   listviewData2 = listviewData
-                                  //       .where((e) =>
-                                  //           e.vehicle!.contains(data_Car[3]))
-                                  //       .toList();
-                                  //   return ListView.builder(
-                                  //     padding: EdgeInsets.zero,
-                                  //     scrollDirection: Axis.vertical,
-                                  //     itemCount: listviewData2.length,
-                                  //     itemBuilder:
-                                  //         (context, indexlistviewData2) {
-                                  //       if (indexlistviewData2 == 0) {
-                                  //         indexlistviewData2 + 1;
-                                  //       }
-                                  //       return GestureDetector(
-                                  //           onTap: () {
-                                  //             setState(() {
-                                  //               print(listviewData2[
-                                  //                       indexlistviewData2]
-                                  //                   .imgPlate);
-                                  //               data_click[0] = 1;
-                                  //               data_left[0] = listviewData2[
-                                  //                       indexlistviewData2]
-                                  //                   .licensePlate;
-                                  //               data_left[1] = listviewData2[
-                                  //                       indexlistviewData2]
-                                  //                   .name;
-                                  //               data_left[2] = listviewData2[
-                                  //                       indexlistviewData2]
-                                  //                   .city;
-                                  //               data_left[3] = listviewData2[
-                                  //                       indexlistviewData2]
-                                  //                   .vehicle;
-                                  //               data_left[4] = listviewData2[
-                                  //                       indexlistviewData2]
-                                  //                   .color;
-                                  //               data_left[5] = listviewData2[
-                                  //                       indexlistviewData2]
-                                  //                   .img;
-                                  //               data_left[6] = listviewData2[
-                                  //                       indexlistviewData2]
-                                  //                   .carImgType;
-                                  //               data_left[7] = listviewData2[
-                                  //                       indexlistviewData2]
-                                  //                   .colorCode;
-                                  //               data_left[8] = listviewData2[
-                                  //                       indexlistviewData2]
-                                  //                   .imgPlate;
-                                  //               data_left[9] = listviewData2[
-                                  //                       indexlistviewData2]
-                                  //                   .video;
-                                  // data_left[10] = listviewData2[indexlistviewData2].time;
-                                  // data_left[11] = listviewData2[indexlistviewData2].date;
-                                  //             });
-                                  //           },
-                                  //           child: Card(
-                                  //               child: Row(
-                                  //             mainAxisSize: MainAxisSize.max,
-                                  //             mainAxisAlignment:
-                                  //                 MainAxisAlignment.center,
-                                  //             children: [
-                                  //               Padding(
-                                  //                 padding: EdgeInsetsDirectional
-                                  //                     .fromSTEB(0, 0, 0, 0),
-                                  //                 child: Container(
-                                  //                   width: 550,
-                                  //                   height: 150,
-                                  //                   decoration: BoxDecoration(),
-                                  //                   child: Row(
-                                  //                     mainAxisSize:
-                                  //                         MainAxisSize.max,
-                                  //                     mainAxisAlignment:
-                                  //                         MainAxisAlignment
-                                  //                             .start,
-                                  //                     children: [
-                                  //                       Padding(
-                                  //                         padding:
-                                  //                             EdgeInsetsDirectional
-                                  //                                 .fromSTEB(30,
-                                  //                                     0, 30, 0),
-                                  //                         child: Image.network(
-                                  //                           '${listviewData2[indexlistviewData2].img}',
-                                  //                           width: 200,
-                                  //                           height: 100,
-                                  //                           fit: BoxFit.cover,
-                                  //                         ),
-                                  //                       ),
-                                  //                       Column(
-                                  //                         mainAxisSize:
-                                  //                             MainAxisSize.max,
-                                  //                         mainAxisAlignment:
-                                  //                             MainAxisAlignment
-                                  //                                 .spaceEvenly,
-                                  //                         crossAxisAlignment:
-                                  //                             CrossAxisAlignment
-                                  //                                 .start,
-                                  //                         children: [
-                                  //                           Text(
-                                  //                             '${listviewData2[indexlistviewData2].licensePlate}',
-                                  //                             style:
-                                  //                                 FlutterFlowTheme
-                                  //                                     .bodyText1
-                                  //                                     .override(
-                                  //                               fontFamily:
-                                  //                                   'Mitr',
-                                  //                               color: Color
-                                  //                                   .fromARGB(
-                                  //                                       255,
-                                  //                                       46,
-                                  //                                       46,
-                                  //                                       46),
-                                  //                               fontSize: 20,
-                                  //                               fontWeight:
-                                  //                                   FontWeight
-                                  //                                       .w300,
-                                  //                             ),
-                                  //                           ),
-                                  //                           Text(
-                                  //                             '${listviewData2[indexlistviewData2].city}',
-                                  //                             style:
-                                  //                                 FlutterFlowTheme
-                                  //                                     .bodyText1
-                                  //                                     .override(
-                                  //                               fontFamily:
-                                  //                                   'Mitr',
-                                  //                               color: Color
-                                  //                                   .fromARGB(
-                                  //                                       255,
-                                  //                                       46,
-                                  //                                       46,
-                                  //                                       46),
-                                  //                               fontSize: 20,
-                                  //                               fontWeight:
-                                  //                                   FontWeight
-                                  //                                       .w300,
-                                  //                             ),
-                                  //                           ),
-                                  //                           Text(
-                                  //                             '${listviewData2[indexlistviewData2].vehicle}',
-                                  //                             style:
-                                  //                                 FlutterFlowTheme
-                                  //                                     .bodyText1
-                                  //                                     .override(
-                                  //                               fontFamily:
-                                  //                                   'Mitr',
-                                  //                               color: Color
-                                  //                                   .fromARGB(
-                                  //                                       255,
-                                  //                                       46,
-                                  //                                       46,
-                                  //                                       46),
-                                  //                               fontSize: 20,
-                                  //                               fontWeight:
-                                  //                                   FontWeight
-                                  //                                       .w300,
-                                  //                             ),
-                                  //                           ),
-                                  //                         ],
-                                  //                       ),
-                                  //                     ],
-                                  //                   ),
-                                  //                 ),
-                                  //               ),
-                                  //             ],
-                                  //           )));
-                                  //     },
-                                  //   );
-                                  // }
-
-                                  // การค้นหาตาม เวลาเข้า
-                                  // if (widget.time_in != "02:32") {
-                                  //   listviewData2 = listviewData
-                                  //       .where((e) =>
-                                  //           e.time!.contains(widget.time_in))
-                                  //       .toList();
-                                  //   return ListView.builder(
-                                  //     padding: EdgeInsets.zero,
-                                  //     scrollDirection: Axis.vertical,
-                                  //     itemCount: listviewData2.length,
-                                  //     itemBuilder:
-                                  //         (context, indexlistviewData2) {
-                                  //       if (indexlistviewData2 == 0) {
-                                  //         indexlistviewData2 + 1;
-                                  //       }
-                                  //       return GestureDetector(
-                                  //           onTap: () {
-                                  //             setState(() {
-                                  //               print(listviewData2[
-                                  //                       indexlistviewData2]
-                                  //                   .imgPlate);
-                                  //               data_click[0] = 1;
-                                  //               data_left[0] = listviewData2[
-                                  //                       indexlistviewData2]
-                                  //                   .licensePlate;
-                                  //               data_left[1] = listviewData2[
-                                  //                       indexlistviewData2]
-                                  //                   .name;
-                                  //               data_left[2] = listviewData2[
-                                  //                       indexlistviewData2]
-                                  //                   .city;
-                                  //               data_left[3] = listviewData2[
-                                  //                       indexlistviewData2]
-                                  //                   .vehicle;
-                                  //               data_left[4] = listviewData2[
-                                  //                       indexlistviewData2]
-                                  //                   .color;
-                                  //               data_left[5] = listviewData2[
-                                  //                       indexlistviewData2]
-                                  //                   .img;
-                                  //               data_left[6] = listviewData2[
-                                  //                       indexlistviewData2]
-                                  //                   .carImgType;
-                                  //               data_left[7] = listviewData2[
-                                  //                       indexlistviewData2]
-                                  //                   .colorCode;
-                                  //               data_left[8] = listviewData2[
-                                  //                       indexlistviewData2]
-                                  //                   .imgPlate;
-                                  //               data_left[9] = listviewData2[
-                                  //                       indexlistviewData2]
-                                  //                   .video;
-                                  // data_left[10] = listviewData2[indexlistviewData2].time;
-// data_left[11] = listviewData2[indexlistviewData2].date;
-                                  //             });
-                                  //           },
-                                  //           child: Card(
-                                  //               child: Row(
-                                  //             mainAxisSize: MainAxisSize.max,
-                                  //             mainAxisAlignment:
-                                  //                 MainAxisAlignment.center,
-                                  //             children: [
-                                  //               Padding(
-                                  //                 padding: EdgeInsetsDirectional
-                                  //                     .fromSTEB(0, 0, 0, 0),
-                                  //                 child: Container(
-                                  //                   width: 550,
-                                  //                   height: 150,
-                                  //                   decoration: BoxDecoration(),
-                                  //                   child: Row(
-                                  //                     mainAxisSize:
-                                  //                         MainAxisSize.max,
-                                  //                     mainAxisAlignment:
-                                  //                         MainAxisAlignment
-                                  //                             .start,
-                                  //                     children: [
-                                  //                       Padding(
-                                  //                         padding:
-                                  //                             EdgeInsetsDirectional
-                                  //                                 .fromSTEB(30,
-                                  //                                     0, 30, 0),
-                                  //                         child: Image.network(
-                                  //                           '${listviewData2[indexlistviewData2].img}',
-                                  //                           width: 200,
-                                  //                           height: 100,
-                                  //                           fit: BoxFit.cover,
-                                  //                         ),
-                                  //                       ),
-                                  //                       Column(
-                                  //                         mainAxisSize:
-                                  //                             MainAxisSize.max,
-                                  //                         mainAxisAlignment:
-                                  //                             MainAxisAlignment
-                                  //                                 .spaceEvenly,
-                                  //                         crossAxisAlignment:
-                                  //                             CrossAxisAlignment
-                                  //                                 .start,
-                                  //                         children: [
-                                  //                           Text(
-                                  //                             '${listviewData2[indexlistviewData2].licensePlate}',
-                                  //                             style:
-                                  //                                 FlutterFlowTheme
-                                  //                                     .bodyText1
-                                  //                                     .override(
-                                  //                               fontFamily:
-                                  //                                   'Mitr',
-                                  //                               color: Color
-                                  //                                   .fromARGB(
-                                  //                                       255,
-                                  //                                       46,
-                                  //                                       46,
-                                  //                                       46),
-                                  //                               fontSize: 20,
-                                  //                               fontWeight:
-                                  //                                   FontWeight
-                                  //                                       .w300,
-                                  //                             ),
-                                  //                           ),
-                                  //                           Text(
-                                  //                             '${listviewData2[indexlistviewData2].city}',
-                                  //                             style:
-                                  //                                 FlutterFlowTheme
-                                  //                                     .bodyText1
-                                  //                                     .override(
-                                  //                               fontFamily:
-                                  //                                   'Mitr',
-                                  //                               color: Color
-                                  //                                   .fromARGB(
-                                  //                                       255,
-                                  //                                       46,
-                                  //                                       46,
-                                  //                                       46),
-                                  //                               fontSize: 20,
-                                  //                               fontWeight:
-                                  //                                   FontWeight
-                                  //                                       .w300,
-                                  //                             ),
-                                  //                           ),
-                                  //                           Text(
-                                  //                             '${listviewData2[indexlistviewData2].vehicle}',
-                                  //                             style:
-                                  //                                 FlutterFlowTheme
-                                  //                                     .bodyText1
-                                  //                                     .override(
-                                  //                               fontFamily:
-                                  //                                   'Mitr',
-                                  //                               color: Color
-                                  //                                   .fromARGB(
-                                  //                                       255,
-                                  //                                       46,
-                                  //                                       46,
-                                  //                                       46),
-                                  //                               fontSize: 20,
-                                  //                               fontWeight:
-                                  //                                   FontWeight
-                                  //                                       .w300,
-                                  //                             ),
-                                  //                           ),
-                                  //                         ],
-                                  //                       ),
-                                  //                     ],
-                                  //                   ),
-                                  //                 ),
-                                  //               ),
-                                  //             ],
-                                  //           )));
-                                  //     },
-                                  //   );
-                                  // }
-
-                                  // การค้นหาตาม วันที่(ออก)
-                                  // if (widget.time_out != "02:31") {
-                                  //   listviewData2 = listviewData
-                                  //       .where((e) =>
-                                  //           e.time!.contains(widget.time_out))
-                                  //       .toList();
-                                  //   return ListView.builder(
-                                  //     padding: EdgeInsets.zero,
-                                  //     scrollDirection: Axis.vertical,
-                                  //     itemCount: listviewData2.length,
-                                  //     itemBuilder:
-                                  //         (context, indexlistviewData2) {
-                                  //       if (indexlistviewData2 == 0) {
-                                  //         indexlistviewData2 + 1;
-                                  //       }
-                                  //       return GestureDetector(
-                                  //           onTap: () {
-                                  //             setState(() {
-                                  //               print(listviewData2[
-                                  //                       indexlistviewData2]
-                                  //                   .imgPlate);
-                                  //               data_click[0] = 1;
-                                  //               data_left[0] = listviewData2[
-                                  //                       indexlistviewData2]
-                                  //                   .licensePlate;
-                                  //               data_left[1] = listviewData2[
-                                  //                       indexlistviewData2]
-                                  //                   .name;
-                                  //               data_left[2] = listviewData2[
-                                  //                       indexlistviewData2]
-                                  //                   .city;
-                                  //               data_left[3] = listviewData2[
-                                  //                       indexlistviewData2]
-                                  //                   .vehicle;
-                                  //               data_left[4] = listviewData2[
-                                  //                       indexlistviewData2]
-                                  //                   .color;
-                                  //               data_left[5] = listviewData2[
-                                  //                       indexlistviewData2]
-                                  //                   .img;
-                                  //               data_left[6] = listviewData2[
-                                  //                       indexlistviewData2]
-                                  //                   .carImgType;
-                                  //               data_left[7] = listviewData2[
-                                  //                       indexlistviewData2]
-                                  //                   .colorCode;
-                                  //               data_left[8] = listviewData2[
-                                  //                       indexlistviewData2]
-                                  //                   .imgPlate;
-                                  //               data_left[9] = listviewData2[
-                                  //                       indexlistviewData2]
-                                  //                   .video;
-                                  // data_left[10] = listviewData2[indexlistviewData2].time;
-// data_left[11] = listviewData2[indexlistviewData2].date;
-                                  //             });
-                                  //           },
-                                  //           child: Card(
-                                  //               child: Row(
-                                  //             mainAxisSize: MainAxisSize.max,
-                                  //             mainAxisAlignment:
-                                  //                 MainAxisAlignment.center,
-                                  //             children: [
-                                  //               Padding(
-                                  //                 padding: EdgeInsetsDirectional
-                                  //                     .fromSTEB(0, 0, 0, 0),
-                                  //                 child: Container(
-                                  //                   width: 550,
-                                  //                   height: 150,
-                                  //                   decoration: BoxDecoration(),
-                                  //                   child: Row(
-                                  //                     mainAxisSize:
-                                  //                         MainAxisSize.max,
-                                  //                     mainAxisAlignment:
-                                  //                         MainAxisAlignment
-                                  //                             .start,
-                                  //                     children: [
-                                  //                       Padding(
-                                  //                         padding:
-                                  //                             EdgeInsetsDirectional
-                                  //                                 .fromSTEB(30,
-                                  //                                     0, 30, 0),
-                                  //                         child: Image.network(
-                                  //                           '${listviewData2[indexlistviewData2].img}',
-                                  //                           width: 200,
-                                  //                           height: 100,
-                                  //                           fit: BoxFit.cover,
-                                  //                         ),
-                                  //                       ),
-                                  //                       Column(
-                                  //                         mainAxisSize:
-                                  //                             MainAxisSize.max,
-                                  //                         mainAxisAlignment:
-                                  //                             MainAxisAlignment
-                                  //                                 .spaceEvenly,
-                                  //                         crossAxisAlignment:
-                                  //                             CrossAxisAlignment
-                                  //                                 .start,
-                                  //                         children: [
-                                  //                           Text(
-                                  //                             '${listviewData2[indexlistviewData2].licensePlate}',
-                                  //                             style:
-                                  //                                 FlutterFlowTheme
-                                  //                                     .bodyText1
-                                  //                                     .override(
-                                  //                               fontFamily:
-                                  //                                   'Mitr',
-                                  //                               color: Color
-                                  //                                   .fromARGB(
-                                  //                                       255,
-                                  //                                       46,
-                                  //                                       46,
-                                  //                                       46),
-                                  //                               fontSize: 20,
-                                  //                               fontWeight:
-                                  //                                   FontWeight
-                                  //                                       .w300,
-                                  //                             ),
-                                  //                           ),
-                                  //                           Text(
-                                  //                             '${listviewData2[indexlistviewData2].city}',
-                                  //                             style:
-                                  //                                 FlutterFlowTheme
-                                  //                                     .bodyText1
-                                  //                                     .override(
-                                  //                               fontFamily:
-                                  //                                   'Mitr',
-                                  //                               color: Color
-                                  //                                   .fromARGB(
-                                  //                                       255,
-                                  //                                       46,
-                                  //                                       46,
-                                  //                                       46),
-                                  //                               fontSize: 20,
-                                  //                               fontWeight:
-                                  //                                   FontWeight
-                                  //                                       .w300,
-                                  //                             ),
-                                  //                           ),
-                                  //                           Text(
-                                  //                             '${listviewData2[indexlistviewData2].vehicle}',
-                                  //                             style:
-                                  //                                 FlutterFlowTheme
-                                  //                                     .bodyText1
-                                  //                                     .override(
-                                  //                               fontFamily:
-                                  //                                   'Mitr',
-                                  //                               color: Color
-                                  //                                   .fromARGB(
-                                  //                                       255,
-                                  //                                       46,
-                                  //                                       46,
-                                  //                                       46),
-                                  //                               fontSize: 20,
-                                  //                               fontWeight:
-                                  //                                   FontWeight
-                                  //                                       .w300,
-                                  //                             ),
-                                  //                           ),
-                                  //                         ],
-                                  //                       ),
-                                  //                     ],
-                                  //                   ),
-                                  //                 ),
-                                  //               ),
-                                  //             ],
-                                  //           )));
-                                  //     },
-                                  //   );
-                                  // }
+                                  if (widget.date != "ไม่ระบุวันที่") {
+                                    listviewData2 = listviewData
+                                        .where((e) =>
+                                            e.vehicle!.contains(data_Car[3]))
+                                        .toList();
+                                        // ค้นหาตามเวลา
+                                    if (widget.time_in != "ไม่ระบุเวลา") {
+                                      listviewData2 = listviewData
+                                          .where((e) =>
+                                              e.time!.contains(widget.time_in))
+                                          .toList();
+                                      return ListView.builder(
+                                        padding: EdgeInsets.zero,
+                                        scrollDirection: Axis.vertical,
+                                        itemCount: listviewData2.length,
+                                        itemBuilder:
+                                            (context, indexlistviewData2) {
+                                          if (indexlistviewData2 == 0) {
+                                            indexlistviewData2 + 1;
+                                          }
+                                          return GestureDetector(
+                                              onTap: () {
+                                                setState(() {
+                                                  print(listviewData2[
+                                                          indexlistviewData2]
+                                                      .imgPlate);
+                                                  data_click[0] = 1;
+                                                  data_left[0] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .licensePlate;
+                                                  data_left[1] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .name;
+                                                  data_left[2] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .city;
+                                                  data_left[3] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .vehicle;
+                                                  data_left[4] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .color;
+                                                  data_left[5] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .imgCar;
+                                                  data_left[6] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .carImgType;
+                                                  data_left[7] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .colorCode;
+                                                  data_left[8] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .imgPlate;
+                                                  data_left[9] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .video;
+                                                  data_left[10] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .time;
+                                                  data_left[11] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .date;
+                                                });
+                                              },
+                                              child: Card(
+                                                  child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 0, 0, 0),
+                                                    child: Container(
+                                                      width: 550,
+                                                      height: 150,
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        30,
+                                                                        0,
+                                                                        30,
+                                                                        0),
+                                                            child:
+                                                                Image.network(
+                                                              '${listviewData2[indexlistviewData2].imgCar}',
+                                                              width: 200,
+                                                              height: 100,
+                                                              fit: BoxFit.cover,
+                                                            ),
+                                                          ),
+                                                          Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceEvenly,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                '${listviewData2[indexlistviewData2].licensePlate}',
+                                                                style: FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                      'Mitr',
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          46,
+                                                                          46,
+                                                                          46),
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300,
+                                                                ),
+                                                              ),
+                                                              Text(
+                                                                '${listviewData2[indexlistviewData2].city}',
+                                                                style: FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                      'Mitr',
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          46,
+                                                                          46,
+                                                                          46),
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300,
+                                                                ),
+                                                              ),
+                                                              Text(
+                                                                '${listviewData2[indexlistviewData2].vehicle}',
+                                                                style: FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                      'Mitr',
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          46,
+                                                                          46,
+                                                                          46),
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300,
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              )));
+                                        },
+                                      );
+                                    }
+                                  }
 
                                   // การค้าหาตาม สี
                                   if (widget.color != "ไม่เลือกสี") {
@@ -1340,7 +1014,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                                     .color;
                                                 data_left[5] = listviewData2[
                                                         indexlistviewData2]
-                                                    .img;
+                                                    .imgCar;
                                                 data_left[6] = listviewData2[
                                                         indexlistviewData2]
                                                     .carImgType;
@@ -1387,7 +1061,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                                                   .fromSTEB(30,
                                                                       0, 30, 0),
                                                           child: Image.network(
-                                                            '${listviewData2[indexlistviewData2].img}',
+                                                            '${listviewData2[indexlistviewData2].imgCar}',
                                                             width: 200,
                                                             height: 100,
                                                             fit: BoxFit.cover,
@@ -1515,7 +1189,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                                     .color;
                                                 data_left[5] = listviewData2[
                                                         indexlistviewData2]
-                                                    .img;
+                                                    .imgCar;
                                                 data_left[6] = listviewData2[
                                                         indexlistviewData2]
                                                     .carImgType;
@@ -1562,7 +1236,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                                                   .fromSTEB(30,
                                                                       0, 30, 0),
                                                           child: Image.network(
-                                                            '${listviewData2[indexlistviewData2].img}',
+                                                            '${listviewData2[indexlistviewData2].imgCar}',
                                                             width: 200,
                                                             height: 100,
                                                             fit: BoxFit.cover,
@@ -1690,7 +1364,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                                     .color;
                                                 data_left[5] = listviewData2[
                                                         indexlistviewData2]
-                                                    .img;
+                                                    .imgCar;
                                                 data_left[6] = listviewData2[
                                                         indexlistviewData2]
                                                     .carImgType;
@@ -1737,7 +1411,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                                                   .fromSTEB(30,
                                                                       0, 30, 0),
                                                           child: Image.network(
-                                                            '${listviewData2[indexlistviewData2].img}',
+                                                            '${listviewData2[indexlistviewData2].imgCar}',
                                                             width: 200,
                                                             height: 100,
                                                             fit: BoxFit.cover,
@@ -1865,7 +1539,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                                     .color;
                                                 data_left[5] = listviewData2[
                                                         indexlistviewData2]
-                                                    .img;
+                                                    .imgCar;
                                                 data_left[6] = listviewData2[
                                                         indexlistviewData2]
                                                     .carImgType;
@@ -1912,7 +1586,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                                                   .fromSTEB(30,
                                                                       0, 30, 0),
                                                           child: Image.network(
-                                                            '${listviewData2[indexlistviewData2].img}',
+                                                            '${listviewData2[indexlistviewData2].imgCar}',
                                                             width: 200,
                                                             height: 100,
                                                             fit: BoxFit.cover,
@@ -2040,7 +1714,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                                     .color;
                                                 data_left[5] = listviewData2[
                                                         indexlistviewData2]
-                                                    .img;
+                                                    .imgCar;
                                                 data_left[6] = listviewData2[
                                                         indexlistviewData2]
                                                     .carImgType;
@@ -2087,7 +1761,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                                                   .fromSTEB(30,
                                                                       0, 30, 0),
                                                           child: Image.network(
-                                                            '${listviewData2[indexlistviewData2].img}',
+                                                            '${listviewData2[indexlistviewData2].imgCar}',
                                                             width: 200,
                                                             height: 100,
                                                             fit: BoxFit.cover,
@@ -2874,7 +2548,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                               data_left[4] =
                                                   listviewData[index].color;
                                               data_left[5] =
-                                                  listviewData[index].img;
+                                                  listviewData[index].imgCar;
                                               data_left[6] = listviewData[index]
                                                   .carImgType;
                                               data_left[7] =
@@ -2883,9 +2557,9 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                                   listviewData[index].imgPlate;
                                               data_left[9] =
                                                   listviewData[index].video;
-                                              data_left[10] = 
+                                              data_left[10] =
                                                   listviewData[index].time;
-                                              data_left[11] = 
+                                              data_left[11] =
                                                   listviewData[index].date;
                                             });
                                           },
@@ -2914,7 +2588,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                                                 .fromSTEB(30, 0,
                                                                     30, 0),
                                                         child: Image.network(
-                                                          '${listviewData[index].img}',
+                                                          '${listviewData[index].imgCar}',
                                                           width: 200,
                                                           height: 100,
                                                           fit: BoxFit.cover,
@@ -3028,7 +2702,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                   width:
                                       MediaQuery.of(context).size.width * 0.5,
                                   height:
-                                      MediaQuery.of(context).size.height * 0.71,
+                                      MediaQuery.of(context).size.height * 0.85,
                                   decoration: BoxDecoration(),
                                   child: ListView(
                                     padding: EdgeInsets.zero,
@@ -3048,7 +2722,6 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                               height: 350,
                                               child: Stack(
                                                 children: [
-
                                                   // รูปภาพรถ
                                                   Align(
                                                     alignment:
@@ -3059,7 +2732,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                                           BorderRadius.circular(
                                                               20),
                                                       child: Image.network(
-                                                        "${data_click[0] == 0 ? listviewData2[0].img : data_left[5]}",
+                                                        "${data_click[0] == 0 ? listviewData2[0].imgCar : data_left[5]}",
                                                         width: double.infinity,
                                                         height: double.infinity,
                                                         fit: BoxFit.cover,
@@ -3463,7 +3136,6 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                                     0, 10, 0, 0),
                                             child: FFButtonWidget(
                                               onPressed: () {
-
                                                 // เซ็ตค่าตั้งต้นหากกรณีไม่มีข้อมูล
                                                 data_click[0] == 0
                                                     ? data_left[0] =
@@ -3493,7 +3165,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
 
                                                 data_click[0] == 0
                                                     ? data_left[5] =
-                                                        listviewData2[0].img
+                                                        listviewData2[0].imgCar
                                                     : data_left[5];
 
                                                 data_click[0] == 0

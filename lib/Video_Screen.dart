@@ -510,6 +510,7 @@ class _VideoScreenWidgetState extends State<VideoScreenWidget>
                                 onPressed: () async {
                                   if (await canLaunchUrl(Uri.parse(widget.video))) {
                                     await launchUrl(Uri.parse(widget.video));
+                                  
                                   }
                                   print(widget.video);
                                 },
