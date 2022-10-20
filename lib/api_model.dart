@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-final url = "https://cfe8-2001-fb1-10b-d49b-c5ae-a417-f596-8a10.ap.ngrok.io";
+final url = "https://4309-2001-fb1-10b-d49b-59e5-6664-7d03-f4de.ap.ngrok.io";
 
 List<Data_Api> data_ApiFromJson(String str) => List<Data_Api>.from(json.decode(str).map((x) => Data_Api.fromJson(x)));
 

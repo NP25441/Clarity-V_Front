@@ -34,7 +34,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
     "ไม่ระบุวันที่", // วันที่
     "00:00", // เวลาเริ่ม
     "00:00", // เวลาจบ
-    "ไม่เลือกสี", // สี
+    '', // สี
     "-", // ประเภทรถเก๋ง
     "-", // ประเภทรถกระบะ
     "-", // ประเภทรถตู้
@@ -58,7 +58,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
   String search_plate = "ไม่ได้ใส่หมายเลขป้ายทะเบียน";
 
   // ตั้งค่าเวลาเริ่มต้น
-  TimeOfDay time_start = TimeOfDay(hour: 12, minute: 00);
+  TimeOfDay time_start = TimeOfDay(hour: 00, minute: 00);
 
   // ตั้งค่าเวลาเริ่มต้น
   TimeOfDay time_end = TimeOfDay(hour: 00, minute: 00);
@@ -132,8 +132,8 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
       barrierDismissible: true,
       context: context,
       builder: (BuildContext context) {
-        TimeOfDay startTime = TimeOfDay(hour: 12, minute: 00);
-        TimeOfDay endTime = TimeOfDay(hour: 00, minute: 00);
+        TimeOfDay startTime = TimeOfDay(hour: 6, minute: 00);
+        TimeOfDay endTime = TimeOfDay(hour: 18, minute: 00);
         return CupertinoAlertDialog(
           content: SizedBox(
               width: MediaQuery.of(context).size.width,
@@ -177,6 +177,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                         setState(() {
                           startTime = start;
                         });
+                        print('test{$start}');
                       },
                       onEndChange: (end) {
                         setState(() {
@@ -218,6 +219,8 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                 Navigator.of(context).pop(
                   TimeRange(startTime: startTime, endTime: endTime),
                 );
+                print(startTime);
+                print(endTime);
                 setState(() => {time_start = startTime, time_end = endTime});
               },
             ),
@@ -545,58 +548,97 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                                           if (data_Search[2] ==
                                                               'ไม่ระบุวันที่') {
                                                             showDialog<String>(
-                              context: context,
-                              builder: (BuildContext context) => AlertDialog(
-                                title: Center(
-                                    child: Text(
-                                  'แจ้งเตือน',
-                                  textAlign: TextAlign.start,
-                                  style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Mitr',
-                                    color: Color.fromARGB(255, 46, 46, 46),
-                                    fontSize: 35,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                                )),
-                                content: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: <Widget>[
-                                    Expanded(
-                                      child: Text(
-                                        'ไม่สามารถระบุเวลาได้หากไม่ทำการระบุ วันที่',
-                                        textAlign: TextAlign.start,
-                                        style:
-                                            FlutterFlowTheme.bodyText1.override(
-                                          fontFamily: 'Mitr',
-                                          color:
-                                              Color.fromARGB(255, 46, 46, 46),
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                actions: <Widget>[
-                                  TextButton(
-                                    child: Text(
-                                      'ตกลง',
-                                      style:
-                                          FlutterFlowTheme.subtitle2.override(
-                                        fontFamily: 'Mitr',
-                                        color: Color(0xFF42A5F5),
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w300,
-                                      ),
-                                    ),
-                                    onPressed: () =>
-                                        Navigator.pop(context, 'ย้อนกลับ'),
-                                  )
-                                ],
-                              ),
-                            );
-                                                          }else{rangeTime(context);}
+                                                              context: context,
+                                                              builder: (BuildContext
+                                                                      context) =>
+                                                                  AlertDialog(
+                                                                title: Center(
+                                                                    child: Text(
+                                                                  'แจ้งเตือน',
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .start,
+                                                                  style: FlutterFlowTheme
+                                                                      .bodyText1
+                                                                      .override(
+                                                                    fontFamily:
+                                                                        'Mitr',
+                                                                    color: Color
+                                                                        .fromARGB(
+                                                                            255,
+                                                                            46,
+                                                                            46,
+                                                                            46),
+                                                                    fontSize:
+                                                                        35,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .normal,
+                                                                  ),
+                                                                )),
+                                                                content: Row(
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .center,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .center,
+                                                                  children: <
+                                                                      Widget>[
+                                                                    Expanded(
+                                                                      child:
+                                                                          Text(
+                                                                        'ไม่สามารถระบุเวลาได้หากไม่ทำการระบุ วันที่',
+                                                                        textAlign:
+                                                                            TextAlign.start,
+                                                                        style: FlutterFlowTheme
+                                                                            .bodyText1
+                                                                            .override(
+                                                                          fontFamily:
+                                                                              'Mitr',
+                                                                          color: Color.fromARGB(
+                                                                              255,
+                                                                              46,
+                                                                              46,
+                                                                              46),
+                                                                          fontSize:
+                                                                              25,
+                                                                          fontWeight:
+                                                                              FontWeight.w300,
+                                                                        ),
+                                                                      ),
+                                                                    )
+                                                                  ],
+                                                                ),
+                                                                actions: <
+                                                                    Widget>[
+                                                                  TextButton(
+                                                                    child: Text(
+                                                                      'ตกลง',
+                                                                      style: FlutterFlowTheme
+                                                                          .subtitle2
+                                                                          .override(
+                                                                        fontFamily:
+                                                                            'Mitr',
+                                                                        color: Color(
+                                                                            0xFF42A5F5),
+                                                                        fontSize:
+                                                                            20,
+                                                                        fontWeight:
+                                                                            FontWeight.w300,
+                                                                      ),
+                                                                    ),
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            context,
+                                                                            'ย้อนกลับ'),
+                                                                  )
+                                                                ],
+                                                              ),
+                                                            );
+                                                          } else {
+                                                            rangeTime(context);
+                                                          }
                                                         },
                                                         text:
                                                             getTexttime_form() +
@@ -1097,7 +1139,7 @@ class _SearcScreenWidgetState extends State<SearcScreenWidget>
                                   children: <Widget>[
                                     Expanded(
                                       child: Text(
-                                        ' หมายเลขป้ายทะเบียน :  ${data_Search[0] == '' ? data_Search[0] = "ไม่ได้ใส่ข้อมูล" : data_Search[0]} \n จังหวัด :   ${data_Search[1] == '' ? data_Search[1] = "ไม่ได้ใส่ข้อมูล" : data_Search[1]} \n วันที่ :  ${data_Search[2]} \n ตั้งแต่เวลา :  ${data_Search[3]}   ถึง    ${data_Search[4]} \n สีรถ :  ${data_Search[5] == '' ? "ไม่ได้เลือกสี" : data_Search[5]} \n ประเภทรถที่เลือก :  ${onClick_typeCar[0] == 0 ? "" : data_Search[6]} ${onClick_typeCar[1] == 0 ? "" : data_Search[7]} ${onClick_typeCar[2] == 0 ? "" : data_Search[8]} ${onClick_typeCar[3] == 0 ? "" : data_Search[9]}${onClick_typeCar.contains(1) ? "" : data_Search[10] = 'รถเก๋ง รถกระบะ รถตู้ รถบรรทุก'}\n\n ** หากไม่มีการเลือกประเภทรถ จะเป็นการค้นหาทุกประเภท ** ',
+                                        ' หมายเลขป้ายทะเบียน :  ${data_Search[0] == '' ? data_Search[0] = "ไม่ได้ใส่ข้อมูล" : data_Search[0]} \n จังหวัด :   ${data_Search[1] == '' ? data_Search[1] = "ไม่ได้ใส่ข้อมูล" : data_Search[1]} \n วันที่ :  ${data_Search[2]} \n ตั้งแต่เวลา :  ${data_Search[3]}   ถึง    ${data_Search[4]} \n สีรถ :  ${data_Search[5] == '' ? data_Search[5] = "ไม่กำหนดสี" : data_Search[5]} \n ประเภทรถที่เลือก :  ${onClick_typeCar[0] == 0 ? "" : data_Search[6]} ${onClick_typeCar[1] == 0 ? "" : data_Search[7]} ${onClick_typeCar[2] == 0 ? "" : data_Search[8]} ${onClick_typeCar[3] == 0 ? "" : data_Search[9]}${onClick_typeCar.contains(1) ? "" : data_Search[10] = 'รถเก๋ง รถกระบะ รถตู้ รถบรรทุก'}\n\n ** หากไม่มีการเลือกประเภทรถ จะเป็นการค้นหาทุกประเภท ** ',
                                         textAlign: TextAlign.start,
                                         style:
                                             FlutterFlowTheme.bodyText1.override(

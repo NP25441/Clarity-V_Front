@@ -438,368 +438,20 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                   final listviewData = snapshot.data!;
                                   List<Data_Api> listviewData2 = listviewData;
 
-                                  // การค้นหาตาม หมายเลขป้ายทะเบียน
+                                  // การค้นหาป้ายทะเบียนและจังหวัด
                                   if (widget.license_plate !=
-                                      "ไม่ได้ใส่ข้อมูล") {
+                                          "ไม่ได้ใส่ข้อมูล" &&
+                                      widget.city != "ไม่ได้ใส่ข้อมูล") {
+                                    print('ป้ายและจังหวัด');
                                     listviewData2 = listviewData
                                         .where((e) => e.licensePlate!
                                             .contains(widget.license_plate))
                                         .toList();
-                                    return ListView.builder(
-                                      padding: EdgeInsets.zero,
-                                      scrollDirection: Axis.vertical,
-                                      itemCount: listviewData2.length,
-                                      itemBuilder:
-                                          (context, indexlistviewData2) {
-                                        if (indexlistviewData2 == 0) {
-                                          indexlistviewData2 + 1;
-                                        }
-                                        return GestureDetector(
-                                            onTap: () {
-                                              setState(() {
-                                                print(listviewData2[
-                                                        indexlistviewData2]
-                                                    .imgPlate);
-                                                data_click[0] = 1;
-                                                data_left[0] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .licensePlate;
-                                                data_left[1] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .name;
-                                                data_left[2] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .city;
-                                                data_left[3] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .vehicle;
-                                                data_left[4] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .color;
-                                                data_left[5] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .imgCar;
-                                                data_left[6] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .carImgType;
-                                                data_left[7] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .colorCode;
-                                                data_left[8] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .imgPlate;
-                                                data_left[9] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .video;
-                                                data_left[10] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .time;
-                                                data_left[11] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .date;
-                                              });
-                                            },
-                                            child: Card(
-                                                child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(0, 0, 0, 0),
-                                                  child: Container(
-                                                    width: 550,
-                                                    height: 150,
-                                                    decoration: BoxDecoration(),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(30,
-                                                                      0, 30, 0),
-                                                          child: Image.network(
-                                                            '${listviewData2[indexlistviewData2].imgCar}',
-                                                            width: 200,
-                                                            height: 100,
-                                                            fit: BoxFit.cover,
-                                                          ),
-                                                        ),
-                                                        Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceEvenly,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Text(
-                                                              '${listviewData2[indexlistviewData2].licensePlate}',
-                                                              style:
-                                                                  FlutterFlowTheme
-                                                                      .bodyText1
-                                                                      .override(
-                                                                fontFamily:
-                                                                    'Mitr',
-                                                                color: Color
-                                                                    .fromARGB(
-                                                                        255,
-                                                                        46,
-                                                                        46,
-                                                                        46),
-                                                                fontSize: 20,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w300,
-                                                              ),
-                                                            ),
-                                                            Text(
-                                                              '${listviewData2[indexlistviewData2].city}',
-                                                              style:
-                                                                  FlutterFlowTheme
-                                                                      .bodyText1
-                                                                      .override(
-                                                                fontFamily:
-                                                                    'Mitr',
-                                                                color: Color
-                                                                    .fromARGB(
-                                                                        255,
-                                                                        46,
-                                                                        46,
-                                                                        46),
-                                                                fontSize: 20,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w300,
-                                                              ),
-                                                            ),
-                                                            Text(
-                                                              '${listviewData2[indexlistviewData2].vehicle}',
-                                                              style:
-                                                                  FlutterFlowTheme
-                                                                      .bodyText1
-                                                                      .override(
-                                                                fontFamily:
-                                                                    'Mitr',
-                                                                color: Color
-                                                                    .fromARGB(
-                                                                        255,
-                                                                        46,
-                                                                        46,
-                                                                        46),
-                                                                fontSize: 20,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w300,
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            )));
-                                      },
-                                    );
-                                  }
-
-                                  // การค้นหาตาม จังหวัด
-                                  if (widget.city != "ไม่ได้ใส่ข้อมูล") {
                                     listviewData2 = listviewData
                                         .where((e) =>
                                             e.city!.contains(widget.city))
                                         .toList();
-
-                                    return ListView.builder(
-                                      padding: EdgeInsets.zero,
-                                      scrollDirection: Axis.vertical,
-                                      itemCount: listviewData2.length,
-                                      itemBuilder:
-                                          (context, indexlistviewData2) {
-                                        if (indexlistviewData2 == 0) {
-                                          indexlistviewData2 + 1;
-                                        }
-                                        return GestureDetector(
-                                            onTap: () {
-                                              setState(() {
-                                                print(listviewData2[
-                                                        indexlistviewData2]
-                                                    .imgPlate);
-                                                data_click[0] = 1;
-                                                data_left[0] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .licensePlate;
-                                                data_left[1] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .name;
-                                                data_left[2] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .city;
-                                                data_left[3] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .vehicle;
-                                                data_left[4] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .color;
-                                                data_left[5] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .imgCar;
-                                                data_left[6] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .carImgType;
-                                                data_left[7] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .colorCode;
-                                                data_left[8] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .imgPlate;
-                                                data_left[9] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .video;
-                                                data_left[10] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .time;
-                                                data_left[11] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .date;
-                                              });
-                                            },
-                                            child: Card(
-                                                child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(0, 0, 0, 0),
-                                                  child: Container(
-                                                    width: 550,
-                                                    height: 150,
-                                                    decoration: BoxDecoration(),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(30,
-                                                                      0, 30, 0),
-                                                          child: Image.network(
-                                                            '${listviewData2[indexlistviewData2].imgCar}',
-                                                            width: 200,
-                                                            height: 100,
-                                                            fit: BoxFit.cover,
-                                                          ),
-                                                        ),
-                                                        Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceEvenly,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Text(
-                                                              '${listviewData2[indexlistviewData2].licensePlate}',
-                                                              style:
-                                                                  FlutterFlowTheme
-                                                                      .bodyText1
-                                                                      .override(
-                                                                fontFamily:
-                                                                    'Mitr',
-                                                                color: Color
-                                                                    .fromARGB(
-                                                                        255,
-                                                                        46,
-                                                                        46,
-                                                                        46),
-                                                                fontSize: 20,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w300,
-                                                              ),
-                                                            ),
-                                                            Text(
-                                                              '${listviewData2[indexlistviewData2].city}',
-                                                              style:
-                                                                  FlutterFlowTheme
-                                                                      .bodyText1
-                                                                      .override(
-                                                                fontFamily:
-                                                                    'Mitr',
-                                                                color: Color
-                                                                    .fromARGB(
-                                                                        255,
-                                                                        46,
-                                                                        46,
-                                                                        46),
-                                                                fontSize: 20,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w300,
-                                                              ),
-                                                            ),
-                                                            Text(
-                                                              '${listviewData2[indexlistviewData2].vehicle}',
-                                                              style:
-                                                                  FlutterFlowTheme
-                                                                      .bodyText1
-                                                                      .override(
-                                                                fontFamily:
-                                                                    'Mitr',
-                                                                color: Color
-                                                                    .fromARGB(
-                                                                        255,
-                                                                        46,
-                                                                        46,
-                                                                        46),
-                                                                fontSize: 20,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w300,
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            )));
-                                      },
-                                    );
-                                  }
-
-                                  // การค้นหาตาม วันที่
-                                  if (widget.date != "ไม่ระบุวันที่") {
-                                    listviewData2 = listviewData
-                                        .where((e) =>
-                                            e.vehicle!.contains(data_Car[3]))
-                                        .toList();
-                                        // ค้นหาตามเวลา
-                                    if (widget.time_in != "ไม่ระบุเวลา") {
-                                      listviewData2 = listviewData
-                                          .where((e) =>
-                                              e.time!.contains(widget.time_in))
-                                          .toList();
+                                    if (listviewData2.length != 0) {
                                       return ListView.builder(
                                         padding: EdgeInsets.zero,
                                         scrollDirection: Axis.vertical,
@@ -971,886 +623,2234 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                               )));
                                         },
                                       );
+                                    } else {
+                                      return Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'ไม่พบข้อมูลการค้นหา',
+                                            style: FlutterFlowTheme.bodyText1
+                                                .override(
+                                              fontFamily: 'Mitr',
+                                              color: Color.fromARGB(
+                                                  255, 46, 46, 46),
+                                              fontSize: 30,
+                                              fontWeight: FontWeight.w300,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    5, 10, 5, 0),
+                                            child: Text(
+                                              'กรุณาย้อนกับไปหน้าการค้นหา',
+                                              style: FlutterFlowTheme.bodyText1
+                                                  .override(
+                                                fontFamily: 'Mitr',
+                                                color: Color.fromARGB(
+                                                    255, 46, 46, 46),
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w300,
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      );
+                                    }
+                                  }
+
+                                  // การค้นหาป้ายทะเบียน
+                                  else if (widget.license_plate !=
+                                      "ไม่ได้ใส่ข้อมูล") {
+                                    print('ป้าย');
+                                    listviewData2 = listviewData
+                                        .where((e) => e.licensePlate!
+                                            .contains(widget.license_plate))
+                                        .toList();
+                                    if (listviewData2.length != 0) {
+                                      return ListView.builder(
+                                        padding: EdgeInsets.zero,
+                                        scrollDirection: Axis.vertical,
+                                        itemCount: listviewData2.length,
+                                        itemBuilder:
+                                            (context, indexlistviewData2) {
+                                          if (indexlistviewData2 == 0) {
+                                            indexlistviewData2 + 1;
+                                          }
+                                          return GestureDetector(
+                                              onTap: () {
+                                                setState(() {
+                                                  print(listviewData2[
+                                                          indexlistviewData2]
+                                                      .imgPlate);
+                                                  data_click[0] = 1;
+                                                  data_left[0] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .licensePlate;
+                                                  data_left[1] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .name;
+                                                  data_left[2] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .city;
+                                                  data_left[3] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .vehicle;
+                                                  data_left[4] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .color;
+                                                  data_left[5] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .imgCar;
+                                                  data_left[6] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .carImgType;
+                                                  data_left[7] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .colorCode;
+                                                  data_left[8] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .imgPlate;
+                                                  data_left[9] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .video;
+                                                  data_left[10] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .time;
+                                                  data_left[11] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .date;
+                                                });
+                                              },
+                                              child: Card(
+                                                  child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 0, 0, 0),
+                                                    child: Container(
+                                                      width: 550,
+                                                      height: 150,
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        30,
+                                                                        0,
+                                                                        30,
+                                                                        0),
+                                                            child:
+                                                                Image.network(
+                                                              '${listviewData2[indexlistviewData2].imgCar}',
+                                                              width: 200,
+                                                              height: 100,
+                                                              fit: BoxFit.cover,
+                                                            ),
+                                                          ),
+                                                          Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceEvenly,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                '${listviewData2[indexlistviewData2].licensePlate}',
+                                                                style: FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                      'Mitr',
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          46,
+                                                                          46,
+                                                                          46),
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300,
+                                                                ),
+                                                              ),
+                                                              Text(
+                                                                '${listviewData2[indexlistviewData2].city}',
+                                                                style: FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                      'Mitr',
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          46,
+                                                                          46,
+                                                                          46),
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300,
+                                                                ),
+                                                              ),
+                                                              Text(
+                                                                '${listviewData2[indexlistviewData2].vehicle}',
+                                                                style: FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                      'Mitr',
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          46,
+                                                                          46,
+                                                                          46),
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300,
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              )));
+                                        },
+                                      );
+                                    } else {
+                                      return Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'ไม่พบข้อมูลการค้นหา',
+                                            style: FlutterFlowTheme.bodyText1
+                                                .override(
+                                              fontFamily: 'Mitr',
+                                              color: Color.fromARGB(
+                                                  255, 46, 46, 46),
+                                              fontSize: 30,
+                                              fontWeight: FontWeight.w300,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    5, 10, 5, 0),
+                                            child: Text(
+                                              'กรุณาย้อนกับไปหน้าการค้นหา',
+                                              style: FlutterFlowTheme.bodyText1
+                                                  .override(
+                                                fontFamily: 'Mitr',
+                                                color: Color.fromARGB(
+                                                    255, 46, 46, 46),
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w300,
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      );
+                                    }
+                                  }
+
+                                  // การค้นหาจังหวัด
+                                  else if (widget.city != "ไม่ได้ใส่ข้อมูล") {
+                                    print('จังหวัด');
+                                    listviewData2 = listviewData
+                                        .where((e) =>
+                                            e.city!.contains(widget.city))
+                                        .toList();
+                                    if (listviewData2.length != 0) {
+                                      return ListView.builder(
+                                        padding: EdgeInsets.zero,
+                                        scrollDirection: Axis.vertical,
+                                        itemCount: listviewData2.length,
+                                        itemBuilder:
+                                            (context, indexlistviewData2) {
+                                          if (indexlistviewData2 == 0) {
+                                            indexlistviewData2 + 1;
+                                          }
+                                          return GestureDetector(
+                                              onTap: () {
+                                                setState(() {
+                                                  print(listviewData2[
+                                                          indexlistviewData2]
+                                                      .imgPlate);
+                                                  data_click[0] = 1;
+                                                  data_left[0] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .licensePlate;
+                                                  data_left[1] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .name;
+                                                  data_left[2] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .city;
+                                                  data_left[3] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .vehicle;
+                                                  data_left[4] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .color;
+                                                  data_left[5] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .imgCar;
+                                                  data_left[6] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .carImgType;
+                                                  data_left[7] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .colorCode;
+                                                  data_left[8] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .imgPlate;
+                                                  data_left[9] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .video;
+                                                  data_left[10] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .time;
+                                                  data_left[11] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .date;
+                                                });
+                                              },
+                                              child: Card(
+                                                  child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 0, 0, 0),
+                                                    child: Container(
+                                                      width: 550,
+                                                      height: 150,
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        30,
+                                                                        0,
+                                                                        30,
+                                                                        0),
+                                                            child:
+                                                                Image.network(
+                                                              '${listviewData2[indexlistviewData2].imgCar}',
+                                                              width: 200,
+                                                              height: 100,
+                                                              fit: BoxFit.cover,
+                                                            ),
+                                                          ),
+                                                          Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceEvenly,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                '${listviewData2[indexlistviewData2].licensePlate}',
+                                                                style: FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                      'Mitr',
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          46,
+                                                                          46,
+                                                                          46),
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300,
+                                                                ),
+                                                              ),
+                                                              Text(
+                                                                '${listviewData2[indexlistviewData2].city}',
+                                                                style: FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                      'Mitr',
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          46,
+                                                                          46,
+                                                                          46),
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300,
+                                                                ),
+                                                              ),
+                                                              Text(
+                                                                '${listviewData2[indexlistviewData2].vehicle}',
+                                                                style: FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                      'Mitr',
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          46,
+                                                                          46,
+                                                                          46),
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300,
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              )));
+                                        },
+                                      );
+                                    } else {
+                                      return Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'ไม่พบข้อมูลการค้นหา',
+                                            style: FlutterFlowTheme.bodyText1
+                                                .override(
+                                              fontFamily: 'Mitr',
+                                              color: Color.fromARGB(
+                                                  255, 46, 46, 46),
+                                              fontSize: 30,
+                                              fontWeight: FontWeight.w300,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    5, 10, 5, 0),
+                                            child: Text(
+                                              'กรุณาย้อนกับไปหน้าการค้นหา',
+                                              style: FlutterFlowTheme.bodyText1
+                                                  .override(
+                                                fontFamily: 'Mitr',
+                                                color: Color.fromARGB(
+                                                    255, 46, 46, 46),
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w300,
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      );
                                     }
                                   }
 
                                   // การค้าหาตาม สี
-                                  if (widget.color != "ไม่เลือกสี") {
+                                  else if (widget.color != "ไม่กำหนดสี") {
+                                    print('สี');
                                     listviewData2 = listviewData
                                         .where((e) =>
                                             e.color!.contains(widget.color))
                                         .toList();
-
-                                    return ListView.builder(
-                                      padding: EdgeInsets.zero,
-                                      scrollDirection: Axis.vertical,
-                                      itemCount: listviewData2.length,
-                                      itemBuilder:
-                                          (context, indexlistviewData2) {
-                                        if (indexlistviewData2 == 0) {
-                                          indexlistviewData2 + 1;
-                                        }
-                                        return GestureDetector(
-                                            onTap: () {
-                                              setState(() {
-                                                print(listviewData2[
-                                                        indexlistviewData2]
-                                                    .imgPlate);
-                                                data_click[0] = 1;
-                                                data_left[0] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .licensePlate;
-                                                data_left[1] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .name;
-                                                data_left[2] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .city;
-                                                data_left[3] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .vehicle;
-                                                data_left[4] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .color;
-                                                data_left[5] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .imgCar;
-                                                data_left[6] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .carImgType;
-                                                data_left[7] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .colorCode;
-                                                data_left[8] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .imgPlate;
-                                                data_left[9] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .video;
-                                                data_left[10] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .time;
-                                                data_left[11] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .date;
-                                              });
-                                            },
-                                            child: Card(
-                                                child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(0, 0, 0, 0),
-                                                  child: Container(
-                                                    width: 550,
-                                                    height: 150,
-                                                    decoration: BoxDecoration(),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(30,
-                                                                      0, 30, 0),
-                                                          child: Image.network(
-                                                            '${listviewData2[indexlistviewData2].imgCar}',
-                                                            width: 200,
-                                                            height: 100,
-                                                            fit: BoxFit.cover,
+                                    if (listviewData2.length != 0) {
+                                      return ListView.builder(
+                                        padding: EdgeInsets.zero,
+                                        scrollDirection: Axis.vertical,
+                                        itemCount: listviewData2.length,
+                                        itemBuilder:
+                                            (context, indexlistviewData2) {
+                                          if (indexlistviewData2 == 0) {
+                                            indexlistviewData2 + 1;
+                                          }
+                                          return GestureDetector(
+                                              onTap: () {
+                                                setState(() {
+                                                  print(listviewData2[
+                                                          indexlistviewData2]
+                                                      .imgPlate);
+                                                  data_click[0] = 1;
+                                                  data_left[0] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .licensePlate;
+                                                  data_left[1] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .name;
+                                                  data_left[2] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .city;
+                                                  data_left[3] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .vehicle;
+                                                  data_left[4] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .color;
+                                                  data_left[5] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .imgCar;
+                                                  data_left[6] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .carImgType;
+                                                  data_left[7] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .colorCode;
+                                                  data_left[8] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .imgPlate;
+                                                  data_left[9] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .video;
+                                                  data_left[10] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .time;
+                                                  data_left[11] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .date;
+                                                });
+                                              },
+                                              child: Card(
+                                                  child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 0, 0, 0),
+                                                    child: Container(
+                                                      width: 550,
+                                                      height: 150,
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        30,
+                                                                        0,
+                                                                        30,
+                                                                        0),
+                                                            child:
+                                                                Image.network(
+                                                              '${listviewData2[indexlistviewData2].imgCar}',
+                                                              width: 200,
+                                                              height: 100,
+                                                              fit: BoxFit.cover,
+                                                            ),
                                                           ),
-                                                        ),
-                                                        Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceEvenly,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Text(
-                                                              '${listviewData2[indexlistviewData2].licensePlate}',
-                                                              style:
-                                                                  FlutterFlowTheme
-                                                                      .bodyText1
-                                                                      .override(
-                                                                fontFamily:
-                                                                    'Mitr',
-                                                                color: Color
-                                                                    .fromARGB(
-                                                                        255,
-                                                                        46,
-                                                                        46,
-                                                                        46),
-                                                                fontSize: 20,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w300,
+                                                          Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceEvenly,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                '${listviewData2[indexlistviewData2].licensePlate}',
+                                                                style: FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                      'Mitr',
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          46,
+                                                                          46,
+                                                                          46),
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300,
+                                                                ),
                                                               ),
-                                                            ),
-                                                            Text(
-                                                              '${listviewData2[indexlistviewData2].city}',
-                                                              style:
-                                                                  FlutterFlowTheme
-                                                                      .bodyText1
-                                                                      .override(
-                                                                fontFamily:
-                                                                    'Mitr',
-                                                                color: Color
-                                                                    .fromARGB(
-                                                                        255,
-                                                                        46,
-                                                                        46,
-                                                                        46),
-                                                                fontSize: 20,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w300,
+                                                              Text(
+                                                                '${listviewData2[indexlistviewData2].city}',
+                                                                style: FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                      'Mitr',
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          46,
+                                                                          46,
+                                                                          46),
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300,
+                                                                ),
                                                               ),
-                                                            ),
-                                                            Text(
-                                                              '${listviewData2[indexlistviewData2].vehicle}',
-                                                              style:
-                                                                  FlutterFlowTheme
-                                                                      .bodyText1
-                                                                      .override(
-                                                                fontFamily:
-                                                                    'Mitr',
-                                                                color: Color
-                                                                    .fromARGB(
-                                                                        255,
-                                                                        46,
-                                                                        46,
-                                                                        46),
-                                                                fontSize: 20,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w300,
+                                                              Text(
+                                                                '${listviewData2[indexlistviewData2].vehicle}',
+                                                                style: FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                      'Mitr',
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          46,
+                                                                          46,
+                                                                          46),
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300,
+                                                                ),
                                                               ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ],
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                              ],
-                                            )));
-                                      },
-                                    );
+                                                ],
+                                              )));
+                                        },
+                                      );
+                                    } else {
+                                      return Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'ไม่พบข้อมูลการค้นหา',
+                                            style: FlutterFlowTheme.bodyText1
+                                                .override(
+                                              fontFamily: 'Mitr',
+                                              color: Color.fromARGB(
+                                                  255, 46, 46, 46),
+                                              fontSize: 30,
+                                              fontWeight: FontWeight.w300,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    5, 10, 5, 0),
+                                            child: Text(
+                                              'กรุณาย้อนกับไปหน้าการค้นหา',
+                                              style: FlutterFlowTheme.bodyText1
+                                                  .override(
+                                                fontFamily: 'Mitr',
+                                                color: Color.fromARGB(
+                                                    255, 46, 46, 46),
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w300,
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      );
+                                    }
                                   }
 
-                                  // การค้นหาตามประเภทรถ (รถเก๋ง)
-                                  if (widget.type_car_data_1 != "-") {
-                                    listviewData2 = listviewData
-                                        .where((e) =>
-                                            e.vehicle!.contains(data_Car[0]))
-                                        .toList();
-
-                                    return ListView.builder(
-                                      padding: EdgeInsets.zero,
-                                      scrollDirection: Axis.vertical,
-                                      itemCount: listviewData2.length,
-                                      itemBuilder:
-                                          (context, indexlistviewData2) {
-                                        if (indexlistviewData2 == 0) {
-                                          indexlistviewData2 + 1;
-                                        }
-                                        return GestureDetector(
-                                            onTap: () {
-                                              setState(() {
-                                                print(listviewData2[
-                                                        indexlistviewData2]
-                                                    .imgPlate);
-                                                data_click[0] = 1;
-                                                data_left[0] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .licensePlate;
-                                                data_left[1] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .name;
-                                                data_left[2] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .city;
-                                                data_left[3] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .vehicle;
-                                                data_left[4] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .color;
-                                                data_left[5] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .imgCar;
-                                                data_left[6] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .carImgType;
-                                                data_left[7] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .colorCode;
-                                                data_left[8] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .imgPlate;
-                                                data_left[9] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .video;
-                                                data_left[10] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .time;
-                                                data_left[11] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .date;
-                                              });
-                                            },
-                                            child: Card(
-                                                child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(0, 0, 0, 0),
-                                                  child: Container(
-                                                    width: 550,
-                                                    height: 150,
-                                                    decoration: BoxDecoration(),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(30,
-                                                                      0, 30, 0),
-                                                          child: Image.network(
-                                                            '${listviewData2[indexlistviewData2].imgCar}',
-                                                            width: 200,
-                                                            height: 100,
-                                                            fit: BoxFit.cover,
-                                                          ),
-                                                        ),
-                                                        Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceEvenly,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Text(
-                                                              '${listviewData2[indexlistviewData2].licensePlate}',
-                                                              style:
-                                                                  FlutterFlowTheme
-                                                                      .bodyText1
-                                                                      .override(
-                                                                fontFamily:
-                                                                    'Mitr',
-                                                                color: Color
-                                                                    .fromARGB(
-                                                                        255,
-                                                                        46,
-                                                                        46,
-                                                                        46),
-                                                                fontSize: 20,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w300,
-                                                              ),
-                                                            ),
-                                                            Text(
-                                                              '${listviewData2[indexlistviewData2].city}',
-                                                              style:
-                                                                  FlutterFlowTheme
-                                                                      .bodyText1
-                                                                      .override(
-                                                                fontFamily:
-                                                                    'Mitr',
-                                                                color: Color
-                                                                    .fromARGB(
-                                                                        255,
-                                                                        46,
-                                                                        46,
-                                                                        46),
-                                                                fontSize: 20,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w300,
-                                                              ),
-                                                            ),
-                                                            Text(
-                                                              '${listviewData2[indexlistviewData2].vehicle}',
-                                                              style:
-                                                                  FlutterFlowTheme
-                                                                      .bodyText1
-                                                                      .override(
-                                                                fontFamily:
-                                                                    'Mitr',
-                                                                color: Color
-                                                                    .fromARGB(
-                                                                        255,
-                                                                        46,
-                                                                        46,
-                                                                        46),
-                                                                fontSize: 20,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w300,
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            )));
-                                      },
-                                    );
-                                  }
-
-                                  // การค้นหาตามประเภทรถ (รถกระบะ)
-                                  if (widget.type_car_data_2 != "-") {
-                                    listviewData2 = listviewData
-                                        .where((e) =>
-                                            e.vehicle!.contains(data_Car[1]))
-                                        .toList();
-
-                                    return ListView.builder(
-                                      padding: EdgeInsets.zero,
-                                      scrollDirection: Axis.vertical,
-                                      itemCount: listviewData2.length,
-                                      itemBuilder:
-                                          (context, indexlistviewData2) {
-                                        if (indexlistviewData2 == 0) {
-                                          indexlistviewData2 + 1;
-                                        }
-                                        return GestureDetector(
-                                            onTap: () {
-                                              setState(() {
-                                                print(listviewData2[
-                                                        indexlistviewData2]
-                                                    .imgPlate);
-                                                data_click[0] = 1;
-                                                data_left[0] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .licensePlate;
-                                                data_left[1] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .name;
-                                                data_left[2] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .city;
-                                                data_left[3] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .vehicle;
-                                                data_left[4] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .color;
-                                                data_left[5] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .imgCar;
-                                                data_left[6] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .carImgType;
-                                                data_left[7] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .colorCode;
-                                                data_left[8] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .imgPlate;
-                                                data_left[9] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .video;
-                                                data_left[10] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .time;
-                                                data_left[11] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .date;
-                                              });
-                                            },
-                                            child: Card(
-                                                child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(0, 0, 0, 0),
-                                                  child: Container(
-                                                    width: 550,
-                                                    height: 150,
-                                                    decoration: BoxDecoration(),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(30,
-                                                                      0, 30, 0),
-                                                          child: Image.network(
-                                                            '${listviewData2[indexlistviewData2].imgCar}',
-                                                            width: 200,
-                                                            height: 100,
-                                                            fit: BoxFit.cover,
-                                                          ),
-                                                        ),
-                                                        Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceEvenly,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Text(
-                                                              '${listviewData2[indexlistviewData2].licensePlate}',
-                                                              style:
-                                                                  FlutterFlowTheme
-                                                                      .bodyText1
-                                                                      .override(
-                                                                fontFamily:
-                                                                    'Mitr',
-                                                                color: Color
-                                                                    .fromARGB(
-                                                                        255,
-                                                                        46,
-                                                                        46,
-                                                                        46),
-                                                                fontSize: 20,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w300,
-                                                              ),
-                                                            ),
-                                                            Text(
-                                                              '${listviewData2[indexlistviewData2].city}',
-                                                              style:
-                                                                  FlutterFlowTheme
-                                                                      .bodyText1
-                                                                      .override(
-                                                                fontFamily:
-                                                                    'Mitr',
-                                                                color: Color
-                                                                    .fromARGB(
-                                                                        255,
-                                                                        46,
-                                                                        46,
-                                                                        46),
-                                                                fontSize: 20,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w300,
-                                                              ),
-                                                            ),
-                                                            Text(
-                                                              '${listviewData2[indexlistviewData2].vehicle}',
-                                                              style:
-                                                                  FlutterFlowTheme
-                                                                      .bodyText1
-                                                                      .override(
-                                                                fontFamily:
-                                                                    'Mitr',
-                                                                color: Color
-                                                                    .fromARGB(
-                                                                        255,
-                                                                        46,
-                                                                        46,
-                                                                        46),
-                                                                fontSize: 20,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w300,
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            )));
-                                      },
-                                    );
-                                  }
-
-                                  // การค้นหาตามประเภทรถ (รถตู้)
-                                  if (widget.type_car_data_3 != "-") {
-                                    listviewData2 = listviewData
-                                        .where((e) =>
-                                            e.vehicle!.contains(data_Car[2]))
-                                        .toList();
-
-                                    return ListView.builder(
-                                      padding: EdgeInsets.zero,
-                                      scrollDirection: Axis.vertical,
-                                      itemCount: listviewData2.length,
-                                      itemBuilder:
-                                          (context, indexlistviewData2) {
-                                        if (indexlistviewData2 == 0) {
-                                          indexlistviewData2 + 1;
-                                        }
-                                        return GestureDetector(
-                                            onTap: () {
-                                              setState(() {
-                                                print(listviewData2[
-                                                        indexlistviewData2]
-                                                    .imgPlate);
-                                                data_click[0] = 1;
-                                                data_left[0] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .licensePlate;
-                                                data_left[1] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .name;
-                                                data_left[2] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .city;
-                                                data_left[3] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .vehicle;
-                                                data_left[4] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .color;
-                                                data_left[5] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .imgCar;
-                                                data_left[6] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .carImgType;
-                                                data_left[7] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .colorCode;
-                                                data_left[8] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .imgPlate;
-                                                data_left[9] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .video;
-                                                data_left[10] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .time;
-                                                data_left[11] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .date;
-                                              });
-                                            },
-                                            child: Card(
-                                                child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(0, 0, 0, 0),
-                                                  child: Container(
-                                                    width: 550,
-                                                    height: 150,
-                                                    decoration: BoxDecoration(),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(30,
-                                                                      0, 30, 0),
-                                                          child: Image.network(
-                                                            '${listviewData2[indexlistviewData2].imgCar}',
-                                                            width: 200,
-                                                            height: 100,
-                                                            fit: BoxFit.cover,
-                                                          ),
-                                                        ),
-                                                        Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceEvenly,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Text(
-                                                              '${listviewData2[indexlistviewData2].licensePlate}',
-                                                              style:
-                                                                  FlutterFlowTheme
-                                                                      .bodyText1
-                                                                      .override(
-                                                                fontFamily:
-                                                                    'Mitr',
-                                                                color: Color
-                                                                    .fromARGB(
-                                                                        255,
-                                                                        46,
-                                                                        46,
-                                                                        46),
-                                                                fontSize: 20,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w300,
-                                                              ),
-                                                            ),
-                                                            Text(
-                                                              '${listviewData2[indexlistviewData2].city}',
-                                                              style:
-                                                                  FlutterFlowTheme
-                                                                      .bodyText1
-                                                                      .override(
-                                                                fontFamily:
-                                                                    'Mitr',
-                                                                color: Color
-                                                                    .fromARGB(
-                                                                        255,
-                                                                        46,
-                                                                        46,
-                                                                        46),
-                                                                fontSize: 20,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w300,
-                                                              ),
-                                                            ),
-                                                            Text(
-                                                              '${listviewData2[indexlistviewData2].vehicle}',
-                                                              style:
-                                                                  FlutterFlowTheme
-                                                                      .bodyText1
-                                                                      .override(
-                                                                fontFamily:
-                                                                    'Mitr',
-                                                                color: Color
-                                                                    .fromARGB(
-                                                                        255,
-                                                                        46,
-                                                                        46,
-                                                                        46),
-                                                                fontSize: 20,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w300,
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            )));
-                                      },
-                                    );
-                                  }
-
-                                  // การค้นหาตามประเภทรถ (รถบรรทุก)
-                                  if (widget.type_car_data_4 != "-") {
+                                  // การค้นหาตาม วันที่
+                                  else if (widget.date != "ไม่ระบุวันที่") {
+                                    print('วันที่-เวลา');
                                     listviewData2 = listviewData
                                         .where((e) =>
                                             e.vehicle!.contains(data_Car[3]))
                                         .toList();
-
-                                    return ListView.builder(
-                                      padding: EdgeInsets.zero,
-                                      scrollDirection: Axis.vertical,
-                                      itemCount: listviewData2.length,
-                                      itemBuilder:
-                                          (context, indexlistviewData2) {
-                                        if (indexlistviewData2 == 0) {
-                                          indexlistviewData2 + 1;
-                                        }
-                                        return GestureDetector(
-                                            onTap: () {
-                                              setState(() {
-                                                print(listviewData2[
-                                                        indexlistviewData2]
-                                                    .imgPlate);
-                                                data_click[0] = 1;
-                                                data_left[0] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .licensePlate;
-                                                data_left[1] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .name;
-                                                data_left[2] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .city;
-                                                data_left[3] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .vehicle;
-                                                data_left[4] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .color;
-                                                data_left[5] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .imgCar;
-                                                data_left[6] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .carImgType;
-                                                data_left[7] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .colorCode;
-                                                data_left[8] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .imgPlate;
-                                                data_left[9] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .video;
-                                                data_left[10] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .time;
-                                                data_left[11] = listviewData2[
-                                                        indexlistviewData2]
-                                                    .date;
-                                              });
-                                            },
-                                            child: Card(
-                                                child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(0, 0, 0, 0),
-                                                  child: Container(
-                                                    width: 550,
-                                                    height: 150,
-                                                    decoration: BoxDecoration(),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(30,
-                                                                      0, 30, 0),
-                                                          child: Image.network(
-                                                            '${listviewData2[indexlistviewData2].imgCar}',
-                                                            width: 200,
-                                                            height: 100,
-                                                            fit: BoxFit.cover,
+                                    // ค้นหาตามเวลา
+                                    listviewData2 = listviewData
+                                        .where((e) =>
+                                            e.time!.contains(widget.time_in))
+                                        .toList();
+                                    // ค้นหาตามเวลา
+                                    listviewData2 = listviewData
+                                        .where((e) =>
+                                            e.time!.contains(widget.time_out))
+                                        .toList();
+                                    if (listviewData2.length != 0) {
+                                      return ListView.builder(
+                                        padding: EdgeInsets.zero,
+                                        scrollDirection: Axis.vertical,
+                                        itemCount: listviewData2.length,
+                                        itemBuilder:
+                                            (context, indexlistviewData2) {
+                                          if (indexlistviewData2 == 0) {
+                                            indexlistviewData2 + 1;
+                                          }
+                                          return GestureDetector(
+                                              onTap: () {
+                                                setState(() {
+                                                  print(listviewData2[
+                                                          indexlistviewData2]
+                                                      .imgPlate);
+                                                  data_click[0] = 1;
+                                                  data_left[0] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .licensePlate;
+                                                  data_left[1] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .name;
+                                                  data_left[2] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .city;
+                                                  data_left[3] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .vehicle;
+                                                  data_left[4] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .color;
+                                                  data_left[5] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .imgCar;
+                                                  data_left[6] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .carImgType;
+                                                  data_left[7] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .colorCode;
+                                                  data_left[8] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .imgPlate;
+                                                  data_left[9] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .video;
+                                                  data_left[10] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .time;
+                                                  data_left[11] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .date;
+                                                });
+                                              },
+                                              child: Card(
+                                                  child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 0, 0, 0),
+                                                    child: Container(
+                                                      width: 550,
+                                                      height: 150,
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        30,
+                                                                        0,
+                                                                        30,
+                                                                        0),
+                                                            child:
+                                                                Image.network(
+                                                              '${listviewData2[indexlistviewData2].imgCar}',
+                                                              width: 200,
+                                                              height: 100,
+                                                              fit: BoxFit.cover,
+                                                            ),
                                                           ),
-                                                        ),
-                                                        Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceEvenly,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Text(
-                                                              '${listviewData2[indexlistviewData2].licensePlate}',
-                                                              style:
-                                                                  FlutterFlowTheme
-                                                                      .bodyText1
-                                                                      .override(
-                                                                fontFamily:
-                                                                    'Mitr',
-                                                                color: Color
-                                                                    .fromARGB(
-                                                                        255,
-                                                                        46,
-                                                                        46,
-                                                                        46),
-                                                                fontSize: 20,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w300,
+                                                          Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceEvenly,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                '${listviewData2[indexlistviewData2].licensePlate}',
+                                                                style: FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                      'Mitr',
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          46,
+                                                                          46,
+                                                                          46),
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300,
+                                                                ),
                                                               ),
-                                                            ),
-                                                            Text(
-                                                              '${listviewData2[indexlistviewData2].city}',
-                                                              style:
-                                                                  FlutterFlowTheme
-                                                                      .bodyText1
-                                                                      .override(
-                                                                fontFamily:
-                                                                    'Mitr',
-                                                                color: Color
-                                                                    .fromARGB(
-                                                                        255,
-                                                                        46,
-                                                                        46,
-                                                                        46),
-                                                                fontSize: 20,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w300,
+                                                              Text(
+                                                                '${listviewData2[indexlistviewData2].city}',
+                                                                style: FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                      'Mitr',
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          46,
+                                                                          46,
+                                                                          46),
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300,
+                                                                ),
                                                               ),
-                                                            ),
-                                                            Text(
-                                                              '${listviewData2[indexlistviewData2].vehicle}',
-                                                              style:
-                                                                  FlutterFlowTheme
-                                                                      .bodyText1
-                                                                      .override(
-                                                                fontFamily:
-                                                                    'Mitr',
-                                                                color: Color
-                                                                    .fromARGB(
-                                                                        255,
-                                                                        46,
-                                                                        46,
-                                                                        46),
-                                                                fontSize: 20,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w300,
+                                                              Text(
+                                                                '${listviewData2[indexlistviewData2].vehicle}',
+                                                                style: FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                      'Mitr',
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          46,
+                                                                          46,
+                                                                          46),
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300,
+                                                                ),
                                                               ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ],
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                              ],
-                                            )));
-                                      },
-                                    );
+                                                ],
+                                              )));
+                                        },
+                                      );
+                                    }else {
+                                      return Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'ไม่พบข้อมูลการค้นหา',
+                                            style: FlutterFlowTheme.bodyText1
+                                                .override(
+                                              fontFamily: 'Mitr',
+                                              color: Color.fromARGB(
+                                                  255, 46, 46, 46),
+                                              fontSize: 30,
+                                              fontWeight: FontWeight.w300,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    5, 10, 5, 0),
+                                            child: Text(
+                                              'กรุณาย้อนกับไปหน้าการค้นหา',
+                                              style: FlutterFlowTheme.bodyText1
+                                                  .override(
+                                                fontFamily: 'Mitr',
+                                                color: Color.fromARGB(
+                                                    255, 46, 46, 46),
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w300,
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      );
+                                    }
+                                  }
+
+                                  // การค้นหาตามประเภทรถ (รถเก๋ง และ รถกระบะ)
+                                  else if (widget.type_car_data_1 != "-" && widget.type_car_data_2 != "-") {
+                                    print('รถเก๋ง-รถกระบะ');
+                                    listviewData2 = listviewData
+                                        .where((e) =>
+                                            e.vehicle!.contains(data_Car[0]))
+                                        .toList();
+                                    listviewData2 = listviewData
+                                        .where((e) =>
+                                            e.vehicle!.contains(data_Car[1]))
+                                        .toList();
+                                    if (listviewData2.length != 0) {
+                                      return ListView.builder(
+                                        padding: EdgeInsets.zero,
+                                        scrollDirection: Axis.vertical,
+                                        itemCount: listviewData2.length,
+                                        itemBuilder:
+                                            (context, indexlistviewData2) {
+                                          if (indexlistviewData2 == 0) {
+                                            indexlistviewData2 + 1;
+                                          }
+                                          return GestureDetector(
+                                              onTap: () {
+                                                setState(() {
+                                                  print(listviewData2[
+                                                          indexlistviewData2]
+                                                      .imgPlate);
+                                                  data_click[0] = 1;
+                                                  data_left[0] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .licensePlate;
+                                                  data_left[1] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .name;
+                                                  data_left[2] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .city;
+                                                  data_left[3] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .vehicle;
+                                                  data_left[4] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .color;
+                                                  data_left[5] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .imgCar;
+                                                  data_left[6] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .carImgType;
+                                                  data_left[7] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .colorCode;
+                                                  data_left[8] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .imgPlate;
+                                                  data_left[9] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .video;
+                                                  data_left[10] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .time;
+                                                  data_left[11] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .date;
+                                                });
+                                              },
+                                              child: Card(
+                                                  child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 0, 0, 0),
+                                                    child: Container(
+                                                      width: 550,
+                                                      height: 150,
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        30,
+                                                                        0,
+                                                                        30,
+                                                                        0),
+                                                            child:
+                                                                Image.network(
+                                                              '${listviewData2[indexlistviewData2].imgCar}',
+                                                              width: 200,
+                                                              height: 100,
+                                                              fit: BoxFit.cover,
+                                                            ),
+                                                          ),
+                                                          Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceEvenly,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                '${listviewData2[indexlistviewData2].licensePlate}',
+                                                                style: FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                      'Mitr',
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          46,
+                                                                          46,
+                                                                          46),
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300,
+                                                                ),
+                                                              ),
+                                                              Text(
+                                                                '${listviewData2[indexlistviewData2].city}',
+                                                                style: FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                      'Mitr',
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          46,
+                                                                          46,
+                                                                          46),
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300,
+                                                                ),
+                                                              ),
+                                                              Text(
+                                                                '${listviewData2[indexlistviewData2].vehicle}',
+                                                                style: FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                      'Mitr',
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          46,
+                                                                          46,
+                                                                          46),
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300,
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              )));
+                                        },
+                                      );
+                                    }else {
+                                      return Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'ไม่พบข้อมูลการค้นหา',
+                                            style: FlutterFlowTheme.bodyText1
+                                                .override(
+                                              fontFamily: 'Mitr',
+                                              color: Color.fromARGB(
+                                                  255, 46, 46, 46),
+                                              fontSize: 30,
+                                              fontWeight: FontWeight.w300,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    5, 10, 5, 0),
+                                            child: Text(
+                                              'กรุณาย้อนกับไปหน้าการค้นหา',
+                                              style: FlutterFlowTheme.bodyText1
+                                                  .override(
+                                                fontFamily: 'Mitr',
+                                                color: Color.fromARGB(
+                                                    255, 46, 46, 46),
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w300,
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      );
+                                    }
+                                  }
+
+                                  // การค้นหาตามประเภทรถ (รถตู้ และ รถบรรทุก)
+                                  else if (widget.type_car_data_3 != "-" && widget.type_car_data_4 != "-") {
+                                    print('รถตู้-รถบรรทุก');
+                                    listviewData2 = listviewData
+                                        .where((e) =>
+                                            e.vehicle!.contains(data_Car[2]))
+                                        .toList();
+                                    listviewData2 = listviewData
+                                        .where((e) =>
+                                            e.vehicle!.contains(data_Car[3]))
+                                        .toList();
+                                    if (listviewData2.length != 0) {
+                                      return ListView.builder(
+                                        padding: EdgeInsets.zero,
+                                        scrollDirection: Axis.vertical,
+                                        itemCount: listviewData2.length,
+                                        itemBuilder:
+                                            (context, indexlistviewData2) {
+                                          if (indexlistviewData2 == 0) {
+                                            indexlistviewData2 + 1;
+                                          }
+                                          return GestureDetector(
+                                              onTap: () {
+                                                setState(() {
+                                                  print(listviewData2[
+                                                          indexlistviewData2]
+                                                      .imgPlate);
+                                                  data_click[0] = 1;
+                                                  data_left[0] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .licensePlate;
+                                                  data_left[1] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .name;
+                                                  data_left[2] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .city;
+                                                  data_left[3] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .vehicle;
+                                                  data_left[4] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .color;
+                                                  data_left[5] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .imgCar;
+                                                  data_left[6] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .carImgType;
+                                                  data_left[7] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .colorCode;
+                                                  data_left[8] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .imgPlate;
+                                                  data_left[9] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .video;
+                                                  data_left[10] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .time;
+                                                  data_left[11] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .date;
+                                                });
+                                              },
+                                              child: Card(
+                                                  child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 0, 0, 0),
+                                                    child: Container(
+                                                      width: 550,
+                                                      height: 150,
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        30,
+                                                                        0,
+                                                                        30,
+                                                                        0),
+                                                            child:
+                                                                Image.network(
+                                                              '${listviewData2[indexlistviewData2].imgCar}',
+                                                              width: 200,
+                                                              height: 100,
+                                                              fit: BoxFit.cover,
+                                                            ),
+                                                          ),
+                                                          Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceEvenly,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                '${listviewData2[indexlistviewData2].licensePlate}',
+                                                                style: FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                      'Mitr',
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          46,
+                                                                          46,
+                                                                          46),
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300,
+                                                                ),
+                                                              ),
+                                                              Text(
+                                                                '${listviewData2[indexlistviewData2].city}',
+                                                                style: FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                      'Mitr',
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          46,
+                                                                          46,
+                                                                          46),
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300,
+                                                                ),
+                                                              ),
+                                                              Text(
+                                                                '${listviewData2[indexlistviewData2].vehicle}',
+                                                                style: FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                      'Mitr',
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          46,
+                                                                          46,
+                                                                          46),
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300,
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              )));
+                                        },
+                                      );
+                                    }else {
+                                      return Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'ไม่พบข้อมูลการค้นหา',
+                                            style: FlutterFlowTheme.bodyText1
+                                                .override(
+                                              fontFamily: 'Mitr',
+                                              color: Color.fromARGB(
+                                                  255, 46, 46, 46),
+                                              fontSize: 30,
+                                              fontWeight: FontWeight.w300,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    5, 10, 5, 0),
+                                            child: Text(
+                                              'กรุณาย้อนกับไปหน้าการค้นหา',
+                                              style: FlutterFlowTheme.bodyText1
+                                                  .override(
+                                                fontFamily: 'Mitr',
+                                                color: Color.fromARGB(
+                                                    255, 46, 46, 46),
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w300,
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      );
+                                    }
+                                  }
+
+                                  // การค้นหาตามประเภทรถ (รถเก๋ง)
+                                  else if (widget.type_car_data_1 != "-") {
+                                    print('รถเก๋ง');
+                                    listviewData2 = listviewData
+                                        .where((e) =>
+                                            e.vehicle!.contains(data_Car[0]))
+                                        .toList();
+                                    if (listviewData2.length != 0) {
+                                      return ListView.builder(
+                                        padding: EdgeInsets.zero,
+                                        scrollDirection: Axis.vertical,
+                                        itemCount: listviewData2.length,
+                                        itemBuilder:
+                                            (context, indexlistviewData2) {
+                                          if (indexlistviewData2 == 0) {
+                                            indexlistviewData2 + 1;
+                                          }
+                                          return GestureDetector(
+                                              onTap: () {
+                                                setState(() {
+                                                  print(listviewData2[
+                                                          indexlistviewData2]
+                                                      .imgPlate);
+                                                  data_click[0] = 1;
+                                                  data_left[0] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .licensePlate;
+                                                  data_left[1] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .name;
+                                                  data_left[2] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .city;
+                                                  data_left[3] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .vehicle;
+                                                  data_left[4] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .color;
+                                                  data_left[5] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .imgCar;
+                                                  data_left[6] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .carImgType;
+                                                  data_left[7] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .colorCode;
+                                                  data_left[8] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .imgPlate;
+                                                  data_left[9] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .video;
+                                                  data_left[10] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .time;
+                                                  data_left[11] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .date;
+                                                });
+                                              },
+                                              child: Card(
+                                                  child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 0, 0, 0),
+                                                    child: Container(
+                                                      width: 550,
+                                                      height: 150,
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        30,
+                                                                        0,
+                                                                        30,
+                                                                        0),
+                                                            child:
+                                                                Image.network(
+                                                              '${listviewData2[indexlistviewData2].imgCar}',
+                                                              width: 200,
+                                                              height: 100,
+                                                              fit: BoxFit.cover,
+                                                            ),
+                                                          ),
+                                                          Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceEvenly,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                '${listviewData2[indexlistviewData2].licensePlate}',
+                                                                style: FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                      'Mitr',
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          46,
+                                                                          46,
+                                                                          46),
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300,
+                                                                ),
+                                                              ),
+                                                              Text(
+                                                                '${listviewData2[indexlistviewData2].city}',
+                                                                style: FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                      'Mitr',
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          46,
+                                                                          46,
+                                                                          46),
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300,
+                                                                ),
+                                                              ),
+                                                              Text(
+                                                                '${listviewData2[indexlistviewData2].vehicle}',
+                                                                style: FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                      'Mitr',
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          46,
+                                                                          46,
+                                                                          46),
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300,
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              )));
+                                        },
+                                      );
+                                    }else {
+                                      return Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'ไม่พบข้อมูลการค้นหา',
+                                            style: FlutterFlowTheme.bodyText1
+                                                .override(
+                                              fontFamily: 'Mitr',
+                                              color: Color.fromARGB(
+                                                  255, 46, 46, 46),
+                                              fontSize: 30,
+                                              fontWeight: FontWeight.w300,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    5, 10, 5, 0),
+                                            child: Text(
+                                              'กรุณาย้อนกับไปหน้าการค้นหา',
+                                              style: FlutterFlowTheme.bodyText1
+                                                  .override(
+                                                fontFamily: 'Mitr',
+                                                color: Color.fromARGB(
+                                                    255, 46, 46, 46),
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w300,
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      );
+                                    }
+                                  }
+
+                                  // การค้นหาตามประเภทรถ (รถกระบะ)
+                                  else if (widget.type_car_data_2 != "-") {
+                                    print('รถกระบะ');
+                                    listviewData2 = listviewData
+                                        .where((e) =>
+                                            e.vehicle!.contains(data_Car[1]))
+                                        .toList();
+                                    if (listviewData2.length != 0) {
+                                      return ListView.builder(
+                                        padding: EdgeInsets.zero,
+                                        scrollDirection: Axis.vertical,
+                                        itemCount: listviewData2.length,
+                                        itemBuilder:
+                                            (context, indexlistviewData2) {
+                                          if (indexlistviewData2 == 0) {
+                                            indexlistviewData2 + 1;
+                                          }
+                                          return GestureDetector(
+                                              onTap: () {
+                                                setState(() {
+                                                  print(listviewData2[
+                                                          indexlistviewData2]
+                                                      .imgPlate);
+                                                  data_click[0] = 1;
+                                                  data_left[0] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .licensePlate;
+                                                  data_left[1] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .name;
+                                                  data_left[2] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .city;
+                                                  data_left[3] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .vehicle;
+                                                  data_left[4] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .color;
+                                                  data_left[5] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .imgCar;
+                                                  data_left[6] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .carImgType;
+                                                  data_left[7] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .colorCode;
+                                                  data_left[8] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .imgPlate;
+                                                  data_left[9] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .video;
+                                                  data_left[10] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .time;
+                                                  data_left[11] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .date;
+                                                });
+                                              },
+                                              child: Card(
+                                                  child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 0, 0, 0),
+                                                    child: Container(
+                                                      width: 550,
+                                                      height: 150,
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        30,
+                                                                        0,
+                                                                        30,
+                                                                        0),
+                                                            child:
+                                                                Image.network(
+                                                              '${listviewData2[indexlistviewData2].imgCar}',
+                                                              width: 200,
+                                                              height: 100,
+                                                              fit: BoxFit.cover,
+                                                            ),
+                                                          ),
+                                                          Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceEvenly,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                '${listviewData2[indexlistviewData2].licensePlate}',
+                                                                style: FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                      'Mitr',
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          46,
+                                                                          46,
+                                                                          46),
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300,
+                                                                ),
+                                                              ),
+                                                              Text(
+                                                                '${listviewData2[indexlistviewData2].city}',
+                                                                style: FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                      'Mitr',
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          46,
+                                                                          46,
+                                                                          46),
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300,
+                                                                ),
+                                                              ),
+                                                              Text(
+                                                                '${listviewData2[indexlistviewData2].vehicle}',
+                                                                style: FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                      'Mitr',
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          46,
+                                                                          46,
+                                                                          46),
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300,
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              )));
+                                        },
+                                      );
+                                    }else {
+                                      return Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'ไม่พบข้อมูลการค้นหา',
+                                            style: FlutterFlowTheme.bodyText1
+                                                .override(
+                                              fontFamily: 'Mitr',
+                                              color: Color.fromARGB(
+                                                  255, 46, 46, 46),
+                                              fontSize: 30,
+                                              fontWeight: FontWeight.w300,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    5, 10, 5, 0),
+                                            child: Text(
+                                              'กรุณาย้อนกับไปหน้าการค้นหา',
+                                              style: FlutterFlowTheme.bodyText1
+                                                  .override(
+                                                fontFamily: 'Mitr',
+                                                color: Color.fromARGB(
+                                                    255, 46, 46, 46),
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w300,
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      );
+                                    }
+                                  }
+
+                                  // การค้นหาตามประเภทรถ (รถตู้)
+                                  else if (widget.type_car_data_3 != "-") {
+                                    print('รถตู้');
+                                    listviewData2 = listviewData
+                                        .where((e) =>
+                                            e.vehicle!.contains(data_Car[2]))
+                                        .toList();
+                                    if (listviewData2.length != 0) {
+                                      return ListView.builder(
+                                        padding: EdgeInsets.zero,
+                                        scrollDirection: Axis.vertical,
+                                        itemCount: listviewData2.length,
+                                        itemBuilder:
+                                            (context, indexlistviewData2) {
+                                          if (indexlistviewData2 == 0) {
+                                            indexlistviewData2 + 1;
+                                          }
+                                          return GestureDetector(
+                                              onTap: () {
+                                                setState(() {
+                                                  print(listviewData2[
+                                                          indexlistviewData2]
+                                                      .imgPlate);
+                                                  data_click[0] = 1;
+                                                  data_left[0] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .licensePlate;
+                                                  data_left[1] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .name;
+                                                  data_left[2] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .city;
+                                                  data_left[3] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .vehicle;
+                                                  data_left[4] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .color;
+                                                  data_left[5] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .imgCar;
+                                                  data_left[6] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .carImgType;
+                                                  data_left[7] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .colorCode;
+                                                  data_left[8] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .imgPlate;
+                                                  data_left[9] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .video;
+                                                  data_left[10] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .time;
+                                                  data_left[11] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .date;
+                                                });
+                                              },
+                                              child: Card(
+                                                  child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 0, 0, 0),
+                                                    child: Container(
+                                                      width: 550,
+                                                      height: 150,
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        30,
+                                                                        0,
+                                                                        30,
+                                                                        0),
+                                                            child:
+                                                                Image.network(
+                                                              '${listviewData2[indexlistviewData2].imgCar}',
+                                                              width: 200,
+                                                              height: 100,
+                                                              fit: BoxFit.cover,
+                                                            ),
+                                                          ),
+                                                          Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceEvenly,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                '${listviewData2[indexlistviewData2].licensePlate}',
+                                                                style: FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                      'Mitr',
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          46,
+                                                                          46,
+                                                                          46),
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300,
+                                                                ),
+                                                              ),
+                                                              Text(
+                                                                '${listviewData2[indexlistviewData2].city}',
+                                                                style: FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                      'Mitr',
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          46,
+                                                                          46,
+                                                                          46),
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300,
+                                                                ),
+                                                              ),
+                                                              Text(
+                                                                '${listviewData2[indexlistviewData2].vehicle}',
+                                                                style: FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                      'Mitr',
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          46,
+                                                                          46,
+                                                                          46),
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300,
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              )));
+                                        },
+                                      );
+                                    }else {
+                                      return Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'ไม่พบข้อมูลการค้นหา',
+                                            style: FlutterFlowTheme.bodyText1
+                                                .override(
+                                              fontFamily: 'Mitr',
+                                              color: Color.fromARGB(
+                                                  255, 46, 46, 46),
+                                              fontSize: 30,
+                                              fontWeight: FontWeight.w300,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    5, 10, 5, 0),
+                                            child: Text(
+                                              'กรุณาย้อนกับไปหน้าการค้นหา',
+                                              style: FlutterFlowTheme.bodyText1
+                                                  .override(
+                                                fontFamily: 'Mitr',
+                                                color: Color.fromARGB(
+                                                    255, 46, 46, 46),
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w300,
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      );
+                                    }
+                                  }
+
+                                  // การค้นหาตามประเภทรถ (รถบรรทุก)
+                                  else if (widget.type_car_data_4 != "-") {
+                                    print('รถบรรทุก');
+                                    listviewData2 = listviewData
+                                        .where((e) =>
+                                            e.vehicle!.contains(data_Car[3]))
+                                        .toList();
+                                    if (listviewData2.length != 0) {
+                                      return ListView.builder(
+                                        padding: EdgeInsets.zero,
+                                        scrollDirection: Axis.vertical,
+                                        itemCount: listviewData2.length,
+                                        itemBuilder:
+                                            (context, indexlistviewData2) {
+                                          if (indexlistviewData2 == 0) {
+                                            indexlistviewData2 + 1;
+                                          }
+                                          return GestureDetector(
+                                              onTap: () {
+                                                setState(() {
+                                                  print(listviewData2[
+                                                          indexlistviewData2]
+                                                      .imgPlate);
+                                                  data_click[0] = 1;
+                                                  data_left[0] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .licensePlate;
+                                                  data_left[1] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .name;
+                                                  data_left[2] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .city;
+                                                  data_left[3] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .vehicle;
+                                                  data_left[4] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .color;
+                                                  data_left[5] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .imgCar;
+                                                  data_left[6] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .carImgType;
+                                                  data_left[7] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .colorCode;
+                                                  data_left[8] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .imgPlate;
+                                                  data_left[9] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .video;
+                                                  data_left[10] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .time;
+                                                  data_left[11] = listviewData2[
+                                                          indexlistviewData2]
+                                                      .date;
+                                                });
+                                              },
+                                              child: Card(
+                                                  child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 0, 0, 0),
+                                                    child: Container(
+                                                      width: 550,
+                                                      height: 150,
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        30,
+                                                                        0,
+                                                                        30,
+                                                                        0),
+                                                            child:
+                                                                Image.network(
+                                                              '${listviewData2[indexlistviewData2].imgCar}',
+                                                              width: 200,
+                                                              height: 100,
+                                                              fit: BoxFit.cover,
+                                                            ),
+                                                          ),
+                                                          Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceEvenly,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                '${listviewData2[indexlistviewData2].licensePlate}',
+                                                                style: FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                      'Mitr',
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          46,
+                                                                          46,
+                                                                          46),
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300,
+                                                                ),
+                                                              ),
+                                                              Text(
+                                                                '${listviewData2[indexlistviewData2].city}',
+                                                                style: FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                      'Mitr',
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          46,
+                                                                          46,
+                                                                          46),
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300,
+                                                                ),
+                                                              ),
+                                                              Text(
+                                                                '${listviewData2[indexlistviewData2].vehicle}',
+                                                                style: FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                      'Mitr',
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          46,
+                                                                          46,
+                                                                          46),
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300,
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              )));
+                                        },
+                                      );
+                                    }else {
+                                      return Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'ไม่พบข้อมูลการค้นหา',
+                                            style: FlutterFlowTheme.bodyText1
+                                                .override(
+                                              fontFamily: 'Mitr',
+                                              color: Color.fromARGB(
+                                                  255, 46, 46, 46),
+                                              fontSize: 30,
+                                              fontWeight: FontWeight.w300,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    5, 10, 5, 0),
+                                            child: Text(
+                                              'กรุณาย้อนกับไปหน้าการค้นหา',
+                                              style: FlutterFlowTheme.bodyText1
+                                                  .override(
+                                                fontFamily: 'Mitr',
+                                                color: Color.fromARGB(
+                                                    255, 46, 46, 46),
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w300,
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      );
+                                    }
                                   }
 
                                   // Filter
-
                                   // คัดกรองประเภทรถ (รถเก๋ง)
                                   // if (onClick_typeCar[0] != "0") {
                                   //   listviewData2 = listviewData
@@ -2018,7 +3018,6 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                   //     },
                                   //   );
                                   // }
-
                                   // คัดกรองประเภทรถ (รถกระบะ)
                                   // if (onClick_typeCar[1] != "0") {
                                   //   listviewData2 = listviewData
@@ -2186,7 +3185,6 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                   //     },
                                   //   );
                                   // }
-
                                   // คัดกรองประเภทรถ (รถตู้)
                                   // if (onClick_typeCar[2] != "0") {
                                   //   listviewData2 = listviewData
@@ -2354,7 +3352,6 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                   //     },
                                   //   );
                                   // }
-
                                   // คัดกรองประเภทรถ (รถบรรทุก)
                                   // if (onClick_typeCar[3] != "0") {
                                   //   listviewData2 = listviewData
@@ -2532,7 +3529,7 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                       if (index == 0) {
                                         index + 1;
                                       }
-
+                                      print('test');
                                       return GestureDetector(
                                           onTap: () {
                                             setState(() {
@@ -2691,608 +3688,614 @@ class _ResultScreenWidgetState extends State<ResultScreenWidget>
                                 size: 140,
                                 color: Color.fromARGB(255, 160, 182, 255));
                           }
-                          final listviewData2 = snapshot.data!;
-                          return Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
-                                child: Container(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.5,
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.85,
-                                  decoration: BoxDecoration(),
-                                  child: ListView(
-                                    padding: EdgeInsets.zero,
-                                    scrollDirection: Axis.vertical,
-                                    children: [
-                                      Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 10, 0, 0),
-                                            child: Container(
-                                              width: 500,
-                                              height: 350,
-                                              child: Stack(
-                                                children: [
-                                                  // รูปภาพรถ
-                                                  Align(
-                                                    alignment:
-                                                        AlignmentDirectional(
-                                                            0, 0),
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              20),
-                                                      child: Image.network(
-                                                        "${data_click[0] == 0 ? listviewData2[0].imgCar : data_left[5]}",
-                                                        width: double.infinity,
-                                                        height: double.infinity,
-                                                        fit: BoxFit.cover,
+                          if (data_click[0] != 0) {
+                            final listviewData2 = snapshot.data!;
+                            return Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5, 0, 5, 0),
+                                  child: Container(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.5,
+                                    height: MediaQuery.of(context).size.height *
+                                        0.85,
+                                    decoration: BoxDecoration(),
+                                    child: ListView(
+                                      padding: EdgeInsets.zero,
+                                      scrollDirection: Axis.vertical,
+                                      children: [
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0, 10, 0, 0),
+                                              child: Container(
+                                                width: 500,
+                                                height: 350,
+                                                child: Stack(
+                                                  children: [
+                                                    // รูปภาพรถ
+                                                    Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              0, 0),
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(20),
+                                                        child: Image.network(
+                                                          "${data_click[0] == 0 ? listviewData2[0].imgCar : data_left[5]}",
+                                                          width:
+                                                              double.infinity,
+                                                          height:
+                                                              double.infinity,
+                                                          fit: BoxFit.cover,
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
 
-                                                  // รูปภาพป้ายทะเบียน
-                                                  Align(
-                                                    alignment:
-                                                        AlignmentDirectional(
-                                                            0.96, 0.95),
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              20),
-                                                      child: Image.network(
-                                                        "${data_click[0] == 0 ? listviewData2[0].imgPlate : data_left[8]}",
-                                                        width: 120,
-                                                        height: 80,
-                                                        fit: BoxFit.cover,
+                                                    // รูปภาพป้ายทะเบียน
+                                                    Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              0.96, 0.95),
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(20),
+                                                        child: Image.network(
+                                                          "${data_click[0] == 0 ? listviewData2[0].imgPlate : data_left[8]}",
+                                                          width: 120,
+                                                          height: 80,
+                                                          fit: BoxFit.cover,
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-
-                                          // เลขป้ายทะเบียน
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    10, 20, 0, 0),
-                                            child: Container(
-                                              width: double.infinity,
-                                              height: 55,
-                                              decoration: BoxDecoration(),
-                                              child: Text(
-                                                "${data_click[0] == 0 ? listviewData2[0].licensePlate : data_left[0]}",
-                                                style: FlutterFlowTheme
-                                                    .bodyText1
-                                                    .override(
-                                                  fontFamily: 'Mitr',
-                                                  color: Color.fromARGB(
-                                                      255, 46, 46, 46),
-                                                  fontSize: 40,
-                                                  fontWeight: FontWeight.w300,
+                                                  ],
                                                 ),
                                               ),
                                             ),
-                                          ),
 
-                                          // เส้นขั้น
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 10, 0, 0),
-                                            child: Container(
-                                              width: double.infinity,
-                                              height: 3,
-                                              decoration: BoxDecoration(
-                                                color: Color.fromARGB(
-                                                    255, 160, 182, 255),
-                                              ),
-                                            ),
-                                          ),
-
-                                          // ชื่อเจ้าของรถ
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    10, 5, 0, 0),
-                                            child: Container(
-                                              width: double.infinity,
-                                              height: 50,
-                                              decoration: BoxDecoration(),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Text(
-                                                    'ชื่อเจ้าของรถ :',
-                                                    style: FlutterFlowTheme
-                                                        .bodyText1
-                                                        .override(
-                                                      fontFamily: 'Mitr',
-                                                      color: Color.fromARGB(
-                                                          255, 46, 46, 46),
-                                                      fontSize: 22,
-                                                      fontWeight:
-                                                          FontWeight.normal,
-                                                    ),
+                                            // เลขป้ายทะเบียน
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(10, 20, 0, 0),
+                                              child: Container(
+                                                width: double.infinity,
+                                                height: 55,
+                                                decoration: BoxDecoration(),
+                                                child: Text(
+                                                  "${data_click[0] == 0 ? listviewData2[0].licensePlate : data_left[0]}",
+                                                  style: FlutterFlowTheme
+                                                      .bodyText1
+                                                      .override(
+                                                    fontFamily: 'Mitr',
+                                                    color: Color.fromARGB(
+                                                        255, 46, 46, 46),
+                                                    fontSize: 40,
+                                                    fontWeight: FontWeight.w300,
                                                   ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                10, 0, 0, 0),
-                                                    child: Text(
-                                                      "${data_click[0] == 0 ? listviewData2[0].name : data_left[1]}",
-                                                      style: FlutterFlowTheme
-                                                          .bodyText1
-                                                          .override(
-                                                        fontFamily: 'Mitr',
-                                                        color: Color.fromARGB(
-                                                            255, 46, 46, 46),
-                                                        fontSize: 20,
-                                                        fontWeight:
-                                                            FontWeight.w300,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-
-                                          // จังหวัด
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    10, 5, 0, 0),
-                                            child: Container(
-                                              width: double.infinity,
-                                              height: 50,
-                                              decoration: BoxDecoration(),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Text(
-                                                    'จังหวัด :',
-                                                    style: FlutterFlowTheme
-                                                        .bodyText1
-                                                        .override(
-                                                      fontFamily: 'Mitr',
-                                                      color: Color.fromARGB(
-                                                          255, 46, 46, 46),
-                                                      fontSize: 22,
-                                                      fontWeight:
-                                                          FontWeight.normal,
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                10, 0, 0, 0),
-                                                    child: Text(
-                                                      "${data_click[0] == 0 ? listviewData2[0].city : data_left[2]}",
-                                                      style: FlutterFlowTheme
-                                                          .bodyText1
-                                                          .override(
-                                                        fontFamily: 'Mitr',
-                                                        color: Color.fromARGB(
-                                                            255, 46, 46, 46),
-                                                        fontSize: 20,
-                                                        fontWeight:
-                                                            FontWeight.w300,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-
-                                          // ประเภทรถ
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    10, 5, 0, 0),
-                                            child: Container(
-                                              width: double.infinity,
-                                              height: 50,
-                                              decoration: BoxDecoration(),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Text(
-                                                    'ประเภทรถ :',
-                                                    style: FlutterFlowTheme
-                                                        .bodyText1
-                                                        .override(
-                                                      fontFamily: 'Mitr',
-                                                      color: Color.fromARGB(
-                                                          255, 46, 46, 46),
-                                                      fontSize: 22,
-                                                      fontWeight:
-                                                          FontWeight.normal,
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                10, 0, 0, 0),
-                                                    child: Text(
-                                                      "${data_click[0] == 0 ? listviewData2[0].vehicle : data_left[3]}",
-                                                      style: FlutterFlowTheme
-                                                          .bodyText1
-                                                          .override(
-                                                        fontFamily: 'Mitr',
-                                                        color: Color.fromARGB(
-                                                            255, 46, 46, 46),
-                                                        fontSize: 20,
-                                                        fontWeight:
-                                                            FontWeight.w300,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                10, 0, 0, 0),
-                                                    child: Image.network(
-                                                      '${data_click[0] == 0 ? listviewData2[0].carImgType : data_left[6]}',
-                                                      width: 50,
-                                                      height: 50,
-                                                      fit: BoxFit.contain,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-
-                                          // สี
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    10, 5, 0, 0),
-                                            child: Container(
-                                              width: double.infinity,
-                                              height: 50,
-                                              decoration: BoxDecoration(),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Text(
-                                                    'สี :',
-                                                    style: FlutterFlowTheme
-                                                        .bodyText1
-                                                        .override(
-                                                      fontFamily: 'Mitr',
-                                                      color: Color.fromARGB(
-                                                          255, 46, 46, 46),
-                                                      fontSize: 22,
-                                                      fontWeight:
-                                                          FontWeight.normal,
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                10, 0, 0, 0),
-                                                    child: Text(
-                                                      "${data_click[0] == 0 ? listviewData2[0].color : data_left[4]}",
-                                                      style: FlutterFlowTheme
-                                                          .bodyText1
-                                                          .override(
-                                                        fontFamily: 'Mitr',
-                                                        color: Color.fromARGB(
-                                                            255, 46, 46, 46),
-                                                        fontSize: 20,
-                                                        fontWeight:
-                                                            FontWeight.w300,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  // Padding(
-                                                  //   padding:
-                                                  //       EdgeInsetsDirectional
-                                                  //           .fromSTEB(
-                                                  //               10, 0, 0, 0),
-                                                  //   child: Container(
-                                                  //     width: 50,
-                                                  //     height: 50,
-                                                  //     decoration: BoxDecoration(
-                                                  //       color: data_click[0] == 0 ? listviewData2[0].colorCode : data_left[7],
-                                                  //         shape: BoxShape.circle,
-                                                  //       border: Border.all(
-                                                  //         color: Color.fromARGB(
-                                                  //             255,
-                                                  //             160,
-                                                  //             182,
-                                                  //             255),
-                                                  //         width: 2,
-                                                  //       ),
-                                                  //     ),
-                                                  //   ),
-                                                  // ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-
-                                          // เวลา
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    10, 5, 0, 0),
-                                            child: Container(
-                                              width: double.infinity,
-                                              height: 50,
-                                              decoration: BoxDecoration(),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Text(
-                                                    'เวลา :',
-                                                    style: FlutterFlowTheme
-                                                        .bodyText1
-                                                        .override(
-                                                      fontFamily: 'Mitr',
-                                                      color: Color.fromARGB(
-                                                          255, 46, 46, 46),
-                                                      fontSize: 22,
-                                                      fontWeight:
-                                                          FontWeight.normal,
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                10, 0, 0, 0),
-                                                    child: Text(
-                                                      "${data_click[0] == 0 ? listviewData2[0].time : data_left[10]}",
-                                                      style: FlutterFlowTheme
-                                                          .bodyText1
-                                                          .override(
-                                                        fontFamily: 'Mitr',
-                                                        color: Color.fromARGB(
-                                                            255, 46, 46, 46),
-                                                        fontSize: 20,
-                                                        fontWeight:
-                                                            FontWeight.w300,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-
-                                          // วันที่
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    10, 5, 0, 0),
-                                            child: Container(
-                                              width: double.infinity,
-                                              height: 50,
-                                              decoration: BoxDecoration(),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Text(
-                                                    'วัน / เดือน / ปี :',
-                                                    style: FlutterFlowTheme
-                                                        .bodyText1
-                                                        .override(
-                                                      fontFamily: 'Mitr',
-                                                      color: Color.fromARGB(
-                                                          255, 46, 46, 46),
-                                                      fontSize: 22,
-                                                      fontWeight:
-                                                          FontWeight.normal,
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                10, 0, 0, 0),
-                                                    child: Text(
-                                                      "${data_click[0] == 0 ? listviewData2[0].date : data_left[11]}",
-                                                      style: FlutterFlowTheme
-                                                          .bodyText1
-                                                          .override(
-                                                        fontFamily: 'Mitr',
-                                                        color: Color.fromARGB(
-                                                            255, 46, 46, 46),
-                                                        fontSize: 20,
-                                                        fontWeight:
-                                                            FontWeight.w300,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-
-                                          // ปุ่มการค้นหา
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 10, 0, 0),
-                                            child: FFButtonWidget(
-                                              onPressed: () {
-                                                // เซ็ตค่าตั้งต้นหากกรณีไม่มีข้อมูล
-                                                data_click[0] == 0
-                                                    ? data_left[0] =
-                                                        listviewData2[0]
-                                                            .licensePlate
-                                                    : data_left[0];
-
-                                                data_click[0] == 0
-                                                    ? data_left[1] =
-                                                        listviewData2[0].name
-                                                    : data_left[1];
-
-                                                data_click[0] == 0
-                                                    ? data_left[2] =
-                                                        listviewData2[0].city
-                                                    : data_left[2];
-
-                                                data_click[0] == 0
-                                                    ? data_left[3] =
-                                                        listviewData2[0].vehicle
-                                                    : data_left[3];
-
-                                                data_click[0] == 0
-                                                    ? data_left[4] =
-                                                        listviewData2[0].color
-                                                    : data_left[4];
-
-                                                data_click[0] == 0
-                                                    ? data_left[5] =
-                                                        listviewData2[0].imgCar
-                                                    : data_left[5];
-
-                                                data_click[0] == 0
-                                                    ? data_left[6] =
-                                                        listviewData2[0]
-                                                            .carImgType
-                                                    : data_left[6];
-
-                                                data_click[0] == 0
-                                                    ? data_left[7] =
-                                                        listviewData2[0]
-                                                            .colorCode
-                                                    : data_left[7];
-
-                                                data_click[0] == 0
-                                                    ? data_left[8] =
-                                                        listviewData2[0]
-                                                            .imgPlate
-                                                    : data_left[8];
-
-                                                data_click[0] == 0
-                                                    ? data_left[9] =
-                                                        listviewData2[0].video
-                                                    : data_left[9];
-
-                                                data_click[0] == 0
-                                                    ? data_left[10] =
-                                                        listviewData2[0].time
-                                                    : data_left[10];
-
-                                                data_click[0] == 0
-                                                    ? data_left[11] =
-                                                        listviewData2[0].date
-                                                    : data_left[11];
-
-                                                // ส่งข้อมูลไปหน้าถัดไป
-                                                Navigator.pushReplacement(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          VideoScreenWidget(
-                                                            license_plate:
-                                                                data_left[0],
-                                                            name: data_left[1],
-                                                            city: data_left[2],
-                                                            vehicle:
-                                                                data_left[3],
-                                                            vehicle_type_img:
-                                                                data_left[6],
-                                                            color: data_left[4],
-                                                            color_code:
-                                                                data_left[7],
-                                                            img: data_left[5],
-                                                            img_plate:
-                                                                data_left[8],
-                                                            video: data_left[9],
-                                                            time: data_left[10],
-                                                            date: data_left[11],
-                                                            search_plate: widget
-                                                                .search_plate,
-                                                          )),
-                                                );
-                                              },
-                                              text: 'ค้นหาวิดีโอจากกล้อง',
-                                              options: FFButtonOptions(
-                                                width: 230,
-                                                height: 50,
-                                                color: Color.fromARGB(
-                                                    255, 255, 255, 255),
-                                                textStyle: FlutterFlowTheme
-                                                    .subtitle2
-                                                    .override(
-                                                  fontFamily: 'Mitr',
-                                                  color: Color.fromARGB(
-                                                      255, 46, 46, 46),
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.w300,
                                                 ),
-                                                borderSide: BorderSide(
+                                              ),
+                                            ),
+
+                                            // เส้นขั้น
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0, 10, 0, 0),
+                                              child: Container(
+                                                width: double.infinity,
+                                                height: 3,
+                                                decoration: BoxDecoration(
                                                   color: Color.fromARGB(
                                                       255, 160, 182, 255),
-                                                  width: 2,
                                                 ),
-                                                borderRadius: 50,
                                               ),
                                             ),
-                                          ),
 
-                                          // เส้นขั้น
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 20, 0, 20),
-                                            child: Container(
-                                              width: double.infinity,
-                                              height: 3,
-                                              decoration: BoxDecoration(
-                                                color: Color.fromARGB(
-                                                    255, 160, 182, 255),
+                                            // ชื่อเจ้าของรถ
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(10, 5, 0, 0),
+                                              child: Container(
+                                                width: double.infinity,
+                                                height: 50,
+                                                decoration: BoxDecoration(),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Text(
+                                                      'ชื่อเจ้าของรถ :',
+                                                      style: FlutterFlowTheme
+                                                          .bodyText1
+                                                          .override(
+                                                        fontFamily: 'Mitr',
+                                                        color: Color.fromARGB(
+                                                            255, 46, 46, 46),
+                                                        fontSize: 22,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10, 0, 0, 0),
+                                                      child: Text(
+                                                        "${data_click[0] == 0 ? listviewData2[0].name : data_left[1]}",
+                                                        style: FlutterFlowTheme
+                                                            .bodyText1
+                                                            .override(
+                                                          fontFamily: 'Mitr',
+                                                          color: Color.fromARGB(
+                                                              255, 46, 46, 46),
+                                                          fontSize: 20,
+                                                          fontWeight:
+                                                              FontWeight.w300,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
                                             ),
-                                          ),
 
-                                          // แถบโหลดข้อมูล
-                                          // Padding(
-                                          //   padding:
-                                          //       EdgeInsetsDirectional.fromSTEB(
-                                          //           0, 20, 0, 10),
-                                          //   child: LinearPercentIndicator(
-                                          //     percent: 0.5,
-                                          //     width: 600,
-                                          //     lineHeight: 5,
-                                          //     animation: true,
-                                          //     progressColor: Color.fromARGB(
-                                          //         255, 160, 182, 255),
-                                          //     backgroundColor: Color.fromARGB(
-                                          //         0, 255, 255, 255),
-                                          //   ),
-                                          // ),
-                                        ],
-                                      ),
-                                    ],
+                                            // จังหวัด
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(10, 5, 0, 0),
+                                              child: Container(
+                                                width: double.infinity,
+                                                height: 50,
+                                                decoration: BoxDecoration(),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Text(
+                                                      'จังหวัด :',
+                                                      style: FlutterFlowTheme
+                                                          .bodyText1
+                                                          .override(
+                                                        fontFamily: 'Mitr',
+                                                        color: Color.fromARGB(
+                                                            255, 46, 46, 46),
+                                                        fontSize: 22,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10, 0, 0, 0),
+                                                      child: Text(
+                                                        "${data_click[0] == 0 ? listviewData2[0].city : data_left[2]}",
+                                                        style: FlutterFlowTheme
+                                                            .bodyText1
+                                                            .override(
+                                                          fontFamily: 'Mitr',
+                                                          color: Color.fromARGB(
+                                                              255, 46, 46, 46),
+                                                          fontSize: 20,
+                                                          fontWeight:
+                                                              FontWeight.w300,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+
+                                            // ประเภทรถ
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(10, 5, 0, 0),
+                                              child: Container(
+                                                width: double.infinity,
+                                                height: 50,
+                                                decoration: BoxDecoration(),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Text(
+                                                      'ประเภทรถ :',
+                                                      style: FlutterFlowTheme
+                                                          .bodyText1
+                                                          .override(
+                                                        fontFamily: 'Mitr',
+                                                        color: Color.fromARGB(
+                                                            255, 46, 46, 46),
+                                                        fontSize: 22,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10, 0, 0, 0),
+                                                      child: Text(
+                                                        "${data_click[0] == 0 ? listviewData2[0].vehicle : data_left[3]}",
+                                                        style: FlutterFlowTheme
+                                                            .bodyText1
+                                                            .override(
+                                                          fontFamily: 'Mitr',
+                                                          color: Color.fromARGB(
+                                                              255, 46, 46, 46),
+                                                          fontSize: 20,
+                                                          fontWeight:
+                                                              FontWeight.w300,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10, 0, 0, 0),
+                                                      child: Image.network(
+                                                        '${data_click[0] == 0 ? listviewData2[0].carImgType : data_left[6]}',
+                                                        width: 50,
+                                                        height: 50,
+                                                        fit: BoxFit.contain,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+
+                                            // สี
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(10, 5, 0, 0),
+                                              child: Container(
+                                                width: double.infinity,
+                                                height: 50,
+                                                decoration: BoxDecoration(),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Text(
+                                                      'สี :',
+                                                      style: FlutterFlowTheme
+                                                          .bodyText1
+                                                          .override(
+                                                        fontFamily: 'Mitr',
+                                                        color: Color.fromARGB(
+                                                            255, 46, 46, 46),
+                                                        fontSize: 22,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10, 0, 0, 0),
+                                                      child: Text(
+                                                        "${data_click[0] == 0 ? listviewData2[0].color : data_left[4]}",
+                                                        style: FlutterFlowTheme
+                                                            .bodyText1
+                                                            .override(
+                                                          fontFamily: 'Mitr',
+                                                          color: Color.fromARGB(
+                                                              255, 46, 46, 46),
+                                                          fontSize: 20,
+                                                          fontWeight:
+                                                              FontWeight.w300,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+
+                                            // เวลา
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(10, 5, 0, 0),
+                                              child: Container(
+                                                width: double.infinity,
+                                                height: 50,
+                                                decoration: BoxDecoration(),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Text(
+                                                      'เวลา :',
+                                                      style: FlutterFlowTheme
+                                                          .bodyText1
+                                                          .override(
+                                                        fontFamily: 'Mitr',
+                                                        color: Color.fromARGB(
+                                                            255, 46, 46, 46),
+                                                        fontSize: 22,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10, 0, 0, 0),
+                                                      child: Text(
+                                                        "${data_click[0] == 0 ? listviewData2[0].time : data_left[10]}",
+                                                        style: FlutterFlowTheme
+                                                            .bodyText1
+                                                            .override(
+                                                          fontFamily: 'Mitr',
+                                                          color: Color.fromARGB(
+                                                              255, 46, 46, 46),
+                                                          fontSize: 20,
+                                                          fontWeight:
+                                                              FontWeight.w300,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+
+                                            // วันที่
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(10, 5, 0, 0),
+                                              child: Container(
+                                                width: double.infinity,
+                                                height: 50,
+                                                decoration: BoxDecoration(),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Text(
+                                                      'วัน / เดือน / ปี :',
+                                                      style: FlutterFlowTheme
+                                                          .bodyText1
+                                                          .override(
+                                                        fontFamily: 'Mitr',
+                                                        color: Color.fromARGB(
+                                                            255, 46, 46, 46),
+                                                        fontSize: 22,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10, 0, 0, 0),
+                                                      child: Text(
+                                                        "${data_click[0] == 0 ? listviewData2[0].date : data_left[11]}",
+                                                        style: FlutterFlowTheme
+                                                            .bodyText1
+                                                            .override(
+                                                          fontFamily: 'Mitr',
+                                                          color: Color.fromARGB(
+                                                              255, 46, 46, 46),
+                                                          fontSize: 20,
+                                                          fontWeight:
+                                                              FontWeight.w300,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+
+                                            // ปุ่มการค้นหา
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0, 10, 0, 0),
+                                              child: FFButtonWidget(
+                                                onPressed: () {
+                                                  print(widget.color);
+                                                  // เซ็ตค่าตั้งต้นหากกรณีไม่มีข้อมูล
+                                                  data_click[0] == 0
+                                                      ? data_left[0] =
+                                                          listviewData2[0]
+                                                              .licensePlate
+                                                      : data_left[0];
+
+                                                  data_click[0] == 0
+                                                      ? data_left[1] =
+                                                          listviewData2[0].name
+                                                      : data_left[1];
+
+                                                  data_click[0] == 0
+                                                      ? data_left[2] =
+                                                          listviewData2[0].city
+                                                      : data_left[2];
+
+                                                  data_click[0] == 0
+                                                      ? data_left[3] =
+                                                          listviewData2[0]
+                                                              .vehicle
+                                                      : data_left[3];
+
+                                                  data_click[0] == 0
+                                                      ? data_left[4] =
+                                                          listviewData2[0].color
+                                                      : data_left[4];
+
+                                                  data_click[0] == 0
+                                                      ? data_left[5] =
+                                                          listviewData2[0]
+                                                              .imgCar
+                                                      : data_left[5];
+
+                                                  data_click[0] == 0
+                                                      ? data_left[6] =
+                                                          listviewData2[0]
+                                                              .carImgType
+                                                      : data_left[6];
+
+                                                  data_click[0] == 0
+                                                      ? data_left[7] =
+                                                          listviewData2[0]
+                                                              .colorCode
+                                                      : data_left[7];
+
+                                                  data_click[0] == 0
+                                                      ? data_left[8] =
+                                                          listviewData2[0]
+                                                              .imgPlate
+                                                      : data_left[8];
+
+                                                  data_click[0] == 0
+                                                      ? data_left[9] =
+                                                          listviewData2[0].video
+                                                      : data_left[9];
+
+                                                  data_click[0] == 0
+                                                      ? data_left[10] =
+                                                          listviewData2[0].time
+                                                      : data_left[10];
+
+                                                  data_click[0] == 0
+                                                      ? data_left[11] =
+                                                          listviewData2[0].date
+                                                      : data_left[11];
+
+                                                  // ส่งข้อมูลไปหน้าถัดไป
+                                                  Navigator.pushReplacement(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            VideoScreenWidget(
+                                                              license_plate:
+                                                                  data_left[0],
+                                                              name:
+                                                                  data_left[1],
+                                                              city:
+                                                                  data_left[2],
+                                                              vehicle:
+                                                                  data_left[3],
+                                                              vehicle_type_img:
+                                                                  data_left[6],
+                                                              color:
+                                                                  data_left[4],
+                                                              color_code:
+                                                                  data_left[7],
+                                                              img: data_left[5],
+                                                              img_plate:
+                                                                  data_left[8],
+                                                              video:
+                                                                  data_left[9],
+                                                              time:
+                                                                  data_left[10],
+                                                              date:
+                                                                  data_left[11],
+                                                              search_plate: widget
+                                                                  .search_plate,
+                                                            )),
+                                                  );
+                                                },
+                                                text: 'ค้นหาวิดีโอจากกล้อง',
+                                                options: FFButtonOptions(
+                                                  width: 230,
+                                                  height: 50,
+                                                  color: Color.fromARGB(
+                                                      255, 255, 255, 255),
+                                                  textStyle: FlutterFlowTheme
+                                                      .subtitle2
+                                                      .override(
+                                                    fontFamily: 'Mitr',
+                                                    color: Color.fromARGB(
+                                                        255, 46, 46, 46),
+                                                    fontSize: 20,
+                                                    fontWeight: FontWeight.w300,
+                                                  ),
+                                                  borderSide: BorderSide(
+                                                    color: Color.fromARGB(
+                                                        255, 160, 182, 255),
+                                                    width: 2,
+                                                  ),
+                                                  borderRadius: 50,
+                                                ),
+                                              ),
+                                            ),
+
+                                            // เส้นขั้น
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0, 20, 0, 20),
+                                              child: Container(
+                                                width: double.infinity,
+                                                height: 3,
+                                                decoration: BoxDecoration(
+                                                  color: Color.fromARGB(
+                                                      255, 160, 182, 255),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
-                          );
+                              ],
+                            );
+                          } else {
+                            final listviewData2 = snapshot.data!;
+                            return Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5, 0, 5, 0),
+                                  child: Container(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.5,
+                                    height: MediaQuery.of(context).size.height *
+                                        0.85,
+                                    decoration: BoxDecoration(),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'กรุณาเลือกข้อมูลจากทางด้านซ้าย',
+                                          style: FlutterFlowTheme.bodyText1
+                                              .override(
+                                            fontFamily: 'Mitr',
+                                            color:
+                                                Color.fromARGB(255, 46, 46, 46),
+                                            fontSize: 25,
+                                            fontWeight: FontWeight.w300,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              ],
+                            );
+                          }
                         }),
                   ),
                 ],
